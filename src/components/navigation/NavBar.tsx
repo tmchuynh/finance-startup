@@ -32,7 +32,7 @@ export default function NavBar() {
               <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-2 mx-auto px-6 lg:px-8 py-10 w-11/12">
                 <div className="gap-x-6 sm:gap-x-8 grid grid-cols-2">
                   <div>
-                    <h3>Engagement</h3>
+                    <h4>Engagement</h4>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {engagement.map((item) => (
@@ -43,7 +43,7 @@ export default function NavBar() {
                           >
                             <item.icon
                               aria-hidden="true"
-                              className="flex-none size-6"
+                              className="flex-none text-accent size-6"
                             />
                             {item.name}
                           </a>
@@ -52,7 +52,7 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div>
-                    <h3>Resources</h3>
+                    <h4>Resources</h4>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {resources.map((item) => (
@@ -63,7 +63,7 @@ export default function NavBar() {
                           >
                             <item.icon
                               aria-hidden="true"
-                              className="flex-none size-6"
+                              className="flex-none text-accent size-6"
                             />
                             {item.name}
                           </a>
@@ -73,7 +73,7 @@ export default function NavBar() {
                   </div>
                 </div>
                 <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2">
-                  <h3 className="sr-only">Recent posts</h3>
+                  <h4 className="sr-only">Recent posts</h4>
                   {recentPosts.map((post) => (
                     <article
                       key={post.id}
@@ -121,7 +121,7 @@ export default function NavBar() {
               <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-2 mx-auto px-6 lg:px-8 py-10 w-11/12">
                 <div className="gap-x-6 sm:gap-x-8 grid grid-cols-2">
                   <div>
-                    <h3>Community</h3>
+                    <h4>Community</h4>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {community.map((item) => (
@@ -132,7 +132,7 @@ export default function NavBar() {
                           >
                             <item.icon
                               aria-hidden="true"
-                              className="flex-none size-6"
+                              className="flex-none text-accent size-6"
                             />
                             {item.name}
                           </a>
@@ -141,7 +141,7 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div>
-                    <h3>Company</h3>
+                    <h4>Company</h4>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {company.map((item) => (
@@ -152,7 +152,7 @@ export default function NavBar() {
                           >
                             <item.icon
                               aria-hidden="true"
-                              className="flex-none size-6"
+                              className="flex-none text-accent size-6"
                             />
                             {item.name}
                           </a>
@@ -162,7 +162,7 @@ export default function NavBar() {
                   </div>
                 </div>
                 <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2">
-                  <h3 className="sr-only">Recent posts</h3>
+                  <h4 className="sr-only">Recent posts</h4>
                   {recentPosts.map((post) => (
                     <article
                       key={post.id}
