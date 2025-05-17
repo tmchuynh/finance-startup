@@ -22,3 +22,20 @@ export const capitalize = (str: string) => {
     .replace(/_/g, " ")
     .replace(/\b[a-zA-Z]/g, (char) => char.toUpperCase());
 };
+
+/**
+ * Converts a camelCase string to Title Case format
+ * Example: "costOfGoodsSold" becomes "Cost Of Goods Sold"
+ */
+export function formatCamelCaseToTitle(camelCase: string): string {
+  // Add space before capital letters and convert to lowercase
+  const withSpaces = camelCase.replace(/([A-Z])/g, ' $1').toLowerCase();
+  
+  // Capitalize the first letter of each word
+  return withSpaces
+    .split(' ')
+    .map(word => word.trim())
+    .filter(word => word.length > 0)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
