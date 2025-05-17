@@ -1,0 +1,10 @@
+export default function FinanceChecklistsPage() {
+  return (
+    <div className="flex flex-col justify-center items-center w-full h-full">
+      <div className="p-4 w-full max-w-2xl">
+        <h1 className="font-bold text-2xl">Finance Checklists</h1>
+        <p>Welcome to the Finance Checklists page!</p>
+      </div>
+    </div>
+  );
+}
