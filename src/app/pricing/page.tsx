@@ -71,35 +71,40 @@ export default function Example() {
                 {pricing.tiers.map((tier) => (
                   <div
                     key={tier.name}
-                    className="grid grid-cols-1 shadow-[inset_0_0_2px_1px_#ffffff4d] -m-2 max-lg:mx-auto rounded-4xl ring-1 ring-ring max-lg:w-full max-lg:max-w-md"
+                    className="grid grid-cols-1 shadow-[inset_0_0_2px_1px_#ffffff4d] max-lg:mx-auto rounded-4xl ring-1 ring-ring max-lg:w-full max-lg:max-w-md h-full"
                   >
                     <div className="grid grid-cols-1 shadow-black/5 shadow-md p-2 rounded-4xl">
-                      <div className="bg-card shadow-2xl p-10 pb-9 rounded-3xl ring-1 ring-black/5">
-                        <h5>
-                          {tier.name} <span className="sr-only">plan</span>
-                        </h5>
-                        <p className="mt-2 text-pretty text-sm/6">
-                          {tier.description}
-                        </p>
-                        <div className="flex items-center gap-4 mt-8">
-                          <h1 className="font-semibold text-6xl">
-                            {frequency.value === "monthly"
-                              ? formatNumberToCurrency(tier.priceMonthly)
-                              : formatNumberToCurrency(
-                                  Math.round(tier.priceMonthly * 12 * 0.8)
-                                )}
-                          </h1>
-                          <div className="text-sm">
-                            <p>USD</p>
-                            <p>
-                              {frequency.value === "monthly"
-                                ? "per month"
-                                : "per year"}
-                            </p>
-                          </div>
+                      <div className="flex flex-col justify-between bg-card shadow-2xl p-10 pb-9 rounded-3xl ring-1 ring-black/5">
+                        <div>
+                          <h5>
+                            {tier.name} <span className="sr-only">plan</span>
+                          </h5>
+                          <p className="mt-2 text-pretty text-sm/6">
+                            {tier.description}
+                          </p>
                         </div>
-                        <div className="mt-8">
-                          <Button>Start a free trial</Button>
+                        <div>
+                          {" "}
+                          <div className="flex items-center gap-4 mt-8">
+                            <h1 className="font-semibold text-6xl">
+                              {frequency.value === "monthly"
+                                ? formatNumberToCurrency(tier.priceMonthly)
+                                : formatNumberToCurrency(
+                                    Math.round(tier.priceMonthly * 12 * 0.8)
+                                  )}
+                            </h1>
+                            <div className="text-sm">
+                              <p>USD</p>
+                              <p>
+                                {frequency.value === "monthly"
+                                  ? "per month"
+                                  : "per year"}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="mt-8">
+                            <Button>Start a free trial</Button>
+                          </div>
                         </div>
                       </div>
                     </div>
