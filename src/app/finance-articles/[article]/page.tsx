@@ -4,19 +4,12 @@ interface ArticleProps {
   introduction?: string;
 }
 
-export default function Article({ article }: { article: ArticleProps }) {
+export default function Article({ params }: { params: { article: string } }) {
+  const { article } = params;
+
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
-      <div className="p-4 w-full max-w-2xl">
-        <h1 className="font-bold text-2xl">{article.title}</h1>
-        <p>{article.description}</p>
-        {article.introduction && (
-          <div className="mt-4">
-            <h2 className="font-semibold text-xl">Introduction</h2>
-            <p>{article.introduction}</p>
-          </div>
-        )}
-      </div>
+      <div className="p-4 w-full max-w-2xl">{article}</div>
     </div>
   );
 }

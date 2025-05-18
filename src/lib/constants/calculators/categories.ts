@@ -901,3 +901,14 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
 ];
+
+export const categorys = [
+  "business",
+  "real-estate",
+  "investment",
+  "retirement",
+  "tax",
+  "insurance",
+  "savings",
+  "debt",
+];
