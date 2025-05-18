@@ -1,11 +1,12 @@
 "use client";
 
+import { buyStock } from "@/components/stocks/buyStock";
+import { sellStock } from "@/components/stocks/sellStock";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MOCK_STOCKS } from "@/lib/constants/data/stockData";
 import { Portfolio, Stock } from "@/lib/interfaces";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 const INITIAL_CASH = 100000;
 
@@ -201,78 +202,4 @@ export default function StockMarketLearningSimulatorPage() {
       </table>
     </div>
   );
-}
-
-export function buyStock(
-  portfolio: Portfolio,
-  stock: Stock,
-  quantity: number
-): Portfolio | string {
-  const cost = stock.price * quantity;
-  if (cost > portfolio.cash) return "Insufficient cash balance";
-
-  // Update holdings
-  const existing = portfolio.holdings.find((h) => h.symbol === stock.symbol);
-  if (existing) {
-    const totalCost = existing.averagePrice * existing.quantity + cost;
-    const newQuantity = existing.quantity + quantity;
-    existing.averagePrice = totalCost / newQuantity;
-    existing.quantity = newQuantity;
-  } else {
-    portfolio.holdings.push({
-      symbol: stock.symbol,
-      quantity,
-      averagePrice: stock.price,
-    });
-  }
-
-  // Deduct cash
-  portfolio.cash -= cost;
-
-  // Record transaction
-  portfolio.transactions.push({
-    id: uuidv4(),
-    symbol: stock.symbol,
-    type: "BUY",
-    quantity,
-    price: stock.price,
-    date: new Date(),
-  });
-
-  return { ...portfolio };
-}
-
-export function sellStock(
-  portfolio: Portfolio,
-  stock: Stock,
-  quantity: number
-): Portfolio | string {
-  const existing = portfolio.holdings.find((h) => h.symbol === stock.symbol);
-  if (!existing || existing.quantity < quantity)
-    return "Insufficient stock quantity";
-
-  const revenue = stock.price * quantity;
-
-  // Update holdings
-  existing.quantity -= quantity;
-  if (existing.quantity === 0) {
-    portfolio.holdings = portfolio.holdings.filter(
-      (h) => h.symbol !== stock.symbol
-    );
-  }
-
-  // Add cash
-  portfolio.cash += revenue;
-
-  // Record transaction
-  portfolio.transactions.push({
-    id: uuidv4(),
-    symbol: stock.symbol,
-    type: "SELL",
-    quantity,
-    price: stock.price,
-    date: new Date(),
-  });
-
-  return { ...portfolio };
 }
