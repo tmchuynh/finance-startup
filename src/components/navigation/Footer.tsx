@@ -93,7 +93,7 @@ const navigation = {
 export default function Example() {
   return (
     <footer>
-      <div className="mx-auto px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-8 max-w-7xl">
+      <div className="mx-auto pt-16 sm:pt-24 lg:pt-32 pb-8 w-11/12">
         <div className="xl:gap-8 xl:grid xl:grid-cols-3">
           <Image
             alt="Company name"

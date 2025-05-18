@@ -21,7 +21,7 @@ export default function CalculatorLayout({
     <CalculatorProvider
       value={{ calculatorType, calculatorName, correspondingCalculators }}
     >
-      <div className="flex flex-col justify-center items-center mx-auto w-11/12 h-full">
+      <div className="flex flex-col justify-center items-center h-full">
         {children}
       </div>
     </CalculatorProvider>

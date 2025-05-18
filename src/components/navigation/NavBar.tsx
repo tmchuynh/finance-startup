@@ -14,7 +14,7 @@ export default function NavBar() {
   return (
     <main className="">
       <div className="relative z-50 flex justify-between items-center bg-background shadow-sm py-5 w-full isolate">
-        <div className="flex mx-auto w-7/8">
+        <div className="flex mx-auto w-12/13">
           <Popover>
             <div className="bg-background py-5 w-full">
               <div className="mx-auto px-6 lg:px-8 max-w-7xl">
