@@ -19,6 +19,7 @@ export const FEDERAL_TAX_BRACKETS_SINGLE = [
   { threshold: 182100, rate: 0.32 },
   { threshold: 231250, rate: 0.35 },
   { threshold: 578125, rate: 0.37 },
+  { threshold: 1000000, rate: 0.4 },
 ];
 
 // Federal brackets for Married Filing Jointly
@@ -30,6 +31,7 @@ export const FEDERAL_TAX_BRACKETS_MARRIED = [
   { threshold: 364200, rate: 0.32 },
   { threshold: 462500, rate: 0.35 },
   { threshold: 693750, rate: 0.37 },
+  { threshold: 1000000, rate: 0.4 },
 ];
 
 // Federal brackets for Head of Household
@@ -41,6 +43,7 @@ export const FEDERAL_TAX_BRACKETS_HOH = [
   { threshold: 182100, rate: 0.32 },
   { threshold: 231250, rate: 0.35 },
   { threshold: 578100, rate: 0.37 },
+  { threshold: 1000000, rate: 0.4 },
 ];
 
 export const federalTaxBrackets: Record<FilingStatus, TaxBracket[]> = {
@@ -52,6 +55,8 @@ export const federalTaxBrackets: Record<FilingStatus, TaxBracket[]> = {
     { threshold: 182100, rate: 0.32 },
     { threshold: 231250, rate: 0.35 },
     { threshold: 578125, rate: 0.37 },
+    { threshold: 1000000, rate: 0.4 },
+    { threshold: 2000000, rate: 0.45 },
   ],
   married: [
     { threshold: 0, rate: 0.1 },
@@ -61,6 +66,8 @@ export const federalTaxBrackets: Record<FilingStatus, TaxBracket[]> = {
     { threshold: 364200, rate: 0.32 },
     { threshold: 462500, rate: 0.35 },
     { threshold: 693750, rate: 0.37 },
+    { threshold: 1000000, rate: 0.4 },
+    { threshold: 2000000, rate: 0.45 },
   ],
   headOfHousehold: [
     { threshold: 0, rate: 0.1 },
@@ -70,5 +77,7 @@ export const federalTaxBrackets: Record<FilingStatus, TaxBracket[]> = {
     { threshold: 182100, rate: 0.32 },
     { threshold: 231250, rate: 0.35 },
     { threshold: 578100, rate: 0.37 },
+    { threshold: 1000000, rate: 0.4 },
+    { threshold: 2000000, rate: 0.45 },
   ],
 };
