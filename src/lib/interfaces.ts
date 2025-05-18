@@ -16,7 +16,6 @@ export interface TaxBracket {
   threshold: number; // Income threshold for this bracket
 }
 
-
 // Stock data
 export interface Stock {
   symbol: string;
@@ -46,4 +45,27 @@ export interface Portfolio {
   cash: number;
   holdings: Holding[];
   transactions: Transaction[];
+}
+
+export type Category = {
+  id: string;
+  title: string;
+  description: string;
+  introduction?: string;
+  usage?: string;
+  list?: ListDetails[];
+};
+
+export type Calculator = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  list?: ListDetails[];
+};
+
+export interface ListDetails {
+  title: string;
+  description: string;
+  items?: ListDetails[];
 }
