@@ -39,3 +39,16 @@ export function formatCamelCaseToTitle(camelCase: string): string {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
+
+export function formatNumberToCurrency(
+  value: number,
+  min?: number,
+  max?: number
+): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: min || 0,
+    maximumFractionDigits: max || 0,
+  }).format(value);
+}
