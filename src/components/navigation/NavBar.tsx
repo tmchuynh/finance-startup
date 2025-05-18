@@ -18,7 +18,7 @@ export default function NavBar() {
           <Popover>
             <div className="bg-background py-5 w-full">
               <div className="mx-auto px-6 lg:px-8 max-w-7xl">
-                <PopoverButton className="inline-flex items-center gap-x-1 font-semibold text-sm/6">
+                <PopoverButton className="inline-flex items-center gap-x-1">
                   Solutions
                   <ChevronDownIcon aria-hidden="true" className="size-5" />
                 </PopoverButton>
@@ -32,14 +32,14 @@ export default function NavBar() {
               <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-2 mx-auto px-6 lg:px-8 py-10 w-11/12">
                 <div className="gap-x-6 sm:gap-x-8 grid grid-cols-2">
                   <div>
-                    <h4>Engagement</h4>
+                    <h5>Engagement</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {engagement.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex gap-x-4 py-2 font-semibold text-sm/6"
+                            className="flex gap-x-4 py-2"
                           >
                             <item.icon
                               aria-hidden="true"
@@ -52,14 +52,14 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div>
-                    <h4>Resources</h4>
+                    <h5>Resources</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {resources.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex gap-x-4 py-2 font-semibold text-sm/6"
+                            className="flex gap-x-4 py-2"
                           >
                             <item.icon
                               aria-hidden="true"
@@ -73,7 +73,7 @@ export default function NavBar() {
                   </div>
                 </div>
                 <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2">
-                  <h4 className="sr-only">Recent posts</h4>
+                  <h5 className="sr-only">Recent posts</h5>
                   {recentPosts.map((post) => (
                     <article
                       key={post.id}
@@ -90,13 +90,13 @@ export default function NavBar() {
                         <div className="absolute inset-0 rounded-lg ring-1 ring-inset" />
                       </div>
                       <div>
-                        <h4 className="mt-2 font-semibold text-sm/6">
+                        <h5 className="mt-2">
                           <a href={post.href}>
                             <span className="absolute inset-0" />
                             {post.title}
                           </a>
-                        </h4>
-                        <p className="mt-2 text-sm/6">{post.description}</p>
+                        </h5>
+                        <p className="mt-2">{post.description}</p>
                       </div>
                     </article>
                   ))}
@@ -107,7 +107,7 @@ export default function NavBar() {
           <Popover>
             <div className="bg-background py-5 w-full">
               <div className="mx-auto px-6 lg:px-8 max-w-7xl">
-                <PopoverButton className="inline-flex items-center gap-x-1 font-semibold text-sm/6">
+                <PopoverButton className="inline-flex items-center gap-x-1">
                   About
                   <ChevronDownIcon aria-hidden="true" className="size-5" />
                 </PopoverButton>
@@ -121,14 +121,14 @@ export default function NavBar() {
               <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-2 mx-auto px-6 lg:px-8 py-10 w-11/12">
                 <div className="gap-x-6 sm:gap-x-8 grid grid-cols-2">
                   <div>
-                    <h4>Community</h4>
+                    <h5>Community</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {community.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex gap-x-4 py-2 font-semibold text-sm/6"
+                            className="flex gap-x-4 py-2"
                           >
                             <item.icon
                               aria-hidden="true"
@@ -141,14 +141,14 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div>
-                    <h4>Company</h4>
+                    <h5>Company</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
                         {company.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex gap-x-4 py-2 font-semibold text-sm/6"
+                            className="flex gap-x-4 py-2"
                           >
                             <item.icon
                               aria-hidden="true"
@@ -162,7 +162,7 @@ export default function NavBar() {
                   </div>
                 </div>
                 <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2">
-                  <h4 className="sr-only">Recent posts</h4>
+                  <h5 className="sr-only">Recent posts</h5>
                   {recentPosts.map((post) => (
                     <article
                       key={post.id}
@@ -179,13 +179,13 @@ export default function NavBar() {
                         <div className="absolute inset-0 rounded-lg ring-1 ring-gray-900/10 ring-inset" />
                       </div>
                       <div>
-                        <h4 className="mt-2 font-semibold text-sm/6">
+                        <h5 className="mt-2">
                           <a href={post.href}>
                             <span className="absolute inset-0" />
                             {post.title}
                           </a>
-                        </h4>
-                        <p className="mt-2 text-sm/6">{post.description}</p>
+                        </h5>
+                        <p className="mt-2">{post.description}</p>
                       </div>
                     </article>
                   ))}

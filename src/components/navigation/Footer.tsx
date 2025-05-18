@@ -57,7 +57,7 @@ const navigation = {
       href: "#",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
+          <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3h5.2002L10.0765 13.0074L3.2002 21h5.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
         </svg>
       ),
     },
@@ -105,15 +105,13 @@ export default function Example() {
           <div className="gap-8 grid grid-cols-2 xl:col-span-2 mt-16 xl:mt-0">
             <div className="md:gap-8 md:grid md:grid-cols-2">
               <div>
-                <h3 className="font-semibold text-gray-900 text-sm/6">
-                  Solutions
-                </h3>
+                <h5>Solutions</h5>
                 <ul role="list" className="space-y-4 mt-6">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-gray-600 text-sm/6 hover:text-gray-900"
+                        className="text-foreground/75 hover:text-secondary"
                       >
                         {item.name}
                       </a>
@@ -122,15 +120,13 @@ export default function Example() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="font-semibold text-gray-900 text-sm/6">
-                  Support
-                </h3>
+                <h5>Support</h5>
                 <ul role="list" className="space-y-4 mt-6">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-gray-600 text-sm/6 hover:text-gray-900"
+                        className="text-foreground/75 hover:text-secondary"
                       >
                         {item.name}
                       </a>
@@ -141,15 +137,13 @@ export default function Example() {
             </div>
             <div className="md:gap-8 md:grid md:grid-cols-2">
               <div>
-                <h3 className="font-semibold text-gray-900 text-sm/6">
-                  Company
-                </h3>
+                <h5>Company</h5>
                 <ul role="list" className="space-y-4 mt-6">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-gray-600 text-sm/6 hover:text-gray-900"
+                        className="text-foreground/75 hover:text-secondary"
                       >
                         {item.name}
                       </a>
@@ -158,13 +152,13 @@ export default function Example() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="font-semibold text-gray-900 text-sm/6">Legal</h3>
+                <h5>Legal</h5>
                 <ul role="list" className="space-y-4 mt-6">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-gray-600 text-sm/6 hover:text-gray-900"
+                        className="text-foreground/75 hover:text-secondary"
                       >
                         {item.name}
                       </a>
@@ -177,10 +171,8 @@ export default function Example() {
         </div>
         <div className="lg:flex lg:justify-between lg:items-center mt-16 sm:mt-20 lg:mt-24 pt-8 border-gray-900/10 border-t">
           <div>
-            <h3 className="font-semibold text-gray-900 text-sm/6">
-              Subscribe to our newsletter
-            </h3>
-            <p className="mt-2 text-gray-600 text-sm/6">
+            <h5>Subscribe to our newsletter</h5>
+            <p className="mt-2 text-foreground/75">
               The latest news, articles, and resources, sent to your inbox
               weekly.
             </p>
@@ -196,7 +188,7 @@ export default function Example() {
               required
               placeholder="Enter your email"
               autoComplete="email"
-              className="bg-white px-3 py-1.5 rounded-md w-full sm:w-56 min-w-0 text-base text-gray-900 sm:text-sm/6 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+              className="bg-white px-3 py-1.5 rounded-md w-full sm:w-56 min-w-0 text-base sm:text-sm/6 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
             />
             <div className="mt-4 sm:mt-0 sm:ml-4 sm:shrink-0">
               <button
@@ -214,14 +206,14 @@ export default function Example() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-gray-800"
+                className="text-foreground/75 hover:text-gray-800"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon aria-hidden="true" className="size-6" />
               </a>
             ))}
           </div>
-          <p className="md:order-1 mt-8 md:mt-0 text-gray-600 text-sm/6">
+          <p className="md:order-1 mt-8 md:mt-0 text-foreground/75">
             &copy; 2024 Your Company, Inc. All rights reserved.
           </p>
         </div>
