@@ -112,31 +112,66 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@font-face {
+  font-family: "DMSerifDisplay";
+  src: url("/fonts/DMSerifDisplay-Regular.ttf") format("truetype");
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoCondensed";
+  src: url("/fonts/RobotoCondensed-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SourceSerif4";
+  src: url("/fonts/SourceSerif4-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-[RobotoCondensed];
   }
 
   h1 {
-    @apply text-2xl lg:text-4xl 2xl:text-6xl font-bold leading-tight tracking-tight;
+    @apply text-2xl lg:text-4xl 2xl:text-6xl font-[DMSerifDisplay] font-bold leading-tight tracking-tight;
   }
   h2 {
-    @apply text-xl lg:text-2xl 2xl:text-5xl font-bold leading-tight tracking-tight;
+    @apply text-xl lg:text-2xl 2xl:text-5xl font-[Lora] font-bold leading-tight tracking-tight;
   }
   h3 {
-    @apply text-lg lg:text-2xl 2xl:text-4xl font-bold leading-tight tracking-tight;
+    @apply text-lg lg:text-2xl 2xl:text-4xl font-[Newsreader] font-bold leading-tight tracking-tight;
   }
   h4 {
-    @apply text-base md:text-lg xl:text-xl font-bold leading-tight tracking-tight;
+    @apply text-base md:text-lg xl:text-xl font-[SourceSerif4] font-bold leading-tight tracking-tight;
   }
   h5 {
-    @apply text-sm xl:text-lg font-bold leading-tight tracking-tight;
+    @apply text-sm xl:text-lg font-bold leading-tight font-[Lora] tracking-tight;
   }
   h6 {
-    @apply text-xs 2xl:text-base font-bold leading-tight tracking-tight;
+    @apply text-xs 2xl:text-base font-bold leading-tight font-[Newsreader] tracking-tight;
   }
   p {
     @apply text-base mt-1 leading-normal;
