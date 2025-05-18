@@ -3,6 +3,7 @@
 import useMediumScreen from "@/lib/screens/useMediumScreen";
 import useSmallScreen from "@/lib/screens/useSmallScreen";
 import { capitalize } from "@/lib/utils/format";
+import { generateRandomString } from "@/lib/utils/sort";
 import { usePathname } from "next/navigation";
 import { JSX, useMemo } from "react";
 import { TbSlashes } from "react-icons/tb";
@@ -11,7 +12,6 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
-import { generateRandomString } from "@/lib/utils/sort";
 
 export default function DynamicBreadcrumb(): JSX.Element | null {
   const isSmallScreen = useSmallScreen();
@@ -190,7 +190,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
         aria-label="Breadcrumb"
         className="flex flex-row items-center gap-2 w-full text-xs lg:text-sm"
       >
-        <ul className="flex flex-row items-center gap-2 px-4 font-[FiraSans]">
+        <ul className="flex flex-row items-center gap-2 px-4 font-[Newsreader]">
           {breadcrumbItems}
         </ul>
       </nav>
