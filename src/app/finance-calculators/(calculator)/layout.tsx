@@ -17,9 +17,18 @@ export default function CalculatorLayout({
     (category) => category.id === calculatorType
   )?.list;
 
+  const calculatorCategory = financeCalculatorCategories.find(
+    (category) => category.id === calculatorType
+  );
+
   return (
     <CalculatorProvider
-      value={{ calculatorType, calculatorName, correspondingCalculators }}
+      value={{
+        calculatorType,
+        calculatorName,
+        calculatorCategory,
+        correspondingCalculators,
+      }}
     >
       <div className="flex flex-col justify-center items-center h-full">
         {children}
