@@ -1,55 +1,8 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { TAX_CHECKLIST } from "@/lib/constants/checklists/taxChecklist";
 import { useState } from "react";
-
-interface ChecklistItem {
-  id: string;
-  Label: string;
-}
-
-interface ChecklistCategory {
-  id: string;
-  title: string;
-  items: ChecklistItem[];
-}
-
-const TAX_CHECKLIST: ChecklistCategory[] = [
-  {
-    id: "income",
-    title: "Income Documents",
-    items: [
-      { id: "w2", Label: "W-2 forms from employers" },
-      { id: "1099", Label: "1099 forms (contractor, freelance)" },
-      {
-        id: "investment",
-        Label: "Investment income statements (1099-DIV, 1099-INT)",
-      },
-      { id: "rental", Label: "Rental property income documentation" },
-      { id: "socialsecurity", Label: "Social Security benefits statements" },
-    ],
-  },
-  {
-    id: "deductions",
-    title: "Deductions",
-    items: [
-      { id: "mortgage", Label: "Mortgage interest statements (Form 1098)" },
-      { id: "charitable", Label: "Charitable donation receipts" },
-      { id: "medical", Label: "Medical expenses documentation" },
-      { id: "education", Label: "Education expenses (Form 1098-T)" },
-      { id: "business", Label: "Business expenses records" },
-    ],
-  },
-  {
-    id: "credits",
-    title: "Tax Credits",
-    items: [
-      { id: "childcare", Label: "Childcare expenses" },
-      { id: "energy", Label: "Energy-efficient home improvement receipts" },
-      { id: "educationcredit", Label: "Education credits documentation" },
-      { id: "retirement", Label: "Retirement savings contributions" },
-    ],
-  },
-];
 
 export default function AnnualTaxChecklist() {
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
@@ -106,7 +59,7 @@ export default function AnnualTaxChecklist() {
                       onChange={() => toggleItem(item.id)}
                       className="w-5 h-5 text-blue-600 form-checkbox"
                     />
-                    <span className="ml-3 text-gray-900">{item.Label}</span>
+                    <span className="ml-3 text-gray-900">{item.label}</span>
                   </Label>
                 </li>
               ))}
