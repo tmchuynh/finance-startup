@@ -1,11 +1,12 @@
 "use client";
 
-import { ListDetails } from "@/lib/interfaces";
+import { Category, ListDetails } from "@/lib/interfaces";
 import { createContext, ReactNode, useContext } from "react";
 
 export interface CalculatorContextType {
   calculatorType: string;
   calculatorName: string;
+  calculatorCategory: Category | undefined;
   correspondingCalculators?: ListDetails[];
 }
 
