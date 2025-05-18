@@ -1,15 +1,15 @@
 "use client";
 
+import { NumberInput } from "@/components/forms/NumberInput";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  calculateBreakEvenPoint,
-  calculateInventoryTurnoverRatio,
   calculateProfitMargins,
   forecastMonthlyCashFlow,
-} from "@/lib/utils/calculators/business";
+} from "@/lib/utils/calculators/business/income";
+import { calculateInventoryTurnoverRatio } from "@/lib/utils/calculators/business/inventory";
+import { calculateBreakEvenPoint } from "@/lib/utils/calculators/business/operations";
 import { calculatePayrollTaxes } from "@/lib/utils/calculators/tax";
-import { formatCamelCaseToTitle } from "@/lib/utils/format";
 import { useState } from "react";
 
 export default function CashFlowCalculators() {
@@ -84,21 +84,12 @@ export default function CashFlowCalculators() {
             "interestExpense",
             "taxes",
           ].map((field) => (
-            <div key={field}>
-              <Label>{formatCamelCaseToTitle(field)}</Label>
-              <Input
-                type="number"
-                placeholder={field}
-                className="mt-2 input-bordered input"
-                value={profitInputs[field as keyof typeof profitInputs]}
-                onChange={(e) =>
-                  setProfitInputs({
-                    ...profitInputs,
-                    [field]: parseFloat(e.target.value) || 0,
-                  })
-                }
-              />
-            </div>
+            <NumberInput
+              key={field}
+              field={field}
+              state={profitInputs}
+              setState={setProfitInputs}
+            />
           ))}
         </div>
         <div className="gap-2 grid md:grid-cols-3 mt-2">
@@ -145,7 +136,7 @@ export default function CashFlowCalculators() {
           </div>
         </div>
         <div className="gap-2 grid md:grid-cols-3 mt-2">
-          <p>Turnover Ratio: {inventoryTurnover.toFixed(2)}</p>
+          <p>Turnover Ratio: {inventoryTurnover.turnoverRatio}</p>
         </div>
       </section>
 
@@ -155,21 +146,12 @@ export default function CashFlowCalculators() {
         <div className="gap-6 grid md:grid-cols-2 mt-2">
           {["fixedCosts", "variableCostPerUnit", "pricePerUnit"].map(
             (field) => (
-              <div key={field}>
-                <Label>{formatCamelCaseToTitle(field)}</Label>
-                <Input
-                  type="number"
-                  placeholder={field}
-                  className="mt-2 input-bordered input"
-                  value={breakEvenInputs[field as keyof typeof breakEvenInputs]}
-                  onChange={(e) =>
-                    setBreakEvenInputs({
-                      ...breakEvenInputs,
-                      [field]: parseFloat(e.target.value) || 0,
-                    })
-                  }
-                />
-              </div>
+              <NumberInput
+                key={field}
+                field={field}
+                state={breakEvenInputs}
+                setState={setBreakEvenInputs}
+              />
             )
           )}
         </div>
@@ -189,21 +171,12 @@ export default function CashFlowCalculators() {
             "stateUnemploymentTaxRate",
             "federalUnemploymentTaxRate",
           ].map((field) => (
-            <div key={field}>
-              <Label>{formatCamelCaseToTitle(field)}</Label>
-              <Input
-                type="number"
-                placeholder={field}
-                className="mt-2 input-bordered input"
-                value={payrollInputs[field as keyof typeof payrollInputs]}
-                onChange={(e) =>
-                  setPayrollInputs({
-                    ...payrollInputs,
-                    [field]: parseFloat(e.target.value) || 0,
-                  })
-                }
-              />
-            </div>
+            <NumberInput
+              key={field}
+              field={field}
+              state={payrollInputs}
+              setState={setPayrollInputs}
+            />
           ))}
         </div>
         <div className="gap-2 grid md:grid-cols-3 mt-2">
@@ -234,21 +207,12 @@ export default function CashFlowCalculators() {
             "accountsReceivableDays",
             "accountsPayableDays",
           ].map((field) => (
-            <div key={field}>
-              <Label>{formatCamelCaseToTitle(field)}</Label>
-              <Input
-                type="number"
-                placeholder={field}
-                className="mt-2 input-bordered input"
-                value={cashFlowInputs[field as keyof typeof cashFlowInputs]}
-                onChange={(e) =>
-                  setCashFlowInputs({
-                    ...cashFlowInputs,
-                    [field]: parseFloat(e.target.value) || 0,
-                  })
-                }
-              />
-            </div>
+            <NumberInput
+              key={field}
+              field={field}
+              state={cashFlowInputs}
+              setState={setCashFlowInputs}
+            />
           ))}
         </div>
         <div className="gap-2 grid md:grid-cols-3 mt-2">
