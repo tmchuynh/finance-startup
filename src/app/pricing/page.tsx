@@ -304,9 +304,7 @@ export default function Example() {
 
       {/* FAQ section */}
       <div className="mx-auto mt-24 sm:mt-56">
-        <h2 className="font-semibold text-4xl sm:text-5xl tracking-tight">
-          Frequently asked questions
-        </h2>
+        <h2>Frequently asked questions</h2>
         <dl className="mt-20 divide-y">
           {pricingFAQs.map((faq) => (
             <div
