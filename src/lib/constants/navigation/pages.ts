@@ -13,15 +13,31 @@ import {
 } from "lucide-react";
 
 export const engagement = [
-  { name: "About", href: "#", icon: InformationCircleIcon },
-  { name: "Customers", href: "#", icon: UsersIcon },
-  { name: "Press", href: "#", icon: NewspaperIcon },
-  { name: "Careers", href: "#", icon: BriefcaseIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon },
+  {
+    name: "Finance Calculators",
+    href: "/finance-calculators",
+    icon: InformationCircleIcon,
+  },
+  { name: "Finance Articles", href: "/finance-articles", icon: UsersIcon },
+  {
+    name: "Finance CHecklists",
+    href: "/finance-checklists",
+    icon: NewspaperIcon,
+  },
+  {
+    name: "Financial Decision Tools",
+    href: "/financial-decision-tools",
+    icon: BriefcaseIcon,
+  },
+  {
+    name: "Learning Simulators",
+    href: "/learning-simulators",
+    icon: ShieldCheckIcon,
+  },
 ];
 
 export const resources = [
-  { name: "Community", href: "#", icon: UserGroupIcon },
+  { name: "Pricing", href: "/pricing", icon: UserGroupIcon },
   { name: "Partners", href: "#", icon: GlobeAltIcon },
   { name: "Guides", href: "#", icon: BookOpenIcon },
   { name: "Webinars", href: "#", icon: VideoCameraIcon },
