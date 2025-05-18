@@ -1,5 +1,7 @@
 "use client";
 
+import { CalculatorProvider } from "@/context/calculatorContext";
+import { financeCalculatorCategories } from "@/lib/constants/calculators/categories";
 import { usePathname } from "next/navigation";
 
 export default function CalculatorLayout({
@@ -8,18 +10,20 @@ export default function CalculatorLayout({
   children: React.ReactNode;
 }) {
   const segments = usePathname().split("/");
-  console.log("segments", segments);
   const calculatorType = segments[segments.length - 1];
   const calculatorName = segments[segments.length - 2];
-  const calculatorCategory = segments[segments.length - 3];
-  console.log("calculatorType", calculatorType);
-  console.log("calculatorName", calculatorName);
-  console.log("calculatorCategory", calculatorCategory);
-  const calculatorPath = `/${calculatorCategory}/${calculatorName}/${calculatorType}`;
-  console.log("calculatorPath", calculatorPath);
+
+  const correspondingCalculators = financeCalculatorCategories.find(
+    (category) => category.id === calculatorType
+  )?.list;
+
   return (
-    <div className="flex flex-col justify-center items-center mx-auto w-11/12 h-full">
-      {children}
-    </div>
+    <CalculatorProvider
+      value={{ calculatorType, calculatorName, correspondingCalculators }}
+    >
+      <div className="flex flex-col justify-center items-center mx-auto w-11/12 h-full">
+        {children}
+      </div>
+    </CalculatorProvider>
   );
 }
