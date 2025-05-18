@@ -35,7 +35,19 @@ export default function FinanceCalculatorPage() {
             {category.list && (
               <ul className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 pl-5 list-disc">
                 {category.list.map((item) => (
-                  <li key={item.id}>{item.title}</li>
+                  <li
+                    key={item.id}
+                    className="underline-offset-2 hover:underline cursor-pointer"
+                    onClick={() =>
+                      router.push(
+                        `/finance-calculators/${category.id}/${item.title
+                          .toLowerCase()
+                          .replaceAll(/\s+/g, "-")}`
+                      )
+                    }
+                  >
+                    {item.title}
+                  </li>
                 ))}
               </ul>
             )}
