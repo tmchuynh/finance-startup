@@ -489,12 +489,6 @@ export const financeCalculatorCategories: Category[] = [
         id: "income-tax-calculator",
       },
       {
-        title: "Capital Gains Tax Calculator",
-        description:
-          "Calculate the capital gains tax on your investment profits.",
-        id: "capital-gains-tax-calculator",
-      },
-      {
         title: "Property Tax Calculator",
         description:
           "Estimate your property taxes based on property value and local rates.",
