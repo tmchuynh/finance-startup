@@ -52,3 +52,21 @@ export function formatNumberToCurrency(
     maximumFractionDigits: max || 0,
   }).format(value);
 }
+
+export function formatNumberToPercentage(value: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "percent",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(value);
+}
+
+export function formatKebabCaseToCamelCase(str: string): string {
+  return str
+    .split("-")
+    .map((word, index) => {
+      if (index === 0) return word.toLowerCase();
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join("");
+}
