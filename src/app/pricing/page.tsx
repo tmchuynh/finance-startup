@@ -303,7 +303,7 @@ export default function Example() {
       </div>
 
       {/* FAQ section */}
-      <div className="mx-auto mt-24 sm:mt-56 px-6 lg:px-8 max-w-7xl">
+      <div className="mx-auto mt-24 sm:mt-56">
         <h2 className="font-semibold text-4xl sm:text-5xl tracking-tight">
           Frequently asked questions
         </h2>
