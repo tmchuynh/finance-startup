@@ -63,3 +63,30 @@ export interface ListDetails {
   description: string;
   items?: ListDetails[];
 }
+
+export interface Tiers {
+  id: string;
+  name: string;
+  href: string;
+  featured: boolean;
+  description: string;
+  price: number;
+  highlights: string[];
+}
+
+export interface Features {
+  name: string;
+  features: {
+    name: string;
+    tiers: { [key: string]: boolean | string };
+  }[];
+}
+
+export interface Pricing {
+  frequencies: {
+    value: string;
+    label: string;
+  }[];
+  tiers: Tiers[];
+  sections: Features[];
+}
