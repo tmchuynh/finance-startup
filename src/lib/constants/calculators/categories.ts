@@ -2,7 +2,7 @@ import { Category } from "@/lib/interfaces";
 
 export const financeCalculatorCategories: Category[] = [
   {
-    id: "business",
+    id: "business-calculators",
     title: "Business Calculators",
     description:
       "These calculators are designed for business owners and entrepreneurs to help them manage their finances, analyze profitability, and make informed decisions. They include tools for calculating business expenses, revenue projections, and break-even analysis. It also includes calculators for payroll, taxes, and cash flow management. These calculators are essential for anyone running a business or looking to start one.",
@@ -14,133 +14,133 @@ export const financeCalculatorCategories: Category[] = [
       {
         title: "Profit Margin Calculator",
         description:
-          "Calculate your business's profit margins to understand its profitability.",
+          "Calculate your business's profit margins to understand its profitability and pricing strategy. This calculator helps you determine the percentage of revenue that remains as profit after deducting costs, allowing you to assess your business's financial health.",
         id: "profit-margin-calculator",
       },
       {
         title: "Inventory Turnover Ratio Calculator",
         description:
-          "Calculate the inventory turnover ratio to assess your inventory management efficiency.",
+          "Calculate the inventory turnover ratio to assess your inventory management efficiency. This calculator helps you understand how quickly your inventory is sold and replaced over a specific period.",
         id: "inventory-turnover-ratio-calculator",
       },
       {
         title: "Break-Even Point Calculator",
         description:
-          "Determine the break-even point for your business to understand when it will become profitable.",
+          "Determine the break-even point for your business to understand when it will become profitable. It calculates the sales volume at which total revenues equal total costs, helping you set sales targets.",
         id: "break-even-point-calculator",
       },
       {
         title: "Payroll Tax Calculator",
         description:
-          "Calculate payroll taxes for your employees to ensure compliance with tax regulations.",
+          "Calculate payroll taxes for your employees to ensure compliance with tax regulations and accurate payroll processing. This calculator helps you determine the appropriate tax withholdings based on employee earnings and local tax rates.",
         id: "payroll-tax-calculator",
       },
       {
         title: "Cash Flow Forecasting Calculator",
         description:
-          "Forecast your monthly cash flow to manage your business's liquidity effectively.",
+          "Forecast your monthly cash flow to manage your business's liquidity effectively. This will help you predict cash inflows and outflows, allowing you to plan for future expenses and investments.",
         id: "cash-flow-forecasting-calculator",
       },
       {
         title: "Business Loan Calculator",
         description:
-          "Calculate monthly payments and total interest for business loans.",
+          "Calculate monthly payments and total interest for business loans based on loan amount, interest rate, and term. This calculator helps you assess the cost of borrowing and plan your business's financing strategy.",
         id: "business-loan-calculator",
       },
       {
         title: "Expense Tracker",
         description:
-          "Track your business expenses to manage your budget effectively.",
+          "Track your business expenses to manage your budget effectively and identify areas for cost reduction. This calculator helps you categorize and analyze your expenses, allowing you to make informed financial decisions.",
         id: "expense-tracker",
       },
       {
         title: "Revenue Projection Calculator",
         description:
-          "Project future revenue based on historical data and growth rates.",
+          "Project future revenue based on historical data and growth rates. This calculator helps you estimate your business's potential income over a specific period, allowing you to set realistic sales targets.",
         id: "revenue-projection-calculator",
       },
       {
         title: "Cash Flow Management Calculator",
         description:
-          "Manage your business's cash flow to ensure liquidity and solvency.",
+          "Manage your business's cash flow to ensure liquidity and solvency. This calculator helps you analyze cash inflows and outflows, identify cash flow gaps, and plan for future expenses.",
         id: "cash-flow-management-calculator",
       },
       {
         title: "Sales Tax Calculator",
         description:
-          "Calculate sales tax for your products or services to ensure compliance with tax regulations.",
+          "Calculate sales tax for your products or services to ensure compliance with tax regulations. This calculator helps you determine the appropriate sales tax rate based on your location and the type of goods or services sold.",
         id: "sales-tax-calculator",
       },
       {
         title: "Expense Ratio Calculator",
         description:
-          "Calculate the expense ratio to assess your business's operational efficiency.",
+          "Calculate the expense ratio to assess your business's operational efficiency and cost management. This calculator helps you understand the percentage of revenue that goes toward operating expenses, allowing you to identify areas for improvement.",
         id: "expense-ratio-calculator",
       },
       {
         title: "Net Profit Margin Calculator",
         description:
-          "Calculate the net profit margin to understand your business's profitability after all expenses.",
+          "Calculate the net profit margin to understand your business's profitability after all expenses. This calculator helps you determine the percentage of revenue that remains as profit after deducting all costs, including taxes and interest.",
         id: "net-profit-margin-calculator",
       },
       {
         title: "Return on Investment (ROI) Calculator",
         description:
-          "Calculate the return on investment to assess the profitability of your investments.",
+          "Calculate the return on investment to assess the profitability of your investments. This calculator helps you determine the percentage return on your investment based on the initial cost and the final value, allowing you to evaluate the effectiveness of your investment strategy.",
         id: "roi-calculator",
       },
       {
         title: "Cash Conversion Cycle Calculator",
         description:
-          "Calculate the cash conversion cycle to assess your business's efficiency in managing cash flow.",
+          "Calculate the cash conversion cycle to assess your business's efficiency in managing cash flow. This calculator helps you understand the time it takes to convert inventory into cash, allowing you to optimize your working capital and improve liquidity.",
         id: "cash-conversion-cycle-calculator",
       },
       {
         title: "Operating Margin Calculator",
         description:
-          "Calculate the operating margin to understand your business's operational efficiency.",
+          "Calculate the operating margin to understand your business's operational efficiency. This calculator helps you determine the percentage of revenue that remains after deducting operating expenses, allowing you to assess your business's profitability and cost management.",
         id: "operating-margin-calculator",
       },
       {
         title: "Current Ratio Calculator",
         description:
-          "Calculate the current ratio to assess your business's short-term liquidity.",
+          "Calculate the current ratio to assess your business's short-term liquidity. This calculator helps you determine the ratio of current assets to current liabilities, allowing you to evaluate your business's ability to meet its short-term obligations.",
         id: "current-ratio-calculator",
       },
       {
         title: "Quick Ratio Calculator",
         description:
-          "Calculate the quick ratio to assess your business's short-term liquidity without inventory.",
+          "Calculate the quick ratio to assess your business's short-term liquidity without inventory. This calculator helps you determine the ratio of liquid assets to current liabilities, allowing you to evaluate your business's ability to meet its short-term obligations without relying on inventory sales.",
         id: "quick-ratio-calculator",
       },
       {
         title: "Return on Assets (ROA) Calculator",
         description:
-          "Calculate the return on assets to assess your business's efficiency in using its assets.",
+          "Calculate the return on assets to assess your business's efficiency in using its assets. This calculator helps you determine the percentage return on your assets based on net income and total assets, allowing you to evaluate your business's asset utilization and profitability.",
         id: "roa-calculator",
       },
       {
         title: "Return on Equity (ROE) Calculator",
         description:
-          "Calculate the return on equity to assess your business's profitability relative to shareholders' equity.",
+          "Calculate the return on equity to assess your business's profitability relative to shareholders' equity. This calculator helps you determine the percentage return on equity based on net income and shareholders' equity, allowing you to evaluate your business's financial performance and shareholder value.",
         id: "roe-calculator",
       },
       {
         title: "Debt Service Coverage Ratio (DSCR) Calculator",
         description:
-          "Calculate the debt service coverage ratio to assess your business's ability to cover its debt obligations.",
+          "Calculate the debt service coverage ratio to assess your business's ability to cover its debt obligations with its operating income. This calculator helps you determine the ratio of net operating income to total debt service, allowing you to evaluate your business's financial health and ability to meet its debt obligations.",
         id: "dscr-calculator",
       },
       {
         title: "Working Capital Calculator",
         description:
-          "Calculate working capital to assess your business's short-term financial health.",
+          "Calculate working capital to assess your business's short-term financial health and liquidity. This calculator helps you determine the difference between current assets and current liabilities, allowing you to evaluate your business's ability to meet its short-term obligations and manage its working capital effectively.",
         id: "working-capital-calculator",
       },
     ],
   },
   {
-    id: "real-estate",
+    id: "real-estate-calculators",
     title: "Real Estate Calculators",
     description:
       "These calculators are designed for individuals and real estate professionals to help them analyze property values, mortgage payments, and investment returns. They include tools for calculating mortgage rates, property taxes, and rental income. These calculators are essential for anyone looking to buy, sell, or invest in real estate.",
@@ -262,7 +262,7 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
   {
-    id: "investment",
+    id: "investment-calculators",
     title: "Investment Calculators",
     description:
       "These calculators are designed for investors to help them analyze investment opportunities, calculate returns, and assess risk. They include tools for portfolio management, asset allocation, and retirement planning. These calculators are essential for anyone looking to grow their wealth through investments.",
@@ -364,7 +364,7 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
   {
-    id: "retirement",
+    id: "retirement-calculators",
     title: "Retirement Calculators",
     description:
       "These calculators are designed for individuals to help them plan for retirement, estimate retirement savings, and calculate retirement income. They include tools for retirement account management, Social Security benefits, and retirement spending. These calculators are essential for anyone looking to secure their financial future in retirement.",
@@ -473,7 +473,7 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
   {
-    id: "tax",
+    id: "tax-calculators",
     title: "Tax Calculators",
     description:
       "These calculators are designed for individuals and businesses to help them estimate taxes owed, calculate tax deductions, and plan for tax liabilities. They include tools for income tax, capital gains tax, and property tax. These calculators are essential for anyone looking to understand their tax obligations and optimize their tax strategy.",
@@ -614,7 +614,7 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
   {
-    id: "insurance",
+    id: "insurance-calculators",
     title: "Insurance Calculators",
     description:
       "These calculators are designed for individuals and businesses to help them estimate insurance premiums, coverage needs, and potential payouts. They include tools for life insurance, health insurance, and property insurance. These calculators are essential for anyone looking to understand their insurance options and make informed decisions about coverage.",
@@ -680,7 +680,7 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
   {
-    id: "savings",
+    id: "savings-calculators",
     title: "Savings Calculators",
     description:
       "These calculators are designed for individuals to help them estimate savings growth, calculate interest earned, and plan for future savings goals. They include tools for savings accounts, certificates of deposit (CDs), and retirement accounts. These calculators are essential for anyone looking to grow their savings and achieve their financial goals.",
@@ -793,7 +793,7 @@ export const financeCalculatorCategories: Category[] = [
     ],
   },
   {
-    id: "debt",
+    id: "debt-calculators",
     title: "Debt Calculators",
     description:
       "These calculators are designed for individuals to help them estimate debt payments, calculate interest, and plan for debt repayment. They include tools for credit cards, loans, and mortgages. These calculators are essential for anyone looking to manage their debt effectively and achieve financial freedom.",
@@ -897,12 +897,12 @@ export const financeCalculatorCategories: Category[] = [
 ];
 
 export const categorys = [
-  "business",
-  "real-estate",
-  "investment",
-  "retirement",
-  "tax",
-  "insurance",
-  "savings",
-  "debt",
+  "business-calculators",
+  "real-estate-calculators",
+  "investment-calculators",
+  "retirement-calculators",
+  "tax-calculators",
+  "insurance-calculators",
+  "savings-calculators",
+  "debt-calculators",
 ];
