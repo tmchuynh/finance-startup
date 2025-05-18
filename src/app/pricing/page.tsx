@@ -12,14 +12,6 @@ import { Fragment, useState } from "react";
 export default function Example() {
   const [frequency, setFrequency] = useState(pricing.frequencies[0]);
 
-  useState(() => {
-    const savedFrequency = localStorage.getItem("pricing-frequency");
-    if (savedFrequency) {
-      const parsedFrequency = JSON.parse(savedFrequency);
-      setFrequency(parsedFrequency);
-    }
-  });
-
   return (
     <main className="mx-auto w-11/12">
       {/* Pricing section */}
@@ -46,10 +38,6 @@ export default function Example() {
                     );
                     if (selectedFrequency) {
                       setFrequency(selectedFrequency);
-                      localStorage.setItem(
-                        "pricing-frequency",
-                        JSON.stringify(selectedFrequency)
-                      );
                     }
                   }}
                 >
