@@ -26,12 +26,21 @@ export function calculateInventoryTurnoverRatio(inputs: InventoryInputs) {
 
   const turnoverRatio = costOfGoodsSold / averageInventory;
 
+  // Days sales of inventory (DSI): 365 / turnover ratio
+  const daysSalesOfInventory =
+    turnoverRatio > 0 ? Math.round((365 / turnoverRatio) * 100) / 100 : null;
+
   return {
     turnoverRatio: Math.round(turnoverRatio * 100) / 100,
+    daysSalesOfInventory,
     costOfGoodsSold,
     averageInventory,
     explanation: `Inventory Turnover Ratio = COGS (${costOfGoodsSold}) / Average Inventory (${averageInventory}) = ${
       Math.round(turnoverRatio * 100) / 100
+    }${
+      daysSalesOfInventory !== null
+        ? `; Days Sales of Inventory = 365 / Turnover Ratio = ${daysSalesOfInventory}`
+        : ""
     }`,
   };
 }
@@ -39,7 +48,7 @@ export function calculateInventoryTurnoverRatio(inputs: InventoryInputs) {
 interface ReorderPointInputs {
   averageDailyUsage: number;
   leadTimeDays: number;
-  safetyStock: number;
+  safetyStock?: number; // Optional: if not provided, will be calculated
 }
 
 export function calculateReorderPoint(inputs: ReorderPointInputs) {
@@ -52,19 +61,22 @@ export function calculateReorderPoint(inputs: ReorderPointInputs) {
       : 0;
   leadTimeDays =
     typeof leadTimeDays === "number" && leadTimeDays > 0 ? leadTimeDays : 0;
-  safetyStock =
-    typeof safetyStock === "number" && safetyStock >= 0 ? safetyStock : 0;
 
-  const demandStdDev = 0.1 * averageDailyUsage; // 10% std dev as example
-  const leadTimeStdDev = 0.2 * leadTimeDays; // 20% std dev as example
-  const zScore = 1.65; // 95% service level
-  safetyStock = Math.round(
-    zScore *
-      Math.sqrt(
-        Math.pow(leadTimeDays * demandStdDev, 2) +
-          Math.pow(averageDailyUsage * leadTimeStdDev, 2)
-      )
-  );
+  // If safetyStock is not provided, estimate it using standard deviations and a z-score for 95% service level
+  if (typeof safetyStock !== "number" || safetyStock < 0) {
+    const demandStdDev = 0.1 * averageDailyUsage; // 10% std dev as example
+    const leadTimeStdDev = 0.2 * leadTimeDays; // 20% std dev as example
+    const zScore = 1.65; // 95% service level
+    safetyStock = Math.round(
+      zScore *
+        Math.sqrt(
+          Math.pow(leadTimeDays * demandStdDev, 2) +
+            Math.pow(averageDailyUsage * leadTimeStdDev, 2)
+        )
+    );
+  } else {
+    safetyStock = Math.round(safetyStock);
+  }
 
   const reorderPoint = averageDailyUsage * leadTimeDays + safetyStock;
 

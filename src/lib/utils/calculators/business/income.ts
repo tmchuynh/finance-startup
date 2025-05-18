@@ -22,6 +22,9 @@ export function calculateDSO(inputs: DSOInputs) {
   if (totalCreditSales === 0 || periodDays === 0) {
     return {
       dso: 0,
+      accountsReceivable,
+      totalCreditSales,
+      periodDays,
       explanation:
         "Insufficient credit sales or period days for DSO calculation.",
     };

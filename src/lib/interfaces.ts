@@ -14,6 +14,7 @@ export type FilingStatus = "single" | "married" | "headOfHousehold";
 export interface TaxBracket {
   rate: number; // Tax rate (decimal)
   threshold: number; // Income threshold for this bracket
+  max: number;
 }
 
 // Stock data
@@ -34,7 +35,7 @@ export interface Holding {
 export interface Transaction {
   id: string;
   symbol: string;
-  type: 'BUY' | 'SELL';
+  type: "BUY" | "SELL";
   quantity: number;
   price: number;
   date: Date;
@@ -56,15 +57,8 @@ export type Category = {
   list?: ListDetails[];
 };
 
-export type Calculator = {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  list?: ListDetails[];
-};
-
 export interface ListDetails {
+  id: string;
   title: string;
   description: string;
   items?: ListDetails[];

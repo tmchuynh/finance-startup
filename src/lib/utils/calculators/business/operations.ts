@@ -23,17 +23,22 @@ export function calculateBreakEven({
     return {
       contributionMargin,
       breakEvenUnits: 0,
+      breakEvenSales: 0,
       explanation:
         "Break-even is not achievable as contribution margin is zero or negative.",
     };
   }
 
-  const breakEvenUnits = Math.ceil(fixedCosts / contributionMargin);
+  const breakEvenUnits = fixedCosts / contributionMargin;
+  const breakEvenSales = breakEvenUnits * pricePerUnit;
 
   return {
     contributionMargin: Math.round(contributionMargin * 100) / 100,
-    breakEvenUnits,
-    explanation: `Break-even Units = Fixed Costs (${fixedCosts}) / Contribution Margin (${contributionMargin}) = ${breakEvenUnits}`,
+    breakEvenUnits: Math.ceil(breakEvenUnits),
+    breakEvenSales: Math.round(breakEvenSales * 100) / 100,
+    explanation: `Break-even Units = Fixed Costs (${fixedCosts}) / Contribution Margin (${contributionMargin}) = ${Math.ceil(
+      breakEvenUnits
+    )}`,
   };
 }
 
@@ -166,8 +171,11 @@ export function calculateBreakEvenPoint(inputs: BreakEvenInputs) {
   pricePerUnit =
     typeof pricePerUnit === "number" && pricePerUnit > 0 ? pricePerUnit : 0;
 
-  if (pricePerUnit <= variableCostPerUnit) {
+  const contributionMargin = pricePerUnit - variableCostPerUnit;
+
+  if (contributionMargin <= 0) {
     return {
+      contributionMargin,
       breakEvenUnits: 0,
       breakEvenSales: 0,
       explanation:
@@ -175,10 +183,11 @@ export function calculateBreakEvenPoint(inputs: BreakEvenInputs) {
     };
   }
 
-  const breakEvenUnits = fixedCosts / (pricePerUnit - variableCostPerUnit);
+  const breakEvenUnits = fixedCosts / contributionMargin;
   const breakEvenSales = breakEvenUnits * pricePerUnit;
 
   return {
+    contributionMargin: Math.round(contributionMargin * 100) / 100,
     breakEvenUnits: Math.ceil(breakEvenUnits),
     breakEvenSales: Math.round(breakEvenSales * 100) / 100,
     explanation: `Break-even Units = Fixed Costs (${fixedCosts}) / (Price per Unit (${pricePerUnit}) - Variable Cost per Unit (${variableCostPerUnit})) = ${Math.ceil(
@@ -210,7 +219,7 @@ export function estimateInflationAdjustedValue({
     currentAmount: amount,
     inflationRate: rate,
     years: nYears,
-    explanation: `Future Value = Current Amount (${amount}) / (1 + Inflation Rate (${rate}))^${nYears} = ${
+    explanation: `Inflation-adjusted value = Current Amount (${amount}) / (1 + Inflation Rate (${rate}))^${nYears} = ${
       Math.round(adjustedValue * 100) / 100
     }`,
   };
@@ -222,15 +231,28 @@ interface Allocation {
 
 export function validatePortfolioAllocation(allocation: Allocation) {
   const total = Object.values(allocation).reduce((a, b) => a + b, 0);
+  const roundedTotal = Math.round(total * 100) / 100;
+  const adjustmentNeeded = Math.round((100 - total) * 100) / 100;
+  const isValid = Math.abs(total - 100) < 0.01;
+
+  let explanation = `Total allocation is ${roundedTotal}%. `;
+  if (isValid) {
+    explanation += "Portfolio is properly allocated.";
+  } else if (total > 100) {
+    explanation += `Reduce allocation by ${Math.abs(
+      adjustmentNeeded
+    )}% to reach 100%.`;
+  } else {
+    explanation += `Increase allocation by ${Math.abs(
+      adjustmentNeeded
+    )}% to reach 100%.`;
+  }
+
   return {
-    total: Math.round(total * 100) / 100,
-    isValid: Math.abs(total - 100) < 0.01,
-    adjustmentNeeded: Math.round((100 - total) * 100) / 100,
-    explanation: `Total allocation is ${Math.round(total * 100) / 100}%. ${
-      Math.abs(total - 100) < 0.01
-        ? "Portfolio is properly allocated."
-        : `Adjust by ${Math.round((100 - total) * 100) / 100}% to reach 100%.`
-    }`,
+    total: roundedTotal,
+    isValid,
+    adjustmentNeeded,
+    explanation,
   };
 }
 

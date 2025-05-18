@@ -20,7 +20,7 @@ export const engagement = [
   },
   { name: "Finance Articles", href: "/finance-articles", icon: UsersIcon },
   {
-    name: "Finance CHecklists",
+    name: "Finance Checklists",
     href: "/finance-checklists",
     icon: NewspaperIcon,
   },
