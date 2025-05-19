@@ -1,92 +1,20 @@
 "use client";
 
+import {
+  buyers,
+  MOCK_PROPERTIES,
+  renters,
+} from "@/lib/constants/data/realEstateData";
+import {
+  Buyer,
+  INITIAL_CASH,
+  OwnedProperty,
+  Property,
+  Renter,
+  Transaction,
+} from "@/lib/interfaces/real-estate";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-
-type Property = {
-  id: string;
-  name: string;
-  location: string;
-  price: number;
-  trend: number[]; // price history
-  condition: "Excellent" | "Good" | "Fair" | "Needs Repair";
-  owned: boolean;
-  repairs: number; // total spent on repairs
-};
-
-type OwnedProperty = Property & {
-  purchasePrice: number;
-  purchaseDate: Date;
-  repairs: number;
-  forSale: boolean;
-  interestedBuyers: Buyer[];
-  buyerRefreshes?: number;
-  forRent?: boolean;
-  rentRange?: [number, number];
-  interestedRenters?: Renter[];
-  renterRefreshes?: number;
-  rentedTo?: Renter | null;
-  rentAmount?: number;
-};
-
-type Buyer = {
-  id: string;
-  name: string;
-  offer: number;
-  notes?: string;
-};
-
-type Renter = {
-  id: string;
-  name: string;
-  offer: number;
-  notes?: string;
-};
-
-type Transaction = {
-  id: string;
-  type: "BUY" | "SELL" | "REPAIR";
-  propertyName: string;
-  amount: number;
-  date: Date;
-  notes?: string;
-  gainLoss?: number;
-};
-
-const INITIAL_CASH = 500000;
-
-const MOCK_PROPERTIES: Property[] = [
-  {
-    id: uuidv4(),
-    name: "Sunnyvale Family Home",
-    location: "Sunnyvale, CA",
-    price: 350000,
-    trend: [350000],
-    condition: "Good",
-    owned: false,
-    repairs: 0,
-  },
-  {
-    id: uuidv4(),
-    name: "Downtown Loft",
-    location: "San Francisco, CA",
-    price: 450000,
-    trend: [450000],
-    condition: "Fair",
-    owned: false,
-    repairs: 0,
-  },
-  {
-    id: uuidv4(),
-    name: "Suburban Ranch",
-    location: "Austin, TX",
-    price: 250000,
-    trend: [250000],
-    condition: "Excellent",
-    owned: false,
-    repairs: 0,
-  },
-];
 
 function randomConditionDowngrade(condition: Property["condition"]) {
   if (condition === "Excellent") return "Good";
@@ -94,13 +22,6 @@ function randomConditionDowngrade(condition: Property["condition"]) {
   if (condition === "Fair") return "Needs Repair";
   return "Needs Repair";
 }
-
-const buyers = [
-  { name: "Alice", notes: "Wants quick close" },
-  { name: "Bob", notes: "Needs inspection" },
-  { name: "Carol", notes: "Investor, all cash" },
-  { name: "Dave", notes: "First-time buyer" },
-];
 
 function getRandomBuyers(property: Property): Buyer[] {
   return Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () => {
@@ -117,12 +38,6 @@ function getRandomBuyers(property: Property): Buyer[] {
 }
 
 function getRandomRenters(min: number, max: number): Renter[] {
-  const renters = [
-    { name: "Eve", notes: "Wants 12-month lease" },
-    { name: "Frank", notes: "Has pets" },
-    { name: "Grace", notes: "Pays on time" },
-    { name: "Heidi", notes: "Short-term rental" },
-  ];
   return Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () => {
     const renter = renters[Math.floor(Math.random() * renters.length)];
     return {
@@ -447,7 +362,7 @@ export default function RealEstateSimulatorPage() {
       <p className="mb-4">
         Cash Balance: <strong>${cash.toLocaleString()}</strong>
       </p>
-      {message && <p className="mb-4 text-blue-600">{message}</p>}
+      {message && <p className="mb-4 text-secondary">{message}</p>}
 
       <h2 className="mt-8 mb-2 font-semibold text-2xl">Available Properties</h2>
       <table className="mb-8 border border-collapse border-gray-300 w-full">
@@ -457,7 +372,8 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Location</th>
             <th className="p-2 border border-gray-300">Current Price</th>
             <th className="p-2 border border-gray-300">Condition</th>
-            <th className="p-2 border border-gray-300">Trend (Last 5)</th>
+            <th className="p-2 border border-gray-300">Trend</th>
+            <div className="p-2"></div>
           </tr>
         </thead>
         <tbody>
@@ -472,7 +388,7 @@ export default function RealEstateSimulatorPage() {
                 </td>
                 <td className="p-2 border border-gray-300">{p.condition}</td>
                 <td className="p-2 border border-gray-300">
-                  {p.trend.slice(-5).map((v, i) => (
+                  {p.trend.slice(-2).map((v, i) => (
                     <span key={i} style={{ marginRight: 4 }}>
                       ${v.toLocaleString()}
                     </span>
@@ -500,8 +416,8 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Current Price</th>
             <th className="p-2 border border-gray-300">Condition</th>
             <th className="p-2 border border-gray-300">Repairs</th>
-            <th className="p-2 border border-gray-300">Trend (Last 5)</th>
-            <th className="p-2 border border-gray-300">Actions</th>
+            <th className="p-2 border border-gray-300">Trend</th>
+            <div className="p-2"></div>
           </tr>
         </thead>
         <tbody>
@@ -524,7 +440,7 @@ export default function RealEstateSimulatorPage() {
                 ${p.repairs.toLocaleString()}
               </td>
               <td className="p-2 border border-gray-300">
-                {p.trend.slice(-5).map((v, i) => (
+                {p.trend.slice(-2).map((v, i) => (
                   <span key={i} style={{ marginRight: 4 }}>
                     ${v.toLocaleString()}
                   </span>
