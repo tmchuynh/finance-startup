@@ -118,12 +118,10 @@ ${recommendation}`
       <p>
         Use this tool to estimate whether consolidating your debts with a new
         loan could save you money or lower your monthly payment. Enter your
-        current debts and the terms of a proposed consolidation loan.
-      </p>
-      <p className="mt-4">
-        This tool provides estimates for informational purposes only. Actual
-        loan terms and savings may vary. Consult a financial advisor before
-        making decisions.
+        current debts and the terms of a proposed consolidation loan. This tool
+        provides estimates for informational purposes only. Actual loan terms
+        and savings may vary. Consult a financial advisor before making
+        decisions.
       </p>
       <form
         onSubmit={handleSubmit}

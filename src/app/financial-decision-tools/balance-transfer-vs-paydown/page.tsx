@@ -128,12 +128,15 @@ ${recommendation}`
       <p>
         Use this tool to estimate whether transferring your credit card balance
         to a new card with a promotional rate could save you money compared to
-        paying down your current card.
+        paying down your current card. This tool provides estimates for
+        informational purposes only. Actual rates, fees, and savings may vary.
+        Consult a financial advisor before making decisions.
       </p>
-      <p className="mt-4">
-        This tool provides estimates for informational purposes only. Actual
-        rates, fees, and savings may vary. Consult a financial advisor before
-        making decisions.
+      <p>
+        Enter your current card balance, interest rate, and monthly payment
+        amount. Then enter the promotional interest rate, duration of the promo
+        period, transfer fee, and post-promo interest rate for the new card.
+        Click "Compare" to see the results.
       </p>
       <form
         onSubmit={handleSubmit}

@@ -48,19 +48,29 @@ const RentVsBuy: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "0 auto", padding: 24 }}>
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
       <h1>Rent vs Buy Calculator</h1>
+      <h5>Make informed decisions about your housing options</h5>
       <p>
-        Compare the estimated total cost of renting vs buying a home over a set
-        period.
+        This calculator helps you compare the total cost of renting vs. buying a
+        home over a specified period. Please fill out the form below to see the
+        results. This tool is for informational purposes only and should not be
+        considered financial advice. Please consult a financial advisor for
+        personalized advice.
       </p>
+      <p>
+        Enter your monthly rent, expected annual rent increase, home price, down
+        payment percentage, mortgage rate, property tax rate, home insurance,
+        maintenance costs, and HOA fees. The calculator will provide you with
+        the total cost of renting and buying over the specified number of years.
+      </p>
+      <p>
+        Note: This calculator does not account for investment growth on down
+        payment, home appreciation, selling costs, or tax deductions.
+      </p>
+
       <form
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 16,
-          marginBottom: 32,
-        }}
+        className="gap-4 grid grid-cols-1 md:grid-cols-2 mb-8"
         onSubmit={(e) => e.preventDefault()}
       >
         <div>

@@ -43,21 +43,16 @@ const HDHPvsTraditional: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "0 auto", padding: 24 }}>
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
       <h1>HDHP vs Traditional Health Plan Calculator</h1>
+      <h5>Make informed decisions about your health insurance options</h5>
       <p>
-        Compare your estimated annual costs between a High-Deductible Health
-        Plan (HDHP) and a Traditional Health Plan.
+        This calculator helps you compare the total annual costs of a High
+        Deductible Health Plan (HDHP) and a Traditional Health Plan based on
+        your premiums, deductibles, out-of-pocket maximums, and expected medical
+        expenses. Please fill out the form below to see the results.
       </p>
-      <form
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 16,
-          marginBottom: 32,
-        }}
-        onSubmit={(e) => e.preventDefault()}
-      >
+      <form onSubmit={(e) => e.preventDefault()}>
         <div>
           <h2>HDHP</h2>
           <label>

@@ -94,12 +94,22 @@ ${recommendation}`
       <p>
         Use this tool to compare the estimated total cost of attending a public
         versus a private college, including tuition, room & board, fees, and
-        scholarships or grants.
+        scholarships or grants. This tool provides estimates for informational
+        purposes only. Actual costs and aid may vary. Consult each college's
+        financial aid office for personalized information. This calculator is
+        for informational purposes only and does not constitute financial
+        advice. Actual costs and financial aid may vary. Please consult with a
+        financial advisor or the financial aid office of the colleges you are
+        considering for personalized information.
       </p>
-      <p className="mt-4">
-        This tool provides estimates for informational purposes only. Actual
-        costs and aid may vary. Consult each college's financial aid office for
-        personalized information.
+      <p>
+        Enter the estimated costs for each college type, including tuition, room
+        & board, fees, and any scholarships or grants you expect to receive. The
+        calculator will provide a comparison of the net costs for both options.
+      </p>
+      <p>
+        Note: The calculator assumes a standard 4-year college program. Adjust
+        the years as needed for your specific situation.
       </p>
       <form
         onSubmit={handleSubmit}

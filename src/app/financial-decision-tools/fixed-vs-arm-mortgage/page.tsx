@@ -143,12 +143,10 @@ ${recommendation}`
       <h5>Compare Your Mortgage Options</h5>
       <p>
         Use this tool to estimate the monthly payments and total cost of a
-        fixed-rate mortgage versus an adjustable-rate mortgage (ARM).
-      </p>
-      <p className="mt-4">
-        This tool provides estimates for informational purposes only. Actual
-        rates, payments, and costs may vary. Consult a mortgage professional
-        before making decisions.
+        fixed-rate mortgage versus an adjustable-rate mortgage (ARM). This tool
+        provides estimates for informational purposes only. Actual rates,
+        payments, and costs may vary. Consult a mortgage professional before
+        making decisions.
       </p>
       <form
         onSubmit={handleSubmit}

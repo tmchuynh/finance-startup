@@ -104,12 +104,18 @@ ${recommendation}`
       <h1>Freelance vs Full-Time Employment Income</h1>
       <h5>Compare Your Potential Net Income</h5>
       <p>
-        Use this tool to estimate your net annual income as a freelancer versus a full-time employee. Enter your expected freelance rates, expenses, and tax rate, as well as your full-time salary, benefits, and tax rate.
+        Use this tool to estimate your net annual income as a freelancer versus
+        a full-time employee. Enter your expected freelance rates, expenses, and
+        tax rate, as well as your full-time salary, benefits, and tax rate. This
+        tool provides estimates for informational purposes only. Actual income,
+        taxes, and benefits may vary. Consult a financial advisor or tax
+        professional for personalized advice.
       </p>
-      <p className="mt-4">
-        This tool provides estimates for informational purposes only. Actual income, taxes, and benefits may vary. Consult a financial advisor or tax professional for personalized advice.
-      </p>
-      <form onSubmit={handleSubmit} className="space-y-5" aria-label="Freelance vs Full-Time Income form">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-5"
+        aria-label="Freelance vs Full-Time Income form"
+      >
         <div className="mb-4 pb-4 border-b">
           <Label className="block mb-1 font-semibold">Freelance Income</Label>
           <div className="flex gap-2 mb-2">
@@ -174,7 +180,9 @@ ${recommendation}`
           </div>
         </div>
         <div>
-          <Label className="block mb-1 font-semibold">Full-Time Employment</Label>
+          <Label className="block mb-1 font-semibold">
+            Full-Time Employment
+          </Label>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
               <Input
