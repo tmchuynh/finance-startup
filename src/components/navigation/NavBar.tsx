@@ -4,18 +4,21 @@ import {
 } from "@/lib/constants/navigation/featured";
 import {
   company,
-  comparisons,
   contact,
   essentials,
   pricing,
   simulators,
 } from "@/lib/constants/navigation/pages";
+import { sortByProperty, sortByPropertyByLength } from "@/lib/utils/sort";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import { ThemeToggle } from "../button/ThemeToggle";
 
 export default function NavBar() {
+  const sortedEssentials = sortByProperty(essentials, "name");
+  const sortedSimulators = sortByPropertyByLength(simulators, "name");
+  const sortedContact = sortByPropertyByLength(contact, "name");
   return (
     <main className="">
       <div className="relative z-50 flex justify-between items-center bg-background shadow-sm py-5 w-full isolate">
@@ -35,12 +38,12 @@ export default function NavBar() {
               className="top-0 -z-10 absolute inset-x-0 bg-background data-closed:opacity-0 shadow-lg pt-16 pb-7 border-b ring-1 ring-gray-900/5 transition data-closed:-translate-y-1 data-enter:duration-200 data-leave:duration-150 data-enter:ease-out data-leave:ease-in"
             >
               <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-5 mx-auto px-6 lg:px-8 py-10 w-10/12 md:w-11/12">
-                <div className="gap-x-6 sm:gap-x-8 grid grid-cols-3 col-span-3">
+                <div className="gap-x-6 sm:gap-x-8 grid grid-cols-2 col-span-5 lg:col-span-2">
                   <div>
                     <h5>Essentials</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
-                        {essentials.map((item) => (
+                        {sortedEssentials.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
@@ -60,27 +63,7 @@ export default function NavBar() {
                     <h5>Learning Simulators</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
-                        {simulators.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="flex gap-x-4 py-2"
-                          >
-                            <item.icon
-                              aria-hidden="true"
-                              className="flex-none text-accent size-6"
-                            />
-                            {item.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h5>Comparisons</h5>
-                    <div className="mt-6 flow-root">
-                      <div className="-my-2">
-                        {comparisons.map((item) => (
+                        {sortedSimulators.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
@@ -97,7 +80,7 @@ export default function NavBar() {
                     </div>
                   </div>
                 </div>
-                <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2 col-span-2">
+                <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2 col-span-5 lg:col-span-3">
                   <h5 className="sr-only">Recent posts</h5>
                   {featuredResources.map((post) => (
                     <article
@@ -143,8 +126,8 @@ export default function NavBar() {
               transition
               className="top-0 -z-10 absolute inset-x-0 bg-background data-closed:opacity-0 shadow-lg pt-16 pb-7 border-b ring-1 ring-gray-900/5 transition data-closed:-translate-y-1 data-enter:duration-200 data-leave:duration-150 data-enter:ease-out data-leave:ease-in"
             >
-              <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-5 mx-auto px-6 lg:px-8 py-10 w-10/12 md:w-11/12">
-                <div className="gap-x-6 sm:gap-x-8 grid grid-cols-3 col-span-3">
+              <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-7 mx-auto px-6 lg:px-8 py-10 w-10/12 md:w-11/12">
+                <div className="gap-x-6 sm:gap-x-8 grid grid-cols-3 col-span-5 lg:col-span-4">
                   <div>
                     <h5>About Us</h5>
                     <div className="mt-6 flow-root">
@@ -169,7 +152,7 @@ export default function NavBar() {
                     <h5>Contact Us</h5>
                     <div className="mt-6 flow-root">
                       <div className="-my-2">
-                        {contact.map((item) => (
+                        {sortedContact.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
@@ -206,7 +189,7 @@ export default function NavBar() {
                     </div>
                   </div>
                 </div>
-                <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2 col-span-2">
+                <div className="gap-10 sm:gap-8 grid grid-cols-1 lg:grid-cols-2 col-span-5 lg:col-span-3">
                   <h5 className="sr-only">Recent posts</h5>
                   {recentPosts.map((post) => (
                     <article
