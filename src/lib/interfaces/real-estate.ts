@@ -40,7 +40,7 @@ export type Renter = {
 
 export type Transaction = {
   id: string;
-  type: "BUY" | "SELL" | "REPAIR";
+  type: "BUY" | "SELL" | "REPAIR" | "RENT";
   propertyName: string;
   amount: number;
   date: Date;

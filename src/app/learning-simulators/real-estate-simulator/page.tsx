@@ -313,7 +313,7 @@ export default function RealEstateSimulatorPage() {
           ...prevT,
           {
             id: uuidv4(),
-            type: "REPAIR", // Not a repair, but for log. You may want to add a "LEASE" type.
+            type: "RENT",
             propertyName: p.name,
             amount: renter.offer,
             date: new Date(),
@@ -461,7 +461,6 @@ export default function RealEstateSimulatorPage() {
                     No Repairs Needed
                   </button>
                 )}
-                {/* ...existing List for Sale / Rent buttons... */}
                 {!p.forSale ? (
                   <button
                     className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white"
@@ -723,28 +722,43 @@ export default function RealEstateSimulatorPage() {
               </td>
             </tr>
           )}
-          {transactions.map((tx) => (
-            <tr key={tx.id}>
-              <td className="p-2 border border-gray-300">
-                {tx.date.toLocaleDateString()}
-              </td>
-              <td className="p-2 border border-gray-300">{tx.type}</td>
-              <td className="p-2 border border-gray-300">{tx.propertyName}</td>
-              <td className="p-2 border border-gray-300">
-                ${tx.amount.toLocaleString()}
-              </td>
-              <td className="p-2 border border-gray-300">{tx.notes || ""}</td>
-              <td className="p-2 border border-gray-300">
-                {tx.type === "SELL" && typeof tx.gainLoss === "number" ? (
-                  <span style={{ color: tx.gainLoss >= 0 ? "green" : "red" }}>
-                    {tx.gainLoss >= 0 ? "+" : ""}${tx.gainLoss.toLocaleString()}
-                  </span>
-                ) : (
-                  ""
-                )}
-              </td>
-            </tr>
-          ))}
+          {transactions.map((tx) => {
+            // Highlight money in (SELL) as green, money out (BUY/REPAIR) as red
+            const isMoneyIn = tx.type === "SELL" || tx.type === "RENT";
+            const isMoneyOut = tx.type === "BUY" || tx.type === "REPAIR";
+            return (
+              <tr key={tx.id}>
+                <td className="p-2 border border-gray-300">
+                  {tx.date.toLocaleDateString()}
+                </td>
+                <td className="p-2 border border-gray-300">{tx.type}</td>
+                <td className="p-2 border border-gray-300">
+                  {tx.propertyName}
+                </td>
+                <td
+                  className="p-2 border border-gray-300"
+                  style={{
+                    color: isMoneyIn ? "green" : isMoneyOut ? "red" : undefined,
+                    fontWeight: isMoneyIn || isMoneyOut ? 600 : undefined,
+                  }}
+                >
+                  ${tx.amount.toLocaleString()}
+                </td>
+                <td className="p-2 border border-gray-300">{tx.notes || ""}</td>
+                <td className="p-2 border border-gray-300">
+                  {(tx.type === "SELL" || tx.type === "RENT") &&
+                  typeof tx.gainLoss === "number" ? (
+                    <span style={{ color: tx.gainLoss >= 0 ? "green" : "red" }}>
+                      {tx.gainLoss >= 0 ? "+" : ""}$
+                      {tx.gainLoss.toLocaleString()}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
