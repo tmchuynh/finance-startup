@@ -1,6 +1,8 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import React, { useState } from "react";
 
 type FilingStatus = "single" | "married" | "head_of_household";
@@ -39,15 +41,18 @@ function suggestPlan(
 }
 
 export default function IraVsRothDecisionTool() {
-  const [income, setIncome] = useState<number>(0);
+  const [income, setIncome] = useState<number>(85000);
   const [filingStatus, setFilingStatus] = useState<FilingStatus>("single");
   const [currentTaxBracket, setCurrentTaxBracket] = useState<number>(12);
   const [expectedRetirementBracket, setExpectedRetirementBracket] =
     useState<number>(12);
   const [result, setResult] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  // Tax bracket options for toggles
+  const taxBracketOptions = [10, 12, 22, 24, 32, 35, 37];
+
+  // Automatically update result as inputs change
+  React.useEffect(() => {
     if (income <= 0) {
       setResult("Please enter a valid income greater than zero.");
       return;
@@ -61,7 +66,6 @@ export default function IraVsRothDecisionTool() {
       setResult("Please enter valid tax bracket percentages between 0 and 40.");
       return;
     }
-
     const suggestion = suggestPlan(
       income,
       filingStatus,
@@ -69,7 +73,7 @@ export default function IraVsRothDecisionTool() {
       expectedRetirementBracket
     );
     setResult(suggestion);
-  };
+  }, [income, filingStatus, currentTaxBracket, expectedRetirementBracket]);
 
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
@@ -162,25 +166,32 @@ export default function IraVsRothDecisionTool() {
       </div>
       {/* End Tax Bracket Chart */}
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-5"
-        aria-label="IRA vs Roth IRA decision form"
-      >
+      <form className="space-y-5" aria-label="IRA vs Roth IRA decision form">
         <div>
           <Label htmlFor="income" className="block mb-1 font-semibold">
             Annual Income ($)
           </Label>
-          <Input
-            id="income"
-            type="number"
-            min={0}
-            value={income === 0 ? "" : income}
-            onChange={(e) => setIncome(Number(e.target.value))}
-            className="p-2 border border-gray-300 rounded w-full"
-            required
-            aria-describedby="incomeHelp"
-          />
+          <div className="flex items-center gap-4">
+            <Slider
+              min={0}
+              max={500000}
+              step={1000}
+              defaultValue={[income]}
+              value={[income]}
+              onValueChange={([v]) => setIncome(v)}
+              className="w-2/3"
+            />
+            <Input
+              id="income"
+              type="number"
+              min={0}
+              value={income === 0 ? "" : income}
+              onChange={(e) => setIncome(Number(e.target.value))}
+              className="w-1/3"
+              required
+              aria-describedby="incomeHelp"
+            />
+          </div>
           <p id="incomeHelp" className="mt-1 text-gray-500 text-sm">
             Enter your adjusted gross income.
           </p>
@@ -209,18 +220,30 @@ export default function IraVsRothDecisionTool() {
           >
             Current Tax Bracket (%)
           </Label>
-          <Input
-            id="currentTaxBracket"
-            type="number"
-            min={0}
-            max={40}
-            value={currentTaxBracket}
-            onChange={(e) => setCurrentTaxBracket(Number(e.target.value))}
-            className="p-2 border border-gray-300 rounded w-full"
-            required
-          />
+          <div className="flex items-center gap-4">
+            <ToggleGroup
+              type="single"
+              defaultValue="12"
+              aria-label="Current tax bracket"
+              value={currentTaxBracket.toString()}
+              onValueChange={(val) => {
+                if (val) setCurrentTaxBracket(Number(val));
+              }}
+              className="border w-full"
+            >
+              {taxBracketOptions.map((bracket) => (
+                <ToggleGroupItem
+                  key={bracket}
+                  value={bracket.toString()}
+                  aria-label={`Current tax bracket ${bracket}%`}
+                >
+                  {bracket}%
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
           <p className="mt-1 text-gray-500 text-sm">
-            Enter your current marginal tax rate (e.g., 12, 22, 24).
+            Select your current marginal tax rate (e.g., 12, 22, 24).
           </p>
         </div>
 
@@ -231,38 +254,44 @@ export default function IraVsRothDecisionTool() {
           >
             Expected Retirement Tax Bracket (%)
           </Label>
-          <Input
-            id="expectedRetirementBracket"
-            type="number"
-            min={0}
-            max={40}
-            value={expectedRetirementBracket}
-            onChange={(e) =>
-              setExpectedRetirementBracket(Number(e.target.value))
-            }
-            className="p-2 border border-gray-300 rounded w-full"
-            required
-          />
+          <div className="flex items-center gap-4">
+            <ToggleGroup
+              type="single"
+              defaultValue="12"
+              aria-label="Expected retirement tax bracket"
+              value={expectedRetirementBracket.toString()}
+              onValueChange={(val) => {
+                if (val) setExpectedRetirementBracket(Number(val));
+              }}
+              className="border w-full"
+            >
+              {taxBracketOptions.map((bracket) => (
+                <ToggleGroupItem
+                  key={bracket}
+                  value={bracket.toString()}
+                  aria-label={`Expected retirement tax bracket ${bracket}%`}
+                >
+                  {bracket}%
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
           <p className="mt-1 text-gray-500 text-sm">
-            Estimate your expected marginal tax rate during retirement.
+            Select your expected marginal tax rate during retirement.
           </p>
         </div>
-
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 py-2 rounded focus:ring-2 focus:ring-blue-500 w-full font-semibold text-white focus:outline-none"
-        >
-          Get Recommendation
-        </button>
+        {/* No button */}
       </form>
 
+      {/* Card-like results display */}
       {result && (
-        <div
-          className="bg-gray-100 mt-6 p-4 border border-gray-300 rounded"
-          role="alert"
-          aria-live="polite"
-        >
-          {result}
+        <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mt-8">
+          <div className="col-span-2 bg-white shadow p-5 border border-gray-300 rounded-lg">
+            <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+              Recommendation
+            </h3>
+            <div className="text-blue-900">{result}</div>
+          </div>
         </div>
       )}
     </div>
