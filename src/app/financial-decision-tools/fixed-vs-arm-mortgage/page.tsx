@@ -148,9 +148,167 @@ ${recommendation}`
         payments, and costs may vary. Consult a mortgage professional before
         making decisions.
       </p>
+
+      {/* Chart 1: Key Differences */}
+      <div className="my-8">
+        <h2 className="mb-2 font-semibold text-lg">Key Differences</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Feature</th>
+                <th className="px-3 py-2 border text-left">
+                  Fixed-Rate Mortgage
+                </th>
+                <th className="px-3 py-2 border text-left">
+                  Adjustable-Rate Mortgage (ARM)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Interest Rate</td>
+                <td className="px-3 py-2 border">
+                  Stays the same for the life of the loan
+                </td>
+                <td className="px-3 py-2 border">
+                  Starts lower, adjusts after initial period
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Monthly Payment</td>
+                <td className="px-3 py-2 border">Predictable, never changes</td>
+                <td className="px-3 py-2 border">
+                  Can increase or decrease after initial period
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Best For</td>
+                <td className="px-3 py-2 border">
+                  Staying long-term, want stability
+                </td>
+                <td className="px-3 py-2 border">
+                  Short-term stay, expect to move or refinance
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Initial Rate</td>
+                <td className="px-3 py-2 border">
+                  Usually higher than ARM's initial rate
+                </td>
+                <td className="px-3 py-2 border">
+                  Usually lower for first 3-10 years
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Risk</td>
+                <td className="px-3 py-2 border">
+                  No risk of payment increase
+                </td>
+                <td className="px-3 py-2 border">
+                  Risk of higher payments after adjustment
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Chart 2: Pros and Cons */}
+      <div className="my-8">
+        <h2 className="mb-2 font-semibold text-lg">Pros and Cons</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Type</th>
+                <th className="px-3 py-2 border text-left">Pros</th>
+                <th className="px-3 py-2 border text-left">Cons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Fixed-Rate</td>
+                <td className="px-3 py-2 border">
+                  Predictable payments
+                  <br />
+                  Easier budgeting
+                  <br />
+                  No risk of rising rates
+                </td>
+                <td className="px-3 py-2 border">
+                  Higher initial rate
+                  <br />
+                  May pay more if you move early
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">ARM</td>
+                <td className="px-3 py-2 border">
+                  Lower initial rate
+                  <br />
+                  Lower payments in early years
+                  <br />
+                  Good if moving/refinancing before adjustment
+                </td>
+                <td className="px-3 py-2 border">
+                  Payments can rise
+                  <br />
+                  Harder to budget long-term
+                  <br />
+                  More complex terms
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Chart 3: Typical Rates and Terms */}
+      <div className="my-8">
+        <h2 className="mb-2 font-semibold text-lg">
+          Typical Rates and Terms (2024)
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Type</th>
+                <th className="px-3 py-2 border text-left">
+                  Interest Rate Range
+                </th>
+                <th className="px-3 py-2 border text-left">Common Terms</th>
+                <th className="px-3 py-2 border text-left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Fixed-Rate</td>
+                <td className="px-3 py-2 border">6% - 7.5%</td>
+                <td className="px-3 py-2 border">15, 20, 30 years</td>
+                <td className="px-3 py-2 border">
+                  Rate stays the same for entire loan
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">ARM (e.g. 5/1, 7/1)</td>
+                <td className="px-3 py-2 border">5% - 6.5% (initial)</td>
+                <td className="px-3 py-2 border">
+                  30 years (5-10 years fixed, then adjusts annually)
+                </td>
+                <td className="px-3 py-2 border">
+                  Rate adjusts after initial period, may increase
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {/* End charts */}
+
       <form
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="space-y-5 mt-5"
         aria-label="Mortgage comparison form"
       >
         <div className="mb-4 pb-4 border-b">
