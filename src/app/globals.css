@@ -165,10 +165,10 @@
     @apply text-2xl lg:text-4xl 2xl:text-6xl font-[DMSerifDisplay] font-bold leading-tight tracking-tight;
   }
   h2 {
-    @apply text-xl lg:text-2xl 2xl:text-5xl font-[Lora] font-bold leading-tight tracking-tight;
+    @apply text-xl lg:text-2xl 2xl:text-4xl font-[Lora] font-bold leading-tight tracking-tight;
   }
   h3 {
-    @apply text-lg lg:text-2xl 2xl:text-4xl font-[Newsreader] font-bold leading-tight tracking-tight;
+    @apply text-lg lg:text-2xl font-[Newsreader] font-bold leading-tight tracking-tight;
   }
   h4 {
     @apply text-base md:text-lg xl:text-xl font-[SourceSerif4] font-bold leading-tight tracking-tight;
