@@ -626,7 +626,7 @@ ${recommendation}`
       </div>
 
       <section className="mt-8">
-        <h2 className="mt-8 mb-2 font-semibold text-lg">Disclaimer</h2>
+        <h2>Disclaimer</h2>
         <p>
           This tool provides estimates for informational purposes only. Actual
           rates, fees, and savings may vary. Consult a financial advisor before
