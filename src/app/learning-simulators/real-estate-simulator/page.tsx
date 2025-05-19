@@ -73,10 +73,8 @@ export default function RealEstateSimulatorPage() {
       });
       setProperties((prev) =>
         prev.map((p) => {
-          // Simulate price change: -2% to +2%
           const change = 1 + (Math.random() * 4 - 2) / 100;
           const newPrice = Math.max(50000, Math.round(p.price * change));
-          // Simulate random condition downgrade
           let newCondition = p.condition;
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
@@ -90,31 +88,24 @@ export default function RealEstateSimulatorPage() {
         })
       );
       setOwned((prev) => {
-        let didRent = false;
-        let rentTx: Transaction | null = null;
+        const newTransactions: Transaction[] = [];
         const updated = prev.map((p) => {
-          // Simulate price change: -2% to +2%
           const change = 1 + (Math.random() * 4 - 2) / 100;
           const newPrice = Math.max(50000, Math.round(p.price * change));
-          // Simulate random condition downgrade
           let newCondition = p.condition;
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
           }
-          // Add rent income if rented (but only add to cash and queue transaction once per property)
           if (p.rentedTo && p.rentAmount) {
             setCash((c) => c + p.rentAmount!);
-            if (!didRent) {
-              rentTx = {
-                id: uuidv4(),
-                type: "RENT",
-                propertyName: p.name,
-                amount: p.rentAmount!,
-                date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000), // Use simulated date
-                notes: `Monthly rent received from ${p.rentedTo?.name}`,
-              };
-              didRent = true;
-            }
+            newTransactions.push({
+              id: uuidv4(),
+              type: "RENT",
+              propertyName: p.name,
+              amount: p.rentAmount!,
+              date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000),
+              notes: `Monthly rent received from ${p.rentedTo?.name}`,
+            });
           }
           return {
             ...p,
@@ -123,9 +114,8 @@ export default function RealEstateSimulatorPage() {
             condition: newCondition,
           };
         });
-        // Only add one rent transaction per property per interval
-        if (rentTx) {
-          setTransactions((prevT) => [rentTx!, ...prevT]);
+        if (newTransactions.length > 0) {
+          setTransactions((prevT) => [...newTransactions, ...prevT]);
         }
         return updated;
       });
@@ -148,21 +138,21 @@ export default function RealEstateSimulatorPage() {
         ...property,
         owned: true,
         purchasePrice: property.price,
-        purchaseDate: new Date(),
+        purchaseDate: new Date(simDate),
         repairs: 0,
         forSale: false,
         interestedBuyers: [],
       },
     ]);
     setTransactions((prev) => [
-      ...prev,
       {
         id: uuidv4(),
         type: "BUY",
         propertyName: property.name,
         amount: property.price,
-        date: new Date(),
+        date: new Date(simDate),
       },
+      ...prev,
     ]);
     setMessage(
       `Purchased ${property.name} for $${property.price.toLocaleString()}`
@@ -194,15 +184,15 @@ export default function RealEstateSimulatorPage() {
         }
         setCash((c) => c - repairCost);
         setTransactions((prevT) => [
-          ...prevT,
           {
             id: uuidv4(),
             type: "REPAIR",
             propertyName: p.name,
             amount: repairCost,
-            date: new Date(),
+            date: new Date(simDate),
             notes: `Upgraded to ${newCondition}`,
           },
+          ...prevT,
         ]);
         setMessage(
           `Repaired ${
@@ -262,16 +252,16 @@ export default function RealEstateSimulatorPage() {
     setCash((c) => c + buyer.offer);
     setOwned((prev) => prev.filter((p) => p.id !== propertyId));
     setTransactions((prevT) => [
-      ...prevT,
       {
         id: uuidv4(),
         type: "SELL",
         propertyName: property.name,
         amount: buyer.offer,
-        date: new Date(),
+        date: new Date(simDate),
         notes: `Sold to ${buyer.name}`,
         gainLoss: buyer.offer - property.purchasePrice - property.repairs,
       },
+      ...prevT,
     ]);
     setMessage(
       `Sold ${property.name} to ${
@@ -339,7 +329,7 @@ export default function RealEstateSimulatorPage() {
             type: "RENT",
             propertyName: p.name,
             amount: renter.offer,
-            date: new Date(),
+            date: new Date(simDate),
             notes: `Leased to ${renter.name} for $${renter.offer}/mo`,
           },
           ...prevT,
