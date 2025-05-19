@@ -25,7 +25,7 @@ export const pricing = {
       name: "Personal",
       id: "tier-personal",
       href: "#",
-      featured: true,
+      featured: false,
       description: "Added flexibility at personal.",
       priceMonthly: 19,
       highlights: [
@@ -41,7 +41,7 @@ export const pricing = {
       name: "Starter",
       id: "tier-starter",
       href: "#",
-      featured: false,
+      featured: true,
       description: "All the extras for your growing team.",
       priceMonthly: 59,
       highlights: [
