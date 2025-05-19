@@ -1,7 +1,8 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useState } from "react";
+import { Slider } from "@/components/ui/slider";
+import { useEffect, useState } from "react";
 
 function calcFreelanceNet({
   hourly,
@@ -51,8 +52,7 @@ export default function FreelanceVsFullTimeIncome() {
 
   const [result, setResult] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
     if (
       freelanceHourly < 0 ||
       freelanceHours < 0 ||
@@ -97,7 +97,16 @@ Full-Time (Estimated Net Annual Income + Benefits): $${fulltime.net.toLocaleStri
 
 ${recommendation}`
     );
-  };
+  }, [
+    freelanceHourly,
+    freelanceHours,
+    freelanceWeeks,
+    freelanceExpenses,
+    freelanceTax,
+    fullTimeSalary,
+    fullTimeBenefits,
+    fullTimeTax,
+  ]);
 
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
@@ -111,8 +120,104 @@ ${recommendation}`
         taxes, and benefits may vary. Consult a financial advisor or tax
         professional for personalized advice.
       </p>
+
+      {/* Table: Typical Income and Benefits */}
+      <div className="my-8">
+        <h2>Typical Income & Benefits (2024)</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Type</th>
+                <th className="px-3 py-2 border text-left">Annual Range</th>
+                <th className="px-3 py-2 border text-left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Freelance Hourly Rate</td>
+                <td className="px-3 py-2 border">$30 - $150/hr</td>
+                <td className="px-3 py-2 border">
+                  Varies by field and experience
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Full-Time Salary</td>
+                <td className="px-3 py-2 border">$50,000 - $150,000</td>
+                <td className="px-3 py-2 border">Plus benefits</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Benefits Value</td>
+                <td className="px-3 py-2 border">$5,000 - $20,000</td>
+                <td className="px-3 py-2 border">
+                  Health, retirement, PTO, etc.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Self-Employment Tax Rate</td>
+                <td className="px-3 py-2 border">15% - 30%</td>
+                <td className="px-3 py-2 border">
+                  Includes Social Security/Medicare
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Table: Pros and Cons */}
+      <div className="my-8">
+        <h2>Pros and Cons</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Type</th>
+                <th className="px-3 py-2 border text-left">Pros</th>
+                <th className="px-3 py-2 border text-left">Cons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Freelance</td>
+                <td className="px-3 py-2 border">
+                  Flexibility
+                  <br />
+                  Set your own rates
+                  <br />
+                  Potential for higher income
+                </td>
+                <td className="px-3 py-2 border">
+                  No benefits
+                  <br />
+                  Income instability
+                  <br />
+                  Responsible for own taxes
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Full-Time</td>
+                <td className="px-3 py-2 border">
+                  Benefits
+                  <br />
+                  Stable income
+                  <br />
+                  Employer handles taxes
+                </td>
+                <td className="px-3 py-2 border">
+                  Less flexibility
+                  <br />
+                  Limited earning potential
+                  <br />
+                  Less control over work
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <form
-        onSubmit={handleSubmit}
         className="space-y-5 mt-5"
         aria-label="Freelance vs Full-Time Income form"
       >
@@ -121,66 +226,116 @@ ${recommendation}`
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
               <Label className="block mb-1">Hourly Rate ($)</Label>
-              <Input
-                type="number"
-                min={0}
-                placeholder="Hourly Rate ($)"
-                value={freelanceHourly === 0 ? "" : freelanceHourly}
-                onChange={(e) => setFreelanceHourly(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={300}
+                  step={1}
+                  value={[freelanceHourly]}
+                  onValueChange={([v]) => setFreelanceHourly(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder="Hourly Rate ($)"
+                  value={freelanceHourly === 0 ? "" : freelanceHourly}
+                  onChange={(e) => setFreelanceHourly(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
             <div className="flex-1">
               <Label className="block mb-1">Hours/Week</Label>
-              <Input
-                type="number"
-                min={0}
-                placeholder="Hours/Week"
-                value={freelanceHours === 0 ? "" : freelanceHours}
-                onChange={(e) => setFreelanceHours(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={80}
+                  step={1}
+                  value={[freelanceHours]}
+                  onValueChange={([v]) => setFreelanceHours(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder="Hours/Week"
+                  value={freelanceHours === 0 ? "" : freelanceHours}
+                  onChange={(e) => setFreelanceHours(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
             <div className="flex-1">
               <Label className="block mb-1">Weeks/Year</Label>
-              <Input
-                type="number"
-                min={0}
-                placeholder="Weeks/Year"
-                value={freelanceWeeks === 0 ? "" : freelanceWeeks}
-                onChange={(e) => setFreelanceWeeks(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={52}
+                  step={1}
+                  value={[freelanceWeeks]}
+                  onValueChange={([v]) => setFreelanceWeeks(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder="Weeks/Year"
+                  value={freelanceWeeks === 0 ? "" : freelanceWeeks}
+                  onChange={(e) => setFreelanceWeeks(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
           </div>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
               <Label className="block mb-1">Estimated Expenses ($/yr)</Label>
-              <Input
-                type="number"
-                min={0}
-                placeholder="Estimated Expenses ($/yr)"
-                value={freelanceExpenses === 0 ? "" : freelanceExpenses}
-                onChange={(e) => setFreelanceExpenses(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={50000}
+                  step={500}
+                  value={[freelanceExpenses]}
+                  onValueChange={([v]) => setFreelanceExpenses(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder="Estimated Expenses ($/yr)"
+                  value={freelanceExpenses === 0 ? "" : freelanceExpenses}
+                  onChange={(e) => setFreelanceExpenses(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
             <div className="flex-1">
               <Label className="block mb-1">Self-Employment Tax Rate (%)</Label>
-              <Input
-                type="number"
-                min={0}
-                max={100}
-                placeholder="Self-Employment Tax Rate (%)"
-                value={freelanceTax === 0 ? "" : freelanceTax}
-                onChange={(e) => setFreelanceTax(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={40}
+                  step={0.1}
+                  value={[freelanceTax]}
+                  onValueChange={([v]) => setFreelanceTax(Number(v.toFixed(1)))}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  placeholder="Self-Employment Tax Rate (%)"
+                  value={freelanceTax === 0 ? "" : freelanceTax}
+                  onChange={(e) => setFreelanceTax(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -189,59 +344,147 @@ ${recommendation}`
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
               <Label className="block mb-1">Annual Salary ($)</Label>
-              <Input
-                type="number"
-                min={0}
-                placeholder="Annual Salary ($)"
-                value={fullTimeSalary === 0 ? "" : fullTimeSalary}
-                onChange={(e) => setFullTimeSalary(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={300000}
+                  step={1000}
+                  value={[fullTimeSalary]}
+                  onValueChange={([v]) => setFullTimeSalary(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder="Annual Salary ($)"
+                  value={fullTimeSalary === 0 ? "" : fullTimeSalary}
+                  onChange={(e) => setFullTimeSalary(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
             <div className="flex-1">
               <Label className="block mb-1">Annual Benefits ($)</Label>
-              <Input
-                type="number"
-                min={0}
-                placeholder="Annual Benefits ($)"
-                value={fullTimeBenefits === 0 ? "" : fullTimeBenefits}
-                onChange={(e) => setFullTimeBenefits(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={50000}
+                  step={500}
+                  value={[fullTimeBenefits]}
+                  onValueChange={([v]) => setFullTimeBenefits(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder="Annual Benefits ($)"
+                  value={fullTimeBenefits === 0 ? "" : fullTimeBenefits}
+                  onChange={(e) => setFullTimeBenefits(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
             <div className="flex-1">
               <Label className="block mb-1">Tax Rate (%)</Label>
-              <Input
-                type="number"
-                min={0}
-                max={100}
-                placeholder="Tax Rate (%)"
-                value={fullTimeTax === 0 ? "" : fullTimeTax}
-                onChange={(e) => setFullTimeTax(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
-                required
-              />
+              <div className="flex gap-2">
+                <Slider
+                  min={0}
+                  max={40}
+                  step={0.1}
+                  value={[fullTimeTax]}
+                  onValueChange={([v]) => setFullTimeTax(Number(v.toFixed(1)))}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  placeholder="Tax Rate (%)"
+                  value={fullTimeTax === 0 ? "" : fullTimeTax}
+                  onChange={(e) => setFullTimeTax(Number(e.target.value))}
+                  className="w-1/3"
+                  required
+                />
+              </div>
             </div>
           </div>
         </div>
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 py-2 rounded focus:ring-2 focus:ring-blue-500 w-full font-semibold text-white focus:outline-none"
-        >
-          Compare
-        </button>
+        {/* No compare button */}
       </form>
-      {result && (
-        <div
-          className="bg-gray-100 mt-6 p-4 border border-gray-300 rounded whitespace-pre-line"
-          role="alert"
-          aria-live="polite"
-        >
-          {result}
+      {/* Card-like results display */}
+      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mt-8">
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+            Freelance
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">
+                Estimated Net Annual Income:
+              </span>{" "}
+              <strong className="text-blue-900">
+                $
+                {(() => {
+                  const freelance = calcFreelanceNet({
+                    hourly: freelanceHourly,
+                    hours: freelanceHours,
+                    weeks: freelanceWeeks,
+                    expenses: freelanceExpenses,
+                    taxRate: freelanceTax,
+                  });
+                  return freelance.net.toLocaleString();
+                })()}
+              </strong>
+            </li>
+          </ul>
         </div>
-      )}
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
+            Full-Time
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">
+                Estimated Net Annual Income + Benefits:
+              </span>{" "}
+              <strong className="text-green-900">
+                $
+                {(() => {
+                  const fulltime = calcFullTimeNet({
+                    salary: fullTimeSalary,
+                    benefits: fullTimeBenefits,
+                    taxRate: fullTimeTax,
+                  });
+                  return fulltime.net.toLocaleString();
+                })()}
+              </strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* Recommendation */}
+      <div className="mt-6">
+        <div className="bg-blue-50 p-4 border border-blue-200 rounded text-blue-900">
+          <strong>Recommendation:</strong>
+          <div className="mt-1">
+            {result && result.split("\n").slice(-1).join("")}
+          </div>
+        </div>
+      </div>
+      <section className="mt-8">
+        <h2>Disclaimer</h2>
+        <p>
+          This tool provides estimates for informational purposes only. Actual
+          income, taxes, and benefits may vary. Consult a financial advisor or
+          tax professional for personalized advice. The results are based on the
+          inputs you provided and do not take into account other factors that
+          may affect your options, such as job security, benefits, or work-life
+          balance. Please use this tool as a starting point for your research
+          and consult a financial advisor for personalized advice.
+        </p>
+      </section>
     </div>
   );
 }
