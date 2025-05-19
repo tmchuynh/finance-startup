@@ -1,5 +1,5 @@
 "use client";
-import { Portfolio, Stock } from "@/lib/interfaces";
+import { Portfolio, Stock } from "@/lib/interfaces/stock";
 import { v4 as uuidv4 } from "uuid";
 
 export function sellStock(

@@ -1,4 +1,4 @@
-import { Stock } from "@/lib/interfaces";
+import { Stock } from "@/lib/interfaces/stock";
 
 export const MOCK_CRYPTOS: Stock[] = [
   {

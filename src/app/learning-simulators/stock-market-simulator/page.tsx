@@ -6,7 +6,7 @@ import { sellStock } from "@/components/stocks/sellStock";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MOCK_STOCKS } from "@/lib/constants/data/stockData";
-import { Portfolio, Stock } from "@/lib/interfaces";
+import { Stock, Portfolio } from "@/lib/interfaces/stock";
 import { formatNumberToCurrency } from "@/lib/utils/format";
 import { useEffect, useState } from "react";
 

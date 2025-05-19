@@ -50,7 +50,7 @@ type Transaction = {
   amount: number;
   date: Date;
   notes?: string;
-  gainLoss?: number; // <-- add this field
+  gainLoss?: number;
 };
 
 const INITIAL_CASH = 500000;
@@ -88,13 +88,6 @@ const MOCK_PROPERTIES: Property[] = [
   },
 ];
 
-function randomConditionUpgrade(condition: Property["condition"]) {
-  if (condition === "Needs Repair") return "Fair";
-  if (condition === "Fair") return "Good";
-  if (condition === "Good") return "Excellent";
-  return "Excellent";
-}
-
 function randomConditionDowngrade(condition: Property["condition"]) {
   if (condition === "Excellent") return "Good";
   if (condition === "Good") return "Fair";
@@ -102,13 +95,14 @@ function randomConditionDowngrade(condition: Property["condition"]) {
   return "Needs Repair";
 }
 
+const buyers = [
+  { name: "Alice", notes: "Wants quick close" },
+  { name: "Bob", notes: "Needs inspection" },
+  { name: "Carol", notes: "Investor, all cash" },
+  { name: "Dave", notes: "First-time buyer" },
+];
+
 function getRandomBuyers(property: Property): Buyer[] {
-  const buyers = [
-    { name: "Alice", notes: "Wants quick close" },
-    { name: "Bob", notes: "Needs inspection" },
-    { name: "Carol", notes: "Investor, all cash" },
-    { name: "Dave", notes: "First-time buyer" },
-  ];
   return Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () => {
     const buyer = buyers[Math.floor(Math.random() * buyers.length)];
     return {
@@ -122,11 +116,7 @@ function getRandomBuyers(property: Property): Buyer[] {
   });
 }
 
-function getRandomRenters(
-  property: Property,
-  min: number,
-  max: number
-): Renter[] {
+function getRandomRenters(min: number, max: number): Renter[] {
   const renters = [
     { name: "Eve", notes: "Wants 12-month lease" },
     { name: "Frank", notes: "Has pets" },
@@ -368,11 +358,7 @@ export default function RealEstateSimulatorPage() {
               ...p,
               forRent: true,
               rentRange: [rentModal.min, rentModal.max],
-              interestedRenters: getRandomRenters(
-                p,
-                rentModal.min,
-                rentModal.max
-              ),
+              interestedRenters: getRandomRenters(rentModal.min, rentModal.max),
               renterRefreshes: 5,
             }
           : p
@@ -392,7 +378,6 @@ export default function RealEstateSimulatorPage() {
           ? {
               ...p,
               interestedRenters: getRandomRenters(
-                p,
                 p.rentRange[0],
                 p.rentRange[1]
               ),
@@ -453,9 +438,7 @@ export default function RealEstateSimulatorPage() {
 
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1 className="mb-6 font-bold text-3xl">
-        Real Estate Investment Simulator
-      </h1>
+      <h1>Real Estate Investment Simulator</h1>
       <p className="mb-4">
         Simulate buying, repairing, renting, and selling properties. Watch price
         trends, make repairs, and select buyers or renters to maximize your

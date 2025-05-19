@@ -1,4 +1,4 @@
-import { Stock } from "@/lib/interfaces";
+import { Stock } from "@/lib/interfaces/stock";
 
 export const MOCK_STOCKS: Stock[] = [
   { symbol: "AAPL", name: "Apple Inc.", price: 170.35 },

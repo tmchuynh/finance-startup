@@ -1,4 +1,4 @@
-import { Portfolio, Stock } from "@/lib/interfaces";
+import { Portfolio, Stock } from "@/lib/interfaces/stock";
 import { formatNumberToCurrency } from "@/lib/utils/format";
 import React from "react";
 
