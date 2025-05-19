@@ -4,7 +4,24 @@ export default function LearningSimulatorPage() {
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
       <h1>Learning Simulators</h1>
-      <p>Welcome to the Learning Simulators page!</p>
+      <h5>Explore our collection of learning simulators</h5>
+      <p>
+        Our learning simulators are designed to help you practice and improve
+        your skills in various areas of finance and investing. Whether you're a
+        beginner or an experienced investor, our simulators provide a risk-free
+        environment to learn and experiment with different strategies. Explore
+        our collection of simulators below and start your learning journey
+        today!
+      </p>
+      <p className="mt-4">
+        Our simulators are designed to be user-friendly and intuitive, making it
+        easy for you to navigate and use them effectively. Each simulator comes
+        with detailed instructions and tips to help you get started. You can
+        practice at your own pace and revisit the simulators as often as you
+        like. Whether you're looking to improve your trading skills, learn about
+        investment strategies, or understand complex financial concepts, our
+        simulators provide a valuable resource for your learning journey.
+      </p>
 
       <section className="gap-4 grid lg:grid-cols-2 mt-2 md:mt-6 xl:mt-8">
         <ResourceCard
