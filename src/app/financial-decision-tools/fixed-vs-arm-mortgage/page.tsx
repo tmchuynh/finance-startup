@@ -134,7 +134,7 @@ export default function FixedVsARMMortgage() {
 
       {/* Chart 1: Key Differences */}
       <div className="my-8">
-        <h2 className="mb-2 font-semibold text-lg">Key Differences</h2>
+        <h2>Key Differences</h2>
         <div className="overflow-x-auto">
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
@@ -199,7 +199,7 @@ export default function FixedVsARMMortgage() {
 
       {/* Chart 2: Pros and Cons */}
       <div className="my-8">
-        <h2 className="mb-2 font-semibold text-lg">Pros and Cons</h2>
+        <h2>Pros and Cons</h2>
         <div className="overflow-x-auto">
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
@@ -249,9 +249,7 @@ export default function FixedVsARMMortgage() {
 
       {/* Chart 3: Typical Rates and Terms */}
       <div className="my-8">
-        <h2 className="mb-2 font-semibold text-lg">
-          Typical Rates and Terms (2024)
-        </h2>
+        <h2>Typical Rates and Terms (2024)</h2>
         <div className="overflow-x-auto">
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
@@ -291,9 +289,7 @@ export default function FixedVsARMMortgage() {
 
       <form className="space-y-5 mt-5" aria-label="Mortgage comparison form">
         <div className="mb-4 pb-4 border-b">
-          <Label className="block mb-1 font-semibold">
-            Fixed-Rate Mortgage
-          </Label>
+          <h3>Fixed-Rate Mortgage</h3>
           <div className="flex flex-col gap-4 mb-2">
             <div className="flex items-center gap-4">
               <Label className="w-32">Loan Amount ($)</Label>
@@ -357,9 +353,7 @@ export default function FixedVsARMMortgage() {
           </div>
         </div>
         <div>
-          <Label className="block mb-1 font-semibold">
-            Adjustable-Rate Mortgage (ARM)
-          </Label>
+          <h3>Adjustable-Rate Mortgage (ARM)</h3>
           <div className="flex flex-col gap-4 mb-2">
             <div className="flex items-center gap-4">
               <Label className="w-32">Initial Rate (%)</Label>
@@ -538,7 +532,7 @@ export default function FixedVsARMMortgage() {
       </div>
 
       <section className="mt-8">
-        <h2 className="mt-8 mb-2 font-semibold text-lg">Disclaimer</h2>
+        <h2>Disclaimer</h2>
         <p>
           This tool provides estimates for informational purposes only. Actual
           rates, payments, and costs may vary. Consult a mortgage professional
