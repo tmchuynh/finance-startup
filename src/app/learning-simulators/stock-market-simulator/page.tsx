@@ -65,6 +65,11 @@ export default function StockMarketLearningSimulatorPage() {
     }
   };
 
+  const handleSelectStock = (symbol: string) => {
+    const stock = stocks.find((s) => s.symbol === symbol);
+    if (stock) setSelectedStock(stock);
+  };
+
   return (
     <div className="mx-auto p-6 max-w-4xl">
       <h1 className="mb-6 font-bold text-3xl">
@@ -126,7 +131,11 @@ export default function StockMarketLearningSimulatorPage() {
         Total Portfolio Value: ${portfolioValue.toFixed(2)}
       </p>
 
-      <PortfolioTable portfolio={portfolio} stocks={stocks} />
+      <PortfolioTable
+        portfolio={portfolio}
+        stocks={stocks}
+        onSelectStock={handleSelectStock}
+      />
 
       <h2 className="mt-8 mb-2 font-semibold text-2xl">Transaction History</h2>
       <table className="border border-collapse border-gray-300 w-full">

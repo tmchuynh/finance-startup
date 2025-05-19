@@ -4,11 +4,13 @@ import React from "react";
 interface PortfolioTableProps {
   portfolio: Portfolio;
   stocks: Stock[];
+  onSelectStock?: (symbol: string) => void;
 }
 
 export const PortfolioTable: React.FC<PortfolioTableProps> = ({
   portfolio,
   stocks,
+  onSelectStock,
 }) => (
   <table className="border border-collapse border-gray-300 w-full">
     <thead>
@@ -32,7 +34,26 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
         const changePct = costBasis > 0 ? (change / costBasis) * 100 : 0;
         return (
           <tr key={h.symbol}>
-            <td className="p-2 border border-gray-300">{h.symbol}</td>
+            <td className="p-2 border border-gray-300">
+              {onSelectStock ? (
+                <button
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#2563eb",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    padding: 0,
+                  }}
+                  onClick={() => onSelectStock(h.symbol)}
+                  title="Select this stock"
+                >
+                  {h.symbol}
+                </button>
+              ) : (
+                h.symbol
+              )}
+            </td>
             <td className="p-2 border border-gray-300">{h.quantity}</td>
             <td className="p-2 border border-gray-300">
               ${h.averagePrice.toFixed(2)}
