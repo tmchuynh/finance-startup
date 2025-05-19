@@ -174,7 +174,7 @@
     @apply text-base md:text-lg xl:text-xl font-[SourceSerif4] font-bold leading-tight tracking-tight;
   }
   h5 {
-    @apply text-sm xl:text-lg font-bold leading-tight font-[Lora] tracking-tight;
+    @apply text-sm xl:text-lg font-bold leading-tight text-accent mb-4 font-[Lora] tracking-tight;
   }
   h6 {
     @apply text-xs 2xl:text-base font-bold leading-tight font-[Newsreader] tracking-tight;
@@ -184,5 +184,9 @@
   }
   a {
     @apply text-secondary underline-offset-4 transition-colors;
+  }
+
+  strong {
+    @apply text-primary;
   }
 }
