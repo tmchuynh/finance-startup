@@ -37,6 +37,18 @@ export function sortByProperty<T>(
   });
 }
 
+export function sortByPropertyByLength<T>(
+  array: T[],
+  property: keyof T,
+  ascending: boolean = true
+): T[] {
+  return [...array].sort((a, b) => {
+    const lengthA = (a[property] as unknown as string)?.length || 0;
+    const lengthB = (b[property] as unknown as string)?.length || 0;
+    return ascending ? lengthA - lengthB : lengthB - lengthA;
+  });
+}
+
 export function groupAndSortByProperties<T>(
   array: T[],
   groupByProperty: keyof T,
