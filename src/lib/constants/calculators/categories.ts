@@ -196,10 +196,10 @@ export const financeCalculatorCategories: Category[] = [
         id: "home-insurance-calculator",
       },
       {
-        title: "Rent vs. Buy Calculator",
+        title: "Rent vs Buy Home Calculator",
         description:
           "Compare the costs of renting versus buying a home over time.",
-        id: "rent-vs-buy-calculator",
+        id: "rent-vs-buy-home-calculator",
       },
       {
         title: "Mortgage Payoff Calculator",
