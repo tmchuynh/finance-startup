@@ -1,7 +1,8 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useState } from "react";
+import { Slider } from "@/components/ui/slider";
+import { useEffect, useState } from "react";
 
 function calcFixedMortgage({
   amount,
@@ -79,23 +80,10 @@ export default function FixedVsARMMortgage() {
   const [armAdjRate, setArmAdjRate] = useState<number>(7.5);
   const [armTotalYears, setArmTotalYears] = useState<number>(30);
 
-  const [result, setResult] = useState<string>("");
+  const [recommendation, setRecommendation] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (
-      amount <= 0 ||
-      fixedRate < 0 ||
-      fixedYears <= 0 ||
-      armInitialRate < 0 ||
-      armInitialYears < 0 ||
-      armAdjRate < 0 ||
-      armTotalYears <= 0 ||
-      armInitialYears > armTotalYears
-    ) {
-      setResult("Please enter valid, non-negative values for all fields.");
-      return;
-    }
+  // Calculate results automatically as inputs change
+  useEffect(() => {
     const fixed = calcFixedMortgage({
       amount,
       rate: fixedRate,
@@ -121,21 +109,16 @@ export default function FixedVsARMMortgage() {
         "Both options may have similar total costs. Consider your risk tolerance and how long you plan to stay in the home.";
     }
 
-    setResult(
-      `Fixed-Rate Mortgage:
-  - Monthly payment: $${fixed.monthly.toLocaleString()}
-  - Total paid over ${fixedYears} years: $${fixed.total.toLocaleString()}
-
-Adjustable-Rate Mortgage (ARM):
-  - Initial monthly payment: $${arm.initialMonthly.toLocaleString()} for ${armInitialYears} years
-  - Adjusted monthly payment: $${arm.adjMonthly.toLocaleString()} for ${
-        armTotalYears - armInitialYears
-      } years
-  - Total paid over ${armTotalYears} years: $${arm.total.toLocaleString()}
-
-${recommendation}`
-    );
-  };
+    setRecommendation(recommendation);
+  }, [
+    amount,
+    fixedRate,
+    fixedYears,
+    armInitialRate,
+    armInitialYears,
+    armAdjRate,
+    armTotalYears,
+  ]);
 
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
@@ -306,47 +289,68 @@ ${recommendation}`
       </div>
       {/* End charts */}
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-5 mt-5"
-        aria-label="Mortgage comparison form"
-      >
+      <form className="space-y-5 mt-5" aria-label="Mortgage comparison form">
         <div className="mb-4 pb-4 border-b">
           <Label className="block mb-1 font-semibold">
             Fixed-Rate Mortgage
           </Label>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1">
+          <div className="flex flex-col gap-4 mb-2">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Loan Amount ($)</Label>
+              <Slider
+                min={50000}
+                max={2000000}
+                step={10000}
+                value={[amount]}
+                onValueChange={([v]) => setAmount(v)}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={0}
-                placeholder="Loan Amount ($)"
-                value={amount === 0 ? "" : amount}
+                value={amount}
                 onChange={(e) => setAmount(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
-            <div className="flex-1">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Interest Rate (%)</Label>
+              <Slider
+                min={0}
+                max={15}
+                step={0.01}
+                value={[fixedRate]}
+                onValueChange={([v]) => setFixedRate(Number(v.toFixed(2)))}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={0}
                 max={100}
-                placeholder="Interest Rate (%)"
-                value={fixedRate === 0 ? "" : fixedRate}
+                value={fixedRate}
+                step={0.01}
                 onChange={(e) => setFixedRate(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
-            <div className="flex-1">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Term (years)</Label>
+              <Slider
+                min={1}
+                max={40}
+                step={1}
+                value={[fixedYears]}
+                onValueChange={([v]) => setFixedYears(v)}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={1}
-                placeholder="Term (years)"
-                value={fixedYears === 0 ? "" : fixedYears}
+                value={fixedYears}
                 onChange={(e) => setFixedYears(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
@@ -356,71 +360,197 @@ ${recommendation}`
           <Label className="block mb-1 font-semibold">
             Adjustable-Rate Mortgage (ARM)
           </Label>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1">
+          <div className="flex flex-col gap-4 mb-2">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Initial Rate (%)</Label>
+              <Slider
+                min={0}
+                max={15}
+                step={0.01}
+                value={[armInitialRate]}
+                onValueChange={([v]) => setArmInitialRate(Number(v.toFixed(2)))}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={0}
                 max={100}
-                placeholder="Initial Rate (%)"
-                value={armInitialRate === 0 ? "" : armInitialRate}
+                value={armInitialRate}
+                step={0.01}
                 onChange={(e) => setArmInitialRate(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
-            <div className="flex-1">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Initial Period (years)</Label>
+              <Slider
+                min={0}
+                max={10}
+                step={1}
+                value={[armInitialYears]}
+                onValueChange={([v]) => setArmInitialYears(v)}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={0}
-                placeholder="Initial Period (years)"
-                value={armInitialYears === 0 ? "" : armInitialYears}
+                value={armInitialYears}
                 onChange={(e) => setArmInitialYears(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
-            <div className="flex-1">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Adjusted Rate (%)</Label>
+              <Slider
+                min={0}
+                max={15}
+                step={0.01}
+                value={[armAdjRate]}
+                onValueChange={([v]) => setArmAdjRate(Number(v.toFixed(2)))}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={0}
                 max={100}
-                placeholder="Adjusted Rate (%)"
-                value={armAdjRate === 0 ? "" : armAdjRate}
+                value={armAdjRate}
+                step={0.01}
                 onChange={(e) => setArmAdjRate(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
-            <div className="flex-1">
+            <div className="flex items-center gap-4">
+              <Label className="w-32">Total Term (years)</Label>
+              <Slider
+                min={1}
+                max={40}
+                step={1}
+                value={[armTotalYears]}
+                onValueChange={([v]) => setArmTotalYears(v)}
+                className="w-2/3"
+              />
               <Input
                 type="number"
                 min={1}
-                placeholder="Total Term (years)"
-                value={armTotalYears === 0 ? "" : armTotalYears}
+                value={armTotalYears}
                 onChange={(e) => setArmTotalYears(Number(e.target.value))}
-                className="p-2 border border-gray-300 rounded w-full"
+                className="w-1/4"
                 required
               />
             </div>
           </div>
         </div>
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 py-2 rounded focus:ring-2 focus:ring-blue-500 w-full font-semibold text-white focus:outline-none"
-        >
-          Compare
-        </button>
       </form>
-      {result && (
-        <div
-          className="bg-gray-100 mt-6 p-4 border border-gray-300 rounded whitespace-pre-line"
-          role="alert"
-          aria-live="polite"
-        >
-          {result}
+
+      {/* Card-like results display */}
+      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mt-8">
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+            Fixed-Rate Mortgage
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">Monthly Payment:</span>{" "}
+              <strong className="text-blue-900">
+                $
+                {calcFixedMortgage({
+                  amount,
+                  rate: fixedRate,
+                  years: fixedYears,
+                }).monthly.toLocaleString()}
+              </strong>
+            </li>
+            <li>
+              <span className="text-gray-700">
+                Total Paid Over {fixedYears} Years:
+              </span>{" "}
+              <strong className="text-blue-900">
+                $
+                {calcFixedMortgage({
+                  amount,
+                  rate: fixedRate,
+                  years: fixedYears,
+                }).total.toLocaleString()}
+              </strong>
+            </li>
+          </ul>
         </div>
-      )}
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
+            Adjustable-Rate Mortgage (ARM)
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">Initial Monthly Payment:</span>{" "}
+              <strong className="text-green-900">
+                $
+                {calcARMMortgage({
+                  amount,
+                  initialRate: armInitialRate,
+                  initialYears: armInitialYears,
+                  adjRate: armAdjRate,
+                  totalYears: armTotalYears,
+                }).initialMonthly.toLocaleString()}
+              </strong>{" "}
+              for {armInitialYears} years
+            </li>
+            <li>
+              <span className="text-gray-700">Adjusted Monthly Payment:</span>{" "}
+              <strong className="text-green-900">
+                $
+                {calcARMMortgage({
+                  amount,
+                  initialRate: armInitialRate,
+                  initialYears: armInitialYears,
+                  adjRate: armAdjRate,
+                  totalYears: armTotalYears,
+                }).adjMonthly.toLocaleString()}
+              </strong>{" "}
+              for {armTotalYears - armInitialYears} years
+            </li>
+            <li>
+              <span className="text-gray-700">
+                Total Paid Over {armTotalYears} Years:
+              </span>{" "}
+              <strong className="text-green-900">
+                $
+                {calcARMMortgage({
+                  amount,
+                  initialRate: armInitialRate,
+                  initialYears: armInitialYears,
+                  adjRate: armAdjRate,
+                  totalYears: armTotalYears,
+                }).total.toLocaleString()}
+              </strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* Recommendation */}
+      <div className="mt-6">
+        <div className="bg-blue-50 p-4 border border-blue-200 rounded text-blue-900">
+          <strong>Recommendation:</strong>
+          <div className="mt-1">{recommendation}</div>
+        </div>
+      </div>
+
+      <section className="mt-8">
+        <h2 className="mt-8 mb-2 font-semibold text-lg">Disclaimer</h2>
+        <p>
+          This tool provides estimates for informational purposes only. Actual
+          rates, payments, and costs may vary. Consult a mortgage professional
+          before making decisions. The results are based on the inputs you
+          provided and do not take into account other factors that may affect
+          your mortgage options, such as credit score, down payment, and lender
+          requirements. The calculations are based on standard mortgage terms
+          and may not reflect your specific situation. Please use this tool as a
+          starting point for your research and consult a financial advisor or
+          mortgage professional for personalized advice.
+        </p>
+      </section>
     </div>
   );
 }
