@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 
 const RothVsTraditional401k: React.FC = () => {
@@ -52,21 +54,87 @@ const RothVsTraditional401k: React.FC = () => {
         retirement tax rates. Please fill out the form below to see the results.
       </p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label>
-            Annual Salary ($)
-            <input
+      {/* Info table for new users */}
+      <div className="my-8">
+        <h2 className="mb-2 font-semibold text-lg">
+          401(k) vs Roth 401(k): Key Differences
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Feature</th>
+                <th className="px-3 py-2 border text-left">
+                  Traditional 401(k)
+                </th>
+                <th className="px-3 py-2 border text-left">Roth 401(k)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Contributions</td>
+                <td className="px-3 py-2 border">
+                  Pre-tax (lowers taxable income now)
+                </td>
+                <td className="px-3 py-2 border">
+                  After-tax (no immediate tax benefit)
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Growth</td>
+                <td className="px-3 py-2 border">Tax-deferred</td>
+                <td className="px-3 py-2 border">Tax-free</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Withdrawals in Retirement</td>
+                <td className="px-3 py-2 border">Taxed as ordinary income</td>
+                <td className="px-3 py-2 border">Tax-free (if qualified)</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Employer Match</td>
+                <td className="px-3 py-2 border">
+                  Pre-tax, taxed at withdrawal
+                </td>
+                <td className="px-3 py-2 border">
+                  Pre-tax, taxed at withdrawal
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Required Minimum Distributions (RMDs)
+                </td>
+                <td className="px-3 py-2 border">Yes, starting at age 73</td>
+                <td className="px-3 py-2 border">Yes, starting at age 73</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Best For</td>
+                <td className="px-3 py-2 border">
+                  Expecting lower tax rate in retirement
+                </td>
+                <td className="px-3 py-2 border">
+                  Expecting higher tax rate in retirement
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {/* End info table */}
+
+      <form onSubmit={(e) => e.preventDefault()} className="my-5">
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Annual Salary ($)</Label>
+            <Input
               type="number"
               value={salary}
               min={0}
               onChange={(e) => setSalary(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Employee Contribution (%)
-            <input
+          </div>
+          <div>
+            <Label>Employee Contribution (%)</Label>
+            <Input
               type="number"
               value={contribution}
               min={0}
@@ -74,11 +142,10 @@ const RothVsTraditional401k: React.FC = () => {
               step={0.1}
               onChange={(e) => setContribution(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Employer Match (%)
-            <input
+          </div>
+          <div>
+            <Label>Employer Match (%)</Label>
+            <Input
               type="number"
               value={employerMatch}
               min={0}
@@ -86,22 +153,20 @@ const RothVsTraditional401k: React.FC = () => {
               step={0.1}
               onChange={(e) => setEmployerMatch(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Years to Grow
-            <input
+          </div>
+          <div>
+            <Label>Years to Grow</Label>
+            <Input
               type="number"
               value={years}
               min={1}
               max={50}
               onChange={(e) => setYears(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Expected Annual Return (%)
-            <input
+          </div>
+          <div>
+            <Label>Expected Annual Return (%)</Label>
+            <Input
               type="number"
               value={annualReturn}
               min={0}
@@ -109,12 +174,12 @@ const RothVsTraditional401k: React.FC = () => {
               step={0.1}
               onChange={(e) => setAnnualReturn(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
-        <div>
-          <label>
-            Current Marginal Tax Rate (%)
-            <input
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Current Marginal Tax Rate (%)</Label>
+            <Input
               type="number"
               value={currentTax}
               min={0}
@@ -122,11 +187,10 @@ const RothVsTraditional401k: React.FC = () => {
               step={0.1}
               onChange={(e) => setCurrentTax(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Retirement Tax Rate (%)
-            <input
+          </div>
+          <div>
+            <Label>Retirement Tax Rate (%)</Label>
+            <Input
               type="number"
               value={retirementTax}
               min={0}
@@ -134,11 +198,11 @@ const RothVsTraditional401k: React.FC = () => {
               step={0.1}
               onChange={(e) => setRetirementTax(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
       </form>
       <h2>Results</h2>
-      <div style={{ display: "flex", gap: 32 }}>
+      <div className="flex flex-col gap-5 mt-3">
         <div>
           <h3>Traditional 401(k)</h3>
           <p>
