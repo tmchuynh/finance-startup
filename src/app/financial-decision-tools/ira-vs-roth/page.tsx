@@ -98,7 +98,7 @@ export default function IraVsRothDecisionTool() {
 
       {/* Tax Bracket Chart */}
       <div className="my-8">
-        <h6 className="mb-2 font-semibold">2024 Federal Income Tax Brackets</h6>
+        <h3>2024 Federal Income Tax Brackets</h3>
         <div className="overflow-x-auto">
           <table className="bg-white border border-gray-300 min-w-full text-sm">
             <thead>
