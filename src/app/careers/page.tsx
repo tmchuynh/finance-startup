@@ -1,4 +1,6 @@
 import { benefits } from "@/lib/constants/about/careers/benefits";
+import { jobPostings } from "@/lib/constants/about/careers/openings";
+import { cn } from "@/lib/utils";
 
 export default function JoinUsPage() {
   return (
@@ -40,6 +42,50 @@ export default function JoinUsPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mt-16">
+        <h2>Current Job Openings</h2>
+        <p>
+          We are currently looking for talented individuals to join our team. If
+          you are interested in any of the positions below, please send us your
+          resume and a cover letter. We look forward to hearing from you!
+        </p>
+        {jobPostings.map((job, index) => (
+          <div
+            key={index}
+            className={cn("lg:mx-0 mt-8", {
+              "border-b-2 border-border pb-9": index !== jobPostings.length - 1,
+            })}
+          >
+            <div>
+              <div className="grid lg:grid-cols-9">
+                <h3 className="col-span-4">{job.title}</h3>
+                <h5 className="col-span-2">{job.salary}</h5>
+                <h5 className="col-span-3 text-end">{job.location}</h5>
+              </div>
+              <p>{job.about}</p>
+            </div>
+            <div className="grid lg:grid-cols-2">
+              <section className="mt-8">
+                <h3>Responsibilities</h3>
+                <ul>
+                  {job.responsibilities.map((responsibility, index) => (
+                    <li key={index}>{responsibility}</li>
+                  ))}
+                </ul>
+              </section>
+              <section className="mt-8">
+                <h3>Qualifications</h3>
+                <ul>
+                  {job.requirements.map((requirement, index) => (
+                    <li key={index}>{requirement}</li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+          </div>
+        ))}
       </section>
     </div>
   );
