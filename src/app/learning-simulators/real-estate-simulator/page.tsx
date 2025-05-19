@@ -548,12 +548,23 @@ export default function RealEstateSimulatorPage() {
                 ))}
               </td>
               <td className="flex flex-col gap-2 p-2 border border-gray-300">
-                <button
-                  className="bg-yellow-500 hover:bg-yellow-600 mb-1 px-3 py-1 rounded text-white"
-                  onClick={() => handleRepair(p.id)}
-                >
-                  Repair
-                </button>
+                {/* Only show Repair button if property is not Excellent */}
+                {p.condition !== "Excellent" ? (
+                  <button
+                    className="bg-yellow-500 hover:bg-yellow-600 mb-1 px-3 py-1 rounded text-white"
+                    onClick={() => handleRepair(p.id)}
+                  >
+                    Repair
+                  </button>
+                ) : (
+                  <button
+                    className="bg-gray-300 mb-1 px-3 py-1 rounded text-gray-500"
+                    disabled
+                  >
+                    No Repairs Needed
+                  </button>
+                )}
+                {/* ...existing List for Sale / Rent buttons... */}
                 {!p.forSale ? (
                   <button
                     className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white"
@@ -673,7 +684,6 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Buyer</th>
             <th className="p-2 border border-gray-300">Offer</th>
             <th className="p-2 border border-gray-300">Notes</th>
-            <th className="p-2 border border-gray-300"></th>
           </tr>
         </thead>
         <tbody>
@@ -735,7 +745,6 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Renter</th>
             <th className="p-2 border border-gray-300">Offer</th>
             <th className="p-2 border border-gray-300">Notes</th>
-            <th className="p-2 border border-gray-300"></th>
           </tr>
         </thead>
         <tbody>
