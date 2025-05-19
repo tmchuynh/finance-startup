@@ -143,13 +143,28 @@ export default function StockMarketLearningSimulatorPage() {
         </div>
         <div className="mb-4">
           <Label className="block mb-1 font-semibold">Quantity</Label>
-          <Input
-            type="number"
-            className="p-2 border rounded w-full"
-            min={1}
-            value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-          />
+          <div className="flex gap-2">
+            <Input
+              type="number"
+              className="p-2 border rounded w-full"
+              min={1}
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+            />
+            <button
+              type="button"
+              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded font-semibold text-sm"
+              disabled={!selectedStock}
+              onClick={() => {
+                if (selectedStock) {
+                  const max = Math.floor(portfolio.cash / selectedStock.price);
+                  setQuantity(max > 0 ? max : 0);
+                }
+              }}
+            >
+              Max
+            </button>
+          </div>
         </div>
       </div>
 
