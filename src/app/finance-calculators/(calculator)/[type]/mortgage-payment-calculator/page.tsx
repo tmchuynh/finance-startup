@@ -47,6 +47,27 @@ export default function MortgagePaymentCalculator() {
           borrowed) and interest (the cost of borrowing). Sometimes, it also
           includes property taxes and homeowner's insurance.
         </p>
+        <div className="my-6">
+          <h3>Tips for Beginners</h3>
+          <ul className="list-disc list-inside">
+            <li>
+              Your monthly payment does <strong>not</strong> include property
+              taxes, homeowner's insurance, or HOA fees—budget for these
+              separately.
+            </li>
+            <li>
+              A lower interest rate or a longer loan term will reduce your
+              monthly payment, but a longer term means you pay more interest
+              over time.
+            </li>
+            <li>
+              Making extra payments toward principal can save you money on
+              interest.
+            </li>
+            <li>Shop around for the best mortgage rates and terms.</li>
+            <li>Talk to a mortgage professional for personalized advice.</li>
+          </ul>
+        </div>
         <div className="mb-6">
           <h3>Key Terms Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
@@ -131,7 +152,65 @@ export default function MortgagePaymentCalculator() {
             </li>
           </ul>
         </div>
-        <div className="mb-6">
+        <div className="gap-4 grid md:grid-cols-3">
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Loan Amount ($):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={loanAmount}
+              onChange={(e) => setLoanAmount(e.target.value)}
+              placeholder="Enter loan amount"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Interest Rate (% per year):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={interestRate}
+              onChange={(e) => setInterestRate(e.target.value)}
+              placeholder="Enter annual interest rate"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Loan Term (years):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={loanTerm}
+              onChange={(e) => setLoanTerm(e.target.value)}
+              placeholder="Enter loan term in years"
+              min="1"
+            />
+          </div>
+        </div>
+        <button
+          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          onClick={handleCalculate}
+        >
+          Calculate Payment
+        </button>
+        {monthlyPayment !== null && (
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="bg-white shadow p-4 border rounded-lg">
+              <strong>Estimated Monthly Payment:</strong>{" "}
+              <span className="text-blue-700 text-lg">
+                $
+                {monthlyPayment.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </span>
+            </div>
+          </div>
+        )}
+        <div className="my-6">
           <h3>Step-by-Step Example</h3>
           <table className="mb-2 border border-gray-300 min-w-full text-sm">
             <thead>
@@ -168,86 +247,7 @@ export default function MortgagePaymentCalculator() {
             </tbody>
           </table>
         </div>
-        <div className="mb-6">
-          <h3>Tips for Beginners</h3>
-          <ul className="list-disc list-inside">
-            <li>
-              Your monthly payment does <strong>not</strong> include property
-              taxes, homeowner's insurance, or HOA fees—budget for these
-              separately.
-            </li>
-            <li>
-              A lower interest rate or a longer loan term will reduce your
-              monthly payment, but a longer term means you pay more interest
-              over time.
-            </li>
-            <li>
-              Making extra payments toward principal can save you money on
-              interest.
-            </li>
-            <li>Shop around for the best mortgage rates and terms.</li>
-            <li>Talk to a mortgage professional for personalized advice.</li>
-          </ul>
-        </div>
       </section>
-      <div className="gap-4 grid md:grid-cols-3">
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Loan Amount ($):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={loanAmount}
-            onChange={(e) => setLoanAmount(e.target.value)}
-            placeholder="Enter loan amount"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Interest Rate (% per year):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={interestRate}
-            onChange={(e) => setInterestRate(e.target.value)}
-            placeholder="Enter annual interest rate"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Loan Term (years):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={loanTerm}
-            onChange={(e) => setLoanTerm(e.target.value)}
-            placeholder="Enter loan term in years"
-            min="1"
-          />
-        </div>
-      </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
-        onClick={handleCalculate}
-      >
-        Calculate Payment
-      </button>
-      {monthlyPayment !== null && (
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
-            <strong>Estimated Monthly Payment:</strong>{" "}
-            <span className="text-blue-700 text-lg">
-              $
-              {monthlyPayment.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
