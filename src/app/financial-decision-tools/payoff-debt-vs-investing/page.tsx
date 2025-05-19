@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import React, { useState } from "react";
 
 const PayoffDebtVsInvesting: React.FC = () => {
@@ -82,6 +83,102 @@ const PayoffDebtVsInvesting: React.FC = () => {
         vary. Consult a financial advisor before making decisions.
       </p>
 
+      {/* Table: Typical Debt and Investment Returns */}
+      <div className="my-8">
+        <h2>Typical Debt & Investment Returns (2024)</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Type</th>
+                <th className="px-3 py-2 border text-left">Interest/Return</th>
+                <th className="px-3 py-2 border text-left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Credit Card Debt</td>
+                <td className="px-3 py-2 border">16% - 29%</td>
+                <td className="px-3 py-2 border">
+                  High, variable, not tax-deductible
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Student Loan</td>
+                <td className="px-3 py-2 border">4% - 8%</td>
+                <td className="px-3 py-2 border">May be tax-deductible</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Stock Market (S&P 500)</td>
+                <td className="px-3 py-2 border">7% - 10%</td>
+                <td className="px-3 py-2 border">
+                  Long-term average, not guaranteed
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Savings Account</td>
+                <td className="px-3 py-2 border">0.5% - 5%</td>
+                <td className="px-3 py-2 border">
+                  High-yield savings at upper end
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Table: Pros and Cons */}
+      <div className="my-8">
+        <h2>Pros and Cons</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Strategy</th>
+                <th className="px-3 py-2 border text-left">Pros</th>
+                <th className="px-3 py-2 border text-left">Cons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Pay Off Debt First</td>
+                <td className="px-3 py-2 border">
+                  Guaranteed return (interest saved)
+                  <br />
+                  Reduces stress
+                  <br />
+                  Improves credit score
+                </td>
+                <td className="px-3 py-2 border">
+                  Miss out on market growth
+                  <br />
+                  Less liquidity until debt is gone
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Invest Extra While Paying Minimum
+                </td>
+                <td className="px-3 py-2 border">
+                  Potential for higher returns
+                  <br />
+                  Start investing early
+                  <br />
+                  More liquidity
+                </td>
+                <td className="px-3 py-2 border">
+                  Risk of loss
+                  <br />
+                  Debt lingers longer
+                  <br />
+                  Interest may outweigh gains
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <form
         className="gap-4 grid grid-cols-1 sm:grid-cols-2 my-8"
         onSubmit={(e) => e.preventDefault()}
@@ -89,98 +186,173 @@ const PayoffDebtVsInvesting: React.FC = () => {
         <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
           <div>
             <Label>Debt Amount ($)</Label>
-            <Input
-              type="number"
-              value={debt}
-              min={0}
-              onChange={(e) => setDebt(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={100000}
+                step={100}
+                value={[debt]}
+                onValueChange={([v]) => setDebt(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={debt}
+                min={0}
+                onChange={(e) => setDebt(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
-
           <div>
             <Label>Debt Interest Rate (% APR)</Label>
-            <Input
-              type="number"
-              value={debtRate}
-              min={0}
-              step={0.1}
-              onChange={(e) => setDebtRate(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={40}
+                step={0.1}
+                value={[debtRate]}
+                onValueChange={([v]) => setDebtRate(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={debtRate}
+                min={0}
+                step={0.1}
+                onChange={(e) => setDebtRate(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
-
           <div>
             <Label>Minimum Payment ($/month)</Label>
-            <Input
-              type="number"
-              value={minPayment}
-              min={0}
-              onChange={(e) => setMinPayment(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={5000}
+                step={10}
+                value={[minPayment]}
+                onValueChange={([v]) => setMinPayment(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={minPayment}
+                min={0}
+                onChange={(e) => setMinPayment(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
-
           <div>
             <Label>Extra Monthly Amount ($)</Label>
-            <Input
-              type="number"
-              value={extra}
-              min={0}
-              onChange={(e) => setExtra(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={10000}
+                step={10}
+                value={[extra]}
+                onValueChange={([v]) => setExtra(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={extra}
+                min={0}
+                onChange={(e) => setExtra(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
         </div>
         <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
           <div>
             <Label>Expected Investment Return (%/year)</Label>
-            <Input
-              type="number"
-              value={investReturn}
-              min={0}
-              step={0.1}
-              onChange={(e) => setInvestReturn(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={15}
+                step={0.1}
+                value={[investReturn]}
+                onValueChange={([v]) => setInvestReturn(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={investReturn}
+                min={0}
+                step={0.1}
+                onChange={(e) => setInvestReturn(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
-
           <div>
             <Label>Years to Compare</Label>
-            <Input
-              type="number"
-              value={years}
-              min={1}
-              max={40}
-              onChange={(e) => setYears(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={1}
+                max={40}
+                step={1}
+                value={[years]}
+                onValueChange={([v]) => setYears(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={years}
+                min={1}
+                max={40}
+                onChange={(e) => setYears(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
         </div>
       </form>
       <h2>Results after {years} years</h2>
-      <div className="flex flex-col gap-5 mt-3">
-        <div>
-          <h3>Pay Off Debt First</h3>
-          <p>
-            Total Value:{" "}
-            <strong>
-              $
-              {payoff.totalValue.toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-          <p> Debt paid off in {payoff.debtFreeMonth} months</p>
+      <div className="gap-5 grid grid-cols-1 md:grid-cols-2 mt-3">
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+            Pay Off Debt First
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">Total Value:</span>{" "}
+              <strong className="text-blue-900">
+                $
+                {payoff.totalValue.toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </li>
+            <li>
+              <span className="text-gray-700">Debt paid off in:</span>{" "}
+              <strong className="text-blue-900">
+                {payoff.debtFreeMonth} months
+              </strong>
+            </li>
+          </ul>
         </div>
-        <div>
-          <h3>Invest Extra While Paying Minimum</h3>
-          <p>
-            Total Value:{" "}
-            <strong>
-              $
-              {invest.investValue.toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
+            Invest Extra While Paying Minimum
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">Total Value:</span>{" "}
+              <strong className="text-green-900">
+                $
+                {invest.investValue.toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </li>
+          </ul>
         </div>
       </div>
-      <p style={{ marginTop: 24, color: "#666" }}>
+      <p className="mt-4">
         Note: This calculator assumes fixed rates, no taxes, and no investment
         losses.
       </p>
