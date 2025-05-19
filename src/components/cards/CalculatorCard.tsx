@@ -12,7 +12,7 @@ export default function CalculatorCard({
   const router = useRouter();
   const pathname = usePathname();
   const formatTitle = (title: string) => {
-    return title.toLowerCase().replaceAll(/\s+/g, "-");
+    return title.toLowerCase().replaceAll(",", "").replaceAll(/\s+/g, "-");
   };
   return (
     <Card>
