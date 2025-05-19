@@ -73,6 +73,57 @@ export default function WorkingCapitalCalculator() {
           </div>
         </div>
 
+        {/* Example table for a typical person */}
+        <div className="mb-6 overflow-x-auto">
+          <h3 className="mb-2">
+            Example: Typical Personal Assets and Liabilities
+          </h3>
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Example Assets</th>
+                <th className="px-3 py-2 border text-left">
+                  Example Liabilities
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Cash in checking/savings accounts
+                </td>
+                <td className="px-3 py-2 border">Credit card balances</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Paychecks not yet deposited
+                </td>
+                <td className="px-3 py-2 border">Unpaid utility bills</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Groceries or supplies on hand
+                </td>
+                <td className="px-3 py-2 border">Short-term personal loans</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Refunds or money owed to you
+                </td>
+                <td className="px-3 py-2 border">
+                  Upcoming rent or mortgage payment
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Prepaid subscriptions (e.g., gym, streaming)
+                </td>
+                <td className="px-3 py-2 border">Outstanding medical bills</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <div className="mb-6">
           <h3>Formula</h3>
           <p className="text-gray-700">
