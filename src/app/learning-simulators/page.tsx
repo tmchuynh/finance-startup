@@ -30,7 +30,7 @@ export default function LearningSimulatorPage() {
           link="/learning-simulators/stock-market-simulator"
         />
         <ResourceCard
-          title="Crypto Market Simulator"
+          title="Crypto Trading Simulator"
           description="This simulator allows you to practice trading cryptocurrencies in a risk-free environment. You can buy and sell cryptocurrencies, track your portfolio, and learn about the crypto market without any financial risk."
           link="/learning-simulators/crypto-trading-simulator"
         />
@@ -40,7 +40,7 @@ export default function LearningSimulatorPage() {
           link="/learning-simulators/real-estate-simulator"
         />
         <ResourceCard
-          title="Compound Interest Simulator"
+          title="Compound Interest Visualizer"
           description="This simulator allows you to practice calculating compound interest in a risk-free environment. You can explore different investment scenarios, track your savings growth, and learn about the power of compound interest without any financial risk."
           link="/learning-simulators/compound-interest-visualizer"
         />
