@@ -72,8 +72,32 @@ export default function IraVsRothDecisionTool() {
   };
 
   return (
-    <div className="bg-white shadow mx-auto p-6 rounded max-w-md">
-      <h1 className="mb-6 font-bold text-2xl">IRA vs Roth IRA Decision Tool</h1>
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+      <h1>IRA vs Roth IRA Decision Tool</h1>
+      <h5>Make Informed Decisions About Your Retirement Savings</h5>
+      <p>
+        Use this tool to help determine whether a Traditional IRA or Roth IRA
+        may be more suitable for your retirement savings strategy. Please fill
+        out the form below with your financial information, and we will provide
+        you with a recommendation based on your current and expected tax
+        situation.
+      </p>
+      <p className="mt-4">
+        This tool is for informational purposes only and should not be
+        considered financial advice. Please consult with a financial advisor or
+        tax professional for personalized recommendations based on your
+        individual circumstances.
+      </p>
+      <p className="mt-4">
+        Please enter your annual income, tax filing status, current tax bracket,
+        and expected retirement tax bracket. The tool will provide you with a
+        recommendation on whether a Traditional IRA or Roth IRA may be more
+        suitable for you.
+      </p>
+      <p className="mt-4">
+        Note: The income limits for Roth IRA contributions may change annually.
+        Please check the IRS website for the most up-to-date information.
+      </p>
 
       <form
         onSubmit={handleSubmit}
