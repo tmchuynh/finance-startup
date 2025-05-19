@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 
 const NewVsUsedVsLeasingCar: React.FC = () => {
@@ -137,253 +139,251 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
       </div>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <h2>New Car</h2>
-          <label>
-            Price ($)
-            <input
-              type="number"
-              value={newPrice}
-              min={0}
-              onChange={(e) => setNewPrice(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Down Payment ($)
-            <input
-              type="number"
-              value={newDown}
-              min={0}
-              onChange={(e) => setNewDown(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Loan Rate (%)
-            <input
-              type="number"
-              value={newLoanRate}
-              min={0}
-              step={0.01}
-              onChange={(e) => setNewLoanRate(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Loan Term (months)
-            <input
-              type="number"
-              value={newLoanTerm}
-              min={1}
-              max={84}
-              onChange={(e) => setNewLoanTerm(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Insurance (annual $)
-            <input
-              type="number"
-              value={newInsurance}
-              min={0}
-              onChange={(e) => setNewInsurance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Maintenance (annual $)
-            <input
-              type="number"
-              value={newMaintenance}
-              min={0}
-              onChange={(e) => setNewMaintenance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Depreciation (% of price/year)
-            <input
-              type="number"
-              value={newDepreciation}
-              min={0}
-              step={0.1}
-              onChange={(e) => setNewDepreciation(Number(e.target.value))}
-            />
-          </label>
-        </div>
-        <div>
-          <h2>Used Car</h2>
-          <label>
-            Price ($)
-            <input
-              type="number"
-              value={usedPrice}
-              min={0}
-              onChange={(e) => setUsedPrice(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Down Payment ($)
-            <input
-              type="number"
-              value={usedDown}
-              min={0}
-              onChange={(e) => setUsedDown(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Loan Rate (%)
-            <input
-              type="number"
-              value={usedLoanRate}
-              min={0}
-              step={0.01}
-              onChange={(e) => setUsedLoanRate(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Loan Term (months)
-            <input
-              type="number"
-              value={usedLoanTerm}
-              min={1}
-              max={84}
-              onChange={(e) => setUsedLoanTerm(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Insurance (annual $)
-            <input
-              type="number"
-              value={usedInsurance}
-              min={0}
-              onChange={(e) => setUsedInsurance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Maintenance (annual $)
-            <input
-              type="number"
-              value={usedMaintenance}
-              min={0}
-              onChange={(e) => setUsedMaintenance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Depreciation (% of price/year)
-            <input
-              type="number"
-              value={usedDepreciation}
-              min={0}
-              step={0.1}
-              onChange={(e) => setUsedDepreciation(Number(e.target.value))}
-            />
-          </label>
-          <h2 style={{ marginTop: 32 }}>Leasing</h2>
-          <label>
-            Lease Payment (monthly $)
-            <input
-              type="number"
-              value={leaseMonthly}
-              min={0}
-              onChange={(e) => setLeaseMonthly(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Lease Down Payment ($)
-            <input
-              type="number"
-              value={leaseDown}
-              min={0}
-              onChange={(e) => setLeaseDown(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Lease Term (months)
-            <input
-              type="number"
-              value={leaseTerm}
-              min={1}
-              max={60}
-              onChange={(e) => setLeaseTerm(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Insurance (annual $)
-            <input
-              type="number"
-              value={leaseInsurance}
-              min={0}
-              onChange={(e) => setLeaseInsurance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Maintenance (annual $)
-            <input
-              type="number"
-              value={leaseMaintenance}
-              min={0}
-              onChange={(e) => setLeaseMaintenance(Number(e.target.value))}
-            />
-          </label>
-          <h2 style={{ marginTop: 32 }}>Years to Compare</h2>
-          <label>
-            Years
-            <input
+        <div className="mt-5">
+          <h2>Years to Compare</h2>
+          <div>
+            <Label>Years</Label>
+            <Input
               type="number"
               value={years}
               min={1}
               max={10}
               onChange={(e) => setYears(Number(e.target.value))}
             />
-          </label>
+          </div>
+        </div>
+        <div className="mt-5">
+          <h2>New Car</h2>
+          <div className="gap-4 grid lg:grid-cols-2 mt-3">
+            <div>
+              <Label>Price ($)</Label>
+              <Input
+                type="number"
+                value={newPrice}
+                min={0}
+                onChange={(e) => setNewPrice(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Down Payment ($)</Label>
+              <Input
+                type="number"
+                value={newDown}
+                min={0}
+                onChange={(e) => setNewDown(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Loan Rate (%)</Label>
+              <Input
+                type="number"
+                value={newLoanRate}
+                min={0}
+                step={0.01}
+                onChange={(e) => setNewLoanRate(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Loan Term (months)</Label>
+              <Input
+                type="number"
+                value={newLoanTerm}
+                min={1}
+                max={84}
+                onChange={(e) => setNewLoanTerm(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Insurance (annual $)</Label>
+              <Input
+                type="number"
+                value={newInsurance}
+                min={0}
+                onChange={(e) => setNewInsurance(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Maintenance (annual $)</Label>
+              <Input
+                type="number"
+                value={newMaintenance}
+                min={0}
+                onChange={(e) => setNewMaintenance(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Depreciation (% of price/year)</Label>
+              <Input
+                type="number"
+                value={newDepreciation}
+                min={0}
+                step={0.1}
+                onChange={(e) => setNewDepreciation(Number(e.target.value))}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <h2>Used Car</h2>
+          <div className="gap-4 grid lg:grid-cols-2 mt-3">
+            <div>
+              <Label>Price ($)</Label>
+              <Input
+                type="number"
+                value={usedPrice}
+                min={0}
+                onChange={(e) => setUsedPrice(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Down Payment ($)</Label>
+              <Input
+                type="number"
+                value={usedDown}
+                min={0}
+                onChange={(e) => setUsedDown(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Loan Rate (%)</Label>
+              <Input
+                type="number"
+                value={usedLoanRate}
+                min={0}
+                step={0.01}
+                onChange={(e) => setUsedLoanRate(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Loan Term (months)</Label>
+              <Input
+                type="number"
+                value={usedLoanTerm}
+                min={1}
+                max={84}
+                onChange={(e) => setUsedLoanTerm(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Insurance (annual $)</Label>
+              <Input
+                type="number"
+                value={usedInsurance}
+                min={0}
+                onChange={(e) => setUsedInsurance(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Maintenance (annual $)</Label>
+              <Input
+                type="number"
+                value={usedMaintenance}
+                min={0}
+                onChange={(e) => setUsedMaintenance(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Depreciation (% of price/year)</Label>
+              <Input
+                type="number"
+                value={usedDepreciation}
+                min={0}
+                step={0.1}
+                onChange={(e) => setUsedDepreciation(Number(e.target.value))}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-5">
+          <h2>Leasing</h2>
+          <div className="gap-4 grid lg:grid-cols-2 mt-3">
+            <div>
+              <Label>Lease Payment (monthly $)</Label>
+              <Input
+                type="number"
+                value={leaseMonthly}
+                min={0}
+                onChange={(e) => setLeaseMonthly(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Lease Down Payment ($)</Label>
+              <Input
+                type="number"
+                value={leaseDown}
+                min={0}
+                onChange={(e) => setLeaseDown(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Lease Term (months)</Label>
+              <Input
+                type="number"
+                value={leaseTerm}
+                min={1}
+                max={60}
+                onChange={(e) => setLeaseTerm(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Insurance (annual $)</Label>
+              <Input
+                type="number"
+                value={leaseInsurance}
+                min={0}
+                onChange={(e) => setLeaseInsurance(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <Label>Maintenance (annual $)</Label>
+              <Input
+                type="number"
+                value={leaseMaintenance}
+                min={0}
+                onChange={(e) => setLeaseMaintenance(Number(e.target.value))}
+              />
+            </div>
+          </div>
         </div>
       </form>
-      <h2>Results for {years} years</h2>
-      <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
-        <div>
-          <h3>New Car</h3>
-          <p>
-            <strong>
-              $
-              {calcNewCarTotal().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-        <div>
-          <h3>Used Car</h3>
-          <p>
-            <strong>
-              $
-              {calcUsedCarTotal().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-        <div>
-          <h3>Leasing</h3>
-          <p>
-            <strong>
-              $
-              {calcLeaseTotal().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
+      <div className="mt-5">
+        {" "}
+        <h2>Results for {years} years</h2>
+        <div className="gap-5 grid md:grid-cols-3 mt-3">
+          <div>
+            <h3>New Car</h3>
+            <p>
+              <strong>
+                $
+                {calcNewCarTotal().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
+          <div>
+            <h3>Used Car</h3>
+            <p>
+              <strong>
+                $
+                {calcUsedCarTotal().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
+          <div>
+            <h3>Leasing</h3>
+            <p>
+              <strong>
+                $
+                {calcLeaseTotal().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
         </div>
       </div>
       <p style={{ marginTop: 24, color: "#666" }}>

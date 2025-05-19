@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 
 const InvestingVsSaving: React.FC = () => {
@@ -31,70 +33,71 @@ const InvestingVsSaving: React.FC = () => {
         saving based on your initial investment, monthly contributions, and
         expected returns. Please fill out the form below to see the results.
       </p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label>
-            Initial Amount ($)
-            <input
+      <form onSubmit={(e) => e.preventDefault()} className="mt-5">
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Initial Amount ($)</Label>
+            <Input
               type="number"
               value={initial}
               min={0}
               onChange={(e) => setInitial(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Monthly Contribution ($)
-            <input
+          </div>
+
+          <div>
+            <Label>Monthly Contribution ($)</Label>
+            <Input
               type="number"
               value={monthly}
               min={0}
               onChange={(e) => setMonthly(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
-        <div>
-          <label>
-            Expected Investment Return (%/year)
-            <input
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Expected Investment Return (%/year)</Label>
+            <Input
               type="number"
               value={investReturn}
               min={0}
               step={0.1}
               onChange={(e) => setInvestReturn(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Savings Account Rate (%/year)
-            <input
+          </div>
+
+          <div>
+            <Label>Savings Account Rate (%/year)</Label>
+            <Input
               type="number"
               value={savingRate}
               min={0}
               step={0.1}
               onChange={(e) => setSavingRate(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Years to Compare
-            <input
+          </div>
+
+          <div>
+            <Label>Years to Compare</Label>
+            <Input
               type="number"
               value={years}
               min={1}
               max={40}
               onChange={(e) => setYears(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
       </form>
       <h2>Results after {years} years</h2>
-      <div style={{ display: "flex", gap: 32 }}>
+      <div className="flex flex-col gap-5 mt-3">
         <div>
           <h3>Investing</h3>
           <p>
+            Future Value:{" "}
             <strong>
-              Future Value: $
+              $
               {investFV.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}
@@ -104,8 +107,9 @@ const InvestingVsSaving: React.FC = () => {
         <div>
           <h3>Saving</h3>
           <p>
+            Future Value:{" "}
             <strong>
-              Future Value: $
+              $
               {savingFV.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}
@@ -113,7 +117,7 @@ const InvestingVsSaving: React.FC = () => {
           </p>
         </div>
       </div>
-      <p style={{ marginTop: 24, color: "#666" }}>
+      <p className="mt-4">
         Note: This calculator assumes fixed rates and does not account for taxes
         or investment losses.
       </p>
