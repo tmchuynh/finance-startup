@@ -42,6 +42,7 @@ export default function FinanceCalculatorPage() {
                       router.push(
                         `/finance-calculators/${category.id}/${item.title
                           .toLowerCase()
+                          .replaceAll(",", "")
                           .replaceAll(/\s+/g, "-")}`
                       )
                     }
