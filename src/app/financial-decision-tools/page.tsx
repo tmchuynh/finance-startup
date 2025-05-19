@@ -50,9 +50,9 @@ export default function FinancialDecisionToolsPage() {
           link="/financial-decision-tools/debt-consolidation-vs-current"
         />
         <ResourceCard
-          title="Balance Transfer vs Paydown"
+          title="Credit Card Balance Transfer vs Paying Down Existing Cards"
           description="Compare the benefits and drawbacks of balance transfers and paydowns to determine which is best for your debt management strategy."
-          link="/financial-decision-tools/balance-transfer-vs-paydown"
+          link="/financial-decision-tools/credit-card-balance-transfer-vs-paying-down-existing-cards"
         />
         <ResourceCard
           title="Credit Card vs Personal Loan"
