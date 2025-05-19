@@ -1,9 +1,11 @@
 import BackToTop from "@/components/button/BackToTop";
 import DynamicBreadcrumb from "@/components/navigation/dynamic-breadcrumb";
 import Footer from "@/components/navigation/Footer";
-import { Providers } from "@/context/providers";
-import "./globals.css";
 import NavBar from "@/components/navigation/NavBar";
+import { Providers } from "@/context/providers";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -13,6 +15,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="relative flex flex-col min-h-screen">
+        <SpeedInsights />
+        <Analytics />
         <Providers>
           <main className="flex-grow pb-24 md:pb-0">
             <NavBar />
