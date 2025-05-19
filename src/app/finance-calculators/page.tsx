@@ -14,11 +14,19 @@ export default function FinanceCalculatorPage() {
     list: category.list,
   }));
   return (
-    <div className="flex flex-col justify-center items-center mx-auto mt-10 w-10/12 md:w-11/12">
-      <h1 className="font-bold text-2xl">Finance Calculators</h1>
-      <p>Welcome to the finance calculators collection!</p>
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+      <h1>Finance Calculators</h1>
+      <h5>Explore our collection of finance calculators</h5>
+      <p>
+        Our finance calculators are designed to help you make informed financial
+        decisions. Whether you're looking to calculate your mortgage payments,
+        determine your investment returns, or plan for retirement, our
+        calculators provide accurate and easy-to-use tools to assist you.
+        Explore our collection of calculators below and take control of your
+        financial future!
+      </p>
 
-      <div className="space-y-6">
+      <div className="space-y-6 mt-8">
         {financeCalculators.map((category) => (
           <div key={category.id}>
             <h2

@@ -15,11 +15,20 @@ export default function FinanceChecklistsPage() {
     list: category.list,
   }));
   return (
-    <div className="flex flex-col justify-center items-center mx-auto mt-10 w-10/12 md:w-11/12">
-      <h1 className="font-bold text-2xl">Finance Checklists</h1>
-      <p>Welcome to the Finance Checklists page!</p>
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+      <h1>Finance Checklists</h1>
+      <h5>Explore our collection of finance checklists</h5>
+      <p>
+        Our finance checklists are designed to help you stay organized and
+        ensure that you cover all the important aspects of your financial
+        planning. Whether you're preparing for a major life event, managing your
+        investments, or planning for retirement, our checklists provide a
+        comprehensive guide to help you navigate the process. Explore our
+        collection of checklists below and take control of your financial
+        future!
+      </p>
 
-      <div className="space-y-6">
+      <div className="space-y-6 mt-8">
         {checklists.map((category) => (
           <div key={category.id}>
             <h2
