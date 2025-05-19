@@ -157,7 +157,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* CTA section */}
-      <div className="relative -z-10 mt-32 sm:mt-40 isolate">
+      <div className="relative mt-32 sm:mt-40 isolate">
         <div className="mx-auto sm:px-6 lg:px-8">
           <div className="flex lg:flex-row flex-col lg:items-center gap-16 xl:gap-x-20 bg-white/5 mx-auto lg:mx-0 px-6 xl:px-20 py-16 lg:py-20 sm:p-8 sm:rounded-3xl ring-1 ring-white/10 max-w-2xl lg:max-w-none">
             <Image
@@ -167,7 +167,7 @@ export default function AboutUsPage() {
               width={2000}
               height={800}
             />
-            <div className="flex-auto w-full">
+            <div className="w-full">
               <h2>Join our team</h2>
               <p>
                 We are always looking for talented individuals who share our
