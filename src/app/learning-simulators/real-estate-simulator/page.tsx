@@ -96,17 +96,17 @@ export default function RealEstateSimulatorPage() {
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
           }
-          if (p.rentedTo && p.rentAmount) {
-            setCash((c) => c + p.rentAmount!);
-            newTransactions.push({
-              id: uuidv4(),
-              type: "RENT",
-              propertyName: p.name,
-              amount: p.rentAmount!,
-              date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000),
-              notes: `Monthly rent received from ${p.rentedTo?.name}`,
-            });
-          }
+            if (p.rentedTo && p.rentAmount) {
+              setCash((c) => c + p.rentAmount!);
+              newTransactions.push({
+                id: uuidv4(),
+                type: "RENT",
+                propertyName: p.name,
+                amount: p.rentAmount!,
+                date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000),
+                notes: `Monthly rent received from ${p.rentedTo?.name}`,
+              });
+            }
           return {
             ...p,
             price: newPrice,
