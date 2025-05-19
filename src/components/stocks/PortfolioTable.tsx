@@ -1,4 +1,5 @@
 import { Portfolio, Stock } from "@/lib/interfaces";
+import { formatNumberToCurrency } from "@/lib/utils/format";
 import React from "react";
 
 interface PortfolioTableProps {
@@ -56,19 +57,20 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
             </td>
             <td className="p-2 border border-gray-300">{h.quantity}</td>
             <td className="p-2 border border-gray-300">
-              ${h.averagePrice.toFixed(2)}
+              {formatNumberToCurrency(h.averagePrice, 2, 2)}
             </td>
             <td className="p-2 border border-gray-300">
-              ${currentPrice.toFixed(2)}
+              {formatNumberToCurrency(currentPrice, 2, 2)}
             </td>
             <td className="p-2 border border-gray-300">
-              ${totalValue.toFixed(2)}
+              {formatNumberToCurrency(totalValue, 2, 2)}
             </td>
             <td
               className="p-2 border border-gray-300"
               style={{ color: change >= 0 ? "green" : "red" }}
             >
-              {change >= 0 ? "+" : ""}${change.toFixed(2)}
+              {change >= 0 ? "+" : ""}
+              {formatNumberToCurrency(change, 2, 2)}
             </td>
             <td
               className="p-2 border border-gray-300"
