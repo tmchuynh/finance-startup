@@ -53,21 +53,6 @@ export const goals = [
   "Become the most trusted independent platform for financial calculators and decision-making tools globally.",
 ];
 
-export const benefits = [
-  "Mission-Driven Work",
-  "Remote-First Flexibility",
-  "Meaningful Equity",
-  "Competitive Compensation",
-  "Health & Wellness",
-  "Professional Development",
-  "Tech & Tools You Need",
-  "Purposeful Culture",
-  "Time Off That Matters",
-  "Diverse & Inclusive Hiring",
-  "Work That Scales",
-  "Team of Experts",
-];
-
 export const metrics = [
   {
     title: "Team size",

@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { metrics, values, benefits } from "@/lib/constants/about/about";
+import { metrics, values } from "@/lib/constants/about/about";
+import { benefits } from "@/lib/constants/about/careers/benefits";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -181,12 +182,12 @@ export default function AboutUsPage() {
                 className="gap-x-8 gap-y-3 grid grid-cols-1 sm:grid-cols-2 mt-10 text-base/7"
               >
                 {benefits.map((benefit) => (
-                  <li key={benefit} className="flex gap-x-3">
+                  <li key={benefit.title} className="flex gap-x-3">
                     <CheckCircleIcon
                       aria-hidden="true"
                       className="flex-none w-5 h-7"
                     />
-                    {benefit}
+                    {benefit.title}
                   </li>
                 ))}
               </ul>
