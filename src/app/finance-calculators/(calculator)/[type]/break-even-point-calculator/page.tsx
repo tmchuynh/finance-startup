@@ -31,18 +31,31 @@ export default function BreakEvenPointCalculator() {
 
   return (
     <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
-      <h1 className="mb-2 font-bold text-2xl">Break-Even Point Calculator</h1>
-      <p className="mb-4">
-        Calculate the number of units or sales dollars needed to cover your
-        costs and start making a profit.
+      <h1>Break-Even Point Calculator</h1>
+      <h5>
+        Estimate the number of units you need to sell to cover your fixed and
+        variable costs.
+      </h5>
+      <p>
+        Breaking even in business means covering all your costs without making a
+        profit or loss. It’s a crucial point for any business, as it indicates
+        the minimum sales needed to avoid losses. It is important for pricing
+        strategies, sales targets, and overall financial health. Understanding
+        your break-even point helps you make informed decisions about pricing,
+        sales strategies, and cost management. It also allows you to communicate
+        effectively with stakeholders about your business's financial health and
+        growth potential.
       </p>
-      <div className="mb-4 text-gray-700 text-sm">
+      <div className="mb-4">
         <p>
           <strong>What is Break-Even Point?</strong>
           <br />
           The break-even point is the level of sales at which total revenues
           equal total costs, resulting in zero profit. It helps you understand
-          how much you need to sell to cover your expenses.
+          how much you need to sell to cover your expenses. It is a critical
+          metric for assessing the financial viability of your business and
+          making informed decisions about pricing, sales targets, and cost
+          management.
         </p>
         <p className="mt-2">
           <strong>Formula:</strong>
@@ -56,7 +69,11 @@ export default function BreakEvenPointCalculator() {
           <strong>Why it matters:</strong>
           <br />
           Knowing your break-even point helps you set sales targets, price your
-          products, and manage costs more effectively.
+          products, and manage costs more effectively. It’s essential for
+          financial planning and risk management. It is also useful for
+          evaluating the impact of changes in costs or pricing on your
+          profitability. This information can guide your business decisions and
+          strategies.
         </p>
       </div>
       <div className="gap-4 grid md:grid-cols-3">

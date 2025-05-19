@@ -43,14 +43,21 @@ export default function CashFlowForecastingCalculator() {
 
   return (
     <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
-      <h1 className="mb-2 font-bold text-2xl">
-        Cash Flow Forecasting Calculator
-      </h1>
+      <h1>Cash Flow Forecasting Calculator</h1>
+      <h5>
+        Estimate your business's cash flow for the next month based on expected
+        income and expenses.
+      </h5>
       <p className="mb-4">
-        Estimate your business's cash position at the end of the month by
-        forecasting income, expenses, and payment timing.
+        This calculator helps you forecast your cash flow by considering
+        expected income, expenses, and the timing of cash inflows and outflows.
+        By understanding your cash flow, you can make informed decisions about
+        your business's financial health and liquidity. This is crucial for
+        managing your operations, planning for growth, and ensuring you have
+        enough cash to meet your obligations. Use this tool to assess your cash
+        flow needs and make strategic financial decisions.
       </p>
-      <div className="mb-4 text-gray-700 text-sm">
+      <div className="mb-4">
         <p>
           <strong>What is Cash Flow Forecasting?</strong>
           <br />

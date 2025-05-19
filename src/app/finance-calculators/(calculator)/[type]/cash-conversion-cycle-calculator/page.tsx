@@ -30,59 +30,80 @@ export default function CashConversionCycleCalculator() {
 
   return (
     <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
-      <h1 className="mb-2 font-bold text-2xl">Cash Conversion Cycle Calculator</h1>
+      <h1>Cash Conversion Cycle Calculator</h1>
+      <h5>
+        Calculate your cash conversion cycle to understand your business's
+        liquidity.
+      </h5>
       <p className="mb-4">
-        Calculate your business's cash conversion cycle (CCC) to assess how efficiently you manage inventory, receivables, and payables.
+        This calculator helps you determine how efficiently your business is
+        managing its cash flow. The cash conversion cycle (CCC) is a key metric
+        that indicates the time it takes for a company to convert its
+        investments in inventory and accounts receivable into cash. A shorter
+        CCC means your business recovers cash faster, improving liquidity and
+        reducing financing needs. Use this tool to assess your cash flow
+        management and make informed decisions about your operations.
       </p>
-      <div className="mb-4 text-gray-700 text-sm">
+
+      <div className="mb-4">
         <p>
           <strong>What is Cash Conversion Cycle?</strong>
           <br />
-          The cash conversion cycle (CCC) measures the time (in days) it takes for a business to convert its investments in inventory and other resources into cash flows from sales. It combines inventory, receivables, and payables cycles.
+          The cash conversion cycle (CCC) measures the time (in days) it takes
+          for a business to convert its investments in inventory and other
+          resources into cash flows from sales. It combines inventory,
+          receivables, and payables cycles.
         </p>
         <p className="mt-2">
           <strong>Formula:</strong>
           <br />
           <code>
-            CCC = Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payables Outstanding (DPO)
+            CCC = Days Inventory Outstanding (DIO) + Days Sales Outstanding
+            (DSO) - Days Payables Outstanding (DPO)
           </code>
         </p>
         <p className="mt-2">
           <strong>Why it matters:</strong>
-          <br />
-          A shorter CCC means your business recovers cash faster, improving liquidity and reducing financing needs.
+          <br />A shorter CCC means your business recovers cash faster,
+          improving liquidity and reducing financing needs.
         </p>
       </div>
       <div className="gap-4 grid md:grid-cols-3">
         <div className="mb-2">
-          <label className="block mb-1 font-medium">Days Inventory Outstanding (DIO):</label>
+          <label className="block mb-1 font-medium">
+            Days Inventory Outstanding (DIO):
+          </label>
           <input
             type="number"
             className="px-2 py-1 border rounded w-full"
             value={daysInventoryOutstanding}
-            onChange={e => setDaysInventoryOutstanding(e.target.value)}
+            onChange={(e) => setDaysInventoryOutstanding(e.target.value)}
             placeholder="e.g. 45"
             min="0"
           />
         </div>
         <div className="mb-2">
-          <label className="block mb-1 font-medium">Days Sales Outstanding (DSO):</label>
+          <label className="block mb-1 font-medium">
+            Days Sales Outstanding (DSO):
+          </label>
           <input
             type="number"
             className="px-2 py-1 border rounded w-full"
             value={daysSalesOutstanding}
-            onChange={e => setDaysSalesOutstanding(e.target.value)}
+            onChange={(e) => setDaysSalesOutstanding(e.target.value)}
             placeholder="e.g. 30"
             min="0"
           />
         </div>
         <div className="mb-2">
-          <label className="block mb-1 font-medium">Days Payables Outstanding (DPO):</label>
+          <label className="block mb-1 font-medium">
+            Days Payables Outstanding (DPO):
+          </label>
           <input
             type="number"
             className="px-2 py-1 border rounded w-full"
             value={daysPayablesOutstanding}
-            onChange={e => setDaysPayablesOutstanding(e.target.value)}
+            onChange={(e) => setDaysPayablesOutstanding(e.target.value)}
             placeholder="e.g. 25"
             min="0"
           />

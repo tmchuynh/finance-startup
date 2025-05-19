@@ -53,12 +53,16 @@ export default function BusinessExpenseTracker() {
 
   return (
     <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
-      <h1 className="mb-2 font-bold text-2xl">Business Expense Tracker</h1>
+      <h1>Business Expense Tracker</h1>
+      <h5>Analyze your business expenses effectively.</h5>
       <p className="mb-4">
-        Track and analyze your business expenses to manage your budget and
-        identify areas for cost reduction.
+        This tool helps you track and analyze your business expenses. By
+        categorizing your expenses as fixed or variable, you can gain insights
+        into your spending patterns and make informed financial decisions. Use
+        this tracker to optimize your budget and improve your business's
+        profitability.
       </p>
-      <div className="mb-4 text-gray-700 text-sm">
+      <div className="mb-4">
         <p>
           <strong>How does it work?</strong>
           <br />
