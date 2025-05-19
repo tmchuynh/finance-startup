@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { benefits, metrics, values } from "@/lib/constants/about";
+import { metrics, values, benefits } from "@/lib/constants/about/about";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
