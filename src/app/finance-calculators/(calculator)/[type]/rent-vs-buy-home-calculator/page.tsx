@@ -219,6 +219,288 @@ export default function RentVsBuyHomeCalculator() {
         </div>
 
         <div className="mb-6">
+          <h3>Typical Input Values</h3>
+          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Field</th>
+                <th className="px-3 py-2 border text-left">Typical Value</th>
+                <th className="px-3 py-2 border text-left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Down Payment (%)</td>
+                <td className="px-3 py-2 border">20%</td>
+                <td className="px-3 py-2 border">
+                  Standard for conventional loans; FHA can be as low as 3.5%
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Mortgage Rate (%)</td>
+                <td className="px-3 py-2 border">6% - 7%</td>
+                <td className="px-3 py-2 border">
+                  Varies by credit score, loan type, and market (2024 average:
+                  ~6.5%)
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Insurance Rate (%)</td>
+                <td className="px-3 py-2 border">0.25% - 0.5%</td>
+                <td className="px-3 py-2 border">
+                  Annual premium as % of home value (varies by state)
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Maintenance Rate (%)</td>
+                <td className="px-3 py-2 border">1% - 2%</td>
+                <td className="px-3 py-2 border">
+                  Annual maintenance as % of home value
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Annual Rent Increase (%)</td>
+                <td className="px-3 py-2 border">2% - 5%</td>
+                <td className="px-3 py-2 border">
+                  Typical annual rent growth (U.S. average: ~3%)
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">HOA Fees (monthly)</td>
+                <td className="px-3 py-2 border">$0 - $400</td>
+                <td className="px-3 py-2 border">
+                  Depends on property type and location
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Investment Return (%)</td>
+                <td className="px-3 py-2 border">4% - 7%</td>
+                <td className="px-3 py-2 border">
+                  Average annual return for a balanced investment portfolio
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Property Tax Rate (%)</td>
+                <td className="px-3 py-2 border">0.5% - 2.5%</td>
+                <td className="px-3 py-2 border">
+                  Varies by state/county (U.S. average: ~1.2%)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="gap-4 grid md:grid-cols-2">
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Monthly Rent ($):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={monthlyRent}
+              onChange={(e) => setMonthlyRent(e.target.value)}
+              placeholder="Enter current monthly rent"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Annual Rent Increase (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={rentIncrease}
+              onChange={(e) => setRentIncrease(e.target.value)}
+              placeholder="e.g., 3"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Home Price ($):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={homePrice}
+              onChange={(e) => setHomePrice(e.target.value)}
+              placeholder="Enter home price"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Down Payment (%):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={downPayment}
+              onChange={(e) => setDownPayment(e.target.value)}
+              placeholder="e.g., 20"
+              min="0"
+              max="100"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Mortgage Rate (%):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={mortgageRate}
+              onChange={(e) => setMortgageRate(e.target.value)}
+              placeholder="e.g., 6"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Property Tax Rate (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={propertyTaxRate}
+              onChange={(e) => setPropertyTaxRate(e.target.value)}
+              placeholder="e.g., 1.2"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Insurance Rate (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={insuranceRate}
+              onChange={(e) => setInsuranceRate(e.target.value)}
+              placeholder="e.g., 0.35"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              HOA Fees (monthly) ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={hoaFees}
+              onChange={(e) => setHoaFees(e.target.value)}
+              placeholder="e.g., 0"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Maintenance Rate (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={maintenanceRate}
+              onChange={(e) => setMaintenanceRate(e.target.value)}
+              placeholder="e.g., 1"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Investment Return (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={investmentReturn}
+              onChange={(e) => setInvestmentReturn(e.target.value)}
+              placeholder="e.g., 5"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Years:</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={years}
+              onChange={(e) => setYears(e.target.value)}
+              placeholder="e.g., 7"
+              min="1"
+            />
+          </div>
+        </div>
+        <button
+          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          onClick={handleCalculate}
+        >
+          Calculate Rent vs Buy
+        </button>
+        {result && (
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="bg-white shadow p-4 border rounded-lg">
+              <h3 className="mb-2 font-semibold">Results</h3>
+              <table className="border border-gray-300 min-w-full text-sm">
+                <tbody>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Total Cost of Renting
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.totalRent.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Total Cost of Buying
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.totalBuy.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Difference (Buy - Rent)
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.buyVsRent.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Recommendation
+                    </td>
+                    <td className="px-3 py-2 border">
+                      {result.recommendation}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="mt-2 text-gray-600 text-sm">
+                <strong>Note:</strong> This calculator does not include home
+                appreciation, tax deductions, or selling costs. Actual results
+                may vary.
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="my-6">
           <h3>Tips for Beginners</h3>
           <ul className="list-disc list-inside">
             <li>
@@ -285,283 +567,6 @@ export default function RentVsBuyHomeCalculator() {
           </p>
         </div>
       </section>
-      <div className="mb-6">
-        <h3>Typical Input Values</h3>
-        <table className="mb-4 border border-gray-300 min-w-full text-sm">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-3 py-2 border text-left">Field</th>
-              <th className="px-3 py-2 border text-left">Typical Value</th>
-              <th className="px-3 py-2 border text-left">Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="px-3 py-2 border">Down Payment (%)</td>
-              <td className="px-3 py-2 border">20%</td>
-              <td className="px-3 py-2 border">
-                Standard for conventional loans; FHA can be as low as 3.5%
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">Mortgage Rate (%)</td>
-              <td className="px-3 py-2 border">6% - 7%</td>
-              <td className="px-3 py-2 border">
-                Varies by credit score, loan type, and market (2024 average:
-                ~6.5%)
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">Insurance Rate (%)</td>
-              <td className="px-3 py-2 border">0.25% - 0.5%</td>
-              <td className="px-3 py-2 border">
-                Annual premium as % of home value (varies by state)
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">Maintenance Rate (%)</td>
-              <td className="px-3 py-2 border">1% - 2%</td>
-              <td className="px-3 py-2 border">
-                Annual maintenance as % of home value
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">Annual Rent Increase (%)</td>
-              <td className="px-3 py-2 border">2% - 5%</td>
-              <td className="px-3 py-2 border">
-                Typical annual rent growth (U.S. average: ~3%)
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">HOA Fees (monthly)</td>
-              <td className="px-3 py-2 border">$0 - $400</td>
-              <td className="px-3 py-2 border">
-                Depends on property type and location
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">Investment Return (%)</td>
-              <td className="px-3 py-2 border">4% - 7%</td>
-              <td className="px-3 py-2 border">
-                Average annual return for a balanced investment portfolio
-              </td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2 border">Property Tax Rate (%)</td>
-              <td className="px-3 py-2 border">0.5% - 2.5%</td>
-              <td className="px-3 py-2 border">
-                Varies by state/county (U.S. average: ~1.2%)
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div className="gap-4 grid md:grid-cols-2">
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Monthly Rent ($):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={monthlyRent}
-            onChange={(e) => setMonthlyRent(e.target.value)}
-            placeholder="Enter current monthly rent"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Annual Rent Increase (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={rentIncrease}
-            onChange={(e) => setRentIncrease(e.target.value)}
-            placeholder="e.g., 3"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Home Price ($):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={homePrice}
-            onChange={(e) => setHomePrice(e.target.value)}
-            placeholder="Enter home price"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Down Payment (%):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={downPayment}
-            onChange={(e) => setDownPayment(e.target.value)}
-            placeholder="e.g., 20"
-            min="0"
-            max="100"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Mortgage Rate (%):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={mortgageRate}
-            onChange={(e) => setMortgageRate(e.target.value)}
-            placeholder="e.g., 6"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Property Tax Rate (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={propertyTaxRate}
-            onChange={(e) => setPropertyTaxRate(e.target.value)}
-            placeholder="e.g., 1.2"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Insurance Rate (%):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={insuranceRate}
-            onChange={(e) => setInsuranceRate(e.target.value)}
-            placeholder="e.g., 0.35"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            HOA Fees (monthly) ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={hoaFees}
-            onChange={(e) => setHoaFees(e.target.value)}
-            placeholder="e.g., 0"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Maintenance Rate (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={maintenanceRate}
-            onChange={(e) => setMaintenanceRate(e.target.value)}
-            placeholder="e.g., 1"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Investment Return (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={investmentReturn}
-            onChange={(e) => setInvestmentReturn(e.target.value)}
-            placeholder="e.g., 5"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Years:</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={years}
-            onChange={(e) => setYears(e.target.value)}
-            placeholder="e.g., 7"
-            min="1"
-          />
-        </div>
-      </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
-        onClick={handleCalculate}
-      >
-        Calculate Rent vs Buy
-      </button>
-      {result && (
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="border border-gray-300 min-w-full text-sm">
-              <tbody>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Total Cost of Renting
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.totalRent.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Total Cost of Buying
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.totalBuy.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Difference (Buy - Rent)
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.buyVsRent.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Recommendation
-                  </td>
-                  <td className="px-3 py-2 border">{result.recommendation}</td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> This calculator does not include home
-              appreciation, tax deductions, or selling costs. Actual results may
-              vary.
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
