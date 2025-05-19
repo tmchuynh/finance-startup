@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { features } from "@/lib/constants/about/home";
 import { pricingFAQs } from "@/lib/constants/faq/questions";
-import { features } from "@/lib/constants/home";
 import { pricing } from "@/lib/constants/pricing/prices";
 import { formatNumberToCurrency } from "@/lib/utils/format";
 import { CheckIcon } from "@heroicons/react/20/solid";
