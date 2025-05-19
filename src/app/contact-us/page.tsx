@@ -1,4 +1,4 @@
-import { officeLocations } from "@/lib/constants/contact/locations";
+import { officeLocations } from "@/lib/constants/about/locations";
 import { groupAndSortByProperties } from "@/lib/utils/sort";
 
 export default function ContactUsPage() {
