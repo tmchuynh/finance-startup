@@ -1,100 +1,16 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { pricingFAQs } from "@/lib/constants/faq/questions";
+import { features } from "@/lib/constants/home";
+import { pricing } from "@/lib/constants/pricing/prices";
+import { formatNumberToCurrency } from "@/lib/utils/format";
 import { CheckIcon } from "@heroicons/react/20/solid";
-import {
-  ArrowPathIcon,
-  CloudArrowUpIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
-} from "@heroicons/react/24/outline";
 import Image from "next/image";
-
-const features = [
-  {
-    name: "Push to deploy",
-    description:
-      "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: "SSL certificates",
-    description:
-      "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
-    icon: LockClosedIcon,
-  },
-  {
-    name: "Simple queues",
-    description:
-      "Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.",
-    icon: ArrowPathIcon,
-  },
-  {
-    name: "Advanced security",
-    description:
-      "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
-    icon: FingerPrintIcon,
-  },
-];
-const tiers = [
-  {
-    name: "Freelancer",
-    id: "tier-freelancer",
-    href: "#",
-    priceMonthly: "$19",
-    description: "The essentials to provide your best work for clients.",
-    features: [
-      "5 products",
-      "Up to 1,000 subscribers",
-      "Basic analytics",
-      "48-hour support response time",
-    ],
-    mostPopular: false,
-  },
-  {
-    name: "Startup",
-    id: "tier-startup",
-    href: "#",
-    priceMonthly: "$49",
-    description: "A plan that scales with your rapidly growing business.",
-    features: [
-      "25 products",
-      "Up to 10,000 subscribers",
-      "Advanced analytics",
-      "24-hour support response time",
-      "Marketing automations",
-    ],
-    mostPopular: true,
-  },
-  {
-    name: "Enterprise",
-    id: "tier-enterprise",
-    href: "#",
-    priceMonthly: "$99",
-    description: "Dedicated support and infrastructure for your company.",
-    features: [
-      "Unlimited products",
-      "Unlimited subscribers",
-      "Advanced analytics",
-      "1-hour, dedicated support response time",
-      "Marketing automations",
-    ],
-    mostPopular: false,
-  },
-];
-const faqs = [
-  {
-    id: 1,
-    question: "What's the best thing about Switzerland?",
-    answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  // More questions...
-];
+import { useRouter } from "next/navigation";
 
 export default function App() {
+  const router = useRouter();
   return (
     <main className="isolate">
       {/* Hero section */}
@@ -141,13 +57,16 @@ export default function App() {
 
       {/* Feature section */}
       <div className="mx-auto mt-32 sm:mt-56 px-6 lg:px-8 max-w-7xl">
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <h2>Deploy faster</h2>
-          <p>Everything you need to deploy your app</p>
+        <div className="mx-auto max-w-6xl lg:text-center">
+          <h2>Key Features</h2>
+          <h5>Powerful tools to help you make better financial decisions.</h5>
           <p>
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-            Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
-            In mi viverra elit nunc.
+            Our app is designed to help you make informed financial decisions.
+            With our powerful calculators, checklists, and simulators, you can
+            easily analyze your financial situation and make the best choices
+            for your future. Whether you're planning for retirement, buying a
+            home, or starting a business, our app has the tools you need to
+            succeed.
           </p>
         </div>
         <div className="mx-auto mt-16 sm:mt-20 lg:mt-24 max-w-2xl lg:max-w-4xl">
@@ -160,7 +79,14 @@ export default function App() {
                   </div>
                   {feature.name}
                 </dt>
-                <dd>{feature.description}</dd>
+                <dd>
+                  {feature.description.map((text, index) => (
+                    <p key={index} className="mt-2 text-base/7">
+                      <strong>{text.title}: </strong>
+                      {text.description}
+                    </p>
+                  ))}
+                </dd>
               </div>
             ))}
           </dl>
@@ -170,62 +96,52 @@ export default function App() {
       {/* Pricing section */}
       <div className="py-24 sm:pt-48">
         <div className="mx-auto px-6 lg:px-8 max-w-7xl">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2>Pricing</h2>
-            <p>Pricing that grows with you</p>
+          <div className="mx-auto max-w-4xl lg:text-center">
+            <h2>Pricing Plans</h2>
+            <h5>Flexible plans for every stage of your financial journey.</h5>
             <p>
-              Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-              Suspendisse eget egestas a elementum pulvinar et feugiat blandit
-              at. In mi viverra elit nunc.
+              There are no hidden fees or surprises. Choose the plan that fits
+              your needs and start using our app today. All plans come with a
+              30-day money-back guarantee, so you can try us risk-free.
             </p>
           </div>
-          <div className="gap-y-8 grid grid-cols-1 lg:grid-cols-3 mx-auto lg:mx-0 mt-16 sm:mt-20 max-w-md lg:max-w-none isolate">
-            {tiers.map((tier, tierIdx) => (
+          <div className="gap-8 grid grid-cols-1 lg:grid-cols-4 mx-auto lg:mx-0 mt-16 sm:mt-20 max-w-md lg:max-w-none isolate">
+            {pricing.tiers.map((tier, tierIdx) => (
               <div
-                key={tier.id}
-                className={cn(
-                  tier.mostPopular ? "lg:z-10 lg:rounded-b-none" : "lg:mt-8",
-                  tierIdx === 0 ? "lg:rounded-r-none" : "",
-                  tierIdx === tiers.length - 1 ? "lg:rounded-l-none" : "",
-                  "flex flex-col justify-between rounded-3xl p-8 ring-1 xl:p-10"
-                )}
+                key={tierIdx}
+                className="flex flex-col justify-between p-8 xl:p-10 rounded-3xl ring-1 h-full"
               >
-                <div>
-                  <div className="flex justify-between items-center gap-x-4">
-                    <h3
-                      id={tier.id}
-                      className={cn(
-                        tier.mostPopular ? "text-primary" : "text-secondary",
-                        "text-lg/8 font-semibold"
-                      )}
-                    >
-                      {tier.name}
-                    </h3>
-                    {tier.mostPopular ? (
-                      <Badge variant="default">Most popular</Badge>
-                    ) : null}
+                <div className="flex flex-col justify-between h-full">
+                  <div className="flex flex-col justify-between h-full">
+                    <div>
+                      <div className="flex justify-between items-center gap-x-4">
+                        <h3 id={tier.id} className="font-semibold text-lg/8">
+                          {tier.name}
+                        </h3>
+                      </div>
+                      <p className="mt-4">{tier.description}</p>
+                    </div>
+                    <p className="flex items-baseline gap-x-1 mt-6">
+                      <span className="font-semibold text-4xl tracking-tight">
+                        {formatNumberToCurrency(tier.priceMonthly)}
+                      </span>
+                      <span className="font-semibold">/month</span>
+                    </p>
                   </div>
-                  <p className="mt-4">{tier.description}</p>
-                  <p className="flex items-baseline gap-x-1 mt-6">
-                    <span className="font-semibold text-4xl tracking-tight">
-                      {tier.priceMonthly}
-                    </span>
-                    <span className="font-semibold">/month</span>
-                  </p>
                   <ul role="list" className="space-y-3 mt-8">
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex gap-x-3">
+                    {tier.highlights.map((feature, index) => (
+                      <li key={index} className="flex gap-x-3">
                         <CheckIcon
                           aria-hidden="true"
                           className="flex-none w-5 h-6 text-primary"
                         />
-                        {feature}
+                        {feature.description}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <Button
-                  variant={tier.mostPopular ? "default" : "secondary"}
+                  variant={tier.featured ? "default" : "secondary"}
                   aria-describedby={tier.id}
                   className="mt-8"
                 >
@@ -243,7 +159,7 @@ export default function App() {
           Frequently asked questions
         </h2>
         <dl className="mt-20 divide-y">
-          {faqs.map((faq) => (
+          {pricingFAQs.slice(0, 4).map((faq) => (
             <div
               key={faq.id}
               className="lg:gap-8 lg:grid lg:grid-cols-12 py-8 first:pt-0 last:pb-0"
@@ -252,28 +168,47 @@ export default function App() {
                 {faq.question}
               </dt>
               <dd className="lg:col-span-7 mt-4 lg:mt-0">
-                <p className="text-base/7">{faq.answer}</p>
+                <p className="text-base/7">{faq.answer.text}</p>
+                {faq.answer.list && (
+                  <ul className="mt-4 list-disc list-inside">
+                    {faq.answer.list.map((item, index) => (
+                      <li key={index} className="text-base/7">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </dd>
             </div>
           ))}
         </dl>
+        <Button className="mt-8" onClick={() => router.push("/pricing")}>
+          Learn More About Pricing
+        </Button>
       </div>
 
       {/* CTA section */}
       <div className="relative -z-10 mt-32 px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-semibold text-4xl text-balance sm:text-5xl tracking-tight">
-            Boost your productivity. Start using our app today.
+            Take Control of Your Finances Today.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg/8 text-pretty">
-            Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-            anim id veniam aliqua proident excepteur commodo do ea.
+            Start using our powerful calculators, checklists, and simulators to
+            make smarter decisions — whether you're planning your future,
+            growing your business, or investing for the first time.
           </p>
           <div className="flex justify-center items-center gap-x-6 mt-10">
-            <Button>Get started</Button>
-            <a href="#" className="font-semibold">
-              Learn more
-            </a>
+            <Button onClick={() => router.push("/finance-calculators")}>
+              Explore the Calculators Now
+            </Button>
+            <Button
+              variant={"link"}
+              onClick={() => router.push("/finance-checklists")}
+              className="font-semibold"
+            >
+              View The Checklists
+            </Button>
           </div>
         </div>
       </div>
