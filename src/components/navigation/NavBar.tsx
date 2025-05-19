@@ -34,7 +34,7 @@ export default function NavBar() {
               transition
               className="top-0 -z-10 absolute inset-x-0 bg-background data-closed:opacity-0 shadow-lg pt-16 pb-7 border-b ring-1 ring-gray-900/5 transition data-closed:-translate-y-1 data-enter:duration-200 data-leave:duration-150 data-enter:ease-out data-leave:ease-in"
             >
-              <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-5 mx-auto px-6 lg:px-8 py-10 w-11/12">
+              <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-5 mx-auto px-6 lg:px-8 py-10 w-10/12 md:w-11/12">
                 <div className="gap-x-6 sm:gap-x-8 grid grid-cols-3 col-span-3">
                   <div>
                     <h5>Essentials</h5>
@@ -143,7 +143,7 @@ export default function NavBar() {
               transition
               className="top-0 -z-10 absolute inset-x-0 bg-background data-closed:opacity-0 shadow-lg pt-16 pb-7 border-b ring-1 ring-gray-900/5 transition data-closed:-translate-y-1 data-enter:duration-200 data-leave:duration-150 data-enter:ease-out data-leave:ease-in"
             >
-              <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-5 mx-auto px-6 lg:px-8 py-10 w-11/12">
+              <div className="gap-x-8 gap-y-10 grid grid-cols-1 lg:grid-cols-5 mx-auto px-6 lg:px-8 py-10 w-10/12 md:w-11/12">
                 <div className="gap-x-6 sm:gap-x-8 grid grid-cols-3 col-span-3">
                   <div>
                     <h5>About Us</h5>

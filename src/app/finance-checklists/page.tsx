@@ -15,7 +15,7 @@ export default function FinanceChecklistsPage() {
     list: category.list,
   }));
   return (
-    <div className="flex flex-col justify-center items-center mx-auto mt-10 w-11/12">
+    <div className="flex flex-col justify-center items-center mx-auto mt-10 w-10/12 md:w-11/12">
       <h1 className="font-bold text-2xl">Finance Checklists</h1>
       <p>Welcome to the Finance Checklists page!</p>
 

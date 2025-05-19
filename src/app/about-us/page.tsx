@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 export default function AboutUsPage() {
   const router = useRouter();
   return (
-    <main className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-11/12">
+    <main className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
       {/* Header section */}
       <div className="px-6 lg:px-8 pt-14">
         <h1>Fiscora</h1>

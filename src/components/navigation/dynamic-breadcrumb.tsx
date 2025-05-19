@@ -185,7 +185,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
   if (!breadcrumbItems) return null;
 
   return (
-    <div className="mx-auto pt-3 md:pt-5 lg:pt-9 w-11/12">
+    <div className="mx-auto pt-3 md:pt-5 lg:pt-9 w-10/12 md:w-11/12">
       <nav
         aria-label="Breadcrumb"
         className="flex flex-row items-center gap-2 w-full text-xs lg:text-sm"

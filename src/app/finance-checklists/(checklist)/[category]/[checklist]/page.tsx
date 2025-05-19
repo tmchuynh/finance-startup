@@ -108,7 +108,7 @@ export default function Checklist({
   const { checked: totalChecked, total: totalItems } = getTotalCounts();
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-11/12 h-full">
+    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
       <h1>{capitalize(checklist)}</h1>
       <p>{checklistInfo?.description}</p>
 

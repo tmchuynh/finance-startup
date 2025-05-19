@@ -13,7 +13,7 @@ export default function Example() {
   const [frequency, setFrequency] = useState(pricing.frequencies[0]);
 
   return (
-    <main className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-11/12">
+    <main className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
       {/* Pricing section */}
       <div className="px-4 overflow-hidden isolate">
         <div className="py-16 sm:pt-32 lg:pb-0 flow-root">

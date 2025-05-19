@@ -14,7 +14,7 @@ export default function FinanceCalculatorPage() {
     list: category.list,
   }));
   return (
-    <div className="flex flex-col justify-center items-center mx-auto mt-10 w-11/12">
+    <div className="flex flex-col justify-center items-center mx-auto mt-10 w-10/12 md:w-11/12">
       <h1 className="font-bold text-2xl">Finance Calculators</h1>
       <p>Welcome to the finance calculators collection!</p>
 

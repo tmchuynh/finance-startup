@@ -11,7 +11,7 @@ export default function BusinessCalculator() {
   console.log("correspondingChecklists", correspondingChecklists);
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-11/12 h-full">
+    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
       <h1>{capitalize(checklistName)}</h1>
       <p>{checklistCategory?.introduction}</p>
       <p>{checklistCategory?.description}</p>

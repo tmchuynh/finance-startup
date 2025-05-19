@@ -2,7 +2,7 @@ import { faqs } from "@/lib/constants/faq/questions";
 
 export default function FAQs() {
   return (
-    <div className="flex flex-col justify-center items-center mx-auto w-11/12 h-full">
+    <div className="flex flex-col justify-center items-center mx-auto w-10/12 md:w-11/12 h-full">
       <h1 className="font-bold text-2xl">Frequently Asked Questions</h1>
       <p>Welcome to the Frequently Asked Questions!</p>
 
