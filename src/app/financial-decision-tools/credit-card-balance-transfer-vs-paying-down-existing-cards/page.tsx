@@ -123,7 +123,9 @@ ${recommendation}`
 
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Credit Card Balance Transfer vs Paying Down Existing Card</h1>
+      <h1 className="max-w-4xl">
+        Credit Card Balance Transfer vs Paying Down Existing Card
+      </h1>
       <h5>Compare Your Options for Paying Off Credit Card Debt</h5>
       <p>
         Use this tool to estimate whether transferring your credit card balance
@@ -140,59 +142,66 @@ ${recommendation}`
       </p>
       <form
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="space-y-5 mt-5"
         aria-label="Balance transfer comparison form"
       >
-        <div>
-          <Label htmlFor="balance" className="block mb-1 font-semibold">
-            Current Card Balance ($)
-          </Label>
-          <Input
-            id="balance"
-            type="number"
-            min={0}
-            value={balance === 0 ? "" : balance}
-            onChange={(e) => setBalance(Number(e.target.value))}
-            className="p-2 border border-gray-300 rounded w-full"
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="currentRate" className="block mb-1 font-semibold">
-            Current Card Interest Rate (%)
-          </Label>
-          <Input
-            id="currentRate"
-            type="number"
-            min={0}
-            max={100}
-            value={currentRate}
-            onChange={(e) => setCurrentRate(Number(e.target.value))}
-            className="p-2 border border-gray-300 rounded w-full"
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="monthlyPayment" className="block mb-1 font-semibold">
-            Planned Monthly Payment ($)
-          </Label>
-          <Input
-            id="monthlyPayment"
-            type="number"
-            min={0}
-            value={monthlyPayment === 0 ? "" : monthlyPayment}
-            onChange={(e) => setMonthlyPayment(Number(e.target.value))}
-            className="p-2 border border-gray-300 rounded w-full"
-            required
-          />
+        <div className="gap-4 grid lg:grid-cols-3">
+          <div>
+            <Label htmlFor="balance" className="block mb-1 font-semibold">
+              Current Card Balance ($)
+            </Label>
+            <Input
+              id="balance"
+              type="number"
+              min={0}
+              value={balance === 0 ? "" : balance}
+              onChange={(e) => setBalance(Number(e.target.value))}
+              className="p-2 border border-gray-300 rounded w-full"
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="currentRate" className="block mb-1 font-semibold">
+              Current Card Interest Rate (%)
+            </Label>
+            <Input
+              id="currentRate"
+              type="number"
+              min={0}
+              max={100}
+              value={currentRate}
+              onChange={(e) => setCurrentRate(Number(e.target.value))}
+              className="p-2 border border-gray-300 rounded w-full"
+              required
+            />
+          </div>
+          <div>
+            <Label
+              htmlFor="monthlyPayment"
+              className="block mb-1 font-semibold"
+            >
+              Planned Monthly Payment ($)
+            </Label>
+            <Input
+              id="monthlyPayment"
+              type="number"
+              min={0}
+              value={monthlyPayment === 0 ? "" : monthlyPayment}
+              onChange={(e) => setMonthlyPayment(Number(e.target.value))}
+              className="p-2 border border-gray-300 rounded w-full"
+              required
+            />
+          </div>
         </div>
         <div className="mt-6">
-          <Label className="block mb-1 font-semibold">
-            Balance Transfer Offer
-          </Label>
-          <div className="flex gap-2">
+          <h4>Balance Transfer Offer</h4>
+          <div className="flex gap-2 mt-3">
             <div className="flex-1">
+              <Label htmlFor="promoRate" className="block mb-1 font-semibold">
+                Promo Interest Rate (%)
+              </Label>
               <Input
+                id="promoRate"
                 type="number"
                 min={0}
                 max={100}
@@ -204,7 +213,11 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label htmlFor="promoMonths" className="block mb-1 font-semibold">
+                Promo Period (months)
+              </Label>
               <Input
+                id="promoMonths"
                 type="number"
                 min={0}
                 placeholder="Promo Period (months)"
@@ -215,7 +228,11 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label htmlFor="transferFee" className="block mb-1 font-semibold">
+                Transfer Fee (%)
+              </Label>
               <Input
+                id="transferFee"
                 type="number"
                 min={0}
                 max={100}
@@ -227,7 +244,14 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label
+                htmlFor="postPromoRate"
+                className="block mb-1 font-semibold"
+              >
+                Post-Promo Interest Rate (%)
+              </Label>
               <Input
+                id="postPromoRate"
                 type="number"
                 min={0}
                 max={100}
