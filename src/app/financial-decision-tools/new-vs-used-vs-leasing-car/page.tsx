@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import React, { useState } from "react";
 
 const NewVsUsedVsLeasingCar: React.FC = () => {
@@ -138,18 +139,137 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
         </div>
       </div>
 
+      {/* Table: Typical Car Costs */}
+      <div className="my-8">
+        <h2>Typical Car Costs (US, 2024)</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Option</th>
+                <th className="px-3 py-2 border text-left">Annual Cost</th>
+                <th className="px-3 py-2 border text-left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">New Car</td>
+                <td className="px-3 py-2 border">$8,000 - $12,000</td>
+                <td className="px-3 py-2 border">
+                  Higher depreciation, higher insurance
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Used Car</td>
+                <td className="px-3 py-2 border">$5,000 - $8,000</td>
+                <td className="px-3 py-2 border">
+                  Lower depreciation, lower insurance
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Leasing</td>
+                <td className="px-3 py-2 border">$5,000 - $10,000</td>
+                <td className="px-3 py-2 border">
+                  No equity, mileage limits, new car every few years
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Table: Pros and Cons */}
+      <div className="my-8">
+        <h2>Pros and Cons</h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Option</th>
+                <th className="px-3 py-2 border text-left">Pros</th>
+                <th className="px-3 py-2 border text-left">Cons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">New Car</td>
+                <td className="px-3 py-2 border">
+                  Latest features
+                  <br />
+                  Full warranty
+                  <br />
+                  Customization
+                </td>
+                <td className="px-3 py-2 border">
+                  Highest cost
+                  <br />
+                  Fastest depreciation
+                  <br />
+                  Higher insurance
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Used Car</td>
+                <td className="px-3 py-2 border">
+                  Lower cost
+                  <br />
+                  Slower depreciation
+                  <br />
+                  Lower insurance
+                </td>
+                <td className="px-3 py-2 border">
+                  Shorter warranty
+                  <br />
+                  Possible repairs
+                  <br />
+                  Fewer choices
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Leasing</td>
+                <td className="px-3 py-2 border">
+                  Lower monthly payment
+                  <br />
+                  New car every few years
+                  <br />
+                  Fewer repair worries
+                </td>
+                <td className="px-3 py-2 border">
+                  No equity
+                  <br />
+                  Mileage limits
+                  <br />
+                  Fees for wear/tear
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="mt-5">
           <h2>Years to Compare</h2>
           <div>
             <Label>Years</Label>
-            <Input
-              type="number"
-              value={years}
-              min={1}
-              max={10}
-              onChange={(e) => setYears(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={1}
+                max={10}
+                step={1}
+                value={[years]}
+                onValueChange={([v]) => setYears(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={years}
+                min={1}
+                max={10}
+                onChange={(e) => setYears(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
         </div>
         <div className="mt-5">
@@ -157,69 +277,148 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
           <div className="gap-4 grid lg:grid-cols-2 mt-3">
             <div>
               <Label>Price ($)</Label>
-              <Input
-                type="number"
-                value={newPrice}
-                min={0}
-                onChange={(e) => setNewPrice(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={10000}
+                  max={100000}
+                  step={500}
+                  value={[newPrice]}
+                  onValueChange={([v]) => setNewPrice(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newPrice}
+                  min={0}
+                  onChange={(e) => setNewPrice(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Down Payment ($)</Label>
-              <Input
-                type="number"
-                value={newDown}
-                min={0}
-                onChange={(e) => setNewDown(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={50000}
+                  step={500}
+                  value={[newDown]}
+                  onValueChange={([v]) => setNewDown(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newDown}
+                  min={0}
+                  onChange={(e) => setNewDown(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Loan Rate (%)</Label>
-              <Input
-                type="number"
-                value={newLoanRate}
-                min={0}
-                step={0.01}
-                onChange={(e) => setNewLoanRate(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={15}
+                  step={0.01}
+                  value={[newLoanRate]}
+                  onValueChange={([v]) => setNewLoanRate(Number(v.toFixed(2)))}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newLoanRate}
+                  min={0}
+                  step={0.01}
+                  onChange={(e) => setNewLoanRate(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Loan Term (months)</Label>
-              <Input
-                type="number"
-                value={newLoanTerm}
-                min={1}
-                max={84}
-                onChange={(e) => setNewLoanTerm(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={12}
+                  max={84}
+                  step={1}
+                  value={[newLoanTerm]}
+                  onValueChange={([v]) => setNewLoanTerm(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newLoanTerm}
+                  min={1}
+                  max={84}
+                  onChange={(e) => setNewLoanTerm(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Insurance (annual $)</Label>
-              <Input
-                type="number"
-                value={newInsurance}
-                min={0}
-                onChange={(e) => setNewInsurance(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={5000}
+                  step={50}
+                  value={[newInsurance]}
+                  onValueChange={([v]) => setNewInsurance(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newInsurance}
+                  min={0}
+                  onChange={(e) => setNewInsurance(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Maintenance (annual $)</Label>
-              <Input
-                type="number"
-                value={newMaintenance}
-                min={0}
-                onChange={(e) => setNewMaintenance(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={5000}
+                  step={50}
+                  value={[newMaintenance]}
+                  onValueChange={([v]) => setNewMaintenance(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newMaintenance}
+                  min={0}
+                  onChange={(e) => setNewMaintenance(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Depreciation (% of price/year)</Label>
-              <Input
-                type="number"
-                value={newDepreciation}
-                min={0}
-                step={0.1}
-                onChange={(e) => setNewDepreciation(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={25}
+                  step={0.1}
+                  value={[newDepreciation]}
+                  onValueChange={([v]) =>
+                    setNewDepreciation(Number(v.toFixed(1)))
+                  }
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={newDepreciation}
+                  min={0}
+                  step={0.1}
+                  onChange={(e) => setNewDepreciation(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -229,69 +428,148 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
           <div className="gap-4 grid lg:grid-cols-2 mt-3">
             <div>
               <Label>Price ($)</Label>
-              <Input
-                type="number"
-                value={usedPrice}
-                min={0}
-                onChange={(e) => setUsedPrice(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={2000}
+                  max={80000}
+                  step={500}
+                  value={[usedPrice]}
+                  onValueChange={([v]) => setUsedPrice(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedPrice}
+                  min={0}
+                  onChange={(e) => setUsedPrice(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Down Payment ($)</Label>
-              <Input
-                type="number"
-                value={usedDown}
-                min={0}
-                onChange={(e) => setUsedDown(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={40000}
+                  step={500}
+                  value={[usedDown]}
+                  onValueChange={([v]) => setUsedDown(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedDown}
+                  min={0}
+                  onChange={(e) => setUsedDown(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Loan Rate (%)</Label>
-              <Input
-                type="number"
-                value={usedLoanRate}
-                min={0}
-                step={0.01}
-                onChange={(e) => setUsedLoanRate(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={15}
+                  step={0.01}
+                  value={[usedLoanRate]}
+                  onValueChange={([v]) => setUsedLoanRate(Number(v.toFixed(2)))}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedLoanRate}
+                  min={0}
+                  step={0.01}
+                  onChange={(e) => setUsedLoanRate(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Loan Term (months)</Label>
-              <Input
-                type="number"
-                value={usedLoanTerm}
-                min={1}
-                max={84}
-                onChange={(e) => setUsedLoanTerm(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={12}
+                  max={84}
+                  step={1}
+                  value={[usedLoanTerm]}
+                  onValueChange={([v]) => setUsedLoanTerm(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedLoanTerm}
+                  min={1}
+                  max={84}
+                  onChange={(e) => setUsedLoanTerm(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Insurance (annual $)</Label>
-              <Input
-                type="number"
-                value={usedInsurance}
-                min={0}
-                onChange={(e) => setUsedInsurance(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={5000}
+                  step={50}
+                  value={[usedInsurance]}
+                  onValueChange={([v]) => setUsedInsurance(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedInsurance}
+                  min={0}
+                  onChange={(e) => setUsedInsurance(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Maintenance (annual $)</Label>
-              <Input
-                type="number"
-                value={usedMaintenance}
-                min={0}
-                onChange={(e) => setUsedMaintenance(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={5000}
+                  step={50}
+                  value={[usedMaintenance]}
+                  onValueChange={([v]) => setUsedMaintenance(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedMaintenance}
+                  min={0}
+                  onChange={(e) => setUsedMaintenance(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Depreciation (% of price/year)</Label>
-              <Input
-                type="number"
-                value={usedDepreciation}
-                min={0}
-                step={0.1}
-                onChange={(e) => setUsedDepreciation(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={20}
+                  step={0.1}
+                  value={[usedDepreciation]}
+                  onValueChange={([v]) =>
+                    setUsedDepreciation(Number(v.toFixed(1)))
+                  }
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={usedDepreciation}
+                  min={0}
+                  step={0.1}
+                  onChange={(e) => setUsedDepreciation(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -300,97 +578,172 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
           <div className="gap-4 grid lg:grid-cols-2 mt-3">
             <div>
               <Label>Lease Payment (monthly $)</Label>
-              <Input
-                type="number"
-                value={leaseMonthly}
-                min={0}
-                onChange={(e) => setLeaseMonthly(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={100}
+                  max={2000}
+                  step={10}
+                  value={[leaseMonthly]}
+                  onValueChange={([v]) => setLeaseMonthly(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={leaseMonthly}
+                  min={0}
+                  onChange={(e) => setLeaseMonthly(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Lease Down Payment ($)</Label>
-              <Input
-                type="number"
-                value={leaseDown}
-                min={0}
-                onChange={(e) => setLeaseDown(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={10000}
+                  step={100}
+                  value={[leaseDown]}
+                  onValueChange={([v]) => setLeaseDown(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={leaseDown}
+                  min={0}
+                  onChange={(e) => setLeaseDown(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Lease Term (months)</Label>
-              <Input
-                type="number"
-                value={leaseTerm}
-                min={1}
-                max={60}
-                onChange={(e) => setLeaseTerm(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={12}
+                  max={60}
+                  step={1}
+                  value={[leaseTerm]}
+                  onValueChange={([v]) => setLeaseTerm(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={leaseTerm}
+                  min={1}
+                  max={60}
+                  onChange={(e) => setLeaseTerm(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Insurance (annual $)</Label>
-              <Input
-                type="number"
-                value={leaseInsurance}
-                min={0}
-                onChange={(e) => setLeaseInsurance(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={5000}
+                  step={50}
+                  value={[leaseInsurance]}
+                  onValueChange={([v]) => setLeaseInsurance(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={leaseInsurance}
+                  min={0}
+                  onChange={(e) => setLeaseInsurance(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
             <div>
               <Label>Maintenance (annual $)</Label>
-              <Input
-                type="number"
-                value={leaseMaintenance}
-                min={0}
-                onChange={(e) => setLeaseMaintenance(Number(e.target.value))}
-              />
+              <div className="flex items-center gap-4">
+                <Slider
+                  min={0}
+                  max={5000}
+                  step={50}
+                  value={[leaseMaintenance]}
+                  onValueChange={([v]) => setLeaseMaintenance(v)}
+                  className="w-2/3"
+                />
+                <Input
+                  type="number"
+                  value={leaseMaintenance}
+                  min={0}
+                  onChange={(e) => setLeaseMaintenance(Number(e.target.value))}
+                  className="w-1/3"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </form>
-      <div className="mt-5">
-        {" "}
-        <h2>Results for {years} years</h2>
-        <div className="gap-5 grid md:grid-cols-3 mt-3">
-          <div>
-            <h3>New Car</h3>
-            <p>
-              <strong>
-                $
-                {calcNewCarTotal().toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </p>
+        <div className="mt-5">
+          <h2>Results</h2>
+          <div className="gap-5 grid grid-cols-1 md:grid-cols-3 mt-3">
+            <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+              <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+                New Car Total Cost
+              </h3>
+              <ul>
+                <li>
+                  <span className="text-gray-700"> Total Cost:</span>{" "}
+                  <strong className="text-blue-900">
+                    $
+                    {calcNewCarTotal().toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </strong>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+              <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
+                Used Car Total Cost
+              </h3>
+              <ul>
+                <li>
+                  <span className="text-gray-700">Total Cost:</span>{" "}
+                  <strong className="text-green-900">
+                    $
+                    {calcUsedCarTotal().toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </strong>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+              <h3 className="flex items-center gap-2 mb-2 font-semibold text-lg text-orange-700">
+                Leasing Total Cost
+              </h3>
+              <ul>
+                <li>
+                  <span className="text-gray-700">Total Cost:</span>{" "}
+                  <strong className="text-orange-900">
+                    $
+                    {calcLeaseTotal().toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </strong>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h3>Used Car</h3>
-            <p>
-              <strong>
-                $
-                {calcUsedCarTotal().toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </p>
-          </div>
-          <div>
-            <h3>Leasing</h3>
-            <p>
-              <strong>
-                $
-                {calcLeaseTotal().toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </p>
-          </div>
+
+          <p className="mt-4">
+            Note: The total cost includes down payment, monthly payments,
+            insurance, maintenance, and depreciation (for purchase options).
+            Leasing costs include down payment, monthly payments, insurance, and
+            maintenance. The calculator does not account for taxes, fees, or
+            resale value.
+          </p>
         </div>
-      </div>
-      <p style={{ marginTop: 24, color: "#666" }}>
-        Note: This calculator does not account for resale value, taxes, or fees.
-      </p>
+      </form>
     </div>
   );
 };
-
 export default NewVsUsedVsLeasingCar;
