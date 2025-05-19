@@ -36,6 +36,21 @@ export const simulators = [
     href: "/learning-simulators/stock-market-simulator",
     icon: ShieldCheckIcon,
   },
+  {
+    name: "Crypto Trading Simulator",
+    href: "/learning-simulators/crypto-trading-simulator",
+    icon: ShieldCheckIcon,
+  },
+  {
+    name: "Real Estate Simulator",
+    href: "/learning-simulators/real-estate-simulator",
+    icon: ShieldCheckIcon,
+  },
+  {
+    name: "Compound Interest Visualizer",
+    href: "/learning-simulators/compound-interest-visualizer",
+    icon: ShieldCheckIcon,
+  },
 ];
 
 export const comparisons = [
