@@ -20,9 +20,11 @@ type OwnedProperty = Property & {
   repairs: number;
   forSale: boolean;
   interestedBuyers: Buyer[];
+  buyerRefreshes?: number;
   forRent?: boolean;
   rentRange?: [number, number];
   interestedRenters?: Renter[];
+  renterRefreshes?: number;
   rentedTo?: Renter | null;
   rentAmount?: number;
 };
@@ -278,11 +280,17 @@ export default function RealEstateSimulatorPage() {
             p.name
           } for $${repairCost.toLocaleString()} (now ${newCondition})`
         );
-        return {
+
+        // If property is for rent or rented, increase rent by 15%
+        const updated = {
           ...p,
           condition: newCondition,
           repairs: p.repairs + repairCost,
         };
+        if ((p.forRent || p.rentedTo) && p.rentAmount) {
+          updated.rentAmount = Math.round(p.rentAmount * 1.15);
+        }
+        return updated;
       })
     );
   };
@@ -295,11 +303,26 @@ export default function RealEstateSimulatorPage() {
               ...p,
               forSale: true,
               interestedBuyers: getRandomBuyers(p),
+              buyerRefreshes: 3,
             }
           : p
       )
     );
     setMessage("Property listed for sale. Buyers are making offers!");
+  };
+
+  const handleRefreshBuyers = (propertyId: string) => {
+    setOwned((prev) =>
+      prev.map((p) =>
+        p.id === propertyId && p.forSale && (p.buyerRefreshes ?? 0) > 0
+          ? {
+              ...p,
+              interestedBuyers: getRandomBuyers(p),
+              buyerRefreshes: (p.buyerRefreshes ?? 1) - 1,
+            }
+          : p
+      )
+    );
   };
 
   const handleSell = (propertyId: string, buyerId: string) => {
@@ -350,12 +373,34 @@ export default function RealEstateSimulatorPage() {
                 rentModal.min,
                 rentModal.max
               ),
+              renterRefreshes: 5,
             }
           : p
       )
     );
     setRentModal({ open: false, propertyId: null, min: 1000, max: 2000 });
     setMessage("Property listed for rent. Renters are making offers!");
+  };
+
+  const handleRefreshRenters = (propertyId: string) => {
+    setOwned((prev) =>
+      prev.map((p) =>
+        p.id === propertyId &&
+        p.forRent &&
+        (p.renterRefreshes ?? 0) > 0 &&
+        p.rentRange
+          ? {
+              ...p,
+              interestedRenters: getRandomRenters(
+                p,
+                p.rentRange[0],
+                p.rentRange[1]
+              ),
+              renterRefreshes: (p.renterRefreshes ?? 1) - 1,
+            }
+          : p
+      )
+    );
   };
 
   const handleLease = (propertyId: string, renterId: string) => {
@@ -628,15 +673,32 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Buyer</th>
             <th className="p-2 border border-gray-300">Offer</th>
             <th className="p-2 border border-gray-300">Notes</th>
+            <th className="p-2 border border-gray-300"></th>
           </tr>
         </thead>
         <tbody>
           {owned
             .filter((p) => p.forSale && p.interestedBuyers.length > 0)
             .flatMap((p) =>
-              p.interestedBuyers.map((b) => (
+              p.interestedBuyers.map((b, idx) => (
                 <tr key={p.id + b.id}>
-                  <td className="p-2 border border-gray-300">{p.name}</td>
+                  {idx === 0 && (
+                    <td
+                      className="p-2 border border-gray-300"
+                      rowSpan={p.interestedBuyers.length}
+                    >
+                      {p.name}
+                      <div className="mt-2">
+                        <button
+                          className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs"
+                          disabled={p.buyerRefreshes === 0}
+                          onClick={() => handleRefreshBuyers(p.id)}
+                        >
+                          Refresh Buyers ({p.buyerRefreshes ?? 0} left)
+                        </button>
+                      </div>
+                    </td>
+                  )}
                   <td className="p-2 border border-gray-300">{b.name}</td>
                   <td className="p-2 border border-gray-300">
                     ${b.offer.toLocaleString()}
@@ -673,6 +735,7 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Renter</th>
             <th className="p-2 border border-gray-300">Offer</th>
             <th className="p-2 border border-gray-300">Notes</th>
+            <th className="p-2 border border-gray-300"></th>
           </tr>
         </thead>
         <tbody>
@@ -684,9 +747,25 @@ export default function RealEstateSimulatorPage() {
                 p.interestedRenters.length > 0
             )
             .flatMap((p) =>
-              p.interestedRenters!.map((r) => (
+              p.interestedRenters!.map((r, idx) => (
                 <tr key={p.id + r.id}>
-                  <td className="p-2 border border-gray-300">{p.name}</td>
+                  {idx === 0 && (
+                    <td
+                      className="p-2 border border-gray-300"
+                      rowSpan={p.interestedRenters!.length}
+                    >
+                      {p.name}
+                      <div className="mt-2">
+                        <button
+                          className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs"
+                          disabled={p.renterRefreshes === 0}
+                          onClick={() => handleRefreshRenters(p.id)}
+                        >
+                          Refresh Renters ({p.renterRefreshes ?? 0} left)
+                        </button>
+                      </div>
+                    </td>
+                  )}
                   <td className="p-2 border border-gray-300">{r.name}</td>
                   <td className="p-2 border border-gray-300">
                     ${r.offer.toLocaleString()}
