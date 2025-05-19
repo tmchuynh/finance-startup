@@ -119,7 +119,7 @@ export default function MortgageRefinanceCalculator() {
           or change your loan term. You can also refinance to take cash out or
           switch from an adjustable to a fixed rate.
         </p>
-        <div className="mb-6">
+        <div className="my-6">
           <h3>Key Terms Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
@@ -177,6 +177,200 @@ export default function MortgageRefinanceCalculator() {
           </table>
         </div>
         <div className="mb-6">
+          <h3>Step-by-Step Example</h3>
+          <ol className="mb-2 list-decimal list-inside">
+            <li>Current balance: $250,000</li>
+            <li>Current rate: 5%, 30-year loan, 5 years paid</li>
+            <li>New rate: 4%, 30-year loan, closing costs: $3,000</li>
+            <li>New monthly payment: $1,193.54</li>
+            <li>Monthly savings: $148.51</li>
+            <li>Break-even: $3,000 / $148.51 ≈ 21 months</li>
+          </ol>
+        </div>
+        <div className="gap-4 grid md:grid-cols-2">
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Current Mortgage Balance ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={currentBalance}
+              onChange={(e) => setCurrentBalance(e.target.value)}
+              placeholder="Enter current balance"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Current Interest Rate (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={currentRate}
+              onChange={(e) => setCurrentRate(e.target.value)}
+              placeholder="Enter current rate"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Original Loan Term (years):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={currentTerm}
+              onChange={(e) => setCurrentTerm(e.target.value)}
+              placeholder="e.g., 30"
+              min="1"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Years Already Paid:
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={yearsPaid}
+              onChange={(e) => setYearsPaid(e.target.value)}
+              placeholder="e.g., 5"
+              min="0"
+              max={currentTerm}
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              New Interest Rate (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={newRate}
+              onChange={(e) => setNewRate(e.target.value)}
+              placeholder="Enter new rate"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              New Loan Term (years):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={newTerm}
+              onChange={(e) => setNewTerm(e.target.value)}
+              placeholder="e.g., 30"
+              min="1"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Estimated Closing Costs ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={closingCosts}
+              onChange={(e) => setClosingCosts(e.target.value)}
+              placeholder="e.g., 3000"
+              min="0"
+            />
+          </div>
+        </div>
+        <button
+          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          onClick={handleCalculate}
+        >
+          Calculate Refinance
+        </button>
+        {result && (
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="bg-white shadow p-4 border rounded-lg">
+              <h3 className="mb-2 font-semibold">Results</h3>
+              <table className="border border-gray-300 min-w-full text-sm">
+                <tbody>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Old Monthly Payment
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.oldPayment.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      New Monthly Payment
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.newPayment.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Monthly Savings
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.monthlySavings.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Total Interest Remaining (Old Loan)
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.totalInterestOld.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Total Interest (New Loan)
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.totalInterestNew.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Break-even Point
+                    </td>
+                    <td className="px-3 py-2 border">
+                      {result.breakEvenMonths !== null
+                        ? `${result.breakEvenMonths} months`
+                        : "N/A"}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        <div className="my-6">
           <h3>How Refinancing is Calculated</h3>
           <ul className="mb-2 list-decimal list-inside">
             <li>
@@ -235,17 +429,7 @@ export default function MortgageRefinanceCalculator() {
             </tbody>
           </table>
         </div>
-        <div className="mb-6">
-          <h3>Step-by-Step Example</h3>
-          <ol className="mb-2 list-decimal list-inside">
-            <li>Current balance: $250,000</li>
-            <li>Current rate: 5%, 30-year loan, 5 years paid</li>
-            <li>New rate: 4%, 30-year loan, closing costs: $3,000</li>
-            <li>New monthly payment: $1,193.54</li>
-            <li>Monthly savings: $148.51</li>
-            <li>Break-even: $3,000 / $148.51 ≈ 21 months</li>
-          </ol>
-        </div>
+
         <div className="mb-6">
           <h3>Tips for Beginners</h3>
           <ul className="list-disc list-inside">
@@ -264,187 +448,6 @@ export default function MortgageRefinanceCalculator() {
           </ul>
         </div>
       </section>
-      <div className="gap-4 grid md:grid-cols-2">
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Current Mortgage Balance ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={currentBalance}
-            onChange={(e) => setCurrentBalance(e.target.value)}
-            placeholder="Enter current balance"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Current Interest Rate (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={currentRate}
-            onChange={(e) => setCurrentRate(e.target.value)}
-            placeholder="Enter current rate"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Original Loan Term (years):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={currentTerm}
-            onChange={(e) => setCurrentTerm(e.target.value)}
-            placeholder="e.g., 30"
-            min="1"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Years Already Paid:</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={yearsPaid}
-            onChange={(e) => setYearsPaid(e.target.value)}
-            placeholder="e.g., 5"
-            min="0"
-            max={currentTerm}
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            New Interest Rate (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={newRate}
-            onChange={(e) => setNewRate(e.target.value)}
-            placeholder="Enter new rate"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            New Loan Term (years):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={newTerm}
-            onChange={(e) => setNewTerm(e.target.value)}
-            placeholder="e.g., 30"
-            min="1"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Estimated Closing Costs ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={closingCosts}
-            onChange={(e) => setClosingCosts(e.target.value)}
-            placeholder="e.g., 3000"
-            min="0"
-          />
-        </div>
-      </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
-        onClick={handleCalculate}
-      >
-        Calculate Refinance
-      </button>
-      {result && (
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="border border-gray-300 min-w-full text-sm">
-              <tbody>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Old Monthly Payment
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.oldPayment.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    New Monthly Payment
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.newPayment.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Monthly Savings
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.monthlySavings.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Total Interest Remaining (Old Loan)
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.totalInterestOld.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Total Interest (New Loan)
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.totalInterestNew.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Break-even Point
-                  </td>
-                  <td className="px-3 py-2 border">
-                    {result.breakEvenMonths !== null
-                      ? `${result.breakEvenMonths} months`
-                      : "N/A"}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
