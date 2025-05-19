@@ -89,6 +89,7 @@ export default function RealEstateSimulatorPage() {
       );
       setOwned((prev) => {
         const newTransactions: Transaction[] = [];
+        let cashToAdd = 0;
         const updated = prev.map((p) => {
           const change = 1 + (Math.random() * 4 - 2) / 100;
           const newPrice = Math.max(50000, Math.round(p.price * change));
@@ -96,17 +97,18 @@ export default function RealEstateSimulatorPage() {
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
           }
-            if (p.rentedTo && p.rentAmount) {
-              setCash((c) => c + p.rentAmount!);
-              newTransactions.push({
-                id: uuidv4(),
-                type: "RENT",
-                propertyName: p.name,
-                amount: p.rentAmount!,
-                date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000),
-                notes: `Monthly rent received from ${p.rentedTo?.name}`,
-              });
-            }
+          // Only add one rent transaction per property per interval
+          if (p.rentedTo && p.rentAmount) {
+            cashToAdd += p.rentAmount!;
+            newTransactions.push({
+              id: uuidv4(),
+              type: "RENT",
+              propertyName: p.name,
+              amount: p.rentAmount!,
+              date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000),
+              notes: `Monthly rent received from ${p.rentedTo?.name}`,
+            });
+          }
           return {
             ...p,
             price: newPrice,
@@ -114,6 +116,9 @@ export default function RealEstateSimulatorPage() {
             condition: newCondition,
           };
         });
+        if (cashToAdd > 0) {
+          setCash((c) => c + cashToAdd);
+        }
         if (newTransactions.length > 0) {
           setTransactions((prevT) => [...newTransactions, ...prevT]);
         }
