@@ -61,10 +61,16 @@ export default function RealEstateSimulatorPage() {
     min: number;
     max: number;
   }>({ open: false, propertyId: null, min: 1000, max: 2000 });
+  const [simDate, setSimDate] = useState<Date>(new Date());
 
-  // Simulate price trends and random condition changes
+  // Simulate price trends, random condition changes, and advance date
   useEffect(() => {
     const interval = setInterval(() => {
+      setSimDate((prev) => {
+        const next = new Date(prev);
+        next.setDate(prev.getDate() + 30); // Advance by 30 days per tick
+        return next;
+      });
       setProperties((prev) =>
         prev.map((p) => {
           // Simulate price change: -2% to +2%
@@ -83,8 +89,10 @@ export default function RealEstateSimulatorPage() {
           };
         })
       );
-      setOwned((prev) =>
-        prev.map((p) => {
+      setOwned((prev) => {
+        let didRent = false;
+        let rentTx: Transaction | null = null;
+        const updated = prev.map((p) => {
           // Simulate price change: -2% to +2%
           const change = 1 + (Math.random() * 4 - 2) / 100;
           const newPrice = Math.max(50000, Math.round(p.price * change));
@@ -93,9 +101,20 @@ export default function RealEstateSimulatorPage() {
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
           }
-          // Add rent income if rented
+          // Add rent income if rented (but only add to cash and queue transaction once per property)
           if (p.rentedTo && p.rentAmount) {
             setCash((c) => c + p.rentAmount!);
+            if (!didRent) {
+              rentTx = {
+                id: uuidv4(),
+                type: "RENT",
+                propertyName: p.name,
+                amount: p.rentAmount!,
+                date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000), // Use simulated date
+                notes: `Monthly rent received from ${p.rentedTo?.name}`,
+              };
+              didRent = true;
+            }
           }
           return {
             ...p,
@@ -103,11 +122,16 @@ export default function RealEstateSimulatorPage() {
             trend: [...p.trend.slice(-19), newPrice],
             condition: newCondition,
           };
-        })
-      );
+        });
+        // Only add one rent transaction per property per interval
+        if (rentTx) {
+          setTransactions((prevT) => [rentTx!, ...prevT]);
+        }
+        return updated;
+      });
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [simDate]);
 
   const handleBuy = (property: Property) => {
     if (cash < property.price) {
@@ -310,7 +334,6 @@ export default function RealEstateSimulatorPage() {
         const renter = p.interestedRenters?.find((r) => r.id === renterId);
         if (!renter) return p;
         setTransactions((prevT) => [
-          ...prevT,
           {
             id: uuidv4(),
             type: "RENT",
@@ -319,6 +342,7 @@ export default function RealEstateSimulatorPage() {
             date: new Date(),
             notes: `Leased to ${renter.name} for $${renter.offer}/mo`,
           },
+          ...prevT,
         ]);
         setMessage(
           `Leased ${p.name} to ${
@@ -723,7 +747,7 @@ export default function RealEstateSimulatorPage() {
             </tr>
           )}
           {transactions.map((tx) => {
-            // Highlight money in (SELL) as green, money out (BUY/REPAIR) as red
+            // Highlight money in (SELL, RENT, RENT_PAYMENT) as green, money out (BUY/REPAIR) as red
             const isMoneyIn = tx.type === "SELL" || tx.type === "RENT";
             const isMoneyOut = tx.type === "BUY" || tx.type === "REPAIR";
             return (
