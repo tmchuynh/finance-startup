@@ -87,6 +87,7 @@ export default function RealEstateSimulatorPage() {
           };
         })
       );
+      // Only update cash and transactions for rent payments here
       setOwned((prev) => {
         const newTransactions: Transaction[] = [];
         let cashToAdd = 0;
@@ -97,7 +98,7 @@ export default function RealEstateSimulatorPage() {
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
           }
-          // Only add one rent transaction per property per interval
+          // Only add rent transaction here, not in handleLease
           if (p.rentedTo && p.rentAmount) {
             cashToAdd += p.rentAmount!;
             newTransactions.push({
@@ -188,6 +189,7 @@ export default function RealEstateSimulatorPage() {
           return p;
         }
         setCash((c) => c - repairCost);
+        // Only add transaction once here
         setTransactions((prevT) => [
           {
             id: uuidv4(),
@@ -328,6 +330,7 @@ export default function RealEstateSimulatorPage() {
         if (p.id !== propertyId) return p;
         const renter = p.interestedRenters?.find((r) => r.id === renterId);
         if (!renter) return p;
+        // Do NOT add a transaction here for rent payments, only for the lease event itself
         setTransactions((prevT) => [
           {
             id: uuidv4(),
