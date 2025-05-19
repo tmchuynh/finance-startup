@@ -1,10 +1,8 @@
 export default function LearningSimulatorPage() {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full">
-      <div className="p-4 w-full max-w-2xl">
-        <h1 className="font-bold text-2xl">Learning Simulators</h1>
-        <p>Welcome to the Learning Simulators page!</p>
-      </div>
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-11/12">
+      <h1>Learning Simulators</h1>
+      <p>Welcome to the Learning Simulators page!</p>
     </div>
   );
 }
