@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -71,52 +73,57 @@ const CompoundInterestVisualizer: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto" }}>
-      <h2>Compound Interest Visualizer</h2>
-      <div
-        style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 24 }}
-      >
-        <label>
-          Initial Amount ($)
-          <input
+    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+      <h1>Compound Interest Visualizer</h1>
+      <h5>Visualize Your Investment Growth</h5>
+      <p>
+        Use this tool to visualize how your investments grow over time with
+        compound interest. Adjust the parameters to see how they affect your
+        final balance.
+      </p>
+      <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-4 mt-8">
+        <div>
+          <Label>Initial Amount ($)</Label>
+          <Input
             type="number"
             value={principal}
             min={0}
             onChange={(e) => setPrincipal(Number(e.target.value))}
           />
-        </label>
-        <label>
-          Annual Interest Rate (%)
-          <input
+        </div>
+        <div>
+          <Label>Annual Interest Rate (%)</Label>
+          <Input
             type="number"
             value={annualRate}
             min={0}
             step={0.01}
             onChange={(e) => setAnnualRate(Number(e.target.value))}
           />
-        </label>
-        <label>
-          Monthly Contribution ($)
-          <input
+        </div>
+        <div>
+          <Label>Monthly Contribution ($)</Label>
+          <Input
             type="number"
             value={monthlyContribution}
             min={0}
             onChange={(e) => setMonthlyContribution(Number(e.target.value))}
           />
-        </label>
-        <label>
-          Years
-          <input
+        </div>
+        <div>
+          <Label>Years</Label>
+          <Input
             type="number"
             value={years}
             min={1}
             max={50}
             onChange={(e) => setYears(Number(e.target.value))}
           />
-        </label>
+        </div>
       </div>
       <Line data={chartData} />
-      <div style={{ marginTop: 24 }}>
+      <div className="mt-8">
+        <h2>Results</h2>
         <p>
           <strong>Total Contributions:</strong> ${totalContributions.toFixed(2)}
         </p>
