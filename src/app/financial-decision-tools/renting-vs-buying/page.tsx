@@ -161,30 +161,41 @@ const RentVsBuy: React.FC = () => {
               />
             </div>
           </div>
-          <div className="">
+          {/* Card-like results display */}
+          <div>
             <h2>Results</h2>
-            <div className="flex flex-col gap-5 mt-3">
-              <div>
-                <h3>Total Renting Cost</h3>
-                <p>
-                  <strong>
-                    $
-                    {calcTotalRent().toLocaleString(undefined, {
-                      maximumFractionDigits: 0,
-                    })}
-                  </strong>
-                </p>
+            <div className="gap-5 grid grid-cols-1 md:grid-cols-2 mt-3">
+              <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+                <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+                  Renting
+                </h3>
+                <ul>
+                  <li>
+                    <span className="text-gray-700">Total Renting Cost:</span>{" "}
+                    <strong className="text-blue-900">
+                      $
+                      {calcTotalRent().toLocaleString(undefined, {
+                        maximumFractionDigits: 0,
+                      })}
+                    </strong>
+                  </li>
+                </ul>
               </div>
-              <div>
-                <h3>Total Buying Cost</h3>
-                <p>
-                  <strong>
-                    $
-                    {calcTotalBuy().toLocaleString(undefined, {
-                      maximumFractionDigits: 0,
-                    })}
-                  </strong>
-                </p>
+              <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+                <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
+                  Buying
+                </h3>
+                <ul>
+                  <li>
+                    <span className="text-gray-700">Total Buying Cost:</span>{" "}
+                    <strong className="text-green-900">
+                      $
+                      {calcTotalBuy().toLocaleString(undefined, {
+                        maximumFractionDigits: 0,
+                      })}
+                    </strong>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
