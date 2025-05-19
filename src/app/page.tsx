@@ -17,11 +17,14 @@ export default function App() {
       <div className="relative pt-14">
         <div className="py-24 sm:py-32 lg:pb-40">
           <div className="mx-auto px-6 lg:px-8 max-w-7xl">
-            <div className="mx-auto max-w-2xl text-center">
-              <h1>Make Every Financial Move Count</h1>
+            <div className="mx-auto max-w-5xl text-center">
+              <h1>Plan It. Simulate It. Achieve It.</h1>
               <p className="mt-8 font-medium text-lg text-pretty sm:text-xl/8">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
+                With our powerful calculators, checklists, and simulators, you
+                can easily analyze your financial situation and make the best
+                choices for your future. Whether you're planning for retirement,
+                buying a home, or starting a business, our app has the tools you
+                need to succeed.
               </p>
             </div>
             <div className="mt-16 sm:mt-24 flow-root">
