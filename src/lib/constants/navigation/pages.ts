@@ -2,7 +2,6 @@ import {
   GlobeAltIcon,
   InformationCircleIcon,
   UserGroupIcon,
-  VideoCameraIcon,
 } from "@heroicons/react/20/solid";
 import {
   BookOpenIcon,
@@ -12,7 +11,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 
-export const engagement = [
+export const essentials = [
   {
     name: "Finance Calculators",
     href: "/finance-calculators",
@@ -24,36 +23,47 @@ export const engagement = [
     href: "/finance-checklists",
     icon: NewspaperIcon,
   },
+];
+
+export const simulators = [
+  {
+    name: "Overview",
+    href: "/learning-simulators",
+    icon: ShieldCheckIcon,
+  },
+  {
+    name: "Stock Market Simulator",
+    href: "/learning-simulators/stock-market-simulator",
+    icon: ShieldCheckIcon,
+  },
+];
+
+export const comparisons = [
   {
     name: "Financial Decision Tools",
     href: "/financial-decision-tools",
     icon: BriefcaseIcon,
   },
-  {
-    name: "Learning Simulators",
-    href: "/learning-simulators",
-    icon: ShieldCheckIcon,
-  },
+  { name: "Guides", href: "/helpful-guides", icon: BookOpenIcon },
 ];
 
-export const resources = [
+export const pricing = [
   { name: "Pricing", href: "/pricing", icon: UserGroupIcon },
-  { name: "Partners", href: "#", icon: GlobeAltIcon },
-  { name: "Guides", href: "#", icon: BookOpenIcon },
-  { name: "Webinars", href: "#", icon: VideoCameraIcon },
+  { name: "Testimonials", href: "/testimonials", icon: NewspaperIcon },
 ];
 
-export const community = [
-  { name: "Blog", href: "#", icon: GlobeAltIcon },
-  { name: "Events", href: "#", icon: GlobeAltIcon },
-  { name: "Newsletter", href: "#", icon: GlobeAltIcon },
-  { name: "Forum", href: "#", icon: GlobeAltIcon },
+export const contact = [
+  {
+    name: "Frequently Asked Questions",
+    href: "/frequently-asked-questions",
+    icon: GlobeAltIcon,
+  },
+  { name: "Contact Us", href: "/contact-us", icon: GlobeAltIcon },
 ];
 
 export const company = [
-  { name: "About", href: "#", icon: InformationCircleIcon },
-  { name: "Customers", href: "#", icon: UsersIcon },
-  { name: "Press", href: "#", icon: NewspaperIcon },
-  { name: "Careers", href: "#", icon: BriefcaseIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon },
+  { name: "About", href: "/about-us", icon: InformationCircleIcon },
+  { name: "Our Team", href: "/about-us/our-team", icon: ShieldCheckIcon },
+  { name: "Careers", href: "/join-us", icon: BriefcaseIcon },
+  { name: "Partners", href: "/about-us/our-partners", icon: GlobeAltIcon },
 ];
