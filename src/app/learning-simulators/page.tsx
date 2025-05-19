@@ -15,7 +15,7 @@ export default function LearningSimulatorPage() {
         <ResourceCard
           title="Crypto Market Simulator"
           description="This simulator allows you to practice trading cryptocurrencies in a risk-free environment. You can buy and sell cryptocurrencies, track your portfolio, and learn about the crypto market without any financial risk."
-          link="/learning-simulators/crypto-market-simulator"
+          link="/learning-simulators/crypto-trading-simulator"
         />
         <ResourceCard
           title="Real Estate Simulator"
