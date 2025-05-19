@@ -373,7 +373,6 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Current Price</th>
             <th className="p-2 border border-gray-300">Condition</th>
             <th className="p-2 border border-gray-300">Trend</th>
-            <div className="p-2"></div>
           </tr>
         </thead>
         <tbody>
@@ -417,7 +416,6 @@ export default function RealEstateSimulatorPage() {
             <th className="p-2 border border-gray-300">Condition</th>
             <th className="p-2 border border-gray-300">Repairs</th>
             <th className="p-2 border border-gray-300">Trend</th>
-            <div className="p-2"></div>
           </tr>
         </thead>
         <tbody>

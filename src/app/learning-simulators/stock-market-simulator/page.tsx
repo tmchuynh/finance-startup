@@ -6,7 +6,7 @@ import { sellStock } from "@/components/stocks/sellStock";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MOCK_STOCKS } from "@/lib/constants/data/stockData";
-import { Stock, Portfolio } from "@/lib/interfaces/stock";
+import { Portfolio, Stock } from "@/lib/interfaces/stock";
 import { formatNumberToCurrency } from "@/lib/utils/format";
 import { useEffect, useState } from "react";
 
@@ -234,19 +234,29 @@ export default function StockMarketLearningSimulatorPage() {
               </td>
             </tr>
           )}
-          {portfolio.transactions.map((tx) => (
-            <tr key={tx.id}>
-              <td className="p-2 border border-gray-300">
-                {tx.date.toLocaleDateString()}
-              </td>
-              <td className="p-2 border border-gray-300">{tx.type}</td>
-              <td className="p-2 border border-gray-300">{tx.symbol}</td>
-              <td className="p-2 border border-gray-300">{tx.quantity}</td>
-              <td className="p-2 border border-gray-300">
-                ${tx.price.toFixed(2)}
-              </td>
-            </tr>
-          ))}
+          {portfolio.transactions.map((tx) => {
+            const isMoneyIn = tx.type === "SELL";
+            const isMoneyOut = tx.type === "BUY";
+            return (
+              <tr key={tx.id}>
+                <td className="p-2 border border-gray-300">
+                  {tx.date.toLocaleDateString()}
+                </td>
+                <td className="p-2 border border-gray-300">{tx.type}</td>
+                <td className="p-2 border border-gray-300">{tx.symbol}</td>
+                <td className="p-2 border border-gray-300">{tx.quantity}</td>
+                <td
+                  className="p-2 border border-gray-300"
+                  style={{
+                    color: isMoneyIn ? "green" : isMoneyOut ? "red" : undefined,
+                    fontWeight: isMoneyIn || isMoneyOut ? 600 : undefined,
+                  }}
+                >
+                  ${tx.price.toFixed(2)}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
