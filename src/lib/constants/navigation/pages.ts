@@ -64,6 +64,6 @@ export const contact = [
 export const company = [
   { name: "About", href: "/about-us", icon: InformationCircleIcon },
   { name: "Our Team", href: "/about-us/our-team", icon: ShieldCheckIcon },
-  { name: "Careers", href: "/join-us", icon: BriefcaseIcon },
+  { name: "Careers", href: "/careers", icon: BriefcaseIcon },
   { name: "Partners", href: "/about-us/our-partners", icon: GlobeAltIcon },
 ];
