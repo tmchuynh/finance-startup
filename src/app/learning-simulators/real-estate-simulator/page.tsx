@@ -15,7 +15,6 @@ import {
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-
 export default function RealEstateSimulatorPage() {
   const [cash, setCash] = useState(INITIAL_CASH);
   const [properties, setProperties] = useState<Property[]>(MOCK_PROPERTIES);
@@ -56,8 +55,9 @@ export default function RealEstateSimulatorPage() {
       );
       // Only update cash and transactions for rent payments here
       setOwned((prev) => {
-        const newTransactions: Transaction[] = [];
         let cashToAdd = 0;
+        const rentTransactions: Transaction[] = [];
+        // Only add one rent transaction per property per interval
         const updated = prev.map((p) => {
           const change = 1 + (Math.random() * 4 - 2) / 100;
           const newPrice = Math.max(50000, Math.round(p.price * change));
@@ -65,12 +65,11 @@ export default function RealEstateSimulatorPage() {
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
           }
-          // Only add rent transaction here, not in handleLease
           if (p.rentedTo && p.rentAmount) {
             cashToAdd += p.rentAmount!;
-            newTransactions.push({
+            rentTransactions.push({
               id: uuidv4(),
-              type: "RENT",
+              type: "RENT_PAYMENT",
               propertyName: p.name,
               amount: p.rentAmount!,
               date: new Date(simDate.getTime() + 30 * 24 * 60 * 60 * 1000),
@@ -87,8 +86,9 @@ export default function RealEstateSimulatorPage() {
         if (cashToAdd > 0) {
           setCash((c) => c + cashToAdd);
         }
-        if (newTransactions.length > 0) {
-          setTransactions((prevT) => [...newTransactions, ...prevT]);
+        // Only add rent payment transactions (not lease events) here
+        if (rentTransactions.length > 0) {
+          setTransactions((prevT) => [...rentTransactions, ...prevT]);
         }
         return updated;
       });
@@ -297,7 +297,7 @@ export default function RealEstateSimulatorPage() {
         if (p.id !== propertyId) return p;
         const renter = p.interestedRenters?.find((r) => r.id === renterId);
         if (!renter) return p;
-        // Do NOT add a transaction here for rent payments, only for the lease event itself
+        // Only add a transaction for the lease event, not for recurring rent payments
         setTransactions((prevT) => [
           {
             id: uuidv4(),
@@ -713,7 +713,10 @@ export default function RealEstateSimulatorPage() {
           )}
           {transactions.map((tx) => {
             // Highlight money in (SELL, RENT, RENT_PAYMENT) as green, money out (BUY/REPAIR) as red
-            const isMoneyIn = tx.type === "SELL" || tx.type === "RENT";
+            const isMoneyIn =
+              tx.type === "SELL" ||
+              tx.type === "RENT" ||
+              tx.type === "RENT_PAYMENT";
             const isMoneyOut = tx.type === "BUY" || tx.type === "REPAIR";
             return (
               <tr key={tx.id}>
