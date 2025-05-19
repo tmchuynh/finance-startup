@@ -54,34 +54,10 @@ export const checklistCategories: Category[] = [
           "This checklist helps you identify opportunities for business growth. It includes steps for market expansion, product development, and strategic partnerships. Identifying and pursuing growth opportunities is essential for the long-term success of your business. Always remember to conduct thorough market research before pursuing new opportunities. Consider using data analytics to identify trends and make informed decisions. Regularly review your growth strategy and adjust it based on market conditions and business performance. Also, ensure that you have the necessary resources and capabilities to support your growth initiatives. Additionally, consider seeking advice from industry experts or mentors to help you navigate the growth process.",
       },
       {
-        id: "business-partnership-research",
-        title: "Business Partnership Research",
+        id: "business-partnerships",
+        title: "Business Partnerships",
         description:
           "This checklist guides you through the business partnership research process. It includes steps for analyzing potential partnerships, evaluating market conditions, and conducting due diligence. Proper research is essential for making informed business partnership investment decisions and minimizing risks. Always remember to gather information from multiple sources and verify the credibility of the data. Consider using partnership analysis tools to help you evaluate investment opportunities. Regularly review your research process and adjust it based on your investment strategy and market conditions. Also, ensure that you have a clear understanding of the factors that can impact the performance of your business partnership investments.",
-      },
-      {
-        id: "business-partnership-valuation",
-        title: "Business Partnership Valuation",
-        description:
-          "This checklist helps you evaluate the valuation of potential business partnerships. It includes steps for analyzing financial statements, calculating valuation ratios, and comparing valuations. Understanding business partnership valuation is crucial for making informed investment decisions and identifying undervalued or overvalued partnerships. Always remember to consider both absolute and relative valuation metrics when evaluating partnerships. Consider using valuation models to help you assess the fair value of business partnerships. Regularly review your valuation process and adjust it based on changes in your investment strategy and market conditions.",
-      },
-      {
-        id: "business-partnership-investment-strategy",
-        title: "Business Partnership Investment Strategy",
-        description:
-          "This checklist helps you develop a comprehensive business partnership investment strategy. It includes steps for defining your investment approach, selecting investment vehicles, and setting performance benchmarks. A well-defined investment strategy is crucial for guiding your investment decisions and achieving your financial goals. Always remember to adapt your strategy based on market trends and changes in your financial situation. Consider using a combination of active and passive investment strategies to optimize your portfolio performance. Regularly review and update your investment strategy to ensure it remains relevant and effective.",
-      },
-      {
-        id: "business-partnership-risk-management",
-        title: "Business Partnership Risk Management",
-        description:
-          "This checklist covers the essential steps for managing risks in business partnership investments. It includes steps for identifying potential risks, assessing their impact, and implementing risk mitigation strategies. Effective risk management is crucial for protecting your investments and achieving your financial goals. Always remember to monitor your investments regularly and adjust your risk management strategies as needed. Consider using risk assessment tools to help you evaluate potential risks and develop appropriate mitigation plans. Regularly review your risk management policies and practices to ensure they align with your investment strategy and objectives.",
-      },
-      {
-        id: "business-partnership-exit-strategy",
-        title: "Business Partnership Exit Strategy",
-        description:
-          "This checklist helps you develop a comprehensive exit strategy for your business partnership investments. It includes steps for defining your exit approach, setting performance benchmarks, and planning for potential exit scenarios. A well-defined exit strategy is crucial for maximizing your investment returns and minimizing risks. Always remember to adapt your exit strategy based on market trends and changes in your financial situation. Consider using a combination of active and passive exit strategies to optimize your portfolio performance. Regularly review and update your exit strategy to ensure it remains relevant and effective.",
       },
     ],
   },
