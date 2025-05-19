@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 
 const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
@@ -101,200 +103,220 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
         comparison of the total costs over the specified number of years.
       </p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} className="mt-5">
         <div>
-          <h2>Car Ownership</h2>
-          <label>
-            Car Price ($)
-            <input
-              type="number"
-              value={carPrice}
-              min={0}
-              onChange={(e) => setCarPrice(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Down Payment ($)
-            <input
-              type="number"
-              value={downPayment}
-              min={0}
-              onChange={(e) => setDownPayment(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Loan Rate (%)
-            <input
-              type="number"
-              value={loanRate}
-              min={0}
-              step={0.01}
-              onChange={(e) => setLoanRate(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Loan Term (months)
-            <input
-              type="number"
-              value={loanTerm}
-              min={1}
-              max={84}
-              onChange={(e) => setLoanTerm(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Insurance (annual $)
-            <input
-              type="number"
-              value={insurance}
-              min={0}
-              onChange={(e) => setInsurance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Maintenance (annual $)
-            <input
-              type="number"
-              value={maintenance}
-              min={0}
-              onChange={(e) => setMaintenance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Fuel (annual $)
-            <input
-              type="number"
-              value={fuel}
-              min={0}
-              onChange={(e) => setFuel(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Registration (annual $)
-            <input
-              type="number"
-              value={registration}
-              min={0}
-              onChange={(e) => setRegistration(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Parking (annual $)
-            <input
-              type="number"
-              value={parking}
-              min={0}
-              onChange={(e) => setParking(Number(e.target.value))}
-            />
-          </label>
-        </div>
-        <div>
-          <h2>Uber/Lyft</h2>
-          <label>
-            Average Cost per Trip ($)
-            <input
-              type="number"
-              value={uberCostPerTrip}
-              min={0}
-              onChange={(e) => setUberCostPerTrip(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Trips per Week
-            <input
-              type="number"
-              value={uberTripsPerWeek}
-              min={0}
-              onChange={(e) => setUberTripsPerWeek(Number(e.target.value))}
-            />
-          </label>
-          <h2 style={{ marginTop: 32 }}>Carpool</h2>
-          <label>
-            Carpool Cost per Month ($)
-            <input
-              type="number"
-              value={carpoolCostPerMonth}
-              min={0}
-              onChange={(e) => setCarpoolCostPerMonth(Number(e.target.value))}
-            />
-          </label>
-          <h2 style={{ marginTop: 32 }}>Public Transportation</h2>
-          <label>
-            Transit Cost per Month ($)
-            <input
-              type="number"
-              value={transitCostPerMonth}
-              min={0}
-              onChange={(e) => setTransitCostPerMonth(Number(e.target.value))}
-            />
-          </label>
-          <h2 style={{ marginTop: 32 }}>Years to Compare</h2>
-          <label>
-            Years
-            <input
+          <h2>Years to Compare</h2>
+          <div>
+            <Label>Years</Label>
+            <Input
               type="number"
               value={years}
               min={1}
               max={15}
               onChange={(e) => setYears(Number(e.target.value))}
             />
-          </label>
+          </div>
+        </div>
+        <div className="mt-8">
+          <h2>Car Ownership</h2>
+          <div className="gap-4 grid lg:grid-cols-3 mt-2">
+            <div>
+              <Label>Car Price ($)</Label>
+              <Input
+                type="number"
+                value={carPrice}
+                min={0}
+                onChange={(e) => setCarPrice(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Down Payment ($)</Label>
+              <Input
+                type="number"
+                value={downPayment}
+                min={0}
+                onChange={(e) => setDownPayment(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Loan Rate (%)</Label>
+              <Input
+                type="number"
+                value={loanRate}
+                min={0}
+                step={0.01}
+                onChange={(e) => setLoanRate(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Loan Term (months)</Label>
+              <Input
+                type="number"
+                value={loanTerm}
+                min={1}
+                max={84}
+                onChange={(e) => setLoanTerm(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Insurance (annual $)</Label>
+              <Input
+                type="number"
+                value={insurance}
+                min={0}
+                onChange={(e) => setInsurance(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Maintenance (annual $)</Label>
+              <Input
+                type="number"
+                value={maintenance}
+                min={0}
+                onChange={(e) => setMaintenance(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Fuel (annual $)</Label>
+              <Input
+                type="number"
+                value={fuel}
+                min={0}
+                onChange={(e) => setFuel(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Registration (annual $)</Label>
+              <Input
+                type="number"
+                value={registration}
+                min={0}
+                onChange={(e) => setRegistration(Number(e.target.value))}
+              />
+            </div>
+
+            <div>
+              <Label>Parking (annual $)</Label>
+              <Input
+                type="number"
+                value={parking}
+                min={0}
+                onChange={(e) => setParking(Number(e.target.value))}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="mt-8">
+            <h2>Uber/Lyft</h2>
+            <div className="gap-4 grid md:grid-cols-2 mt-2">
+              <div>
+                <Label>Average Cost per Trip ($)</Label>
+                <Input
+                  type="number"
+                  value={uberCostPerTrip}
+                  min={0}
+                  onChange={(e) => setUberCostPerTrip(Number(e.target.value))}
+                />
+              </div>
+
+              <div>
+                <Label>Trips per Week</Label>
+                <Input
+                  type="number"
+                  value={uberTripsPerWeek}
+                  min={0}
+                  onChange={(e) => setUberTripsPerWeek(Number(e.target.value))}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="gap-4 grid lg:grid-cols-2 mt-8">
+            <div>
+              <h2>Carpool</h2>
+              <div className="mt-2">
+                <Label>Carpool Cost per Month ($)</Label>
+                <Input
+                  type="number"
+                  value={carpoolCostPerMonth}
+                  min={0}
+                  onChange={(e) =>
+                    setCarpoolCostPerMonth(Number(e.target.value))
+                  }
+                />
+              </div>
+            </div>
+            <div>
+              <h2>Public Transportation</h2>
+              <div className="mt-2">
+                <Label>Transit Cost per Month ($)</Label>
+                <Input
+                  type="number"
+                  value={transitCostPerMonth}
+                  min={0}
+                  onChange={(e) =>
+                    setTransitCostPerMonth(Number(e.target.value))
+                  }
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </form>
-      <h2>Results for {years} years</h2>
-      <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
-        <div>
-          <h3>Car Ownership</h3>
-          <p>
-            <strong>
-              $
-              {calcCarAnnualCost().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-        <div>
-          <h3>Uber/Lyft</h3>
-          <p>
-            <strong>
-              $
-              {calcUberTotalCost().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-        <div>
-          <h3>Carpool</h3>
-          <p>
-            <strong>
-              $
-              {calcCarpoolTotalCost().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-        <div>
-          <h3>Public Transportation</h3>
-          <p>
-            <strong>
-              $
-              {calcTransitTotalCost().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
+      <div className="mt-5">
+        <h2>Results for {years} years</h2>
+        <div className="gap-5 grid md:grid-cols-2 lg:grid-cols-4 mt-3">
+          <div>
+            <h3>Car Ownership</h3>
+            <p>
+              <strong>
+                $
+                {calcCarAnnualCost().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
+          <div>
+            <h3>Uber/Lyft</h3>
+            <p>
+              <strong>
+                $
+                {calcUberTotalCost().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
+          <div>
+            <h3>Carpool</h3>
+            <p>
+              <strong>
+                $
+                {calcCarpoolTotalCost().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
+          <div>
+            <h3>Public Transportation</h3>
+            <p>
+              <strong>
+                $
+                {calcTransitTotalCost().toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </p>
+          </div>
         </div>
       </div>
       <p style={{ marginTop: 24, color: "#666" }}>
