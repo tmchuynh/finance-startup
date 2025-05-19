@@ -113,13 +113,14 @@ ${recommendation}`
       </p>
       <form
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="space-y-5 mt-5"
         aria-label="Freelance vs Full-Time Income form"
       >
         <div className="mb-4 pb-4 border-b">
-          <Label className="block mb-1 font-semibold">Freelance Income</Label>
+          <h4 className="mb-3">Freelance Income</h4>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">Hourly Rate ($)</Label>
               <Input
                 type="number"
                 min={0}
@@ -131,6 +132,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Hours/Week</Label>
               <Input
                 type="number"
                 min={0}
@@ -142,6 +144,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Weeks/Year</Label>
               <Input
                 type="number"
                 min={0}
@@ -155,6 +158,7 @@ ${recommendation}`
           </div>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">Estimated Expenses ($/yr)</Label>
               <Input
                 type="number"
                 min={0}
@@ -166,6 +170,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Self-Employment Tax Rate (%)</Label>
               <Input
                 type="number"
                 min={0}
@@ -180,11 +185,10 @@ ${recommendation}`
           </div>
         </div>
         <div>
-          <Label className="block mb-1 font-semibold">
-            Full-Time Employment
-          </Label>
+          <h4 className="mb-3">Full-Time Employment</h4>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">Annual Salary ($)</Label>
               <Input
                 type="number"
                 min={0}
@@ -196,6 +200,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Annual Benefits ($)</Label>
               <Input
                 type="number"
                 min={0}
@@ -207,6 +212,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Tax Rate (%)</Label>
               <Input
                 type="number"
                 min={0}
