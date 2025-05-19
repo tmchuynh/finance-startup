@@ -17,14 +17,14 @@ export default function Example() {
       {/* Pricing section */}
       <div className="px-4 overflow-hidden isolate">
         <div className="py-16 sm:pt-32 lg:pb-0 flow-root">
-          <div className="relative z-10">
-            <h1 className="mx-auto max-w-4xl font-semibold text-5xl text-balance text-center sm:text-6xl tracking-tight">
-              Pricing that grows with you
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl font-medium text-center text-lg text-pretty sm:text-xl/8">
+          <div className="text-center">
+            <h1>Pricing that grows with you</h1>
+            <h5>Make Every Financial Move Count</h5>
+            <p className="mx-auto max-w-5xl">
               Choose an affordable plan that’s packed with the best features for
               engaging your audience, creating customer loyalty, and driving
-              sales.
+              sales. Whether you’re a small business or a large enterprise, we
+              have the right plan for you.
             </p>
             <div className="flex justify-center mt-16">
               <ToggleGroup
