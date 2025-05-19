@@ -48,10 +48,10 @@ export const financeCalculatorCategories: Category[] = [
         id: "business-loan-calculator",
       },
       {
-        title: "Expense Tracker",
+        title: "Business Expense Tracker",
         description:
           "Track your business expenses to manage your budget effectively and identify areas for cost reduction. This calculator helps you categorize and analyze your expenses, allowing you to make informed financial decisions.",
-        id: "expense-tracker",
+        id: "business-expense-tracker",
       },
       {
         title: "Revenue Projection Calculator",
