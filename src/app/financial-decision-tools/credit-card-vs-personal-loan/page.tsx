@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 
 const CreditCardVsPersonalLoan: React.FC = () => {
@@ -49,32 +51,32 @@ const CreditCardVsPersonalLoan: React.FC = () => {
         credit card minimum. Please fill out the form below to see the results.
       </p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label>
-            Debt Amount ($)
-            <input
+      <form onSubmit={(e) => e.preventDefault()} className="mt-5">
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Debt Amount ($)</Label>
+            <Input
               type="number"
               value={debt}
               min={0}
               onChange={(e) => setDebt(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Credit Card Interest Rate (% APR)
-            <input
+          </div>
+
+          <div>
+            <Label>Credit Card Interest Rate (% APR)</Label>
+            <Input
               type="number"
               value={ccRate}
               min={0}
               step={0.1}
               onChange={(e) => setCcRate(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Minimum Payment (% of balance)
-            <input
+          </div>
+
+          <div>
+            <Label>Minimum Payment (% of balance)</Label>
+            <Input
               type="number"
               value={minPaymentPct}
               min={1}
@@ -82,34 +84,34 @@ const CreditCardVsPersonalLoan: React.FC = () => {
               step={0.1}
               onChange={(e) => setMinPaymentPct(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
-        <div>
-          <label>
-            Personal Loan Interest Rate (% APR)
-            <input
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Personal Loan Interest Rate (% APR)</Label>
+            <Input
               type="number"
               value={loanRate}
               min={0}
               step={0.1}
               onChange={(e) => setLoanRate(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Loan Term (months)
-            <input
+          </div>
+
+          <div>
+            <Label>Loan Term (months)</Label>
+            <Input
               type="number"
               value={loanTerm}
               min={1}
               max={120}
               onChange={(e) => setLoanTerm(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
       </form>
       <h2>Results</h2>
-      <div style={{ display: "flex", gap: 32 }}>
+      <div className="flex flex-col gap-5 mt-3">
         <div>
           <h3>Credit Card</h3>
           <p>
@@ -119,7 +121,6 @@ const CreditCardVsPersonalLoan: React.FC = () => {
                 maximumFractionDigits: 0,
               })}
             </strong>
-            <br />
             Months to Payoff: {cc.months}
           </p>
         </div>
@@ -132,7 +133,6 @@ const CreditCardVsPersonalLoan: React.FC = () => {
                 maximumFractionDigits: 0,
               })}
             </strong>
-            <br />
             Months to Payoff: {loan.months}
           </p>
         </div>
