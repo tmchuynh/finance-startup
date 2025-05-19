@@ -23,63 +23,99 @@ export default function WorkingCapitalCalculator() {
         Calculate your business's working capital to assess short-term financial
         health and liquidity.
       </p>
-      <div className="mb-4">
+      <section className="mb-8">
+        <h2>What is Working Capital?</h2>
         <p>
-          <strong>What is Working Capital?</strong>
-          <br />
-          Working capital is the difference between your current assets and
-          current liabilities. It measures your business's ability to pay
-          short-term obligations and fund day-to-day operations.
+          Working capital is a fundamental metric in financial management that
+          represents the difference between your current assets and current
+          liabilities. It is a key indicator of your business's operational
+          efficiency and short-term financial stability. In simple terms, it
+          measures how much cash and liquid assets your business has available
+          to cover its short-term obligations.
         </p>
-        <ul className="mt-2 ml-6 list-disc">
-          <li>
-            <strong>Current Assets:</strong> These are items your business owns
-            that can be quickly turned into cash within a year. Examples include
-            cash, inventory, accounts receivable (money customers owe you), and
-            short-term investments.
-          </li>
-          <li>
-            <strong>Current Liabilities:</strong> These are debts or obligations
-            your business needs to pay within a year. Examples include accounts
-            payable (money you owe suppliers), short-term loans, and other bills
-            due soon.
-          </li>
-        </ul>
-        <p className="mt-2">
-          <strong>Formula:</strong>
-          <br />
-          <code>Working Capital = Current Assets - Current Liabilities</code>
+        <p>
+          A positive working capital shows that your business can pay off its
+          short-term debts and still have resources left to reinvest or cover
+          unexpected expenses. A negative working capital, on the other hand,
+          may suggest liquidity issues that could disrupt daily operations or
+          lead to insolvency if not addressed.
         </p>
-        <p className="mt-2">
-          <strong>Example:</strong>
-          <br />
-          If your business has $10,000 in current assets and $7,000 in current
-          liabilities, your working capital is $3,000 ($10,000 - $7,000).
+
+        <div className="gap-4 grid lg:grid-cols-2 mt-3 lg:mt-7 mb-5">
+          <div>
+            <h3>Current Assets</h3>
+            <p>
+              These are all assets your business expects to convert into cash,
+              sell, or consume within one year.
+            </p>
+            <ul className="list-disc list-inside">
+              <li>Cash & cash equivalents</li>
+              <li>Accounts receivable</li>
+              <li>Inventory</li>
+              <li>Prepaid expenses</li>
+              <li>Short-term investments</li>
+              <li>Other liquid assets</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Current Liabilities</h3>
+            <p>
+              These are financial obligations your business must settle within
+              one year.
+            </p>
+            <ul className="list-disc list-inside">
+              <li>Accounts payable</li>
+              <li>Short-term debt</li>
+              <li>Accrued expenses</li>
+              <li>Taxes payable</li>
+              <li>Unearned revenue</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <h3>Formula</h3>
+          <p className="text-gray-700">
+            <code className="bg-gray-100 px-2 py-1 rounded text-sm">
+              Working Capital = Current Assets - Current Liabilities
+            </code>
+          </p>
+        </div>
+
+        <div className="mb-6">
+          <h3>Example</h3>
+          <p className="text-gray-700">
+            If your business has <strong>$10,000</strong> in current assets and{" "}
+            <strong>$7,000</strong> in current liabilities, your working capital
+            is <strong>$3,000</strong> ($10,000 - $7,000).
+          </p>
+        </div>
+
+        <div className="mb-6">
+          <h3>Why It Matters</h3>
+          <p>
+            Working capital helps evaluate your business's ability to meet
+            short-term obligations and maintain smooth daily operations.
+          </p>
+          <ul className="space-y-2 mt-3">
+            <li>
+              <strong>Positive working capital: </strong> You have enough
+              resources to pay your bills and keep your business running
+              smoothly.
+            </li>
+            <li>
+              <strong>Negative working capital: </strong> You may struggle to
+              pay bills on time, which could lead to financial difficulties.
+            </li>
+          </ul>
+        </div>
+
+        <p className="text-gray-600 text-sm">
+          <strong>Tip:</strong> Review your balance sheet to find your current
+          assets and liabilities. If unsure, consult with your accountant or
+          bookkeeper to ensure accuracy.
         </p>
-        <p className="mt-2">
-          <strong>Why it matters:</strong>
-          <br />
-          Positive working capital means your business can cover its short-term
-          debts and invest in growth. Negative working capital may indicate
-          liquidity problems.
-        </p>
-        <ul className="mt-2 ml-6 list-disc">
-          <li>
-            <strong>Positive working capital:</strong> You have enough resources
-            to pay your bills and keep your business running smoothly.
-          </li>
-          <li>
-            <strong>Negative working capital:</strong> You may struggle to pay
-            bills on time, which could lead to financial difficulties.
-          </li>
-        </ul>
-        <p className="mt-2 text-gray-600 text-sm">
-          <strong>Tip:</strong> For beginners, review your balance sheet or
-          accounting records to find your current assets and current
-          liabilities. If unsure, ask your accountant or bookkeeper for help
-          identifying these amounts.
-        </p>
-      </div>
+      </section>
       <div className="gap-4 grid md:grid-cols-2">
         <div className="mb-2">
           <label className="block mb-1 font-medium">Current Assets ($):</label>
