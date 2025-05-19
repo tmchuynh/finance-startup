@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 
 const PayoffDebtVsInvesting: React.FC = () => {
@@ -81,95 +83,96 @@ const PayoffDebtVsInvesting: React.FC = () => {
       </p>
 
       <form
-        className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8"
+        className="gap-4 grid grid-cols-1 sm:grid-cols-2 my-8"
         onSubmit={(e) => e.preventDefault()}
       >
-        <div>
-          <label>
-            Debt Amount ($)
-            <input
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Debt Amount ($)</Label>
+            <Input
               type="number"
               value={debt}
               min={0}
               onChange={(e) => setDebt(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Debt Interest Rate (% APR)
-            <input
+          </div>
+
+          <div>
+            <Label>Debt Interest Rate (% APR)</Label>
+            <Input
               type="number"
               value={debtRate}
               min={0}
               step={0.1}
               onChange={(e) => setDebtRate(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Minimum Payment ($/month)
-            <input
+          </div>
+
+          <div>
+            <Label>Minimum Payment ($/month)</Label>
+            <Input
               type="number"
               value={minPayment}
               min={0}
               onChange={(e) => setMinPayment(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Extra Monthly Amount ($)
-            <input
+          </div>
+
+          <div>
+            <Label>Extra Monthly Amount ($)</Label>
+            <Input
               type="number"
               value={extra}
               min={0}
               onChange={(e) => setExtra(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
-        <div>
-          <label>
-            Expected Investment Return (%/year)
-            <input
+        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
+          <div>
+            <Label>Expected Investment Return (%/year)</Label>
+            <Input
               type="number"
               value={investReturn}
               min={0}
               step={0.1}
               onChange={(e) => setInvestReturn(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Years to Compare
-            <input
+          </div>
+
+          <div>
+            <Label>Years to Compare</Label>
+            <Input
               type="number"
               value={years}
               min={1}
               max={40}
               onChange={(e) => setYears(Number(e.target.value))}
             />
-          </label>
+          </div>
         </div>
       </form>
       <h2>Results after {years} years</h2>
-      <div style={{ display: "flex", gap: 32 }}>
+      <div className="flex flex-col gap-5 mt-3">
         <div>
           <h3>Pay Off Debt First</h3>
           <p>
+            Total Value:{" "}
             <strong>
-              Total Value: $
+              $
               {payoff.totalValue.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}
             </strong>
-            <br />
-            Debt paid off in {payoff.debtFreeMonth} months
           </p>
+          <p> Debt paid off in {payoff.debtFreeMonth} months</p>
         </div>
         <div>
           <h3>Invest Extra While Paying Minimum</h3>
           <p>
+            Total Value:{" "}
             <strong>
-              Total Value: $
+              $
               {invest.investValue.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}

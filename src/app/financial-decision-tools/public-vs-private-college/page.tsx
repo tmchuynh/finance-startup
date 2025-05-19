@@ -113,13 +113,14 @@ ${recommendation}`
       </p>
       <form
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="space-y-5 mt-5"
         aria-label="College cost comparison form"
       >
         <div className="mb-4 pb-4 border-b">
-          <Label className="block mb-1 font-semibold">Public College</Label>
+          <h4 className="mb-3">Public College</h4>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">Tuition ($/year)</Label>
               <Input
                 type="number"
                 min={0}
@@ -131,6 +132,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Room & Board ($/year)</Label>
               <Input
                 type="number"
                 min={0}
@@ -142,6 +144,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Fees ($/year)</Label>
               <Input
                 type="number"
                 min={0}
@@ -155,6 +158,9 @@ ${recommendation}`
           </div>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">
+                Scholarships/Grants (total $)
+              </Label>
               <Input
                 type="number"
                 min={0}
@@ -166,6 +172,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Years</Label>
               <Input
                 type="number"
                 min={1}
@@ -179,9 +186,10 @@ ${recommendation}`
           </div>
         </div>
         <div>
-          <Label className="block mb-1 font-semibold">Private College</Label>
+          <h4 className="mb-3">Private College</h4>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">Tuition ($/year)</Label>
               <Input
                 type="number"
                 min={0}
@@ -193,6 +201,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Room & Board ($/year)</Label>
               <Input
                 type="number"
                 min={0}
@@ -204,6 +213,7 @@ ${recommendation}`
               />
             </div>
             <div className="flex-1">
+              <Label className="block mb-1">Fees ($/year)</Label>
               <Input
                 type="number"
                 min={0}
@@ -217,6 +227,9 @@ ${recommendation}`
           </div>
           <div className="flex gap-2 mb-2">
             <div className="flex-1">
+              <Label className="block mb-1">
+                Scholarships/Grants (total $)
+              </Label>
               <Input
                 type="number"
                 min={0}
