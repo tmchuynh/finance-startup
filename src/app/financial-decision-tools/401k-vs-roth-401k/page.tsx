@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import React, { useState } from "react";
 
 const RothVsTraditional401k: React.FC = () => {
@@ -121,83 +122,160 @@ const RothVsTraditional401k: React.FC = () => {
       </div>
       {/* End info table */}
 
-      <form onSubmit={(e) => e.preventDefault()} className="my-5">
+      <form className="my-5">
         <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
           <div>
             <Label>Annual Salary ($)</Label>
-            <Input
-              type="number"
-              value={salary}
-              min={0}
-              onChange={(e) => setSalary(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={500000}
+                step={1000}
+                value={[salary]}
+                onValueChange={([v]) => setSalary(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={salary}
+                min={0}
+                onChange={(e) => setSalary(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
           <div>
             <Label>Employee Contribution (%)</Label>
-            <Input
-              type="number"
-              value={contribution}
-              min={0}
-              max={100}
-              step={0.1}
-              onChange={(e) => setContribution(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={50}
+                step={0.1}
+                value={[contribution]}
+                onValueChange={([v]) => setContribution(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={contribution}
+                min={0}
+                max={100}
+                step={0.1}
+                onChange={(e) => setContribution(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
           <div>
             <Label>Employer Match (%)</Label>
-            <Input
-              type="number"
-              value={employerMatch}
-              min={0}
-              max={100}
-              step={0.1}
-              onChange={(e) => setEmployerMatch(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={20}
+                step={0.1}
+                value={[employerMatch]}
+                onValueChange={([v]) => setEmployerMatch(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={employerMatch}
+                min={0}
+                max={100}
+                step={0.1}
+                onChange={(e) => setEmployerMatch(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
           <div>
             <Label>Years to Grow</Label>
-            <Input
-              type="number"
-              value={years}
-              min={1}
-              max={50}
-              onChange={(e) => setYears(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={1}
+                max={50}
+                step={1}
+                value={[years]}
+                onValueChange={([v]) => setYears(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={years}
+                min={1}
+                max={50}
+                onChange={(e) => setYears(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
           <div>
             <Label>Expected Annual Return (%)</Label>
-            <Input
-              type="number"
-              value={annualReturn}
-              min={0}
-              max={20}
-              step={0.1}
-              onChange={(e) => setAnnualReturn(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={20}
+                step={0.1}
+                value={[annualReturn]}
+                onValueChange={([v]) => setAnnualReturn(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={annualReturn}
+                min={0}
+                max={20}
+                step={0.1}
+                onChange={(e) => setAnnualReturn(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
         </div>
         <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
           <div>
             <Label>Current Marginal Tax Rate (%)</Label>
-            <Input
-              type="number"
-              value={currentTax}
-              min={0}
-              max={50}
-              step={0.1}
-              onChange={(e) => setCurrentTax(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={50}
+                step={0.1}
+                value={[currentTax]}
+                onValueChange={([v]) => setCurrentTax(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={currentTax}
+                min={0}
+                max={50}
+                step={0.1}
+                onChange={(e) => setCurrentTax(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
           <div>
             <Label>Retirement Tax Rate (%)</Label>
-            <Input
-              type="number"
-              value={retirementTax}
-              min={0}
-              max={50}
-              step={0.1}
-              onChange={(e) => setRetirementTax(Number(e.target.value))}
-            />
+            <div className="flex items-center gap-4">
+              <Slider
+                min={0}
+                max={50}
+                step={0.1}
+                value={[retirementTax]}
+                onValueChange={([v]) => setRetirementTax(Number(v.toFixed(1)))}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={retirementTax}
+                min={0}
+                max={50}
+                step={0.1}
+                onChange={(e) => setRetirementTax(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
           </div>
         </div>
       </form>
