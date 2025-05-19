@@ -1,5 +1,8 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import React, { useState } from "react";
 
 const RentVsBuy: React.FC = () => {
@@ -69,148 +72,333 @@ const RentVsBuy: React.FC = () => {
         payment, home appreciation, selling costs, or tax deductions.
       </p>
 
+      {/* Typical values table for first-time homebuyers */}
+      <div className="my-8">
+        <h2 className="mb-2 font-semibold text-lg">
+          Typical Values for First-Time Homebuyers
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-3 py-2 border text-left">Parameter</th>
+                <th className="px-3 py-2 border text-left">Typical Range</th>
+                <th className="px-3 py-2 border text-left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-3 py-2 border">Mortgage Rate (%)</td>
+                <td className="px-3 py-2 border">5% - 7%</td>
+                <td className="px-3 py-2 border">
+                  Varies by credit score, loan type, and market
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Down Payment (%)</td>
+                <td className="px-3 py-2 border">3% - 20%</td>
+                <td className="px-3 py-2 border">
+                  3-5% for FHA/VA/first-time buyer programs, 20% avoids PMI
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Home Insurance (annual $)</td>
+                <td className="px-3 py-2 border">$800 - $2,000</td>
+                <td className="px-3 py-2 border">
+                  Depends on location, home value, and coverage
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">
+                  Maintenance (% of home price/year)
+                </td>
+                <td className="px-3 py-2 border">1% - 2%</td>
+                <td className="px-3 py-2 border">General rule of thumb</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">HOA Fees (monthly $)</td>
+                <td className="px-3 py-2 border">$0 - $400</td>
+                <td className="px-3 py-2 border">
+                  Only for condos/townhomes or some neighborhoods
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 border">Property Tax Rate (%)</td>
+                <td className="px-3 py-2 border">0.7% - 2.5%</td>
+                <td className="px-3 py-2 border">
+                  Varies widely by state/county
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {/* End typical values table */}
+
       <form
         className="gap-4 grid grid-cols-1 md:grid-cols-2 mb-8"
         onSubmit={(e) => e.preventDefault()}
       >
-        <div>
-          <h2>Renting</h2>
-          <label>
-            Monthly Rent ($)
-            <input
-              type="number"
-              value={rent}
-              min={0}
-              onChange={(e) => setRent(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Annual Rent Increase (%)
-            <input
-              type="number"
-              value={rentIncrease}
-              min={0}
-              step={0.1}
-              onChange={(e) => setRentIncrease(Number(e.target.value))}
-            />
-          </label>
+        <div className="space-y-3 md:space-y-29">
+          <div className="mt-9 lg:mt-11 2xl:mt-14.5">
+            <Label>Years to Compare</Label>
+            <div className="flex items-center gap-4">
+              <Slider
+                min={1}
+                max={30}
+                step={1}
+                value={[years]}
+                onValueChange={([v]) => setYears(v)}
+                className="w-2/3"
+              />
+              <Input
+                type="number"
+                value={years}
+                min={1}
+                max={30}
+                onChange={(e) => setYears(Number(e.target.value))}
+                className="w-1/3"
+              />
+            </div>
+          </div>
+          <div className="">
+            <h2>Results</h2>
+            <div className="flex flex-col gap-5 mt-3">
+              <div>
+                <h3>Total Renting Cost</h3>
+                <p>
+                  <strong>
+                    $
+                    {calcTotalRent().toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </strong>
+                </p>
+              </div>
+              <div>
+                <h3>Total Buying Cost</h3>
+                <p>
+                  <strong>
+                    $
+                    {calcTotalBuy().toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </strong>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h2>Buying</h2>
-          <label>
-            Home Price ($)
-            <input
-              type="number"
-              value={homePrice}
-              min={0}
-              onChange={(e) => setHomePrice(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Down Payment (%)
-            <input
-              type="number"
-              value={downPayment}
-              min={0}
-              max={100}
-              step={0.1}
-              onChange={(e) => setDownPayment(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Mortgage Rate (%)
-            <input
-              type="number"
-              value={mortgageRate}
-              min={0}
-              step={0.01}
-              onChange={(e) => setMortgageRate(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Property Tax Rate (%)
-            <input
-              type="number"
-              value={propertyTax}
-              min={0}
-              step={0.01}
-              onChange={(e) => setPropertyTax(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Home Insurance (annual $)
-            <input
-              type="number"
-              value={homeInsurance}
-              min={0}
-              onChange={(e) => setHomeInsurance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            Maintenance (% of home price/year)
-            <input
-              type="number"
-              value={maintenance}
-              min={0}
-              step={0.1}
-              onChange={(e) => setMaintenance(Number(e.target.value))}
-            />
-          </label>
-          <br />
-          <label>
-            HOA Fees (monthly $)
-            <input
-              type="number"
-              value={hoa}
-              min={0}
-              onChange={(e) => setHoa(Number(e.target.value))}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Years to Compare
-            <input
-              type="number"
-              value={years}
-              min={1}
-              max={30}
-              onChange={(e) => setYears(Number(e.target.value))}
-            />
-          </label>
+        <div className="space-y-3 md:space-y-10">
+          <div className="">
+            <h2>Renting</h2>
+            <div className="space-y-5 mt-3">
+              <div>
+                <Label>Monthly Rent ($)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={10000}
+                    step={50}
+                    value={[rent]}
+                    onValueChange={([v]) => setRent(v)}
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={rent}
+                    min={0}
+                    onChange={(e) => setRent(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>Annual Rent Increase (%)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={10}
+                    step={0.1}
+                    value={[rentIncrease]}
+                    onValueChange={([v]) =>
+                      setRentIncrease(Number(v.toFixed(1)))
+                    }
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={rentIncrease}
+                    min={0}
+                    step={0.1}
+                    onChange={(e) => setRentIncrease(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="">
+            <h2>Buying</h2>
+            <div className="space-y-5 mt-3">
+              <div>
+                <Label>Home Price ($)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={50000}
+                    max={2000000}
+                    step={10000}
+                    value={[homePrice]}
+                    onValueChange={([v]) => setHomePrice(v)}
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={homePrice}
+                    min={0}
+                    onChange={(e) => setHomePrice(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>Down Payment (%)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={100}
+                    step={0.1}
+                    value={[downPayment]}
+                    onValueChange={([v]) =>
+                      setDownPayment(Number(v.toFixed(1)))
+                    }
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={downPayment}
+                    min={0}
+                    max={100}
+                    step={0.1}
+                    onChange={(e) => setDownPayment(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>Mortgage Rate (%)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={15}
+                    step={0.01}
+                    value={[mortgageRate]}
+                    onValueChange={([v]) =>
+                      setMortgageRate(Number(v.toFixed(2)))
+                    }
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={mortgageRate}
+                    min={0}
+                    step={0.01}
+                    onChange={(e) => setMortgageRate(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>Property Tax Rate (%)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={5}
+                    step={0.01}
+                    value={[propertyTax]}
+                    onValueChange={([v]) =>
+                      setPropertyTax(Number(v.toFixed(2)))
+                    }
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={propertyTax}
+                    min={0}
+                    step={0.01}
+                    onChange={(e) => setPropertyTax(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>Home Insurance (annual $)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={5000}
+                    step={50}
+                    value={[homeInsurance]}
+                    onValueChange={([v]) => setHomeInsurance(v)}
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={homeInsurance}
+                    min={0}
+                    onChange={(e) => setHomeInsurance(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>Maintenance (% of home price/year)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={5}
+                    step={0.1}
+                    value={[maintenance]}
+                    onValueChange={([v]) =>
+                      setMaintenance(Number(v.toFixed(1)))
+                    }
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={maintenance}
+                    min={0}
+                    step={0.1}
+                    onChange={(e) => setMaintenance(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label>HOA Fees (monthly $)</Label>
+                <div className="flex items-center gap-4">
+                  <Slider
+                    min={0}
+                    max={1000}
+                    step={10}
+                    value={[hoa]}
+                    onValueChange={([v]) => setHoa(v)}
+                    className="w-2/3"
+                  />
+                  <Input
+                    type="number"
+                    value={hoa}
+                    min={0}
+                    onChange={(e) => setHoa(Number(e.target.value))}
+                    className="w-1/3"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
-      <h2>Results</h2>
-      <div style={{ display: "flex", gap: 32 }}>
-        <div>
-          <h3>Total Renting Cost</h3>
-          <p>
-            <strong>
-              $
-              {calcTotalRent().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-        <div>
-          <h3>Total Buying Cost</h3>
-          <p>
-            <strong>
-              $
-              {calcTotalBuy().toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
-        </div>
-      </div>
+
       <p style={{ marginTop: 24, color: "#666" }}>
         Note: This calculator does not account for investment growth on down
         payment, home appreciation, selling costs, or tax deductions.
