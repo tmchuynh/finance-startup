@@ -63,6 +63,31 @@ export default function RentalIncomeCalculator() {
           understand your true earnings, you need to consider not just the rent,
           but also vacancies and expenses.
         </p>
+        <div className="my-6">
+          <h3>Tips for Beginners</h3>
+          <ul className="list-disc list-inside">
+            <li>
+              Be realistic about vacancy rates—most properties are not rented
+              100% of the time.
+            </li>
+            <li>
+              Include all expenses: property taxes, insurance, repairs,
+              management fees, utilities, etc.
+            </li>
+            <li>
+              Net Operating Income (NOI) does not include mortgage payments or
+              income taxes.
+            </li>
+            <li>
+              Use NOI to compare different rental properties and estimate
+              investment returns.
+            </li>
+            <li>
+              Consult a financial advisor or property manager for personalized
+              advice.
+            </li>
+          </ul>
+        </div>
         <div className="mb-6">
           <h3>Key Terms Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
@@ -112,7 +137,136 @@ export default function RentalIncomeCalculator() {
             </tbody>
           </table>
         </div>
-        <div className="mb-6">
+        <div className="gap-4 grid md:grid-cols-2">
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Monthly Rent ($):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={monthlyRent}
+              onChange={(e) => setMonthlyRent(e.target.value)}
+              placeholder="Enter monthly rent"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Other Monthly Income ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={otherIncome}
+              onChange={(e) => setOtherIncome(e.target.value)}
+              placeholder="Enter other monthly income"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Vacancy Rate (%):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={vacancyRate}
+              onChange={(e) => setVacancyRate(e.target.value)}
+              placeholder="Enter vacancy rate (e.g., 5)"
+              min="0"
+              max="100"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Monthly Expenses ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={monthlyExpenses}
+              onChange={(e) => setMonthlyExpenses(e.target.value)}
+              placeholder="Enter total monthly expenses"
+              min="0"
+            />
+          </div>
+        </div>
+        <button
+          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          onClick={handleCalculate}
+        >
+          Calculate Rental Income
+        </button>
+        {result && (
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="bg-white shadow p-4 border rounded-lg">
+              <h3 className="mb-2 font-semibold">Results</h3>
+              <table className="border border-gray-300 min-w-full text-sm">
+                <tbody>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Gross Annual Income
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.grossAnnualIncome.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Vacancy Loss
+                    </td>
+                    <td className="px-3 py-2 border">
+                      -$
+                      {result.vacancyLoss.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Effective Rental Income
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.effectiveIncome.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Annual Expenses
+                    </td>
+                    <td className="px-3 py-2 border">
+                      -$
+                      {result.annualExpenses.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Net Operating Income (NOI)
+                    </td>
+                    <td className="px-3 py-2 border font-bold text-green-700">
+                      $
+                      {result.netOperatingIncome.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        <div className="my-6">
           <h3>How Rental Income is Calculated</h3>
           <ul className="mb-2 list-decimal list-inside">
             <li>
@@ -171,159 +325,7 @@ export default function RentalIncomeCalculator() {
             </tbody>
           </table>
         </div>
-        <div className="mb-6">
-          <h3>Tips for Beginners</h3>
-          <ul className="list-disc list-inside">
-            <li>
-              Be realistic about vacancy rates—most properties are not rented
-              100% of the time.
-            </li>
-            <li>
-              Include all expenses: property taxes, insurance, repairs,
-              management fees, utilities, etc.
-            </li>
-            <li>
-              Net Operating Income (NOI) does not include mortgage payments or
-              income taxes.
-            </li>
-            <li>
-              Use NOI to compare different rental properties and estimate
-              investment returns.
-            </li>
-            <li>
-              Consult a financial advisor or property manager for personalized
-              advice.
-            </li>
-          </ul>
-        </div>
       </section>
-      <div className="gap-4 grid md:grid-cols-2">
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Monthly Rent ($):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={monthlyRent}
-            onChange={(e) => setMonthlyRent(e.target.value)}
-            placeholder="Enter monthly rent"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Other Monthly Income ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={otherIncome}
-            onChange={(e) => setOtherIncome(e.target.value)}
-            placeholder="Enter other monthly income"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Vacancy Rate (%):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={vacancyRate}
-            onChange={(e) => setVacancyRate(e.target.value)}
-            placeholder="Enter vacancy rate (e.g., 5)"
-            min="0"
-            max="100"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Monthly Expenses ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={monthlyExpenses}
-            onChange={(e) => setMonthlyExpenses(e.target.value)}
-            placeholder="Enter total monthly expenses"
-            min="0"
-          />
-        </div>
-      </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
-        onClick={handleCalculate}
-      >
-        Calculate Rental Income
-      </button>
-      {result && (
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="border border-gray-300 min-w-full text-sm">
-              <tbody>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Gross Annual Income
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.grossAnnualIncome.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">Vacancy Loss</td>
-                  <td className="px-3 py-2 border">
-                    -$
-                    {result.vacancyLoss.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Effective Rental Income
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.effectiveIncome.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Annual Expenses
-                  </td>
-                  <td className="px-3 py-2 border">
-                    -$
-                    {result.annualExpenses.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Net Operating Income (NOI)
-                  </td>
-                  <td className="px-3 py-2 border font-bold text-green-700">
-                    $
-                    {result.netOperatingIncome.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
