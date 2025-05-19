@@ -66,6 +66,19 @@ export default function StockMarketLearningSimulatorPage() {
     }
   };
 
+  const handleSellAll = (symbol: string) => {
+    const stock = stocks.find((s) => s.symbol === symbol);
+    const holding = portfolio.holdings.find((h) => h.symbol === symbol);
+    if (stock && holding && holding.quantity > 0) {
+      const result = sellStock(portfolio, stock, holding.quantity);
+      if (typeof result === "string") setMessage(result);
+      else {
+        setPortfolio(result);
+        setMessage(`Sold all shares of ${symbol}`);
+      }
+    }
+  };
+
   const handleSelectStock = (symbol: string) => {
     const stock = stocks.find((s) => s.symbol === symbol);
     if (stock) setSelectedStock(stock);
@@ -199,6 +212,7 @@ export default function StockMarketLearningSimulatorPage() {
         portfolio={portfolio}
         stocks={stocks}
         onSelectStock={handleSelectStock}
+        onSellAll={handleSellAll}
       />
 
       <h2 className="mt-8 mb-2 font-semibold text-2xl">Transaction History</h2>

@@ -6,12 +6,14 @@ interface PortfolioTableProps {
   portfolio: Portfolio;
   stocks: Stock[];
   onSelectStock?: (symbol: string) => void;
+  onSellAll?: (symbol: string) => void;
 }
 
 export const PortfolioTable: React.FC<PortfolioTableProps> = ({
   portfolio,
   stocks,
   onSelectStock,
+  onSellAll,
 }) => (
   <table className="border border-collapse border-gray-300 w-full">
     <thead>
@@ -23,6 +25,7 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
         <th className="p-2 border border-gray-300 text-left">Total Value</th>
         <th className="p-2 border border-gray-300 text-left">Change ($)</th>
         <th className="p-2 border border-gray-300 text-left">Change (%)</th>
+        <th className="p-2 border border-gray-300 text-left"></th>
       </tr>
     </thead>
     <tbody>
@@ -78,6 +81,25 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
             >
               {changePct >= 0 ? "+" : ""}
               {changePct.toFixed(2)}%
+            </td>
+            <td className="p-2 border border-gray-300">
+              {onSellAll && (
+                <button
+                  style={{
+                    background: "#dc2626",
+                    color: "white",
+                    border: "none",
+                    borderRadius: 4,
+                    padding: "4px 10px",
+                    cursor: "pointer",
+                    fontWeight: 600,
+                  }}
+                  onClick={() => onSellAll(h.symbol)}
+                  title="Sell all shares"
+                >
+                  Sell All
+                </button>
+              )}
             </td>
           </tr>
         );
