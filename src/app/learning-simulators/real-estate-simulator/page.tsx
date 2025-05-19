@@ -20,9 +20,21 @@ type OwnedProperty = Property & {
   repairs: number;
   forSale: boolean;
   interestedBuyers: Buyer[];
+  forRent?: boolean;
+  rentRange?: [number, number];
+  interestedRenters?: Renter[];
+  rentedTo?: Renter | null;
+  rentAmount?: number;
 };
 
 type Buyer = {
+  id: string;
+  name: string;
+  offer: number;
+  notes?: string;
+};
+
+type Renter = {
   id: string;
   name: string;
   offer: number;
@@ -108,12 +120,40 @@ function getRandomBuyers(property: Property): Buyer[] {
   });
 }
 
+function getRandomRenters(
+  property: Property,
+  min: number,
+  max: number
+): Renter[] {
+  const renters = [
+    { name: "Eve", notes: "Wants 12-month lease" },
+    { name: "Frank", notes: "Has pets" },
+    { name: "Grace", notes: "Pays on time" },
+    { name: "Heidi", notes: "Short-term rental" },
+  ];
+  return Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () => {
+    const renter = renters[Math.floor(Math.random() * renters.length)];
+    return {
+      id: uuidv4(),
+      name: renter.name,
+      offer: Math.round((min + Math.random() * (max - min)) / 10) * 10,
+      notes: renter.notes,
+    };
+  });
+}
+
 export default function RealEstateSimulatorPage() {
   const [cash, setCash] = useState(INITIAL_CASH);
   const [properties, setProperties] = useState<Property[]>(MOCK_PROPERTIES);
   const [owned, setOwned] = useState<OwnedProperty[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [message, setMessage] = useState<string>("");
+  const [rentModal, setRentModal] = useState<{
+    open: boolean;
+    propertyId: string | null;
+    min: number;
+    max: number;
+  }>({ open: false, propertyId: null, min: 1000, max: 2000 });
 
   // Simulate price trends and random condition changes
   useEffect(() => {
@@ -145,6 +185,10 @@ export default function RealEstateSimulatorPage() {
           let newCondition = p.condition;
           if (Math.random() < 0.05) {
             newCondition = randomConditionDowngrade(p.condition);
+          }
+          // Add rent income if rented
+          if (p.rentedTo && p.rentAmount) {
+            setCash((c) => c + p.rentAmount!);
           }
           return {
             ...p,
@@ -284,14 +328,93 @@ export default function RealEstateSimulatorPage() {
     );
   };
 
+  const handleOpenRentModal = (propertyId: string) => {
+    setRentModal({ open: true, propertyId, min: 1000, max: 2000 });
+  };
+
+  const handleSetRentRange = (min: number, max: number) => {
+    setRentModal((prev) => ({ ...prev, min, max }));
+  };
+
+  const handleListForRent = () => {
+    if (!rentModal.propertyId) return;
+    setOwned((prev) =>
+      prev.map((p) =>
+        p.id === rentModal.propertyId
+          ? {
+              ...p,
+              forRent: true,
+              rentRange: [rentModal.min, rentModal.max],
+              interestedRenters: getRandomRenters(
+                p,
+                rentModal.min,
+                rentModal.max
+              ),
+            }
+          : p
+      )
+    );
+    setRentModal({ open: false, propertyId: null, min: 1000, max: 2000 });
+    setMessage("Property listed for rent. Renters are making offers!");
+  };
+
+  const handleLease = (propertyId: string, renterId: string) => {
+    setOwned((prev) =>
+      prev.map((p) => {
+        if (p.id !== propertyId) return p;
+        const renter = p.interestedRenters?.find((r) => r.id === renterId);
+        if (!renter) return p;
+        setTransactions((prevT) => [
+          ...prevT,
+          {
+            id: uuidv4(),
+            type: "REPAIR", // Not a repair, but for log. You may want to add a "LEASE" type.
+            propertyName: p.name,
+            amount: renter.offer,
+            date: new Date(),
+            notes: `Leased to ${renter.name} for $${renter.offer}/mo`,
+          },
+        ]);
+        setMessage(
+          `Leased ${p.name} to ${
+            renter.name
+          } for $${renter.offer.toLocaleString()}/month`
+        );
+        return {
+          ...p,
+          forRent: false,
+          interestedRenters: [],
+          rentedTo: renter,
+          rentAmount: renter.offer,
+        };
+      })
+    );
+  };
+
+  const handleRestart = () => {
+    setCash(INITIAL_CASH);
+    setProperties(
+      MOCK_PROPERTIES.map((p) => ({
+        ...p,
+        owned: false,
+        trend: [p.price],
+        repairs: 0,
+      }))
+    );
+    setOwned([]);
+    setTransactions([]);
+    setMessage("");
+  };
+
   return (
     <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
       <h1 className="mb-6 font-bold text-3xl">
         Real Estate Investment Simulator
       </h1>
       <p className="mb-4">
-        Simulate buying, repairing, and selling properties. Watch price trends,
-        make repairs, and select buyers to maximize your returns!
+        Simulate buying, repairing, renting, and selling properties. Watch price
+        trends, make repairs, and select buyers or renters to maximize your
+        returns!
       </p>
       <p className="mb-4">
         Cash Balance: <strong>${cash.toLocaleString()}</strong>
@@ -396,11 +519,106 @@ export default function RealEstateSimulatorPage() {
                 ) : (
                   <span className="font-semibold text-green-700">Listed</span>
                 )}
+                {!p.forRent && !p.rentedTo ? (
+                  <button
+                    className="bg-purple-600 hover:bg-purple-700 mt-1 px-3 py-1 rounded text-white"
+                    onClick={() => handleOpenRentModal(p.id)}
+                  >
+                    List for Rent
+                  </button>
+                ) : p.rentedTo ? (
+                  <span className="font-semibold text-purple-700">
+                    Rented (${p.rentAmount?.toLocaleString()}/mo)
+                  </span>
+                ) : (
+                  <span className="font-semibold text-purple-700">
+                    For Rent
+                  </span>
+                )}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {/* Rent Modal */}
+      {rentModal.open && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.3)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div className="bg-white shadow-lg p-6 rounded w-80">
+            <h3 className="mb-2 font-semibold text-lg">Set Rent Range</h3>
+            <div className="mb-2">
+              <label className="block mb-1">Min ($/month)</label>
+              <input
+                type="number"
+                className="p-1 border rounded w-full"
+                min={100}
+                value={rentModal.min}
+                onChange={(e) =>
+                  handleSetRentRange(Number(e.target.value), rentModal.max)
+                }
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-1">Max ($/month)</label>
+              <input
+                type="number"
+                className="p-1 border rounded w-full"
+                min={rentModal.min}
+                value={rentModal.max}
+                onChange={(e) =>
+                  handleSetRentRange(rentModal.min, Number(e.target.value))
+                }
+              />
+            </div>
+            <div className="flex gap-2">
+              <button
+                className="bg-purple-600 hover:bg-purple-700 px-3 py-1 rounded text-white"
+                onClick={handleListForRent}
+              >
+                List for Rent
+              </button>
+              <button
+                className="bg-gray-300 px-3 py-1 rounded"
+                onClick={() =>
+                  setRentModal({
+                    open: false,
+                    propertyId: null,
+                    min: 1000,
+                    max: 2000,
+                  })
+                }
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Show restart button if user owns no properties and all properties are not owned */}
+      {owned.length === 0 && properties.every((p) => p.owned) && (
+        <div className="flex justify-center mb-8">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded font-semibold text-white"
+            onClick={handleRestart}
+          >
+            Start Over
+          </button>
+        </div>
+      )}
 
       <h2 className="mt-8 mb-2 font-semibold text-2xl">Interested Buyers</h2>
       <table className="mb-8 border border-collapse border-gray-300 w-full">
@@ -441,6 +659,59 @@ export default function RealEstateSimulatorPage() {
               <tr>
                 <td colSpan={5} className="p-4 text-center text-gray-500">
                   No interested buyers yet.
+                </td>
+              </tr>
+            )}
+        </tbody>
+      </table>
+
+      <h2 className="mt-8 mb-2 font-semibold text-2xl">Interested Renters</h2>
+      <table className="mb-8 border border-collapse border-gray-300 w-full">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="p-2 border border-gray-300">Property</th>
+            <th className="p-2 border border-gray-300">Renter</th>
+            <th className="p-2 border border-gray-300">Offer</th>
+            <th className="p-2 border border-gray-300">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {owned
+            .filter(
+              (p) =>
+                p.forRent &&
+                p.interestedRenters &&
+                p.interestedRenters.length > 0
+            )
+            .flatMap((p) =>
+              p.interestedRenters!.map((r) => (
+                <tr key={p.id + r.id}>
+                  <td className="p-2 border border-gray-300">{p.name}</td>
+                  <td className="p-2 border border-gray-300">{r.name}</td>
+                  <td className="p-2 border border-gray-300">
+                    ${r.offer.toLocaleString()}
+                  </td>
+                  <td className="p-2 border border-gray-300">{r.notes}</td>
+                  <td className="p-2 border border-gray-300">
+                    <button
+                      className="bg-purple-600 hover:bg-purple-700 px-3 py-1 rounded text-white"
+                      onClick={() => handleLease(p.id, r.id)}
+                    >
+                      Accept Offer
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          {owned.filter(
+            (p) =>
+              p.forRent &&
+              (!p.interestedRenters || p.interestedRenters.length === 0)
+          ).length === 0 &&
+            owned.filter((p) => p.forRent).length === 0 && (
+              <tr>
+                <td colSpan={5} className="p-4 text-center text-gray-500">
+                  No interested renters yet.
                 </td>
               </tr>
             )}

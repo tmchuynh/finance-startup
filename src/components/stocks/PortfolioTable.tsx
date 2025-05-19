@@ -25,7 +25,6 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
         <th className="p-2 border border-gray-300 text-left">Total Value</th>
         <th className="p-2 border border-gray-300 text-left">Change ($)</th>
         <th className="p-2 border border-gray-300 text-left">Change (%)</th>
-        <th className="p-2 border border-gray-300 text-left"></th>
       </tr>
     </thead>
     <tbody>
