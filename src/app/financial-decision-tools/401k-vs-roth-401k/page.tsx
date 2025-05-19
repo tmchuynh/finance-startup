@@ -201,29 +201,41 @@ const RothVsTraditional401k: React.FC = () => {
           </div>
         </div>
       </form>
+
+      {/* Card-like results display */}
       <h2>Results</h2>
-      <div className="flex flex-col gap-5 mt-3">
-        <div>
-          <h3>Traditional 401(k)</h3>
-          <p>
-            <strong>
-              After-tax at retirement: $
-              {traditional.afterTax.toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
+      <div className="gap-5 grid grid-cols-1 md:grid-cols-2 mt-3">
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
+            Traditional 401(k)
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">After-tax at retirement:</span>{" "}
+              <strong className="text-blue-900">
+                $
+                {traditional.afterTax.toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </li>
+          </ul>
         </div>
-        <div>
-          <h3>Roth 401(k)</h3>
-          <p>
-            <strong>
-              After-tax at retirement: $
-              {roth.afterTax.toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </strong>
-          </p>
+        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
+          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
+            Roth 401(k)
+          </h3>
+          <ul>
+            <li>
+              <span className="text-gray-700">After-tax at retirement:</span>{" "}
+              <strong className="text-green-900">
+                $
+                {roth.afterTax.toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+            </li>
+          </ul>
         </div>
       </div>
       <p style={{ marginTop: 24, color: "#666" }}>
