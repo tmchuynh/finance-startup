@@ -120,6 +120,28 @@ export default function HomeEquityLoanCalculator() {
           </table>
         </div>
         <div className="mb-6">
+          <h3>Tips for Beginners</h3>
+          <ul className="list-disc list-inside">
+            <li>
+              Most lenders allow you to borrow up to 80% of your home's value,
+              but this can vary.
+            </li>
+            <li>
+              Your home is collateral—if you can't repay, you could lose your
+              home.
+            </li>
+            <li>Shop around for the best interest rates and terms.</li>
+            <li>
+              Consider all costs: closing costs, fees, and possible changes in
+              your home's value.
+            </li>
+            <li>
+              Consult a financial advisor or mortgage professional for
+              personalized advice.
+            </li>
+          </ul>
+        </div>
+        <div className="mb-6">
           <h3>How Home Equity Loan Amount is Calculated</h3>
           <ul className="mb-2 list-decimal list-inside">
             <li>
@@ -166,177 +188,159 @@ export default function HomeEquityLoanCalculator() {
             </tbody>
           </table>
         </div>
-        <div className="mb-6">
-          <h3>How Monthly Payment is Calculated</h3>
-          <ul className="mb-2 list-decimal list-inside">
-            <li>
-              <strong>
-                Use the maximum loan amount, interest rate, and loan term.
-              </strong>
-            </li>
-            <li>
-              <strong>Apply the loan payment formula:</strong>
-              <div className="mt-2">
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm">
-                  M = P × [ r(1 + r)<sup>n</sup> ] / [ (1 + r)<sup>n</sup> - 1 ]
-                </code>
-              </div>
-              <div className="mt-2 text-gray-600 text-sm">
-                Where:
-                <br />
-                <strong>M</strong> = monthly payment
-                <br />
-                <strong>P</strong> = loan amount
-                <br />
-                <strong>r</strong> = monthly interest rate
-                <br />
-                <strong>n</strong> = total number of payments (months)
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div className="mb-6">
-          <h3>Step-by-Step Example</h3>
-          <ol className="mb-2 list-decimal list-inside">
-            <li>Home value: $400,000</li>
-            <li>Mortgage balance: $200,000</li>
-            <li>LTV ratio: 80%</li>
-            <li>Max loan: $400,000 × 0.80 - $200,000 = $120,000</li>
-            <li>Interest rate: 7% per year</li>
-            <li>Loan term: 15 years</li>
-            <li>Monthly payment: $1,079.77</li>
-          </ol>
-        </div>
-        <div className="mb-6">
-          <h3>Tips for Beginners</h3>
-          <ul className="list-disc list-inside">
-            <li>
-              Most lenders allow you to borrow up to 80% of your home's value,
-              but this can vary.
-            </li>
-            <li>
-              Your home is collateral—if you can't repay, you could lose your
-              home.
-            </li>
-            <li>Shop around for the best interest rates and terms.</li>
-            <li>
-              Consider all costs: closing costs, fees, and possible changes in
-              your home's value.
-            </li>
-            <li>
-              Consult a financial advisor or mortgage professional for
-              personalized advice.
-            </li>
-          </ul>
-        </div>
-      </section>
-      <div className="gap-4 grid md:grid-cols-2">
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Home Value ($):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={homeValue}
-            onChange={(e) => setHomeValue(e.target.value)}
-            placeholder="Enter your home's value"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Current Mortgage Balance ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={mortgageBalance}
-            onChange={(e) => setMortgageBalance(e.target.value)}
-            placeholder="Enter your current mortgage balance"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Max Loan-to-Value Ratio (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={loanToValue}
-            onChange={(e) => setLoanToValue(e.target.value)}
-            placeholder="Usually 80"
-            min="1"
-            max="100"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Interest Rate (% per year):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={interestRate}
-            onChange={(e) => setInterestRate(e.target.value)}
-            placeholder="Enter annual interest rate"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Loan Term (years):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={loanTerm}
-            onChange={(e) => setLoanTerm(e.target.value)}
-            placeholder="Enter loan term (e.g., 15)"
-            min="1"
-          />
-        </div>
-      </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
-        onClick={handleCalculate}
-      >
-        Calculate Home Equity Loan
-      </button>
-      {result && (
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="border border-gray-300 min-w-full text-sm">
-              <tbody>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Maximum Loan Amount
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.maxLoan.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Estimated Monthly Payment
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.monthlyPayment.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+
+        <div className="grid lg:grid-cols-2">
+          <div className="mb-6">
+            <h3>How Monthly Payment is Calculated</h3>
+            <ul className="mb-2 list-decimal list-inside">
+              <li>
+                <strong>
+                  Use the maximum loan amount, interest rate, and loan term.
+                </strong>
+              </li>
+              <li>
+                <strong>Apply the loan payment formula:</strong>
+                <div className="mt-2">
+                  <code className="bg-gray-100 px-2 py-1 rounded text-sm">
+                    M = P × [ r(1 + r)<sup>n</sup> ] / [ (1 + r)<sup>n</sup> - 1
+                    ]
+                  </code>
+                </div>
+                <div className="mt-2 text-gray-600 text-sm">
+                  Where:
+                  <br />
+                  <strong>M</strong> = monthly payment
+                  <br />
+                  <strong>P</strong> = loan amount
+                  <br />
+                  <strong>r</strong> = monthly interest rate
+                  <br />
+                  <strong>n</strong> = total number of payments (months)
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="mb-6">
+            <h3>Step-by-Step Example</h3>
+            <ol className="mb-2 list-decimal list-inside">
+              <li>Home value: $400,000</li>
+              <li>Mortgage balance: $200,000</li>
+              <li>LTV ratio: 80%</li>
+              <li>Max loan: $400,000 × 0.80 - $200,000 = $120,000</li>
+              <li>Interest rate: 7% per year</li>
+              <li>Loan term: 15 years</li>
+              <li>Monthly payment: $1,079.77</li>
+            </ol>
           </div>
         </div>
-      )}
+        <div className="gap-4 grid md:grid-cols-2">
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Home Value ($):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={homeValue}
+              onChange={(e) => setHomeValue(e.target.value)}
+              placeholder="Enter your home's value"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Current Mortgage Balance ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={mortgageBalance}
+              onChange={(e) => setMortgageBalance(e.target.value)}
+              placeholder="Enter your current mortgage balance"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Max Loan-to-Value Ratio (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={loanToValue}
+              onChange={(e) => setLoanToValue(e.target.value)}
+              placeholder="Usually 80"
+              min="1"
+              max="100"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Interest Rate (% per year):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={interestRate}
+              onChange={(e) => setInterestRate(e.target.value)}
+              placeholder="Enter annual interest rate"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Loan Term (years):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={loanTerm}
+              onChange={(e) => setLoanTerm(e.target.value)}
+              placeholder="Enter loan term (e.g., 15)"
+              min="1"
+            />
+          </div>
+        </div>
+        <button
+          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          onClick={handleCalculate}
+        >
+          Calculate Home Equity Loan
+        </button>
+        {result && (
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="bg-white shadow p-4 border rounded-lg">
+              <h3 className="mb-2 font-semibold">Results</h3>
+              <table className="border border-gray-300 min-w-full text-sm">
+                <tbody>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Maximum Loan Amount
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.maxLoan.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Estimated Monthly Payment
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.monthlyPayment.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </section>
     </div>
   );
 }
