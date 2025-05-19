@@ -52,7 +52,7 @@ export default function Example() {
                 key={option.value}
                 value={option.value}
                 size={"lg"}
-                className="flex border w-[10em]"
+                className="flex data-[state=on]:bg-primary border data-[state=on]:border-primary w-[10em] data-[state=on]:text-white"
               >
                 {option.label}
               </ToggleGroupItem>
