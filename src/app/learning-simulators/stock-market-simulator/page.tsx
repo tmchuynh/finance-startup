@@ -1,6 +1,7 @@
 "use client";
 
 import { buyStock } from "@/components/stocks/buyStock";
+import { PortfolioTable } from "@/components/stocks/PortfolioTable";
 import { sellStock } from "@/components/stocks/sellStock";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -125,46 +126,7 @@ export default function StockMarketLearningSimulatorPage() {
         Total Portfolio Value: ${portfolioValue.toFixed(2)}
       </p>
 
-      <table className="border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300 text-left">Symbol</th>
-            <th className="p-2 border border-gray-300 text-left">Quantity</th>
-            <th className="p-2 border border-gray-300 text-left">Avg Price</th>
-            <th className="p-2 border border-gray-300 text-left">
-              Current Price
-            </th>
-            <th className="p-2 border border-gray-300 text-left">Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {portfolio.holdings.length === 0 && (
-            <tr>
-              <td colSpan={5} className="p-4 text-center text-gray-500">
-                No holdings yet.
-              </td>
-            </tr>
-          )}
-          {portfolio.holdings.map((h) => {
-            const stock = MOCK_STOCKS.find((s) => s.symbol === h.symbol);
-            return (
-              <tr key={h.symbol}>
-                <td className="p-2 border border-gray-300">{h.symbol}</td>
-                <td className="p-2 border border-gray-300">{h.quantity}</td>
-                <td className="p-2 border border-gray-300">
-                  ${h.averagePrice.toFixed(2)}
-                </td>
-                <td className="p-2 border border-gray-300">
-                  ${stock?.price.toFixed(2)}
-                </td>
-                <td className="p-2 border border-gray-300">
-                  ${(stock ? stock.price * h.quantity : 0).toFixed(2)}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <PortfolioTable portfolio={portfolio} stocks={stocks} />
 
       <h2 className="mt-8 mb-2 font-semibold text-2xl">Transaction History</h2>
       <table className="border border-collapse border-gray-300 w-full">
