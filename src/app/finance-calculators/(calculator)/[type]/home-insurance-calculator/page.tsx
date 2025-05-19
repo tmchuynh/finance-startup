@@ -51,7 +51,7 @@ export default function HomeInsuranceCalculator() {
           storms, or liability claims. Most lenders require it if you have a
           mortgage.
         </p>
-        <div className="mb-6">
+        <div className="my-6">
           <h3>Key Terms Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
@@ -111,7 +111,105 @@ export default function HomeInsuranceCalculator() {
             </tbody>
           </table>
         </div>
-        <div className="mb-6">
+        <div className="gap-4 grid md:grid-cols-2">
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Home Value (replacement cost) ($):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={homeValue}
+              onChange={(e) => setHomeValue(e.target.value)}
+              placeholder="Enter estimated rebuild cost"
+              min="0"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">
+              Coverage Percent (%):
+            </label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={coveragePercent}
+              onChange={(e) => setCoveragePercent(e.target.value)}
+              placeholder="Usually 100"
+              min="1"
+              max="100"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Annual Rate (%):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={annualRate}
+              onChange={(e) => setAnnualRate(e.target.value)}
+              placeholder="e.g., 0.35"
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-1 font-medium">Deductible ($):</label>
+            <input
+              type="number"
+              className="px-2 py-1 border rounded w-full"
+              value={deductible}
+              onChange={(e) => setDeductible(e.target.value)}
+              placeholder="e.g., 1000"
+              min="0"
+            />
+          </div>
+        </div>
+        <button
+          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          onClick={handleCalculate}
+        >
+          Calculate Insurance Premium
+        </button>
+        {result && (
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="bg-white shadow p-4 border rounded-lg">
+              <h3 className="mb-2 font-semibold">Results</h3>
+              <table className="border border-gray-300 min-w-full text-sm">
+                <tbody>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Coverage Amount
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.coverageAmount.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-3 py-2 border font-medium">
+                      Estimated Annual Premium
+                    </td>
+                    <td className="px-3 py-2 border">
+                      $
+                      {result.estimatedPremium.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="mt-2 text-gray-600 text-sm">
+                <strong>Note:</strong> Actual premiums may vary based on
+                location, home features, claims history, and insurer.
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="my-6">
           <h3>How Home Insurance Premium is Calculated</h3>
           <ul className="mb-2 list-decimal list-inside">
             <li>
@@ -150,6 +248,30 @@ export default function HomeInsuranceCalculator() {
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className="mb-6">
+          <h3>Tips for Beginners</h3>
+          <ul className="list-disc list-inside">
+            <li>
+              Insure your home for its replacement cost, not its market value.
+            </li>
+            <li>
+              Higher deductibles lower your premium, but mean more out-of-pocket
+              if you file a claim.
+            </li>
+            <li>Bundle home and auto insurance for discounts.</li>
+            <li>
+              Ask about discounts for security systems, smoke alarms, or new
+              roofs.
+            </li>
+            <li>
+              Review your policy every year and update coverage as needed.
+            </li>
+            <li>
+              Flood and earthquake insurance are usually separate policies.
+            </li>
+            <li>Compare quotes from several insurers before buying.</li>
+          </ul>
         </div>
         <div className="mb-6">
           <h3>Real Data: Average Home Insurance Premiums (2024)</h3>
@@ -196,129 +318,7 @@ export default function HomeInsuranceCalculator() {
             Commissioners (2024)
           </p>
         </div>
-        <div className="mb-6">
-          <h3>Tips for Beginners</h3>
-          <ul className="list-disc list-inside">
-            <li>
-              Insure your home for its replacement cost, not its market value.
-            </li>
-            <li>
-              Higher deductibles lower your premium, but mean more out-of-pocket
-              if you file a claim.
-            </li>
-            <li>Bundle home and auto insurance for discounts.</li>
-            <li>
-              Ask about discounts for security systems, smoke alarms, or new
-              roofs.
-            </li>
-            <li>
-              Review your policy every year and update coverage as needed.
-            </li>
-            <li>
-              Flood and earthquake insurance are usually separate policies.
-            </li>
-            <li>Compare quotes from several insurers before buying.</li>
-          </ul>
-        </div>
       </section>
-      <div className="gap-4 grid md:grid-cols-2">
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Home Value (replacement cost) ($):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={homeValue}
-            onChange={(e) => setHomeValue(e.target.value)}
-            placeholder="Enter estimated rebuild cost"
-            min="0"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">
-            Coverage Percent (%):
-          </label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={coveragePercent}
-            onChange={(e) => setCoveragePercent(e.target.value)}
-            placeholder="Usually 100"
-            min="1"
-            max="100"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Annual Rate (%):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={annualRate}
-            onChange={(e) => setAnnualRate(e.target.value)}
-            placeholder="e.g., 0.35"
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block mb-1 font-medium">Deductible ($):</label>
-          <input
-            type="number"
-            className="px-2 py-1 border rounded w-full"
-            value={deductible}
-            onChange={(e) => setDeductible(e.target.value)}
-            placeholder="e.g., 1000"
-            min="0"
-          />
-        </div>
-      </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
-        onClick={handleCalculate}
-      >
-        Calculate Insurance Premium
-      </button>
-      {result && (
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="border border-gray-300 min-w-full text-sm">
-              <tbody>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Coverage Amount
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.coverageAmount.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 border font-medium">
-                    Estimated Annual Premium
-                  </td>
-                  <td className="px-3 py-2 border">
-                    $
-                    {result.estimatedPremium.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> Actual premiums may vary based on location,
-              home features, claims history, and insurer.
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
