@@ -43,7 +43,7 @@ export default function App() {
       </div>
 
       {/* Feature section */}
-      <div className="mx-auto mt-32 sm:mt-56 px-6 lg:px-8 max-w-7xl">
+      <div className="mx-auto mt-32 sm:mt-56 px-6 lg:px-8">
         <div className="mx-auto max-w-6xl lg:text-center">
           <h2>Key Features</h2>
           <h5>Powerful tools to help you make better financial decisions.</h5>
@@ -56,7 +56,7 @@ export default function App() {
             succeed.
           </p>
         </div>
-        <div className="mx-auto mt-16 sm:mt-20 lg:mt-24 max-w-2xl lg:max-w-4xl">
+        <div className="mx-auto mt-4 md:mt-8 lg:mt-12 max-w-6xl">
           <dl className="gap-x-8 gap-y-10 lg:gap-y-16 grid grid-cols-1 lg:grid-cols-2 max-w-xl lg:max-w-none">
             {features.map((feature) => (
               <div key={feature.name} className="relative pl-16">
@@ -68,10 +68,12 @@ export default function App() {
                 </dt>
                 <dd>
                   {feature.description.map((text, index) => (
-                    <p key={index} className="mt-2 text-base/7">
-                      <strong>{text.title}: </strong>
-                      {text.description}
-                    </p>
+                    <div key={index}>
+                      <p className="mt-2 text-base/7">
+                        <strong>{text.title}</strong>
+                      </p>
+                      <p>{text.description}</p>
+                    </div>
                   ))}
                 </dd>
               </div>
