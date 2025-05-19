@@ -80,12 +80,9 @@ export default function IraVsRothDecisionTool() {
         may be more suitable for your retirement savings strategy. Please fill
         out the form below with your financial information, and we will provide
         you with a recommendation based on your current and expected tax
-        situation.
-      </p>
-      <p className="mt-4">
-        This tool is for informational purposes only and should not be
-        considered financial advice. Please consult with a financial advisor or
-        tax professional for personalized recommendations based on your
+        situation. This tool is for informational purposes only and should not
+        be considered financial advice. Please consult with a financial advisor
+        or tax professional for personalized recommendations based on your
         individual circumstances.
       </p>
       <p className="mt-4">
@@ -98,6 +95,72 @@ export default function IraVsRothDecisionTool() {
         Note: The income limits for Roth IRA contributions may change annually.
         Please check the IRS website for the most up-to-date information.
       </p>
+
+      {/* Tax Bracket Chart */}
+      <div className="my-8">
+        <h6 className="mb-2 font-semibold">2024 Federal Income Tax Brackets</h6>
+        <div className="overflow-x-auto">
+          <table className="bg-white border border-gray-300 min-w-full text-sm">
+            <thead>
+              <tr>
+                <th className="px-2 py-1 border">Rate</th>
+                <th className="px-2 py-1 border">Single</th>
+                <th className="px-2 py-1 border">Married Filing Jointly</th>
+                <th className="px-2 py-1 border">Head of Household</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-2 py-1 border">10%</td>
+                <td className="px-2 py-1 border">Up to $11,600</td>
+                <td className="px-2 py-1 border">Up to $23,200</td>
+                <td className="px-2 py-1 border">Up to $16,550</td>
+              </tr>
+              <tr>
+                <td className="px-2 py-1 border">12%</td>
+                <td className="px-2 py-1 border">$11,601 – $47,150</td>
+                <td className="px-2 py-1 border">$23,201 – $94,300</td>
+                <td className="px-2 py-1 border">$16,551 – $63,100</td>
+              </tr>
+              <tr>
+                <td className="px-2 py-1 border">22%</td>
+                <td className="px-2 py-1 border">$47,151 – $100,525</td>
+                <td className="px-2 py-1 border">$94,301 – $201,050</td>
+                <td className="px-2 py-1 border">$63,101 – $100,500</td>
+              </tr>
+              <tr>
+                <td className="px-2 py-1 border">24%</td>
+                <td className="px-2 py-1 border">$100,526 – $191,950</td>
+                <td className="px-2 py-1 border">$201,051 – $383,900</td>
+                <td className="px-2 py-1 border">$100,501 – $191,950</td>
+              </tr>
+              <tr>
+                <td className="px-2 py-1 border">32%</td>
+                <td className="px-2 py-1 border">$191,951 – $243,725</td>
+                <td className="px-2 py-1 border">$383,901 – $487,450</td>
+                <td className="px-2 py-1 border">$191,951 – $243,700</td>
+              </tr>
+              <tr>
+                <td className="px-2 py-1 border">35%</td>
+                <td className="px-2 py-1 border">$243,726 – $609,350</td>
+                <td className="px-2 py-1 border">$487,451 – $731,200</td>
+                <td className="px-2 py-1 border">$243,701 – $609,350</td>
+              </tr>
+              <tr>
+                <td className="px-2 py-1 border">37%</td>
+                <td className="px-2 py-1 border">Over $609,350</td>
+                <td className="px-2 py-1 border">Over $731,200</td>
+                <td className="px-2 py-1 border">Over $609,350</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 text-gray-500 text-xs">
+          Source: IRS. These are marginal tax rates for 2024. Your tax bracket
+          is based on your taxable income and filing status.
+        </p>
+      </div>
+      {/* End Tax Bracket Chart */}
 
       <form
         onSubmit={handleSubmit}
