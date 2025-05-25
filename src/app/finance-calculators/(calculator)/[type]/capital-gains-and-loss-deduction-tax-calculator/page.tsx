@@ -84,15 +84,21 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
     return Math.max(0, owed);
   }
 
-  function calcLongTermTax(gain: number, taxableIncome: number, status: string) {
+  function calcLongTermTax(
+    gain: number,
+    taxableIncome: number,
+    status: string
+  ) {
     let owed = 0;
     let prevMax = 0;
     let remaining = gain;
     for (const bracket of (LTCG_BRACKETS as any)[status]) {
       const bracketStart = prevMax;
       const bracketEnd = bracket.max;
-      const bracketSize = bracketEnd - bracketStart;
-      const bracketTaxable = Math.max(0, Math.min(remaining, bracketEnd - Math.max(taxableIncome, bracketStart)));
+      const bracketTaxable = Math.max(
+        0,
+        Math.min(remaining, bracketEnd - Math.max(taxableIncome, bracketStart))
+      );
       if (bracketTaxable > 0) {
         owed += bracketTaxable * bracket.rate;
         remaining -= bracketTaxable;
@@ -113,7 +119,6 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
     // Net gains/losses
     let netShortTerm = stGains;
     let netLongTerm = ltGains;
-    let totalGains = stGains + ltGains;
     let netLoss = losses;
 
     // Apply losses: first to short-term, then to long-term
@@ -133,7 +138,10 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
     let lossDeduction = 0;
     if (netShortTerm + netLongTerm < 0) {
       lossDeduction = status === "married" ? 3000 : 1500;
-      lossDeduction = Math.min(Math.abs(netShortTerm + netLongTerm), lossDeduction);
+      lossDeduction = Math.min(
+        Math.abs(netShortTerm + netLongTerm),
+        lossDeduction
+      );
     }
 
     // Taxable short-term gains are taxed as ordinary income
@@ -143,8 +151,13 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
 
     // Calculate taxes
     const totalOrdinary = income + taxableShortTerm - lossDeduction;
-    const shortTermTax = calcOrdinaryTax(totalOrdinary, status) - calcOrdinaryTax(income, status);
-    const longTermTax = calcLongTermTax(taxableLongTerm, income + taxableShortTerm - lossDeduction, status);
+    const shortTermTax =
+      calcOrdinaryTax(totalOrdinary, status) - calcOrdinaryTax(income, status);
+    const longTermTax = calcLongTermTax(
+      taxableLongTerm,
+      income + taxableShortTerm - lossDeduction,
+      status
+    );
     const totalTax = Math.max(0, shortTermTax) + Math.max(0, longTermTax);
 
     setResult({
@@ -164,13 +177,16 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
       <h1>Capital Gains & Loss Deduction Tax Calculator</h1>
       <p className="mb-4">
         <strong>
-          Estimate your capital gains tax and how much you can deduct for capital losses, using 2024 U.S. tax rules.
+          Estimate your capital gains tax and how much you can deduct for
+          capital losses, using 2024 U.S. tax rules.
         </strong>
       </p>
       <section className="mb-8">
         <h2>How Does This Calculator Work?</h2>
         <p>
-          Enter your short-term and long-term capital gains, capital losses, ordinary income, and filing status. The calculator estimates your tax owed on gains and your allowable loss deduction.
+          Enter your short-term and long-term capital gains, capital losses,
+          ordinary income, and filing status. The calculator estimates your tax
+          owed on gains and your allowable loss deduction.
         </p>
         <div className="mb-6">
           <h3>Typical Input Values</h3>
@@ -186,17 +202,23 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Short-Term Gains ($)</td>
                 <td className="px-3 py-2 border">$0 - $20,000</td>
-                <td className="px-3 py-2 border">Held ≤ 1 year, taxed as ordinary income</td>
+                <td className="px-3 py-2 border">
+                  Held ≤ 1 year, taxed as ordinary income
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Long-Term Gains ($)</td>
                 <td className="px-3 py-2 border">$0 - $50,000</td>
-                <td className="px-3 py-2 border">Held > 1 year, taxed at lower rates</td>
+                <td className="px-3 py-2 border">
+                  Held &gt; 1 year, taxed at lower rates
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Capital Losses ($)</td>
                 <td className="px-3 py-2 border">$0 - $10,000</td>
-                <td className="px-3 py-2 border">Offset gains, up to $3,000 ($1,500 married) deductible</td>
+                <td className="px-3 py-2 border">
+                  Offset gains, up to $3,000 ($1,500 married) deductible
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Ordinary Income ($)</td>
@@ -205,8 +227,12 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Filing Status</td>
-                <td className="px-3 py-2 border">Single, Married, Head of Household</td>
-                <td className="px-3 py-2 border">Affects brackets & deduction</td>
+                <td className="px-3 py-2 border">
+                  Single, Married, Head of Household
+                </td>
+                <td className="px-3 py-2 border">
+                  Affects brackets & deduction
+                </td>
               </tr>
             </tbody>
           </table>
@@ -224,32 +250,44 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
             <tbody>
               <tr>
                 <td className="px-3 py-2 border">Short-Term Gain</td>
-                <td className="px-3 py-2 border">Profit from assets held ≤ 1 year</td>
+                <td className="px-3 py-2 border">
+                  Profit from assets held ≤ 1 year
+                </td>
                 <td className="px-3 py-2 border">$5,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Long-Term Gain</td>
-                <td className="px-3 py-2 border">Profit from assets held > 1 year</td>
+                <td className="px-3 py-2 border">
+                  Profit from assets held &gt; 1 year
+                </td>
                 <td className="px-3 py-2 border">$10,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Capital Loss</td>
-                <td className="px-3 py-2 border">Loss from sale of investments</td>
+                <td className="px-3 py-2 border">
+                  Loss from sale of investments
+                </td>
                 <td className="px-3 py-2 border">$2,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Loss Deduction</td>
-                <td className="px-3 py-2 border">Amount deductible from ordinary income</td>
+                <td className="px-3 py-2 border">
+                  Amount deductible from ordinary income
+                </td>
                 <td className="px-3 py-2 border">$3,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Short-Term Tax</td>
-                <td className="px-3 py-2 border">Tax on short-term gains (ordinary rates)</td>
+                <td className="px-3 py-2 border">
+                  Tax on short-term gains (ordinary rates)
+                </td>
                 <td className="px-3 py-2 border">$1,100</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Long-Term Tax</td>
-                <td className="px-3 py-2 border">Tax on long-term gains (capital gains rates)</td>
+                <td className="px-3 py-2 border">
+                  Tax on long-term gains (capital gains rates)
+                </td>
                 <td className="px-3 py-2 border">$1,500</td>
               </tr>
               <tr>
@@ -305,14 +343,21 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
             </tbody>
           </table>
           <p className="text-gray-600 text-sm">
-            <strong>Source:</strong> IRS, 2024 capital gains and loss deduction rules.
+            <strong>Source:</strong> IRS, 2024 capital gains and loss deduction
+            rules.
           </p>
         </div>
         <div className="mb-6">
           <h3>Tips for Beginners</h3>
           <ul className="list-disc list-inside">
-            <li>Short-term gains are taxed as ordinary income; long-term gains get lower rates.</li>
-            <li>You can deduct up to $3,000 ($1,500 married) of net capital losses from ordinary income each year.</li>
+            <li>
+              Short-term gains are taxed as ordinary income; long-term gains get
+              lower rates.
+            </li>
+            <li>
+              You can deduct up to $3,000 ($1,500 married) of net capital losses
+              from ordinary income each year.
+            </li>
             <li>Unused losses can be carried forward to future years.</li>
             <li>Keep records of all investment sales for tax reporting.</li>
             <li>Consult a tax professional for complex situations.</li>
@@ -321,7 +366,9 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
       </section>
       <div className="gap-4 grid md:grid-cols-2">
         <div className="mb-2">
-          <label className="block mb-1 font-medium">Short-Term Gains ($):</label>
+          <label className="block mb-1 font-medium">
+            Short-Term Gains ($):
+          </label>
           <input
             type="number"
             className="px-2 py-1 border rounded w-full"
@@ -390,57 +437,105 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Net Short-Term Gain</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Net Short-Term Gain
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.netShortTerm.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.netShortTerm.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Net Long-Term Gain</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Net Long-Term Gain
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.netLongTerm.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.netLongTerm.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Loss Deduction</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Loss Deduction
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.lossDeduction.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.lossDeduction.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Taxable Short-Term Gain</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Taxable Short-Term Gain
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.taxableShortTerm.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.taxableShortTerm.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Taxable Long-Term Gain</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Taxable Long-Term Gain
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.taxableLongTerm.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.taxableLongTerm.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Short-Term Tax</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Short-Term Tax
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.shortTermTax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.shortTermTax.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Long-Term Tax</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Long-Term Tax
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.longTermTax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.longTermTax.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 border font-medium">Total Tax</td>
                   <td className="px-3 py-2 border font-bold text-red-700">
-                    ${result.totalTax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalTax.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
               </tbody>
             </table>
             <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> This calculator provides an estimate. Actual tax owed may vary based on your full tax situation and IRS rules.
+              <strong>Note:</strong> This calculator provides an estimate.
+              Actual tax owed may vary based on your full tax situation and IRS
+              rules.
             </div>
           </div>
         </div>
