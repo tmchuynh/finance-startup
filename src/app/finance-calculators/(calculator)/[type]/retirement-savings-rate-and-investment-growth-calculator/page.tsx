@@ -74,23 +74,27 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Retirement Savings Rate & Investment Growth Calculator</h1>
       <p className="mb-4">
         <strong>
-          Estimate how much you need to save each year and how your investments may grow to reach your retirement nest egg goal.
+          Estimate how much you need to save each year and how your investments
+          may grow to reach your retirement nest egg goal.
         </strong>
       </p>
       <section className="mb-8">
         <h2>How Does This Calculator Work?</h2>
         <p>
-          Enter your age, retirement age, current savings, annual income, savings rate, expected investment return, and your nest egg goal. The calculator estimates your annual contribution, projected retirement savings, and the savings rate needed to reach your goal.
+          Enter your age, retirement age, current savings, annual income,
+          savings rate, expected investment return, and your nest egg goal. The
+          calculator estimates your annual contribution, projected retirement
+          savings, and the savings rate needed to reach your goal.
         </p>
         <div className="mb-6">
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
                 <th className="px-3 py-2 border text-left">Typical Value</th>
                 <th className="px-3 py-2 border text-left">Notes</th>
@@ -110,7 +114,9 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Current Savings ($)</td>
                 <td className="px-3 py-2 border">$50,000 - $300,000</td>
-                <td className="px-3 py-2 border">Total in all retirement accounts</td>
+                <td className="px-3 py-2 border">
+                  Total in all retirement accounts
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Annual Income ($)</td>
@@ -120,12 +126,16 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Savings Rate (%)</td>
                 <td className="px-3 py-2 border">10% - 20%</td>
-                <td className="px-3 py-2 border">Percent of income saved each year</td>
+                <td className="px-3 py-2 border">
+                  Percent of income saved each year
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Expected Return (%)</td>
                 <td className="px-3 py-2 border">5% - 7%</td>
-                <td className="px-3 py-2 border">Long-term stock market average: ~6%</td>
+                <td className="px-3 py-2 border">
+                  Long-term stock market average: ~6%
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Nest Egg Goal ($)</td>
@@ -139,7 +149,7 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
           <h3>Savings Rate & Growth Details</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -153,17 +163,23 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Expected Return</td>
-                <td className="px-3 py-2 border">Average annual investment growth</td>
+                <td className="px-3 py-2 border">
+                  Average annual investment growth
+                </td>
                 <td className="px-3 py-2 border">6%</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Years to Retirement</td>
-                <td className="px-3 py-2 border">Retirement age minus current age</td>
+                <td className="px-3 py-2 border">
+                  Retirement age minus current age
+                </td>
                 <td className="px-3 py-2 border">30</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Total at Retirement</td>
-                <td className="px-3 py-2 border">Projected savings at retirement</td>
+                <td className="px-3 py-2 border">
+                  Projected savings at retirement
+                </td>
                 <td className="px-3 py-2 border">$1,050,000</td>
               </tr>
               <tr>
@@ -173,7 +189,9 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Required Savings Rate</td>
-                <td className="px-3 py-2 border">Percent of income needed to reach goal</td>
+                <td className="px-3 py-2 border">
+                  Percent of income needed to reach goal
+                </td>
                 <td className="px-3 py-2 border">13%</td>
               </tr>
             </tbody>
@@ -183,7 +201,7 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
           <h3>Real Data Example (2024)</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
                 <th className="px-3 py-2 border text-left">Value</th>
               </tr>
@@ -227,7 +245,7 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
               </tr>
             </tbody>
           </table>
-          <p className="text-gray-600 text-sm">
+          <p className="text-sm">
             <strong>Source:</strong> Fidelity, Vanguard, 2024 averages.
           </p>
         </div>
@@ -237,8 +255,12 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
             <li>Start saving early—compound growth makes a big difference.</li>
             <li>Increase your savings rate as your income grows.</li>
             <li>Review your investment return assumptions regularly.</li>
-            <li>Set a realistic nest egg goal based on your retirement needs.</li>
-            <li>Consult a financial advisor for personalized retirement planning.</li>
+            <li>
+              Set a realistic nest egg goal based on your retirement needs.
+            </li>
+            <li>
+              Consult a financial advisor for personalized retirement planning.
+            </li>
           </ul>
         </div>
       </section>
@@ -326,51 +348,71 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Savings Growth
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <h3 className="mb-2 font-semibold">Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Annual Contribution</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Annual Contribution
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.annualContribution.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.annualContribution.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Total at Retirement</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Total at Retirement
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.totalAtRetirement.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalAtRetirement.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Nest Egg Goal Met?</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Nest Egg Goal Met?
+                  </td>
                   <td className="px-3 py-2 border">
                     {result.nestEggGoalMet ? (
-                      <span className="font-bold text-green-700">Yes</span>
+                      <span className="font-bold">Yes</span>
                     ) : (
                       <span className="font-bold text-red-700">No</span>
                     )}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Required Savings Rate</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Required Savings Rate
+                  </td>
                   <td className="px-3 py-2 border">
                     {result.requiredSavingsRate > 0
-                      ? result.requiredSavingsRate.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%"
+                      ? result.requiredSavingsRate.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        }) + "%"
                       : "-"}
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> This calculator does not include taxes, Social Security, or pensions. Actual results may vary.
+            <div className="mt-2 text-sm">
+              <strong>Note:</strong> This calculator does not include taxes,
+              Social Security, or pensions. Actual results may vary.
             </div>
           </div>
         </div>

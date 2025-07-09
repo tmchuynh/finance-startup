@@ -39,7 +39,7 @@ export default function RevenueProjectionCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Revenue Projection Calculator</h1>
       <p className="mb-4">
         Project your business's future revenue based on current revenue and
@@ -101,20 +101,19 @@ export default function RevenueProjectionCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Project Revenue
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <strong>Projected Revenue by Period:</strong>
             <ul className="mt-2">
               {result.map((val, idx) => (
                 <li key={idx}>
-                  Period {idx + 1}:{" "}
-                  <span className="text-blue-700">${val.toFixed(2)}</span>
+                  Period {idx + 1}: <span className="">${val.toFixed(2)}</span>
                 </li>
               ))}
             </ul>

@@ -104,7 +104,7 @@ export default function TaxDeductionAndTaxRefundCalculator() {
   } | null>(null);
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Tax Deduction & Tax Refund Calculator</h1>
       <p className="mb-4">
         <strong>
@@ -123,7 +123,7 @@ export default function TaxDeductionAndTaxRefundCalculator() {
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
                 <th className="px-3 py-2 border text-left">Typical Value</th>
                 <th className="px-3 py-2 border text-left">Notes</th>
@@ -168,7 +168,7 @@ export default function TaxDeductionAndTaxRefundCalculator() {
           <h3>Tax Deduction & Refund Details</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -204,7 +204,7 @@ export default function TaxDeductionAndTaxRefundCalculator() {
           <h3>Real Data Example (2024)</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
                 <th className="px-3 py-2 border text-left">Value</th>
               </tr>
@@ -244,7 +244,7 @@ export default function TaxDeductionAndTaxRefundCalculator() {
               </tr>
             </tbody>
           </table>
-          <p className="text-gray-600 text-sm">
+          <p className="text-sm">
             <strong>Source:</strong> IRS, 2024 tax brackets and deductions.
           </p>
         </div>
@@ -323,14 +323,14 @@ export default function TaxDeductionAndTaxRefundCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Tax Refund
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <h3 className="mb-2 font-semibold">Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
@@ -379,7 +379,7 @@ export default function TaxDeductionAndTaxRefundCalculator() {
                 </tr>
               </tbody>
             </table>
-            <div className="mt-2 text-gray-600 text-sm">
+            <div className="mt-2 text-sm">
               <strong>Note:</strong> This calculator provides an estimate.
               Actual tax owed or refund may vary based on your full tax
               situation.

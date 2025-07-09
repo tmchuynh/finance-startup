@@ -48,7 +48,7 @@ export default function RentalIncomeCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Rental Income Calculator</h1>
       <p className="mb-4">
         <strong>
@@ -92,7 +92,7 @@ export default function RentalIncomeCalculator() {
           <h3>Key Terms Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -190,14 +190,14 @@ export default function RentalIncomeCalculator() {
           </div>
         </div>
         <button
-          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          className="bg-blue-600 mt-2 px-4 py-2 rounded"
           onClick={handleCalculate}
         >
           Calculate Rental Income
         </button>
         {result && (
           <div className="flex flex-col gap-4 mt-6">
-            <div className="bg-white shadow p-4 border rounded-lg">
+            <div className="shadow p-4 border rounded-lg">
               <h3 className="mb-2 font-semibold">Results</h3>
               <table className="border border-gray-300 min-w-full text-sm">
                 <tbody>
@@ -253,7 +253,7 @@ export default function RentalIncomeCalculator() {
                     <td className="px-3 py-2 border font-medium">
                       Net Operating Income (NOI)
                     </td>
-                    <td className="px-3 py-2 border font-bold text-green-700">
+                    <td className="px-3 py-2 border font-bold">
                       $
                       {result.netOperatingIncome.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
@@ -290,7 +290,7 @@ export default function RentalIncomeCalculator() {
           </ul>
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Step</th>
                 <th className="px-3 py-2 border text-left">Formula</th>
                 <th className="px-3 py-2 border text-left">Example</th>

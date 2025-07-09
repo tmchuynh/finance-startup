@@ -17,7 +17,7 @@ export default function WorkingCapitalCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Working Capital Calculator</h1>
       <p className="mb-4">
         Calculate your business's working capital to assess short-term financial
@@ -41,7 +41,7 @@ export default function WorkingCapitalCalculator() {
           lead to insolvency if not addressed.
         </p>
 
-        <div className="gap-4 grid lg:grid-cols-2 mt-3 lg:mt-7 mb-5">
+        <div className="gap-4 grid lg:grid-cols-2 mb-5 mt-3 lg:mt-7">
           <div>
             <h3>Current Assets</h3>
             <p>
@@ -80,7 +80,7 @@ export default function WorkingCapitalCalculator() {
           </h3>
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Example Assets</th>
                 <th className="px-3 py-2 border text-left">
                   Example Liabilities
@@ -126,8 +126,8 @@ export default function WorkingCapitalCalculator() {
 
         <div className="mb-6">
           <h3>Formula</h3>
-          <p className="text-gray-700">
-            <code className="bg-gray-100 px-2 py-1 rounded text-sm">
+          <p className="">
+            <code className="px-2 py-1 rounded text-sm">
               Working Capital = Current Assets - Current Liabilities
             </code>
           </p>
@@ -135,7 +135,7 @@ export default function WorkingCapitalCalculator() {
 
         <div className="mb-6">
           <h3>Example</h3>
-          <p className="text-gray-700">
+          <p className="">
             If your business has <strong>$10,000</strong> in current assets and{" "}
             <strong>$7,000</strong> in current liabilities, your working capital
             is <strong>$3,000</strong> ($10,000 - $7,000).
@@ -161,7 +161,7 @@ export default function WorkingCapitalCalculator() {
           </ul>
         </div>
 
-        <p className="text-gray-600 text-sm">
+        <p className="text-sm">
           <strong>Tip:</strong> Review your balance sheet to find your current
           assets and liabilities. If unsure, consult with your accountant or
           bookkeeper to ensure accuracy.
@@ -194,20 +194,16 @@ export default function WorkingCapitalCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Working Capital
       </button>
       {result !== null && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <strong>Working Capital:</strong>{" "}
-            <span
-              className={`text-lg ${
-                result >= 0 ? "text-green-700" : "text-red-700"
-              }`}
-            >
+            <span className={`text-lg ${result >= 0 ? "" : "text-red-700"}`}>
               ${result.toFixed(2)}
             </span>
           </div>
