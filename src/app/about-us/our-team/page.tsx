@@ -11,7 +11,7 @@ import { IoIosMail } from "react-icons/io";
 export default function OurTeamPage() {
   const router = useRouter();
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <h1>Our Team</h1>
       <h5>Meet the people behind our app</h5>
       <p>
@@ -65,7 +65,7 @@ export default function OurTeamPage() {
 
             <ul
               role="list"
-              className="gap-x-8 gap-y-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto lg:mx-0 mt-20 max-w-2xl lg:max-w-none"
+              className="gap-x-8 gap-y-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-20 mx-auto lg:mx-0 max-w-2xl lg:max-w-none"
             >
               {sortedPeople.map((person) => (
                 <li key={person.name}>
@@ -76,17 +76,17 @@ export default function OurTeamPage() {
                     width={2000}
                     height={800}
                   />
-                  <div className="flex justify-between items-end gap-x-4">
+                  <div className="flex gap-x-4 items-end justify-between">
                     <h3 className="mt-6 font-semibold tracking-tight">
                       {person.name}
                     </h3>
-                    <div className="flex items-center gap-x-4 mt-2 text-secondary text-sm/6">
+                    <div className="flex gap-x-4 items-center mt-2 text-secondary text-sm/6">
                       <IoIosMail className="size-9" />
                       <FaPhoneAlt className="size-6" />
                     </div>
                   </div>
                   <p className="text-base/7">{person.role}</p>
-                  <p className="text-gray-500 text-sm/6">{person.location}</p>
+                  <p className="text-sm/6">{person.location}</p>
                 </li>
               ))}
             </ul>
