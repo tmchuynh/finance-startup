@@ -41,23 +41,27 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Long-Term Care & Health Insurance Premium Calculator</h1>
       <p className="mb-4">
         <strong>
-          Estimate your long-term care (LTC) insurance needs and health insurance premiums based on your age, income, plan type, and desired coverage.
+          Estimate your long-term care (LTC) insurance needs and health
+          insurance premiums based on your age, income, plan type, and desired
+          coverage.
         </strong>
       </p>
       <section className="mb-8">
         <h2>How Does This Calculator Work?</h2>
         <p>
-          Enter your age, income, health plan details, and desired long-term care coverage. The calculator estimates your suggested LTC coverage, typical LTC premium, and health insurance premium.
+          Enter your age, income, health plan details, and desired long-term
+          care coverage. The calculator estimates your suggested LTC coverage,
+          typical LTC premium, and health insurance premium.
         </p>
         <div className="mb-6">
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
                 <th className="px-3 py-2 border text-left">Typical Value</th>
                 <th className="px-3 py-2 border text-left">Notes</th>
@@ -67,7 +71,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Age</td>
                 <td className="px-3 py-2 border">40 - 65</td>
-                <td className="px-3 py-2 border">Older age = higher premiums</td>
+                <td className="px-3 py-2 border">
+                  Older age = higher premiums
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Annual Income ($)</td>
@@ -82,7 +88,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Health Deductible ($)</td>
                 <td className="px-3 py-2 border">$1,500 - $7,500</td>
-                <td className="px-3 py-2 border">Lower deductible = higher premium</td>
+                <td className="px-3 py-2 border">
+                  Lower deductible = higher premium
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Annual Health Premium ($)</td>
@@ -116,7 +124,7 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
           <h3>Insurance Details Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -125,17 +133,23 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             <tbody>
               <tr>
                 <td className="px-3 py-2 border">Health Insurance Premium</td>
-                <td className="px-3 py-2 border">Yearly cost for health coverage</td>
+                <td className="px-3 py-2 border">
+                  Yearly cost for health coverage
+                </td>
                 <td className="px-3 py-2 border">$6,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Health Deductible</td>
-                <td className="px-3 py-2 border">Amount you pay before insurance pays</td>
+                <td className="px-3 py-2 border">
+                  Amount you pay before insurance pays
+                </td>
                 <td className="px-3 py-2 border">$2,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">LTC Coverage Amount</td>
-                <td className="px-3 py-2 border">Total benefit pool for long-term care</td>
+                <td className="px-3 py-2 border">
+                  Total benefit pool for long-term care
+                </td>
                 <td className="px-3 py-2 border">$150,000</td>
               </tr>
               <tr>
@@ -150,7 +164,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
               </tr>
               <tr>
                 <td className="px-3 py-2 border">LTC Premium</td>
-                <td className="px-3 py-2 border">Yearly cost for LTC insurance</td>
+                <td className="px-3 py-2 border">
+                  Yearly cost for LTC insurance
+                </td>
                 <td className="px-3 py-2 border">$3,000</td>
               </tr>
             </tbody>
@@ -160,7 +176,7 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
           <h3>Real Data Example (2024)</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
                 <th className="px-3 py-2 border text-left">Value</th>
               </tr>
@@ -204,16 +220,24 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
               </tr>
             </tbody>
           </table>
-          <p className="text-gray-600 text-sm">
+          <p className="text-sm">
             <strong>Source:</strong> Genworth, KFF, 2024 averages.
           </p>
         </div>
         <div className="mb-6">
           <h3>Tips for Beginners</h3>
           <ul className="list-disc list-inside">
-            <li>Health insurance premiums and deductibles vary by plan and location.</li>
-            <li>Long-term care insurance helps pay for nursing home, assisted living, or home care.</li>
-            <li>Most LTC policies pay a daily benefit for a set number of years.</li>
+            <li>
+              Health insurance premiums and deductibles vary by plan and
+              location.
+            </li>
+            <li>
+              Long-term care insurance helps pay for nursing home, assisted
+              living, or home care.
+            </li>
+            <li>
+              Most LTC policies pay a daily benefit for a set number of years.
+            </li>
             <li>Premiums rise with age and health conditions.</li>
             <li>Consult an insurance agent for personalized advice.</li>
           </ul>
@@ -257,7 +281,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             </select>
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Health Deductible ($):</label>
+            <label className="block mb-1 font-medium">
+              Health Deductible ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -268,7 +294,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Annual Health Premium ($):</label>
+            <label className="block mb-1 font-medium">
+              Annual Health Premium ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -279,7 +307,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">LTC Coverage Amount ($):</label>
+            <label className="block mb-1 font-medium">
+              LTC Coverage Amount ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -290,7 +320,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">LTC Benefit Period (years):</label>
+            <label className="block mb-1 font-medium">
+              LTC Benefit Period (years):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -301,7 +333,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">LTC Daily Benefit ($):</label>
+            <label className="block mb-1 font-medium">
+              LTC Daily Benefit ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -312,7 +346,9 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Annual LTC Premium ($):</label>
+            <label className="block mb-1 font-medium">
+              Annual LTC Premium ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -325,39 +361,59 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Insurance Needs
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <h3 className="mb-2 font-semibold">Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Suggested LTC Coverage</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Suggested LTC Coverage
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.suggestedLtcCoverage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.suggestedLtcCoverage.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Estimated LTC Premium</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Estimated LTC Premium
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.estimatedLtcPremium.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.estimatedLtcPremium.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Estimated Health Premium</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Estimated Health Premium
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.estimatedHealthPremium.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.estimatedHealthPremium.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> This calculator provides estimates. Actual insurance needs and premiums may vary based on your health, location, and insurer.
+            <div className="mt-2 text-sm">
+              <strong>Note:</strong> This calculator provides estimates. Actual
+              insurance needs and premiums may vary based on your health,
+              location, and insurer.
             </div>
           </div>
         </div>

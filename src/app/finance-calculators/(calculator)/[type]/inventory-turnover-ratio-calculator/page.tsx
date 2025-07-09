@@ -30,7 +30,7 @@ export default function InventoryTurnoverRatioCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Inventory Turnover Ratio Calculator</h1>
       <h5>Calculate your inventory turnover ratio easily.</h5>
       <p className="mb-4">
@@ -103,25 +103,21 @@ export default function InventoryTurnoverRatioCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Inventory Turnover
       </button>
       {result && (
         <div className="gap-4 grid md:grid-cols-2 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <strong>Inventory Turnover Ratio:</strong>{" "}
-            <span className="text-blue-700 text-lg">
-              {result.turnoverRatio}
-            </span>
+            <span className="text-lg">{result.turnoverRatio}</span>
           </div>
           {result.daysSalesOfInventory !== null && (
-            <div className="bg-white shadow p-4 border rounded-lg">
+            <div className="shadow p-4 border rounded-lg">
               <strong>Days Sales of Inventory:</strong>{" "}
-              <span className="text-blue-700 text-lg">
-                {result.daysSalesOfInventory}
-              </span>
+              <span className="text-lg">{result.daysSalesOfInventory}</span>
             </div>
           )}
         </div>

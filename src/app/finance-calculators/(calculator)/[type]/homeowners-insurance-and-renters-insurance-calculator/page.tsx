@@ -52,23 +52,28 @@ export default function HomeownersAndRentersInsuranceCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Homeowners & Renters Insurance Calculator</h1>
       <p className="mb-4">
         <strong>
-          Estimate your insurance needs and annual premiums for homeowners or renters insurance based on your property value, personal belongings, location, and deductible.
+          Estimate your insurance needs and annual premiums for homeowners or
+          renters insurance based on your property value, personal belongings,
+          location, and deductible.
         </strong>
       </p>
       <section className="mb-8">
         <h2>How Does This Calculator Work?</h2>
         <p>
-          Select whether you are a homeowner or renter, then enter your property value, personal property value, location risk, deductible, and current premium. The calculator estimates suggested coverage and typical annual premiums.
+          Select whether you are a homeowner or renter, then enter your property
+          value, personal property value, location risk, deductible, and current
+          premium. The calculator estimates suggested coverage and typical
+          annual premiums.
         </p>
         <div className="mb-6">
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
                 <th className="px-3 py-2 border text-left">Typical Value</th>
                 <th className="px-3 py-2 border text-left">Notes</th>
@@ -83,7 +88,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Property Value ($)</td>
                 <td className="px-3 py-2 border">$200,000 - $800,000</td>
-                <td className="px-3 py-2 border">Home value (homeowners only)</td>
+                <td className="px-3 py-2 border">
+                  Home value (homeowners only)
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Personal Property ($)</td>
@@ -93,12 +100,16 @@ export default function HomeownersAndRentersInsuranceCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Location Risk</td>
                 <td className="px-3 py-2 border">Low / Average / High</td>
-                <td className="px-3 py-2 border">Flood, crime, wildfire risk</td>
+                <td className="px-3 py-2 border">
+                  Flood, crime, wildfire risk
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Deductible ($)</td>
                 <td className="px-3 py-2 border">$500 - $2,500</td>
-                <td className="px-3 py-2 border">Higher deductible lowers premium</td>
+                <td className="px-3 py-2 border">
+                  Higher deductible lowers premium
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Coverage Amount ($)</td>
@@ -117,7 +128,7 @@ export default function HomeownersAndRentersInsuranceCalculator() {
           <h3>Insurance Details Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -126,17 +137,23 @@ export default function HomeownersAndRentersInsuranceCalculator() {
             <tbody>
               <tr>
                 <td className="px-3 py-2 border">Dwelling Coverage</td>
-                <td className="px-3 py-2 border">Covers rebuilding your home</td>
+                <td className="px-3 py-2 border">
+                  Covers rebuilding your home
+                </td>
                 <td className="px-3 py-2 border">$350,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Personal Property</td>
-                <td className="px-3 py-2 border">Covers belongings (furniture, electronics, etc.)</td>
+                <td className="px-3 py-2 border">
+                  Covers belongings (furniture, electronics, etc.)
+                </td>
                 <td className="px-3 py-2 border">$50,000</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Deductible</td>
-                <td className="px-3 py-2 border">Amount you pay before insurance pays</td>
+                <td className="px-3 py-2 border">
+                  Amount you pay before insurance pays
+                </td>
                 <td className="px-3 py-2 border">$1,000</td>
               </tr>
               <tr>
@@ -146,7 +163,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Location Risk</td>
-                <td className="px-3 py-2 border">Risk of flood, wildfire, or crime</td>
+                <td className="px-3 py-2 border">
+                  Risk of flood, wildfire, or crime
+                </td>
                 <td className="px-3 py-2 border">Average</td>
               </tr>
             </tbody>
@@ -156,7 +175,7 @@ export default function HomeownersAndRentersInsuranceCalculator() {
           <h3>Real Data Example (2024)</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
                 <th className="px-3 py-2 border text-left">Homeowner</th>
                 <th className="px-3 py-2 border text-left">Renter</th>
@@ -195,17 +214,27 @@ export default function HomeownersAndRentersInsuranceCalculator() {
               </tr>
             </tbody>
           </table>
-          <p className="text-gray-600 text-sm">
+          <p className="text-sm">
             <strong>Source:</strong> Insurance.com, ValuePenguin, 2024 averages.
           </p>
         </div>
         <div className="mb-6">
           <h3>Tips for Beginners</h3>
           <ul className="list-disc list-inside">
-            <li>Homeowners should insure for the full cost to rebuild, not just market value.</li>
-            <li>Renters insurance covers your belongings, not the building itself.</li>
-            <li>Higher deductibles lower your premium but increase out-of-pocket costs if you file a claim.</li>
-            <li>Location risk (flood, wildfire, crime) can raise your premium.</li>
+            <li>
+              Homeowners should insure for the full cost to rebuild, not just
+              market value.
+            </li>
+            <li>
+              Renters insurance covers your belongings, not the building itself.
+            </li>
+            <li>
+              Higher deductibles lower your premium but increase out-of-pocket
+              costs if you file a claim.
+            </li>
+            <li>
+              Location risk (flood, wildfire, crime) can raise your premium.
+            </li>
             <li>Review your coverage annually and shop for quotes.</li>
           </ul>
         </div>
@@ -218,7 +247,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
             <select
               className="px-2 py-1 border rounded w-full"
               value={propertyType}
-              onChange={(e) => setPropertyType(e.target.value as "homeowner" | "renter")}
+              onChange={(e) =>
+                setPropertyType(e.target.value as "homeowner" | "renter")
+              }
             >
               <option value="homeowner">Homeowner</option>
               <option value="renter">Renter</option>
@@ -226,7 +257,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
           </div>
           {propertyType === "homeowner" && (
             <div className="mb-2">
-              <label className="block mb-1 font-medium">Property Value ($):</label>
+              <label className="block mb-1 font-medium">
+                Property Value ($):
+              </label>
               <input
                 type="number"
                 className="px-2 py-1 border rounded w-full"
@@ -238,7 +271,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
             </div>
           )}
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Personal Property ($):</label>
+            <label className="block mb-1 font-medium">
+              Personal Property ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -272,7 +307,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Coverage Amount ($):</label>
+            <label className="block mb-1 font-medium">
+              Coverage Amount ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -283,7 +320,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Annual Premium ($):</label>
+            <label className="block mb-1 font-medium">
+              Annual Premium ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -296,33 +335,47 @@ export default function HomeownersAndRentersInsuranceCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Insurance Needs
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <h3 className="mb-2 font-semibold">Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Suggested Coverage</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Suggested Coverage
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.suggestedCoverage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.suggestedCoverage.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Estimated Annual Premium</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Estimated Annual Premium
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.estimatedPremium.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.estimatedPremium.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> This calculator provides estimates. Actual insurance needs and premiums may vary based on your location, insurer, and coverage options.
+            <div className="mt-2 text-sm">
+              <strong>Note:</strong> This calculator provides estimates. Actual
+              insurance needs and premiums may vary based on your location,
+              insurer, and coverage options.
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ export default function PropertyTaxCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Property Tax Calculator</h1>
       <p className="mb-4">
         <strong>
@@ -37,7 +37,7 @@ export default function PropertyTaxCalculator() {
           <h3>Key Terms Explained</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -88,7 +88,7 @@ export default function PropertyTaxCalculator() {
           </ul>
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Step</th>
                 <th className="px-3 py-2 border text-left">Formula</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -176,16 +176,16 @@ export default function PropertyTaxCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Property Tax
       </button>
       {annualTax !== null && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <strong>Estimated Annual Property Tax:</strong>{" "}
-            <span className="text-blue-700 text-lg">
+            <span className="text-lg">
               $
               {annualTax.toLocaleString(undefined, {
                 minimumFractionDigits: 2,

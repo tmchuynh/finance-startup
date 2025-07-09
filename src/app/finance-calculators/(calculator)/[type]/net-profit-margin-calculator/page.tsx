@@ -44,7 +44,7 @@ export default function NetProfitMarginCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Net Profit Margin Calculator</h1>
       <p className="mb-4">
         Calculate your business's net profit margin to understand profitability
@@ -134,25 +134,23 @@ export default function NetProfitMarginCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Net Profit Margin
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <div>
               <strong>Net Profit Margin:</strong>{" "}
-              <span className="text-blue-700 text-lg">
+              <span className="text-lg">
                 {result.netMarginPercent.toFixed(2)}%
               </span>
             </div>
             <div>
               <strong>Net Income:</strong>{" "}
-              <span className="text-blue-700">
-                ${result.netIncome.toFixed(2)}
-              </span>
+              <span className="">${result.netIncome.toFixed(2)}</span>
             </div>
           </div>
         </div>

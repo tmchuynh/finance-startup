@@ -23,7 +23,7 @@ export default function ProfitMarginCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Profit Margin Calculator</h1>
       <h5>Calculate your profit margin easily.</h5>
       <p className="mb-4">
@@ -78,19 +78,17 @@ export default function ProfitMarginCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={calculateMargin}
       >
         Calculate Profit Margin
       </button>
       {margin !== null && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <div>
               <strong>Profit Margin:</strong>{" "}
-              <span className="text-blue-700 text-lg">
-                {margin.toFixed(2)}%
-              </span>
+              <span className="text-lg">{margin.toFixed(2)}%</span>
             </div>
           </div>
         </div>

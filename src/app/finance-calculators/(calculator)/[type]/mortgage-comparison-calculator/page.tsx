@@ -92,7 +92,7 @@ export default function MortgageComparisonCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Mortgage Comparison Calculator</h1>
       <p className="mb-4">
         <strong>
@@ -122,7 +122,7 @@ export default function MortgageComparisonCalculator() {
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
                 <th className="px-3 py-2 border text-left">Typical Value</th>
                 <th className="px-3 py-2 border text-left">Notes</th>
@@ -161,7 +161,7 @@ export default function MortgageComparisonCalculator() {
           {mortgages.map((m, idx) => (
             <div
               key={idx}
-              className="flex md:flex-row flex-col items-end gap-2 mb-2"
+              className="flex flex-col md:flex-row gap-2 items-end mb-2"
             >
               <div className="flex-1">
                 <label className="block mb-1 font-medium">Label:</label>
@@ -241,7 +241,7 @@ export default function MortgageComparisonCalculator() {
               <div>
                 {mortgages.length > 2 && (
                   <button
-                    className="bg-red-500 ml-2 px-2 py-1 rounded text-white"
+                    className="bg-red-500 ml-2 px-2 py-1 rounded"
                     onClick={() => handleRemoveOption(idx)}
                     type="button"
                   >
@@ -252,7 +252,7 @@ export default function MortgageComparisonCalculator() {
             </div>
           ))}
           <button
-            className="bg-green-600 mt-2 px-3 py-1 rounded text-white"
+            className="bg-green-600 mt-2 px-3 py-1 rounded"
             onClick={handleAddOption}
             type="button"
           >
@@ -260,18 +260,18 @@ export default function MortgageComparisonCalculator() {
           </button>
         </div>
         <button
-          className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+          className="bg-blue-600 mt-2 px-4 py-2 rounded"
           onClick={handleCalculate}
         >
           Compare Mortgages
         </button>
         {result && (
           <div className="flex flex-col gap-4 mt-6">
-            <div className="bg-white shadow p-4 border rounded-lg">
+            <div className="shadow p-4 border rounded-lg">
               <h3 className="mb-2 font-semibold">Comparison Results</h3>
               <table className="border border-gray-300 min-w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-100">
+                  <tr className="">
                     <th className="px-3 py-2 border text-left">Option</th>
                     <th className="px-3 py-2 border text-left">
                       Monthly Payment
@@ -314,7 +314,7 @@ export default function MortgageComparisonCalculator() {
                   ))}
                 </tbody>
               </table>
-              <div className="mt-2 text-gray-600 text-sm">
+              <div className="mt-2 text-sm">
                 <strong>Note:</strong> This calculator compares principal and
                 interest only. Taxes, insurance, and PMI are not included.
               </div>
@@ -325,7 +325,7 @@ export default function MortgageComparisonCalculator() {
           <h3>Real Data Example (2024)</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
                 <th className="px-3 py-2 border text-left">Option 1</th>
                 <th className="px-3 py-2 border text-left">Option 2</th>
@@ -364,7 +364,7 @@ export default function MortgageComparisonCalculator() {
               </tr>
             </tbody>
           </table>
-          <p className="text-gray-600 text-sm">
+          <p className="text-sm">
             <strong>Source:</strong> Bankrate, Freddie Mac, 2024 averages.
           </p>
         </div>
@@ -372,7 +372,7 @@ export default function MortgageComparisonCalculator() {
           <h3>Mortgage Comparison Details</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>

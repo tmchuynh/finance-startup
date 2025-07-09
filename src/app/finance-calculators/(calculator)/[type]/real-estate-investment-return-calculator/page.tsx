@@ -114,7 +114,7 @@ export default function RealEstateInvestmentReturnCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Real Estate Investment Return Calculator</h1>
       <p className="mb-4">
         <strong>
@@ -136,7 +136,7 @@ export default function RealEstateInvestmentReturnCalculator() {
           <h3>Homeownership Details</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Detail</th>
                 <th className="px-3 py-2 border text-left">Explanation</th>
               </tr>
@@ -321,14 +321,14 @@ export default function RealEstateInvestmentReturnCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Investment Return
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <h3 className="mb-2 font-semibold">Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
@@ -392,7 +392,7 @@ export default function RealEstateInvestmentReturnCalculator() {
                 </tr>
               </tbody>
             </table>
-            <div className="mt-2 text-gray-600 text-sm">
+            <div className="mt-2 text-sm">
               <strong>Note:</strong> This calculator does not include selling
               costs, taxes, or vacancy. Actual returns may vary.
             </div>
@@ -423,7 +423,7 @@ export default function RealEstateInvestmentReturnCalculator() {
         <h3>Typical Input Values</h3>
         <table className="mb-4 border border-gray-300 min-w-full text-sm">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="">
               <th className="px-3 py-2 border text-left">Field</th>
               <th className="px-3 py-2 border text-left">Typical Value</th>
               <th className="px-3 py-2 border text-left">Notes</th>
