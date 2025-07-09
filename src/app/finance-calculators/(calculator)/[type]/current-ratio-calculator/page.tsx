@@ -17,7 +17,7 @@ export default function CurrentRatioCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Current Ratio Calculator</h1>
       <h5>Assess your business's short-term liquidity and financial health.</h5>
       <div className="mb-4">
@@ -67,16 +67,16 @@ export default function CurrentRatioCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Current Ratio
       </button>
       {result !== null && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <strong>Current Ratio:</strong>{" "}
-            <span className="text-blue-700 text-lg">{result.toFixed(2)}</span>
+            <span className="text-lg">{result.toFixed(2)}</span>
           </div>
         </div>
       )}

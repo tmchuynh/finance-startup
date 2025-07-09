@@ -96,23 +96,27 @@ export default function DebtReductionComparisonAndReliefCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Debt Reduction Comparison & Relief Calculator</h1>
       <p className="mb-4">
         <strong>
-          Compare standard debt repayment, accelerated payments, and debt relief (settlement/forgiveness) to see which option saves you the most money and time.
+          Compare standard debt repayment, accelerated payments, and debt relief
+          (settlement/forgiveness) to see which option saves you the most money
+          and time.
         </strong>
       </p>
       <section className="mb-8">
         <h2>How Does This Calculator Work?</h2>
         <p>
-          Enter your total debt, interest rate, monthly payment, extra payment amount, and a typical debt relief offer. The calculator estimates your payoff time, total interest, and compares the cost of each strategy.
+          Enter your total debt, interest rate, monthly payment, extra payment
+          amount, and a typical debt relief offer. The calculator estimates your
+          payoff time, total interest, and compares the cost of each strategy.
         </p>
         <div className="mb-6">
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
                 <th className="px-3 py-2 border text-left">Typical Value</th>
                 <th className="px-3 py-2 border text-left">Notes</th>
@@ -137,7 +141,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
               <tr>
                 <td className="px-3 py-2 border">Extra Payment ($/mo)</td>
                 <td className="px-3 py-2 border">$0 - $200</td>
-                <td className="px-3 py-2 border">Speeds up payoff, saves interest</td>
+                <td className="px-3 py-2 border">
+                  Speeds up payoff, saves interest
+                </td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Debt Relief Percent (%)</td>
@@ -156,7 +162,7 @@ export default function DebtReductionComparisonAndReliefCalculator() {
           <h3>Debt Reduction & Relief Details</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
                 <th className="px-3 py-2 border text-left">Description</th>
                 <th className="px-3 py-2 border text-left">Example</th>
@@ -184,7 +190,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
                 <td className="px-3 py-2 border">$100</td>
               </tr>
               <tr>
-                <td className="px-3 py-2 border">Months to Payoff (Standard)</td>
+                <td className="px-3 py-2 border">
+                  Months to Payoff (Standard)
+                </td>
                 <td className="px-3 py-2 border">Time to pay off debt</td>
                 <td className="px-3 py-2 border">31</td>
               </tr>
@@ -199,17 +207,25 @@ export default function DebtReductionComparisonAndReliefCalculator() {
                 <td className="px-3 py-2 border">$2,400</td>
               </tr>
               <tr>
-                <td className="px-3 py-2 border">Months to Payoff (With Extra)</td>
-                <td className="px-3 py-2 border">Time to pay off with extra payment</td>
+                <td className="px-3 py-2 border">
+                  Months to Payoff (With Extra)
+                </td>
+                <td className="px-3 py-2 border">
+                  Time to pay off with extra payment
+                </td>
                 <td className="px-3 py-2 border">22</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Total Paid (With Extra)</td>
-                <td className="px-3 py-2 border">Sum of all payments with extra</td>
+                <td className="px-3 py-2 border">
+                  Sum of all payments with extra
+                </td>
                 <td className="px-3 py-2 border">$11,000</td>
               </tr>
               <tr>
-                <td className="px-3 py-2 border">Total Interest (With Extra)</td>
+                <td className="px-3 py-2 border">
+                  Total Interest (With Extra)
+                </td>
                 <td className="px-3 py-2 border">Interest paid with extra</td>
                 <td className="px-3 py-2 border">$1,000</td>
               </tr>
@@ -230,12 +246,16 @@ export default function DebtReductionComparisonAndReliefCalculator() {
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Savings vs Standard</td>
-                <td className="px-3 py-2 border">Standard total paid - relief cost</td>
+                <td className="px-3 py-2 border">
+                  Standard total paid - relief cost
+                </td>
                 <td className="px-3 py-2 border">$7,600</td>
               </tr>
               <tr>
                 <td className="px-3 py-2 border">Savings vs Extra</td>
-                <td className="px-3 py-2 border">Extra total paid - relief cost</td>
+                <td className="px-3 py-2 border">
+                  Extra total paid - relief cost
+                </td>
                 <td className="px-3 py-2 border">$6,200</td>
               </tr>
             </tbody>
@@ -245,7 +265,7 @@ export default function DebtReductionComparisonAndReliefCalculator() {
           <h3>Real Data Example (2024)</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
                 <th className="px-3 py-2 border text-left">Value</th>
               </tr>
@@ -276,7 +296,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
                 <td className="px-3 py-2 border">20%</td>
               </tr>
               <tr>
-                <td className="px-3 py-2 border">Months to Payoff (Standard)</td>
+                <td className="px-3 py-2 border">
+                  Months to Payoff (Standard)
+                </td>
                 <td className="px-3 py-2 border">31</td>
               </tr>
               <tr>
@@ -288,7 +310,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
                 <td className="px-3 py-2 border">$2,400</td>
               </tr>
               <tr>
-                <td className="px-3 py-2 border">Months to Payoff (With Extra)</td>
+                <td className="px-3 py-2 border">
+                  Months to Payoff (With Extra)
+                </td>
                 <td className="px-3 py-2 border">22</td>
               </tr>
               <tr>
@@ -296,7 +320,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
                 <td className="px-3 py-2 border">$11,000</td>
               </tr>
               <tr>
-                <td className="px-3 py-2 border">Total Interest (With Extra)</td>
+                <td className="px-3 py-2 border">
+                  Total Interest (With Extra)
+                </td>
                 <td className="px-3 py-2 border">$1,000</td>
               </tr>
               <tr>
@@ -321,18 +347,33 @@ export default function DebtReductionComparisonAndReliefCalculator() {
               </tr>
             </tbody>
           </table>
-          <p className="text-gray-600 text-sm">
-            <strong>Source:</strong> National Debt Relief, NerdWallet, 2024 averages.
+          <p className="text-sm">
+            <strong>Source:</strong> National Debt Relief, NerdWallet, 2024
+            averages.
           </p>
         </div>
         <div className="mb-6">
           <h3>Tips for Beginners</h3>
           <ul className="list-disc list-inside">
-            <li>Making extra payments saves you money and shortens your debt payoff time.</li>
-            <li>Debt relief can reduce your total payoff, but may hurt your credit score and have tax consequences.</li>
-            <li>Compare all options and consult a financial advisor before choosing debt relief.</li>
-            <li>Always make at least the minimum payment to avoid late fees and penalties.</li>
-            <li>Consider debt consolidation or credit counseling for more options.</li>
+            <li>
+              Making extra payments saves you money and shortens your debt
+              payoff time.
+            </li>
+            <li>
+              Debt relief can reduce your total payoff, but may hurt your credit
+              score and have tax consequences.
+            </li>
+            <li>
+              Compare all options and consult a financial advisor before
+              choosing debt relief.
+            </li>
+            <li>
+              Always make at least the minimum payment to avoid late fees and
+              penalties.
+            </li>
+            <li>
+              Consider debt consolidation or credit counseling for more options.
+            </li>
           </ul>
         </div>
       </section>
@@ -364,7 +405,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Monthly Payment ($):</label>
+            <label className="block mb-1 font-medium">
+              Monthly Payment ($):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -375,7 +418,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Extra Payment ($/mo):</label>
+            <label className="block mb-1 font-medium">
+              Extra Payment ($/mo):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -386,7 +431,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
             />
           </div>
           <div className="mb-2">
-            <label className="block mb-1 font-medium">Debt Relief Percent (%):</label>
+            <label className="block mb-1 font-medium">
+              Debt Relief Percent (%):
+            </label>
             <input
               type="number"
               className="px-2 py-1 border rounded w-full"
@@ -414,91 +461,154 @@ export default function DebtReductionComparisonAndReliefCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Compare Debt Reduction Options
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <h3 className="mb-2 font-semibold">Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Months to Payoff (Standard)</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Months to Payoff (Standard)
+                  </td>
                   <td className="px-3 py-2 border">
                     {result.monthsToPayoff === Infinity
                       ? "Never (payment too low)"
-                      : result.monthsToPayoff.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+                      : result.monthsToPayoff.toLocaleString(undefined, {
+                          minimumFractionDigits: 1,
+                          maximumFractionDigits: 1,
+                        })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Total Paid (Standard)</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Total Paid (Standard)
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.totalPaid.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalPaid.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Total Interest (Standard)</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Total Interest (Standard)
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.totalInterest.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalInterest.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Months to Payoff (With Extra)</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Months to Payoff (With Extra)
+                  </td>
                   <td className="px-3 py-2 border">
                     {result.monthsWithExtra === Infinity
                       ? "Never (payment too low)"
-                      : result.monthsWithExtra.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
+                      : result.monthsWithExtra.toLocaleString(undefined, {
+                          minimumFractionDigits: 1,
+                          maximumFractionDigits: 1,
+                        })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Total Paid (With Extra)</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Total Paid (With Extra)
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.totalPaidWithExtra.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalPaidWithExtra.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Total Interest (With Extra)</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Total Interest (With Extra)
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.totalInterestWithExtra.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalInterestWithExtra.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Debt Relief Amount</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Debt Relief Amount
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.reliefAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.reliefAmount.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 border font-medium">Relief Fee</td>
                   <td className="px-3 py-2 border">
-                    ${result.reliefFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.reliefFeeAmount.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Total Relief Cost</td>
+                  <td className="px-3 py-2 border font-medium">
+                    Total Relief Cost
+                  </td>
                   <td className="px-3 py-2 border">
-                    ${result.totalReliefCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    $
+                    {result.totalReliefCost.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Savings vs Standard</td>
-                  <td className="px-3 py-2 border font-bold text-green-700">
-                    ${result.savingsVsStandard.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  <td className="px-3 py-2 border font-medium">
+                    Savings vs Standard
+                  </td>
+                  <td className="px-3 py-2 border font-bold">
+                    $
+                    {result.savingsVsStandard.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 border font-medium">Savings vs Extra</td>
-                  <td className="px-3 py-2 border font-bold text-green-700">
-                    ${result.savingsVsExtra.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  <td className="px-3 py-2 border font-medium">
+                    Savings vs Extra
+                  </td>
+                  <td className="px-3 py-2 border font-bold">
+                    $
+                    {result.savingsVsExtra.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div className="mt-2 text-gray-600 text-sm">
-              <strong>Note:</strong> This calculator provides estimates. Actual results may vary based on your debt terms and relief offers.
+            <div className="mt-2 text-sm">
+              <strong>Note:</strong> This calculator provides estimates. Actual
+              results may vary based on your debt terms and relief offers.
             </div>
           </div>
         </div>

@@ -53,7 +53,7 @@ export default function BusinessLoanCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Business Loan Calculator</h1>
       <h5>
         Estimate your monthly payments and total interest for a business loan.
@@ -127,31 +127,27 @@ export default function BusinessLoanCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Loan
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <div>
               <strong>Monthly Payment:</strong>{" "}
-              <span className="text-blue-700 text-lg">
+              <span className="text-lg">
                 ${result.monthlyPayment.toFixed(2)}
               </span>
             </div>
             <div>
               <strong>Total Interest:</strong>{" "}
-              <span className="text-blue-700">
-                ${result.totalInterest.toFixed(2)}
-              </span>
+              <span className="">${result.totalInterest.toFixed(2)}</span>
             </div>
             <div>
               <strong>Total Payment:</strong>{" "}
-              <span className="text-blue-700">
-                ${result.totalPayment.toFixed(2)}
-              </span>
+              <span className="">${result.totalPayment.toFixed(2)}</span>
             </div>
           </div>
         </div>

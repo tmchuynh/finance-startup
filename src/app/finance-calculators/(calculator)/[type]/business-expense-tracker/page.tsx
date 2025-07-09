@@ -52,7 +52,7 @@ export default function BusinessExpenseTracker() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Business Expense Tracker</h1>
       <h5>Analyze your business expenses effectively.</h5>
       <p className="mb-4">
@@ -85,7 +85,7 @@ export default function BusinessExpenseTracker() {
       <div>
         <h2 className="mb-2 font-semibold">Expenses</h2>
         {expenses.map((exp, idx) => (
-          <div key={idx} className="flex items-center gap-2 mb-2">
+          <div key={idx} className="flex gap-2 items-center mb-2">
             <input
               type="text"
               className="px-2 py-1 border rounded w-1/3"
@@ -105,7 +105,7 @@ export default function BusinessExpenseTracker() {
                 handleExpenseChange(idx, "amount", e.target.value)
               }
             />
-            <label className="flex items-center gap-1 text-xs">
+            <label className="flex gap-1 items-center text-xs">
               <input
                 type="checkbox"
                 checked={exp.isFixed}
@@ -134,52 +134,46 @@ export default function BusinessExpenseTracker() {
         </button>
       </div>
       <button
-        className="bg-blue-600 mt-4 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-4 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Analyze Expenses
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <div>
               <strong>Total Expenses:</strong>{" "}
-              <span className="text-blue-700">
-                ${result.totalExpenses.toFixed(2)}
-              </span>
+              <span className="">${result.totalExpenses.toFixed(2)}</span>
             </div>
             <div>
               <strong>Fixed Expenses:</strong>{" "}
-              <span className="text-blue-700">
-                ${result.fixedExpenses.toFixed(2)}
-              </span>
+              <span className="">${result.fixedExpenses.toFixed(2)}</span>
             </div>
             <div>
               <strong>Variable Expenses:</strong>{" "}
-              <span className="text-blue-700">
-                ${result.variableExpenses.toFixed(2)}
-              </span>
+              <span className="">${result.variableExpenses.toFixed(2)}</span>
             </div>
             <div>
               <strong>Expense to Revenue Ratio:</strong>{" "}
-              <span className="text-blue-700">
+              <span className="">
                 {result.expenseToRevenueRatioPercent.toFixed(2)}%
               </span>
             </div>
             <div>
               <strong>Fixed Expense Ratio:</strong>{" "}
-              <span className="text-blue-700">
+              <span className="">
                 {result.fixedExpenseRatioPercent.toFixed(2)}%
               </span>
             </div>
             <div>
               <strong>Variable Expense Ratio:</strong>{" "}
-              <span className="text-blue-700">
+              <span className="">
                 {result.variableExpenseRatioPercent.toFixed(2)}%
               </span>
             </div>
           </div>
-          <div className="bg-gray-50 shadow p-4 border rounded-lg text-gray-700 text-sm">
+          <div className="shadow p-4 border rounded-lg text-sm">
             <strong>Expense Breakdown by Category:</strong>
             <ul className="mt-2">
               {Object.entries(result.expenseBreakdown).map(

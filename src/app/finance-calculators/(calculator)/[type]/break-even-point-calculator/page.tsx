@@ -30,7 +30,7 @@ export default function BreakEvenPointCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Break-Even Point Calculator</h1>
       <h5>
         Estimate the number of units you need to sell to cover your fixed and
@@ -114,34 +114,28 @@ export default function BreakEvenPointCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate Break-Even Point
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <div>
               <strong>Contribution Margin per Unit:</strong>{" "}
-              <span className="text-blue-700 text-lg">
-                {result.contributionMargin}
-              </span>
+              <span className="text-lg">{result.contributionMargin}</span>
             </div>
             <div>
               <strong>Break-Even Units:</strong>{" "}
-              <span className="text-blue-700 text-lg">
-                {result.breakEvenUnits}
-              </span>
+              <span className="text-lg">{result.breakEvenUnits}</span>
             </div>
             <div>
               <strong>Break-Even Sales ($):</strong>{" "}
-              <span className="text-blue-700 text-lg">
-                {result.breakEvenSales}
-              </span>
+              <span className="text-lg">{result.breakEvenSales}</span>
             </div>
           </div>
-          <div className="bg-gray-50 shadow p-4 border rounded-lg text-gray-700 text-sm">
+          <div className="shadow p-4 border rounded-lg text-sm">
             {result.explanation}
           </div>
         </div>

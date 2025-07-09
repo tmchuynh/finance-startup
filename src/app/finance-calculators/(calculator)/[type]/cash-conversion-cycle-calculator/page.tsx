@@ -29,7 +29,7 @@ export default function CashConversionCycleCalculator() {
   };
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>Cash Conversion Cycle Calculator</h1>
       <h5>
         Calculate your cash conversion cycle to understand your business's
@@ -110,26 +110,22 @@ export default function CashConversionCycleCalculator() {
         </div>
       </div>
       <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded text-white"
+        className="bg-blue-600 mt-2 px-4 py-2 rounded"
         onClick={handleCalculate}
       >
         Calculate CCC
       </button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
-          <div className="bg-white shadow p-4 border rounded-lg">
+          <div className="shadow p-4 border rounded-lg">
             <div>
               <strong>Cash Conversion Cycle (CCC):</strong>{" "}
-              <span className="text-blue-700 text-lg">
-                {result.cashConversionCycle} days
-              </span>
+              <span className="text-lg">{result.cashConversionCycle} days</span>
             </div>
           </div>
-          <div className="bg-gray-50 shadow p-4 border rounded-lg text-gray-700 text-sm">
+          <div className="shadow p-4 border rounded-lg text-sm">
             {result.explanation}
-            {result.note && (
-              <div className="mt-2 text-yellow-700">{result.note}</div>
-            )}
+            {result.note && <div className="mt-2">{result.note}</div>}
           </div>
         </div>
       )}
