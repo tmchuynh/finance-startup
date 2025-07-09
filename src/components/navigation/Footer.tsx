@@ -93,7 +93,7 @@ const navigation = {
 export default function Example() {
   return (
     <footer>
-      <div className="mx-auto pt-16 sm:pt-24 lg:pt-32 pb-8 w-10/12 md:w-11/12">
+      <div className="mx-auto pb-8 pt-16 sm:pt-24 lg:pt-32 w-10/12 md:w-11/12">
         <div className="xl:gap-8 xl:grid xl:grid-cols-3">
           <Image
             alt="Company name"
@@ -102,7 +102,7 @@ export default function Example() {
             width={36}
             height={36}
           />
-          <div className="gap-8 grid grid-cols-2 xl:col-span-2 mt-16 xl:mt-0">
+          <div className="gap-8 xl:col-span-2 grid grid-cols-2 mt-16 xl:mt-0">
             <div className="md:gap-8 md:grid md:grid-cols-2">
               <div>
                 <h5>Solutions</h5>
@@ -169,7 +169,7 @@ export default function Example() {
             </div>
           </div>
         </div>
-        <div className="lg:flex lg:justify-between lg:items-center mt-16 sm:mt-20 lg:mt-24 pt-8 border-gray-900/10 border-t">
+        <div className="lg:flex lg:items-center lg:justify-between mt-16 sm:mt-20 lg:mt-24 pt-8 border-gray-900/10 border-t">
           <div>
             <h5>Subscribe to our newsletter</h5>
             <p className="mt-2 text-foreground/75">
@@ -188,26 +188,22 @@ export default function Example() {
               required
               placeholder="Enter your email"
               autoComplete="email"
-              className="bg-white px-3 py-1.5 rounded-md w-full sm:w-56 min-w-0 text-base sm:text-sm/6 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+              className="px-3 py-1.5 rounded-md min-w-0 w-full sm:w-56 text-base sm:text-sm/6 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
             />
-            <div className="mt-4 sm:mt-0 sm:ml-4 sm:shrink-0">
+            <div className="sm:ml-4 mt-4 sm:mt-0 sm:shrink-0">
               <button
                 type="submit"
-                className="flex justify-center items-center bg-indigo-600 hover:bg-indigo-500 shadow-xs px-3 py-2 rounded-md w-full font-semibold text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 shadow-xs px-3 py-2 rounded-md w-full font-semibold text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Subscribe
               </button>
             </div>
           </form>
         </div>
-        <div className="md:flex md:justify-between md:items-center mt-8 pt-8 border-gray-900/10 border-t">
+        <div className="md:flex md:items-center md:justify-between mt-8 pt-8 border-gray-900/10 border-t">
           <div className="flex gap-x-6 md:order-2">
             {navigation.social.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-foreground/75 hover:text-gray-800"
-              >
+              <a key={item.name} href={item.href}>
                 <span className="sr-only">{item.name}</span>
                 <item.icon aria-hidden="true" className="size-6" />
               </a>

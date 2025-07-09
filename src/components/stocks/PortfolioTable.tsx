@@ -1,3 +1,12 @@
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Portfolio, Stock } from "@/lib/interfaces/stock";
 import { formatNumberToCurrency } from "@/lib/utils/format";
 import React from "react";
@@ -14,95 +23,123 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
   stocks,
   onSelectStock,
   onSellAll,
-}) => (
-  <table className="border border-collapse border-gray-300 w-full">
-    <thead>
-      <tr className="bg-gray-100">
-        <th className="p-2 border border-gray-300 text-left">Symbol</th>
-        <th className="p-2 border border-gray-300 text-left">Quantity</th>
-        <th className="p-2 border border-gray-300 text-left">Avg. Price</th>
-        <th className="p-2 border border-gray-300 text-left">Current Price</th>
-        <th className="p-2 border border-gray-300 text-left">Total Value</th>
-        <th className="p-2 border border-gray-300 text-left">Change ($)</th>
-        <th className="p-2 border border-gray-300 text-left">Change (%)</th>
-      </tr>
-    </thead>
-    <tbody>
-      {portfolio.holdings.map((h) => {
-        const stock = stocks.find((s) => s.symbol === h.symbol);
-        const currentPrice = stock ? stock.price : 0;
-        const totalValue = h.quantity * currentPrice;
-        const costBasis = h.quantity * h.averagePrice;
-        const change = totalValue - costBasis;
-        const changePct = costBasis > 0 ? (change / costBasis) * 100 : 0;
-        return (
-          <tr key={h.symbol}>
-            <td className="p-2 border border-gray-300">
-              {onSelectStock ? (
-                <button
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "#2563eb",
-                    textDecoration: "underline",
-                    cursor: "pointer",
-                    padding: 0,
-                  }}
-                  onClick={() => onSelectStock(h.symbol)}
-                  title="Select this stock"
+}) => {
+  if (portfolio.holdings.length === 0) {
+    return (
+      <div className="border rounded-lg overflow-hidden">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Symbol</TableHead>
+              <TableHead>Quantity</TableHead>
+              <TableHead>Avg. Price</TableHead>
+              <TableHead>Current Price</TableHead>
+              <TableHead>Total Value</TableHead>
+              <TableHead>Change ($)</TableHead>
+              <TableHead>Change (%)</TableHead>
+              <TableHead>Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell
+                colSpan={8}
+                className="py-8 text-center text-muted-foreground"
+              >
+                No holdings yet. Start buying stocks to build your portfolio!
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }
+
+  return (
+    <div className="border rounded-lg overflow-hidden">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Symbol</TableHead>
+            <TableHead>Quantity</TableHead>
+            <TableHead>Avg. Price</TableHead>
+            <TableHead>Current Price</TableHead>
+            <TableHead>Total Value</TableHead>
+            <TableHead>Change ($)</TableHead>
+            <TableHead>Change (%)</TableHead>
+            <TableHead>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {portfolio.holdings.map((h) => {
+            const stock = stocks.find((s) => s.symbol === h.symbol);
+            const currentPrice = stock ? stock.price : 0;
+            const totalValue = h.quantity * currentPrice;
+            const costBasis = h.quantity * h.averagePrice;
+            const change = totalValue - costBasis;
+            const changePct = costBasis > 0 ? (change / costBasis) * 100 : 0;
+
+            return (
+              <TableRow key={h.symbol}>
+                <TableCell>
+                  {onSelectStock ? (
+                    <Button
+                      variant="link"
+                      className="p-0 h-auto font-mono font-semibold"
+                      onClick={() => onSelectStock(h.symbol)}
+                      title="Select this stock for trading"
+                    >
+                      {h.symbol}
+                    </Button>
+                  ) : (
+                    <span className="font-mono font-semibold">{h.symbol}</span>
+                  )}
+                </TableCell>
+                <TableCell className="font-medium">
+                  {h.quantity.toLocaleString()}
+                </TableCell>
+                <TableCell className="font-semibold">
+                  {formatNumberToCurrency(h.averagePrice, 2, 2)}
+                </TableCell>
+                <TableCell className="font-semibold">
+                  {formatNumberToCurrency(currentPrice, 2, 2)}
+                </TableCell>
+                <TableCell className="font-semibold">
+                  {formatNumberToCurrency(totalValue, 2, 2)}
+                </TableCell>
+                <TableCell
+                  className={`font-semibold ${
+                    change >= 0 ? "" : "text-red-600"
+                  }`}
                 >
-                  {h.symbol}
-                </button>
-              ) : (
-                h.symbol
-              )}
-            </td>
-            <td className="p-2 border border-gray-300">{h.quantity}</td>
-            <td className="p-2 border border-gray-300">
-              {formatNumberToCurrency(h.averagePrice, 2, 2)}
-            </td>
-            <td className="p-2 border border-gray-300">
-              {formatNumberToCurrency(currentPrice, 2, 2)}
-            </td>
-            <td className="p-2 border border-gray-300">
-              {formatNumberToCurrency(totalValue, 2, 2)}
-            </td>
-            <td
-              className="p-2 border border-gray-300"
-              style={{ color: change >= 0 ? "green" : "red" }}
-            >
-              {change >= 0 ? "+" : ""}
-              {formatNumberToCurrency(change, 2, 2)}
-            </td>
-            <td
-              className="p-2 border border-gray-300"
-              style={{ color: changePct >= 0 ? "green" : "red" }}
-            >
-              {changePct >= 0 ? "+" : ""}
-              {changePct.toFixed(2)}%
-            </td>
-            <td className="p-2 border border-gray-300">
-              {onSellAll && (
-                <button
-                  style={{
-                    background: "#dc2626",
-                    color: "white",
-                    border: "none",
-                    borderRadius: 4,
-                    padding: "4px 10px",
-                    cursor: "pointer",
-                    fontWeight: 600,
-                  }}
-                  onClick={() => onSellAll(h.symbol)}
-                  title="Sell all shares"
+                  {change >= 0 ? "+" : ""}
+                  {formatNumberToCurrency(change, 2, 2)}
+                </TableCell>
+                <TableCell
+                  className={`font-semibold ${
+                    changePct >= 0 ? "" : "text-red-600"
+                  }`}
                 >
-                  Sell All
-                </button>
-              )}
-            </td>
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
-);
+                  {changePct >= 0 ? "+" : ""}
+                  {changePct.toFixed(2)}%
+                </TableCell>
+                <TableCell>
+                  {onSellAll && (
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => onSellAll(h.symbol)}
+                      title="Sell all shares of this stock"
+                    >
+                      Sell All
+                    </Button>
+                  )}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};

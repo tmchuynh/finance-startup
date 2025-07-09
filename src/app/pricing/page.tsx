@@ -13,7 +13,7 @@ export default function Example() {
   const [frequency, setFrequency] = useState(pricing.frequencies[0]);
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Pricing section */}
       <div>
         <h1>Pricing that grows with you</h1>
@@ -52,7 +52,7 @@ export default function Example() {
                 key={option.value}
                 value={option.value}
                 size={"lg"}
-                className="flex data-[state=on]:bg-primary border data-[state=on]:border-primary w-[10em] data-[state=on]:text-white"
+                className="flex data-[state=on]:bg-primary border data-[state=on]:border-primary w-[10em] data-[state=on]:"
               >
                 {option.label}
               </ToggleGroupItem>
@@ -60,14 +60,14 @@ export default function Example() {
           </ToggleGroup>
         </div>
         <div className="flex justify-end w-full">
-          <div className="relative items-end gap-8 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 lg:mx-0 mt-10 lg:-mb-14 lg:w-4/5 2xl:w-6/7 xl:w-3/4">
+          <div className="relative gap-8 items-end grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 lg:-mb-14 mt-10 lg:mx-0 lg:w-4/5 2xl:w-6/7 xl:w-3/4">
             {pricing.tiers.map((tier) => (
               <div
                 key={tier.name}
-                className="grid grid-cols-1 shadow-[inset_0_0_2px_1px_#ffffff4d] max-lg:mx-auto rounded-4xl ring-1 ring-ring max-lg:w-full max-lg:max-w-md h-full"
+                className="grid grid-cols-1 shadow-[inset_0_0_2px_1px_#ffffff4d] max-lg:mx-auto ring-1 ring-ring rounded-4xl h-full max-lg:max-w-md max-lg:w-full"
               >
                 <div className="grid grid-cols-1 shadow-black/5 shadow-md p-2 rounded-4xl">
-                  <div className="flex flex-col justify-between bg-card shadow-2xl p-10 pb-9 rounded-3xl ring-1 ring-black/5">
+                  <div className="flex flex-col justify-between bg-card shadow-2xl p-10 pb-9 ring-1 ring-black/5 rounded-3xl">
                     <div>
                       <h5>
                         {tier.name} <span className="sr-only">plan</span>
@@ -78,7 +78,7 @@ export default function Example() {
                     </div>
                     <div>
                       {" "}
-                      <div className="flex items-center gap-4 mt-8">
+                      <div className="flex gap-4 items-center mt-8">
                         <h1 className="font-semibold text-6xl">
                           {frequency.value === "monthly"
                             ? formatNumberToCurrency(tier.priceMonthly)
@@ -130,7 +130,7 @@ export default function Example() {
             <tr>
               <td className="p-0" />
               {pricing.tiers.map((tier) => (
-                <td key={tier.name} className="px-0 pt-3 pb-0">
+                <td key={tier.name} className="pb-0 pt-3 px-0">
                   <Button variant={"outline"}>Get started</Button>
                 </td>
               ))}
@@ -142,7 +142,7 @@ export default function Example() {
                 <th
                   scope="colgroup"
                   colSpan={6}
-                  className="px-0 pt-10 group-first-of-type:pt-5 pb-0"
+                  className="pb-0 pt-10 group-first-of-type:pt-5 px-0"
                 >
                   <div className="bg-secondary/20 -mx-4 px-4 py-3 w-full font-semibold text-sm/6">
                     {section.name}
@@ -220,13 +220,13 @@ export default function Example() {
               <TabPanel key={tier.name}>
                 <a
                   href={tier.href}
-                  className="block bg-white hover:bg-gray-50 shadow-xs mt-8 px-3.5 py-2.5 rounded-md ring-1 ring-gray-300 ring-inset font-semibold text-center text-gray-900 text-sm"
+                  className="block shadow-xs mt-8 px-3.5 py-2.5 ring-1 ring-gray-300 ring-inset rounded-md font-semibold text-center text-sm"
                 >
                   Get started
                 </a>
                 {pricing.sections.map((section) => (
                   <Fragment key={section.name}>
-                    <div className="bg-gray-50 -mx-6 mt-10 group-first-of-type:mt-5 px-6 py-3 rounded-lg font-semibold text-sm/6">
+                    <div className="mt-10 group-first-of-type:mt-5 -mx-6 px-6 py-3 rounded-lg font-semibold text-sm/6">
                       {section.name}
                     </div>
                     <dl>
@@ -287,13 +287,13 @@ export default function Example() {
       </div>
 
       {/* FAQ section */}
-      <div className="mx-auto mt-24 sm:mt-56">
+      <div className="mt-24 sm:mt-56 mx-auto">
         <h2>Frequently asked questions</h2>
         <dl className="mt-20 divide-y">
           {pricingFAQs.map((faq) => (
             <div
               key={faq.id}
-              className="lg:gap-8 lg:grid lg:grid-cols-12 py-8 first:pt-0 last:pb-0"
+              className="lg:gap-8 lg:grid lg:grid-cols-12 last:pb-0 first:pt-0 py-8"
             >
               <dt className="lg:col-span-5 font-semibold">{faq.question}</dt>
               <dd className="lg:col-span-7 mt-4 lg:mt-0">
