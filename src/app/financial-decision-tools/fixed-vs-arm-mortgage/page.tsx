@@ -2,6 +2,14 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useEffect, useState } from "react";
 
 function calcFixedMortgage({
@@ -121,419 +129,646 @@ export default function FixedVsARMMortgage() {
   ]);
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Fixed Rate vs Adjustable Rate Mortgage</h1>
-      <h5>Compare Your Mortgage Options</h5>
-      <p>
-        Use this tool to estimate the monthly payments and total cost of a
-        fixed-rate mortgage versus an adjustable-rate mortgage (ARM). This tool
-        provides estimates for informational purposes only. Actual rates,
-        payments, and costs may vary. Consult a mortgage professional before
-        making decisions.
-      </p>
-
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
+      <div className="mb-12 text-center">
+        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
+          Fixed Rate vs ARM Mortgage Calculator
+        </h1>
+        <h5 className="mb-6 text-xl">Compare Your Mortgage Options</h5>
+        <p className="mx-auto max-w-3xl text-lg">
+          Use this tool to estimate the monthly payments and total cost of a
+          fixed-rate mortgage versus an adjustable-rate mortgage (ARM). This
+          tool provides estimates for informational purposes only. Actual rates,
+          payments, and costs may vary. Consult a mortgage professional before
+          making decisions.
+        </p>
+      </div>
       {/* Chart 1: Key Differences */}
       <div className="my-8">
-        <h2>Key Differences</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Feature</th>
-                <th className="px-3 py-2 border text-left">
-                  Fixed-Rate Mortgage
-                </th>
-                <th className="px-3 py-2 border text-left">
-                  Adjustable-Rate Mortgage (ARM)
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Interest Rate</td>
-                <td className="px-3 py-2 border">
-                  Stays the same for the life of the loan
-                </td>
-                <td className="px-3 py-2 border">
-                  Starts lower, adjusts after initial period
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Monthly Payment</td>
-                <td className="px-3 py-2 border">Predictable, never changes</td>
-                <td className="px-3 py-2 border">
-                  Can increase or decrease after initial period
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Best For</td>
-                <td className="px-3 py-2 border">
-                  Staying long-term, want stability
-                </td>
-                <td className="px-3 py-2 border">
-                  Short-term stay, expect to move or refinance
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Initial Rate</td>
-                <td className="px-3 py-2 border">
-                  Usually higher than ARM's initial rate
-                </td>
-                <td className="px-3 py-2 border">
-                  Usually lower for first 3-10 years
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Risk</td>
-                <td className="px-3 py-2 border">
-                  No risk of payment increase
-                </td>
-                <td className="px-3 py-2 border">
-                  Risk of higher payments after adjustment
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 className="mb-4 font-semibold text-2xl">Key Differences</h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Feature</TableHead>
+              <TableHead>Fixed-Rate Mortgage</TableHead>
+              <TableHead>Adjustable-Rate Mortgage (ARM)</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Interest Rate</TableCell>
+              <TableCell>Stays the same for the life of the loan</TableCell>
+              <TableCell>Starts lower, adjusts after initial period</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Monthly Payment</TableCell>
+              <TableCell>Predictable, never changes</TableCell>
+              <TableCell>
+                Can increase or decrease after initial period
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Best For</TableCell>
+              <TableCell>Staying long-term, want stability</TableCell>
+              <TableCell>
+                Short-term stay, expect to move or refinance
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Initial Rate</TableCell>
+              <TableCell>Usually higher than ARM's initial rate</TableCell>
+              <TableCell>Usually lower for first 3-10 years</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Risk</TableCell>
+              <TableCell>No risk of payment increase</TableCell>
+              <TableCell>Risk of higher payments after adjustment</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
-
       {/* Chart 2: Pros and Cons */}
       <div className="my-8">
-        <h2>Pros and Cons</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">Pros</th>
-                <th className="px-3 py-2 border text-left">Cons</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Fixed-Rate</td>
-                <td className="px-3 py-2 border">
-                  Predictable payments
-                  <br />
-                  Easier budgeting
-                  <br />
-                  No risk of rising rates
-                </td>
-                <td className="px-3 py-2 border">
-                  Higher initial rate
-                  <br />
-                  May pay more if you move early
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">ARM</td>
-                <td className="px-3 py-2 border">
-                  Lower initial rate
-                  <br />
-                  Lower payments in early years
-                  <br />
-                  Good if moving/refinancing before adjustment
-                </td>
-                <td className="px-3 py-2 border">
-                  Payments can rise
-                  <br />
-                  Harder to budget long-term
-                  <br />
-                  More complex terms
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Type</TableHead>
+              <TableHead>Pros</TableHead>
+              <TableHead>Cons</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Fixed-Rate</TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Predictable payments</li>
+                  <li>Easier budgeting</li>
+                  <li>No risk of rising rates</li>
+                </ul>
+              </TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Higher initial rate</li>
+                  <li>May pay more if you move early</li>
+                </ul>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">ARM</TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Lower initial rate</li>
+                  <li>Lower payments in early years</li>
+                  <li>Good if moving/refinancing before adjustment</li>
+                </ul>
+              </TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Payments can rise</li>
+                  <li>Harder to budget long-term</li>
+                  <li>More complex terms</li>
+                </ul>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
-
       {/* Chart 3: Typical Rates and Terms */}
       <div className="my-8">
-        <h2>Typical Rates and Terms (2024)</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">
-                  Interest Rate Range
-                </th>
-                <th className="px-3 py-2 border text-left">Common Terms</th>
-                <th className="px-3 py-2 border text-left">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Fixed-Rate</td>
-                <td className="px-3 py-2 border">6% - 7.5%</td>
-                <td className="px-3 py-2 border">15, 20, 30 years</td>
-                <td className="px-3 py-2 border">
-                  Rate stays the same for entire loan
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">ARM (e.g. 5/1, 7/1)</td>
-                <td className="px-3 py-2 border">5% - 6.5% (initial)</td>
-                <td className="px-3 py-2 border">
-                  30 years (5-10 years fixed, then adjusts annually)
-                </td>
-                <td className="px-3 py-2 border">
-                  Rate adjusts after initial period, may increase
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 className="mb-4 font-semibold text-2xl">
+          Typical Rates and Terms (2024)
+        </h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Type</TableHead>
+              <TableHead>Interest Rate Range</TableHead>
+              <TableHead>Common Terms</TableHead>
+              <TableHead>Notes</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Fixed-Rate</TableCell>
+              <TableCell>6% - 7.5%</TableCell>
+              <TableCell>15, 20, 30 years</TableCell>
+              <TableCell>Rate stays the same for entire loan</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">ARM (e.g. 5/1, 7/1)</TableCell>
+              <TableCell>5% - 6.5% (initial)</TableCell>
+              <TableCell>
+                30 years (5-10 years fixed, then adjusts annually)
+              </TableCell>
+              <TableCell>
+                Rate adjusts after initial period, may increase
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
       {/* End charts */}
+      <div className="shadow-lg mb-8 p-8 border rounded-lg">
+        <h2 className="mb-6 font-semibold text-2xl">Calculator</h2>
 
-      <form className="space-y-5 mt-5" aria-label="Mortgage comparison form">
-        <div className="mb-4 pb-4 border-b">
-          <h3>Fixed-Rate Mortgage</h3>
-          <div className="flex flex-col gap-4 mb-2">
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Loan Amount ($)</Label>
+        {/* Loan Amount Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 font-medium text-lg">Loan Information</h3>
+          <div>
+            <Label className="font-medium text-sm">
+              Loan Amount: ${amount.toLocaleString()}
+            </Label>
+            <div className="flex gap-4 items-center mt-2">
               <Slider
                 min={50000}
                 max={2000000}
                 step={10000}
                 value={[amount]}
                 onValueChange={([v]) => setAmount(v)}
-                className="w-2/3"
+                className="flex-1"
               />
               <Input
                 type="number"
                 min={0}
                 value={amount}
                 onChange={(e) => setAmount(Number(e.target.value))}
-                className="w-1/4"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Interest Rate (%)</Label>
-              <Slider
-                min={0}
-                max={15}
-                step={0.01}
-                value={[fixedRate]}
-                onValueChange={([v]) => setFixedRate(Number(v.toFixed(2)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                min={0}
-                max={100}
-                value={fixedRate}
-                step={0.01}
-                onChange={(e) => setFixedRate(Number(e.target.value))}
-                className="w-1/4"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Term (years)</Label>
-              <Slider
-                min={1}
-                max={40}
-                step={1}
-                value={[fixedYears]}
-                onValueChange={([v]) => setFixedYears(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                min={1}
-                value={fixedYears}
-                onChange={(e) => setFixedYears(Number(e.target.value))}
-                className="w-1/4"
+                className="w-32"
                 required
               />
             </div>
           </div>
         </div>
-        <div>
-          <h3>Adjustable-Rate Mortgage (ARM)</h3>
-          <div className="flex flex-col gap-4 mb-2">
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Initial Rate (%)</Label>
-              <Slider
-                min={0}
-                max={15}
-                step={0.01}
-                value={[armInitialRate]}
-                onValueChange={([v]) => setArmInitialRate(Number(v.toFixed(2)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                min={0}
-                max={100}
-                value={armInitialRate}
-                step={0.01}
-                onChange={(e) => setArmInitialRate(Number(e.target.value))}
-                className="w-1/4"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Initial Period (years)</Label>
-              <Slider
-                min={0}
-                max={10}
-                step={1}
-                value={[armInitialYears]}
-                onValueChange={([v]) => setArmInitialYears(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                min={0}
-                value={armInitialYears}
-                onChange={(e) => setArmInitialYears(Number(e.target.value))}
-                className="w-1/4"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Adjusted Rate (%)</Label>
-              <Slider
-                min={0}
-                max={15}
-                step={0.01}
-                value={[armAdjRate]}
-                onValueChange={([v]) => setArmAdjRate(Number(v.toFixed(2)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                min={0}
-                max={100}
-                value={armAdjRate}
-                step={0.01}
-                onChange={(e) => setArmAdjRate(Number(e.target.value))}
-                className="w-1/4"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <Label className="w-32">Total Term (years)</Label>
-              <Slider
-                min={1}
-                max={40}
-                step={1}
-                value={[armTotalYears]}
-                onValueChange={([v]) => setArmTotalYears(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                min={1}
-                value={armTotalYears}
-                onChange={(e) => setArmTotalYears(Number(e.target.value))}
-                className="w-1/4"
-                required
-              />
-            </div>
-          </div>
-        </div>
-      </form>
 
-      {/* Card-like results display */}
-      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mt-8">
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
-            Fixed-Rate Mortgage
+        {/* Fixed-Rate Mortgage Section */}
+        <div className="mb-8 p-6 border rounded-lg">
+          <h3 className="mb-4 font-medium text-lg">Fixed-Rate Mortgage</h3>
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
+            <div>
+              <Label className="font-medium text-sm">
+                Interest Rate: {fixedRate}%
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
+                <Slider
+                  min={0}
+                  max={15}
+                  step={0.01}
+                  value={[fixedRate]}
+                  onValueChange={([v]) => setFixedRate(Number(v.toFixed(2)))}
+                  className="flex-1"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={fixedRate}
+                  step={0.01}
+                  onChange={(e) => setFixedRate(Number(e.target.value))}
+                  className="w-24"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <Label className="font-medium text-sm">
+                Term: {fixedYears} years
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
+                <Slider
+                  min={1}
+                  max={40}
+                  step={1}
+                  value={[fixedYears]}
+                  onValueChange={([v]) => setFixedYears(v)}
+                  className="flex-1"
+                />
+                <Input
+                  type="number"
+                  min={1}
+                  value={fixedYears}
+                  onChange={(e) => setFixedYears(Number(e.target.value))}
+                  className="w-24"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ARM Section */}
+        <div className="mb-6 p-6 border rounded-lg">
+          <h3 className="mb-4 font-medium text-lg">
+            Adjustable-Rate Mortgage (ARM)
           </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Monthly Payment:</span>{" "}
-              <strong className="text-blue-900">
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
+            <div>
+              <Label className="font-medium text-sm">
+                Initial Rate: {armInitialRate}%
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
+                <Slider
+                  min={0}
+                  max={15}
+                  step={0.01}
+                  value={[armInitialRate]}
+                  onValueChange={([v]) =>
+                    setArmInitialRate(Number(v.toFixed(2)))
+                  }
+                  className="flex-1"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={armInitialRate}
+                  step={0.01}
+                  onChange={(e) => setArmInitialRate(Number(e.target.value))}
+                  className="w-24"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <Label className="font-medium text-sm">
+                Initial Period: {armInitialYears} years
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
+                <Slider
+                  min={0}
+                  max={10}
+                  step={1}
+                  value={[armInitialYears]}
+                  onValueChange={([v]) => setArmInitialYears(v)}
+                  className="flex-1"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  value={armInitialYears}
+                  onChange={(e) => setArmInitialYears(Number(e.target.value))}
+                  className="w-24"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <Label className="font-medium text-sm">
+                Adjusted Rate: {armAdjRate}%
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
+                <Slider
+                  min={0}
+                  max={15}
+                  step={0.01}
+                  value={[armAdjRate]}
+                  onValueChange={([v]) => setArmAdjRate(Number(v.toFixed(2)))}
+                  className="flex-1"
+                />
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={armAdjRate}
+                  step={0.01}
+                  onChange={(e) => setArmAdjRate(Number(e.target.value))}
+                  className="w-24"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <Label className="font-medium text-sm">
+                Total Term: {armTotalYears} years
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
+                <Slider
+                  min={1}
+                  max={40}
+                  step={1}
+                  value={[armTotalYears]}
+                  onValueChange={([v]) => setArmTotalYears(v)}
+                  className="flex-1"
+                />
+                <Input
+                  type="number"
+                  min={1}
+                  value={armTotalYears}
+                  onChange={(e) => setArmTotalYears(Number(e.target.value))}
+                  className="w-24"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 className="mb-6 font-semibold text-2xl">Results</h2>
+      {/* Winner Banner */}
+      {(() => {
+        const fixed = calcFixedMortgage({
+          amount,
+          rate: fixedRate,
+          years: fixedYears,
+        });
+        const arm = calcARMMortgage({
+          amount,
+          initialRate: armInitialRate,
+          initialYears: armInitialYears,
+          adjRate: armAdjRate,
+          totalYears: armTotalYears,
+        });
+
+        return (
+          <div
+            className={`p-4 rounded-lg mb-6 ${
+              arm.total < fixed.total ? " border " : " border "
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <h3
+                  className={`font-semibold ${
+                    arm.total < fixed.total ? "" : ""
+                  }`}
+                >
+                  {arm.total < fixed.total
+                    ? "ARM Could Save Money!"
+                    : "Fixed-Rate is More Stable!"}
+                </h3>
+                <p className={`text-sm ${arm.total < fixed.total ? "" : ""}`}>
+                  {arm.total < fixed.total
+                    ? `Potential savings: $${(
+                        fixed.total - arm.total
+                      ).toLocaleString()} over the life of the loan`
+                    : "Predictable payments with no adjustment risk"}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+      {/* Comparison Cards */}
+      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
+        <div className="shadow-sm p-6 border-2 rounded-lg">
+          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+            🏠 Fixed-Rate Mortgage
+          </h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="">Monthly Payment:</span>
+              <span className="font-bold text-lg">
                 $
                 {calcFixedMortgage({
                   amount,
                   rate: fixedRate,
                   years: fixedYears,
                 }).monthly.toLocaleString()}
-              </strong>
-            </li>
-            <li>
-              <span className="text-gray-700">
-                Total Paid Over {fixedYears} Years:
-              </span>{" "}
-              <strong className="text-blue-900">
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Total Paid Over {fixedYears} Years:</span>
+              <span className="font-bold">
                 $
                 {calcFixedMortgage({
                   amount,
                   rate: fixedRate,
                   years: fixedYears,
                 }).total.toLocaleString()}
-              </strong>
-            </li>
-          </ul>
-        </div>
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
-            Adjustable-Rate Mortgage (ARM)
-          </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Initial Monthly Payment:</span>{" "}
-              <strong className="text-green-900">
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Total Interest:</span>
+              <span className="font-bold">
                 $
-                {calcARMMortgage({
-                  amount,
-                  initialRate: armInitialRate,
-                  initialYears: armInitialYears,
-                  adjRate: armAdjRate,
-                  totalYears: armTotalYears,
-                }).initialMonthly.toLocaleString()}
-              </strong>{" "}
-              for {armInitialYears} years
-            </li>
-            <li>
-              <span className="text-gray-700">Adjusted Monthly Payment:</span>{" "}
-              <strong className="text-green-900">
-                $
-                {calcARMMortgage({
-                  amount,
-                  initialRate: armInitialRate,
-                  initialYears: armInitialYears,
-                  adjRate: armAdjRate,
-                  totalYears: armTotalYears,
-                }).adjMonthly.toLocaleString()}
-              </strong>{" "}
-              for {armTotalYears - armInitialYears} years
-            </li>
-            <li>
-              <span className="text-gray-700">
-                Total Paid Over {armTotalYears} Years:
-              </span>{" "}
-              <strong className="text-green-900">
-                $
-                {calcARMMortgage({
-                  amount,
-                  initialRate: armInitialRate,
-                  initialYears: armInitialYears,
-                  adjRate: armAdjRate,
-                  totalYears: armTotalYears,
-                }).total.toLocaleString()}
-              </strong>
-            </li>
-          </ul>
+                {(
+                  calcFixedMortgage({
+                    amount,
+                    rate: fixedRate,
+                    years: fixedYears,
+                  }).total - amount
+                ).toLocaleString()}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Rate Stability:</span>
+              <span className="font-bold">Guaranteed</span>
+            </div>
+          </div>
         </div>
-      </div>
-      {/* Recommendation */}
-      <div className="mt-6">
-        <div className="bg-blue-50 p-4 border border-blue-200 rounded text-blue-900">
-          <strong>Recommendation:</strong>
-          <div className="mt-1">{recommendation}</div>
-        </div>
-      </div>
 
-      <section className="mt-8">
-        <h2>Disclaimer</h2>
-        <p>
+        <div className="shadow-sm p-6 border-2 rounded-lg">
+          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+            📈 Adjustable-Rate Mortgage (ARM)
+          </h3>
+          <div className="space-y-3">
+            {(() => {
+              const arm = calcARMMortgage({
+                amount,
+                initialRate: armInitialRate,
+                initialYears: armInitialYears,
+                adjRate: armAdjRate,
+                totalYears: armTotalYears,
+              });
+              return (
+                <>
+                  <div className="flex items-center justify-between">
+                    <span className="">Initial Monthly Payment:</span>
+                    <span className="font-bold text-lg">
+                      ${arm.initialMonthly.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="-mt-2 text-xs">
+                    For first {armInitialYears} years
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="">Adjusted Monthly Payment:</span>
+                    <span className="font-bold">
+                      ${arm.adjMonthly.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="-mt-2 text-xs">
+                    For remaining {armTotalYears - armInitialYears} years
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="">
+                      Total Paid Over {armTotalYears} Years:
+                    </span>
+                    <span className="font-bold">
+                      ${arm.total.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="">Total Interest:</span>
+                    <span className="font-bold">
+                      ${(arm.total - amount).toLocaleString()}
+                    </span>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      </div>
+      ;{/* Detailed Comparison Table */}
+      <div className="shadow mb-8 border rounded-lg overflow-hidden">
+        <h3 className="p-6 pb-4 font-semibold text-lg">Detailed Comparison</h3>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Metric</TableHead>
+              <TableHead className="">Fixed-Rate</TableHead>
+              <TableHead className="">ARM</TableHead>
+              <TableHead>Difference</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {(() => {
+              const fixed = calcFixedMortgage({
+                amount,
+                rate: fixedRate,
+                years: fixedYears,
+              });
+              const arm = calcARMMortgage({
+                amount,
+                initialRate: armInitialRate,
+                initialYears: armInitialYears,
+                adjRate: armAdjRate,
+                totalYears: armTotalYears,
+              });
+
+              return (
+                <>
+                  <TableRow>
+                    <TableCell className="font-medium">Loan Amount</TableCell>
+                    <TableCell>${amount.toLocaleString()}</TableCell>
+                    <TableCell>${amount.toLocaleString()}</TableCell>
+                    <TableCell>Same</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Interest Rate</TableCell>
+                    <TableCell>{fixedRate}% (fixed)</TableCell>
+                    <TableCell>
+                      {armInitialRate}% → {armAdjRate}%
+                    </TableCell>
+                    <TableCell>
+                      {armInitialRate < fixedRate
+                        ? `${(fixedRate - armInitialRate).toFixed(
+                            2
+                          )}% higher initially`
+                        : `${(armInitialRate - fixedRate).toFixed(
+                            2
+                          )}% lower initially`}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">
+                      Initial Monthly Payment
+                    </TableCell>
+                    <TableCell className="font-semibold">
+                      ${fixed.monthly.toLocaleString()}
+                    </TableCell>
+                    <TableCell className="font-semibold">
+                      ${arm.initialMonthly.toLocaleString()}
+                    </TableCell>
+                    <TableCell>
+                      {arm.initialMonthly < fixed.monthly
+                        ? `$${(
+                            fixed.monthly - arm.initialMonthly
+                          ).toLocaleString()} lower`
+                        : `$${(
+                            arm.initialMonthly - fixed.monthly
+                          ).toLocaleString()} higher`}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">
+                      Adjusted Payment (ARM)
+                    </TableCell>
+                    <TableCell>N/A</TableCell>
+                    <TableCell className="font-semibold">
+                      ${arm.adjMonthly.toLocaleString()}
+                    </TableCell>
+                    <TableCell>
+                      {arm.adjMonthly > fixed.monthly
+                        ? `$${(
+                            arm.adjMonthly - fixed.monthly
+                          ).toLocaleString()} higher than fixed`
+                        : `$${(
+                            fixed.monthly - arm.adjMonthly
+                          ).toLocaleString()} lower than fixed`}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">
+                      Total Interest
+                    </TableCell>
+                    <TableCell className="font-semibold">
+                      ${(fixed.total - amount).toLocaleString()}
+                    </TableCell>
+                    <TableCell className="font-semibold">
+                      ${(arm.total - amount).toLocaleString()}
+                    </TableCell>
+                    <TableCell className="font-bold">
+                      {arm.total < fixed.total
+                        ? `$${(
+                            fixed.total - arm.total
+                          ).toLocaleString()} savings with ARM`
+                        : `$${(
+                            arm.total - fixed.total
+                          ).toLocaleString()} additional cost with ARM`}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Total Cost</TableCell>
+                    <TableCell className="font-bold text-lg">
+                      ${fixed.total.toLocaleString()}
+                    </TableCell>
+                    <TableCell className="font-bold text-lg">
+                      ${arm.total.toLocaleString()}
+                    </TableCell>
+                    <TableCell className="font-bold">
+                      {arm.total < fixed.total
+                        ? `$${(
+                            fixed.total - arm.total
+                          ).toLocaleString()} savings`
+                        : `$${(
+                            arm.total - fixed.total
+                          ).toLocaleString()} additional cost`}
+                    </TableCell>
+                  </TableRow>
+                </>
+              );
+            })()}
+          </TableBody>
+        </Table>
+      </div>
+      ; ; ; ; ;{/* Recommendation Banner */}
+      <div className="mb-8 p-6 border rounded-lg">
+        <h3 className="mb-3 font-semibold text-lg">💡 Recommendation</h3>
+        <div className="">{recommendation}</div>
+      </div>
+      {/* Important Considerations */}
+      <div className="mb-8 p-6 border rounded-lg">
+        <h3 className="mb-3 font-semibold text-lg">
+          ⚠️ Important Considerations
+        </h3>
+        <ul className="space-y-2">
+          <li>ARM rates can increase significantly after the initial period</li>
+          <li>Fixed-rate mortgages provide payment stability for budgeting</li>
+          <li>Consider how long you plan to stay in the home</li>
+          <li>
+            ARM loans may have rate caps that limit how much rates can increase
+          </li>
+          <li>
+            Market conditions and your credit score affect available rates
+          </li>
+          <li>Consider refinancing options if rates change favorably</li>
+        </ul>
+      </div>
+      <section className="p-6 border rounded-lg">
+        <h2 className="mb-3 font-semibold text-xl">📋 Disclaimer</h2>
+        <p className="leading-relaxed">
           This tool provides estimates for informational purposes only. Actual
           rates, payments, and costs may vary. Consult a mortgage professional
           before making decisions. The results are based on the inputs you

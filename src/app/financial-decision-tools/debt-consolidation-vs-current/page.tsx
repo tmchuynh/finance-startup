@@ -1,7 +1,16 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import React, { useState } from "react";
 
 type Debt = {
@@ -113,373 +122,477 @@ ${recommendation}`
   }, [debts, loanAmount, loanInterest, loanTerm]);
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Debt Consolidation Loan vs Current Debts</h1>
-      <h5>Compare Your Current Debts to a Consolidation Loan</h5>
-      <p>
-        Use this tool to estimate whether consolidating your debts with a new
-        loan could save you money or lower your monthly payment. Enter your
-        current debts and the terms of a proposed consolidation loan. This tool
-        provides estimates for informational purposes only. Actual loan terms
-        and savings may vary. Consult a financial advisor before making
-        decisions.
-      </p>
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
+      <div className="mb-12 text-center">
+        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
+          Debt Consolidation Calculator
+        </h1>
+        <h5 className="mb-6 text-xl">
+          Compare Your Current Debts to a Consolidation Loan
+        </h5>
+        <p className="mx-auto max-w-3xl text-lg">
+          Use this tool to estimate whether consolidating your debts with a new
+          loan could save you money or lower your monthly payment. Enter your
+          current debts and the terms of a proposed consolidation loan. This
+          tool provides estimates for informational purposes only. Actual loan
+          terms and savings may vary. Consult a financial advisor before making
+          decisions.
+        </p>
+      </div>
 
       {/* Table: Typical Debt & Loan Terms */}
       <div className="my-8">
-        <h2>Typical Debt & Loan Terms</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">Interest Rate</th>
-                <th className="px-3 py-2 border text-left">Term</th>
-                <th className="px-3 py-2 border text-left">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Credit Card</td>
-                <td className="px-3 py-2 border">16% - 29%</td>
-                <td className="px-3 py-2 border">Open-ended</td>
-                <td className="px-3 py-2 border">
-                  Minimum payments can extend payoff
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Personal Loan</td>
-                <td className="px-3 py-2 border">6% - 20%</td>
-                <td className="px-3 py-2 border">12 - 84 months</td>
-                <td className="px-3 py-2 border">Fixed payments, fixed term</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Debt Consolidation Loan</td>
-                <td className="px-3 py-2 border">7% - 15%</td>
-                <td className="px-3 py-2 border">24 - 72 months</td>
-                <td className="px-3 py-2 border">May require good credit</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 className="mb-4 font-semibold text-2xl">
+          Typical Debt & Loan Terms
+        </h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Type</TableHead>
+              <TableHead>Interest Rate</TableHead>
+              <TableHead>Term</TableHead>
+              <TableHead>Notes</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Credit Card</TableCell>
+              <TableCell>16% - 29%</TableCell>
+              <TableCell>Open-ended</TableCell>
+              <TableCell>Minimum payments can extend payoff</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Personal Loan</TableCell>
+              <TableCell>6% - 20%</TableCell>
+              <TableCell>12 - 84 months</TableCell>
+              <TableCell>Fixed payments, fixed term</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">
+                Debt Consolidation Loan
+              </TableCell>
+              <TableCell>7% - 15%</TableCell>
+              <TableCell>24 - 72 months</TableCell>
+              <TableCell>May require good credit</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
       {/* Table: Pros and Cons */}
       <div className="my-8">
-        <h2>Pros and Cons</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Option</th>
-                <th className="px-3 py-2 border text-left">Pros</th>
-                <th className="px-3 py-2 border text-left">Cons</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Current Debts</td>
-                <td className="px-3 py-2 border">
-                  No new loan required
-                  <br />
-                  No origination fees
-                  <br />
-                  No credit check
-                </td>
-                <td className="px-3 py-2 border">
-                  High interest rates
-                  <br />
-                  Multiple payments
-                  <br />
-                  Harder to track progress
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Consolidation Loan</td>
-                <td className="px-3 py-2 border">
-                  Lower interest possible
-                  <br />
-                  Single payment
-                  <br />
-                  Fixed payoff date
-                </td>
-                <td className="px-3 py-2 border">
-                  May require good credit
-                  <br />
-                  Possible fees
-                  <br />
-                  Longer payoff if term extended
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Option</TableHead>
+              <TableHead>Pros</TableHead>
+              <TableHead>Cons</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Current Debts</TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>No new loan required</li>
+                  <li>No origination fees</li>
+                  <li>No credit check</li>
+                </ul>
+              </TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>High interest rates</li>
+                  <li>Multiple payments</li>
+                  <li>Harder to track progress</li>
+                </ul>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Consolidation Loan</TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Lower interest possible</li>
+                  <li>Single payment</li>
+                  <li>Fixed payoff date</li>
+                </ul>
+              </TableCell>
+              <TableCell>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>May require good credit</li>
+                  <li>Possible fees</li>
+                  <li>Longer payoff if term extended</li>
+                </ul>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
       {/* Table: Typical Fees */}
       <div className="my-8">
-        <h2>Typical Fees</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Fee Type</th>
-                <th className="px-3 py-2 border text-left">Range</th>
-                <th className="px-3 py-2 border text-left">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Origination Fee</td>
-                <td className="px-3 py-2 border">0% - 8%</td>
-                <td className="px-3 py-2 border">
-                  May be deducted from loan amount
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Prepayment Penalty</td>
-                <td className="px-3 py-2 border">0% - 5%</td>
-                <td className="px-3 py-2 border">Rare for personal loans</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Late Payment Fee</td>
-                <td className="px-3 py-2 border">$15 - $40</td>
-                <td className="px-3 py-2 border">If payment is late</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 className="mb-4 font-semibold text-2xl">Typical Fees</h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Fee Type</TableHead>
+              <TableHead>Range</TableHead>
+              <TableHead>Notes</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Origination Fee</TableCell>
+              <TableCell>0% - 8%</TableCell>
+              <TableCell>May be deducted from loan amount</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Prepayment Penalty</TableCell>
+              <TableCell>0% - 5%</TableCell>
+              <TableCell>Rare for personal loans</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Late Payment Fee</TableCell>
+              <TableCell>$15 - $40</TableCell>
+              <TableCell>If payment is late</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
-      <form
-        className="space-y-5 mt-5"
-        aria-label="Debt consolidation comparison form"
-      >
-        <div>
-          <h3>Current Debts</h3>
+      <div className="shadow-lg mb-8 p-8 border rounded-lg">
+        <h2 className="mb-6 font-semibold text-2xl">Calculator</h2>
+
+        {/* Current Debts Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 font-medium text-lg">Current Debts</h3>
           {debts.map((debt, idx) => (
-            <div key={idx} className="flex items-end gap-2 mb-2">
-              <div className="flex-1">
-                <Label className="block mb-1">Debt Amount ($)</Label>
-                <div className="flex gap-2">
-                  <Slider
-                    min={0}
-                    max={100000}
-                    step={100}
-                    value={[debt.amount]}
-                    onValueChange={([v]) => handleDebtChange(idx, "amount", v)}
-                    className="w-2/3"
-                  />
-                  <Input
-                    type="number"
-                    min={0}
-                    placeholder="Amount ($)"
-                    value={debt.amount === 0 ? "" : debt.amount}
-                    onChange={(e) =>
-                      handleDebtChange(idx, "amount", Number(e.target.value))
-                    }
-                    className="w-1/3"
-                    required
-                  />
+            <div key={idx} className="mb-4 p-4 border rounded-lg">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-medium">Debt #{idx + 1}</h4>
+                {debts.length > 1 && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => removeDebt(idx)}
+                    className="hover:bg-red-50 text-red-600 hover:text-red-700"
+                  >
+                    Remove
+                  </Button>
+                )}
+              </div>
+              <div className="gap-4 grid grid-cols-1 md:grid-cols-3">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Amount: ${debt.amount.toLocaleString()}
+                  </Label>
+                  <div className="flex gap-2 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={100000}
+                      step={100}
+                      value={[debt.amount]}
+                      onValueChange={([v]) =>
+                        handleDebtChange(idx, "amount", v)
+                      }
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      placeholder="Amount"
+                      value={debt.amount === 0 ? "" : debt.amount}
+                      onChange={(e) =>
+                        handleDebtChange(idx, "amount", Number(e.target.value))
+                      }
+                      className="w-24"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Interest Rate: {debt.interest}%
+                  </Label>
+                  <div className="flex gap-2 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={40}
+                      step={0.1}
+                      value={[debt.interest]}
+                      onValueChange={([v]) =>
+                        handleDebtChange(idx, "interest", Number(v.toFixed(1)))
+                      }
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      max={100}
+                      placeholder="Rate"
+                      value={debt.interest === 0 ? "" : debt.interest}
+                      onChange={(e) =>
+                        handleDebtChange(
+                          idx,
+                          "interest",
+                          Number(e.target.value)
+                        )
+                      }
+                      className="w-24"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Monthly Payment: ${debt.monthly.toLocaleString()}
+                  </Label>
+                  <div className="flex gap-2 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={5000}
+                      step={10}
+                      value={[debt.monthly]}
+                      onValueChange={([v]) =>
+                        handleDebtChange(idx, "monthly", v)
+                      }
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      placeholder="Payment"
+                      value={debt.monthly === 0 ? "" : debt.monthly}
+                      onChange={(e) =>
+                        handleDebtChange(idx, "monthly", Number(e.target.value))
+                      }
+                      className="w-24"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="flex-1">
-                <Label className="block mb-1">Interest Rate (%)</Label>
-                <div className="flex gap-2">
-                  <Slider
-                    min={0}
-                    max={40}
-                    step={0.1}
-                    value={[debt.interest]}
-                    onValueChange={([v]) =>
-                      handleDebtChange(idx, "interest", Number(v.toFixed(1)))
-                    }
-                    className="w-2/3"
-                  />
-                  <Input
-                    type="number"
-                    min={0}
-                    max={100}
-                    placeholder="Interest Rate (%)"
-                    value={debt.interest === 0 ? "" : debt.interest}
-                    onChange={(e) =>
-                      handleDebtChange(idx, "interest", Number(e.target.value))
-                    }
-                    className="w-1/3"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="flex-1">
-                <Label className="block mb-1">Monthly Payment</Label>
-                <div className="flex gap-2">
-                  <Slider
-                    min={0}
-                    max={5000}
-                    step={10}
-                    value={[debt.monthly]}
-                    onValueChange={([v]) => handleDebtChange(idx, "monthly", v)}
-                    className="w-2/3"
-                  />
-                  <Input
-                    type="number"
-                    min={0}
-                    placeholder="Monthly Payment ($)"
-                    value={debt.monthly === 0 ? "" : debt.monthly}
-                    onChange={(e) =>
-                      handleDebtChange(idx, "monthly", Number(e.target.value))
-                    }
-                    className="w-1/3"
-                    required
-                  />
-                </div>
-              </div>
-              {debts.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeDebt(idx)}
-                  className="px-2 font-bold text-red-600"
-                  aria-label="Remove debt"
-                >
-                  ×
-                </button>
-              )}
             </div>
           ))}
-          <button
+          <Button
             type="button"
+            variant="outline"
             onClick={addDebt}
-            className="mt-1 text-blue-600 text-sm underline"
+            className="mt-2"
           >
-            + Add another debt
-          </button>
+            + Add Another Debt
+          </Button>
         </div>
-        <div>
-          <h3>Consolidation Loan</h3>
-          <div className="flex gap-2">
-            <div className="flex-1">
-              <Label className="block mb-1">Loan Amount ($)</Label>
-              <div className="flex gap-2">
-                {" "}
+
+        {/* Consolidation Loan Section */}
+        <div className="mb-6">
+          <h3 className="mb-4 font-medium text-lg">Consolidation Loan</h3>
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
+            <div>
+              <Label className="font-medium text-sm">
+                Loan Amount: ${loanAmount.toLocaleString()}
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
                 <Slider
                   min={0}
                   max={200000}
                   step={100}
                   value={[loanAmount]}
                   onValueChange={([v]) => setLoanAmount(v)}
-                  className="w-2/3"
+                  className="flex-1"
                 />
                 <Input
                   type="number"
                   min={0}
-                  placeholder="Loan Amount ($)"
+                  placeholder="Loan Amount"
                   value={loanAmount === 0 ? "" : loanAmount}
                   onChange={(e) => setLoanAmount(Number(e.target.value))}
-                  className="w-1/3"
+                  className="w-24"
                   required
                 />
               </div>
             </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Interest Rate (%)</Label>
-              <div className="flex gap-2">
+            <div>
+              <Label className="font-medium text-sm">
+                Interest Rate: {loanInterest}%
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
                 <Slider
                   min={0}
                   max={40}
                   step={0.1}
                   value={[loanInterest]}
                   onValueChange={([v]) => setLoanInterest(Number(v.toFixed(1)))}
-                  className="w-2/3"
+                  className="flex-1"
                 />
                 <Input
                   type="number"
                   min={0}
                   max={100}
-                  placeholder="Interest Rate (%)"
+                  placeholder="Interest Rate"
                   value={loanInterest === 0 ? "" : loanInterest}
                   onChange={(e) => setLoanInterest(Number(e.target.value))}
-                  className="w-1/3"
+                  className="w-24"
                   required
                 />
               </div>
             </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Term (months)</Label>
-              <div className="flex gap-2">
+            <div>
+              <Label className="font-medium text-sm">
+                Term: {loanTerm} months
+              </Label>
+              <div className="flex gap-4 items-center mt-2">
                 <Slider
                   min={1}
                   max={120}
                   step={1}
                   value={[loanTerm]}
                   onValueChange={([v]) => setLoanTerm(v)}
-                  className="w-2/3"
+                  className="flex-1"
                 />
                 <Input
                   type="number"
                   min={1}
-                  placeholder="Term (months)"
+                  placeholder="Term"
                   value={loanTerm === 0 ? "" : loanTerm}
                   onChange={(e) => setLoanTerm(Number(e.target.value))}
-                  className="w-1/3"
+                  className="w-24"
                   required
                 />
               </div>
             </div>
           </div>
         </div>
-        {/* No compare button */}
-      </form>
+      </div>
 
-      {/* Card-like results display */}
-      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mt-8">
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
-            Current Debts
+      <h2 className="mb-6 font-semibold text-2xl">Results</h2>
+
+      {/* Winner Banner */}
+      {debts.length > 0 &&
+        debts.every((d) => d.amount > 0 && d.interest >= 0 && d.monthly > 0) &&
+        loanAmount > 0 &&
+        loanInterest >= 0 &&
+        loanTerm > 0 && (
+          <div
+            className={`p-4 rounded-lg mb-6 ${
+              calculateConsolidationLoan(loanAmount, loanInterest, loanTerm)
+                .totalInterest < calculateTotalInterest(debts)
+                ? " border "
+                : " border "
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <h3
+                  className={`font-semibold ${
+                    calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).totalInterest < calculateTotalInterest(debts)
+                      ? ""
+                      : ""
+                  }`}
+                >
+                  {calculateConsolidationLoan(
+                    loanAmount,
+                    loanInterest,
+                    loanTerm
+                  ).totalInterest < calculateTotalInterest(debts)
+                    ? "Consolidation Loan is Better!"
+                    : "Keep Current Debts!"}
+                </h3>
+                <p
+                  className={`text-sm ${
+                    calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).totalInterest < calculateTotalInterest(debts)
+                      ? ""
+                      : ""
+                  }`}
+                >
+                  {calculateConsolidationLoan(
+                    loanAmount,
+                    loanInterest,
+                    loanTerm
+                  ).totalInterest < calculateTotalInterest(debts)
+                    ? `Save $${(
+                        calculateTotalInterest(debts) -
+                        calculateConsolidationLoan(
+                          loanAmount,
+                          loanInterest,
+                          loanTerm
+                        ).totalInterest
+                      ).toLocaleString()} in total interest`
+                    : "Your current debt strategy may be more cost-effective"}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+      {/* Comparison Cards */}
+      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
+        <div className="shadow-sm p-6 border-2 rounded-lg">
+          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+            📊 Current Debts
           </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Estimated Total Interest:</span>{" "}
-              <strong className="text-blue-900">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="">Total Debt Amount:</span>
+              <span className="font-bold text-lg">
                 $
+                {debts
+                  .reduce((sum, debt) => sum + debt.amount, 0)
+                  .toLocaleString()}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Total Monthly Payment:</span>
+              <span className="font-bold">
+                $
+                {debts
+                  .reduce((s, d) => s + (d.monthly > 0 ? d.monthly : 0), 0)
+                  .toLocaleString()}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Estimated Total Interest:</span>
+              <span className="font-bold">
                 {debts.length === 0 ||
                 debts.some(
                   (d) => d.amount <= 0 || d.interest < 0 || d.monthly <= 0
                 )
                   ? "—"
-                  : calculateTotalInterest(debts).toLocaleString()}
-              </strong>
-            </li>
-            <li>
-              <span className="text-gray-700">Total Monthly Payment:</span>{" "}
-              <strong className="text-blue-900">
-                $
-                {debts
-                  .reduce((s, d) => s + (d.monthly > 0 ? d.monthly : 0), 0)
-                  .toLocaleString()}
-              </strong>
-            </li>
-          </ul>
+                  : `$${calculateTotalInterest(debts).toLocaleString()}`}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Number of Payments:</span>
+              <span className="font-bold">
+                {debts.length} separate payments
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
-            Consolidation Loan
+
+        <div className="shadow-sm p-6 border-2 rounded-lg">
+          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+            🏦 Consolidation Loan
           </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Estimated Total Interest:</span>{" "}
-              <strong className="text-green-900">
-                {loanAmount <= 0 || loanInterest < 0 || loanTerm <= 0
-                  ? "—"
-                  : `$${calculateConsolidationLoan(
-                      loanAmount,
-                      loanInterest,
-                      loanTerm
-                    ).totalInterest.toLocaleString()}`}
-              </strong>
-            </li>
-            <li>
-              <span className="text-gray-700">Monthly Payment:</span>{" "}
-              <strong className="text-green-900">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="">Loan Amount:</span>
+              <span className="font-bold text-lg">
+                ${loanAmount.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Monthly Payment:</span>
+              <span className="font-bold">
                 {loanAmount <= 0 || loanInterest < 0 || loanTerm <= 0
                   ? "—"
                   : `$${calculateConsolidationLoan(
@@ -487,23 +600,203 @@ ${recommendation}`
                       loanInterest,
                       loanTerm
                     ).monthly.toLocaleString()}`}
-              </strong>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* Recommendation */}
-      <div className="mt-6">
-        <div className="bg-blue-50 p-4 border border-blue-200 rounded text-blue-900">
-          <strong>Recommendation:</strong>
-          <div className="mt-1">
-            {result && result.split("\n").slice(-1).join("")}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Total Interest:</span>
+              <span className="font-bold">
+                {loanAmount <= 0 || loanInterest < 0 || loanTerm <= 0
+                  ? "—"
+                  : `$${calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).totalInterest.toLocaleString()}`}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="">Term:</span>
+              <span className="font-bold">
+                {loanTerm} months ({Math.round((loanTerm / 12) * 10) / 10}{" "}
+                years)
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      <section className="mt-8">
-        <h2>Disclaimer</h2>
-        <p>
+
+      {/* Detailed Comparison Table */}
+      {debts.length > 0 &&
+        debts.every((d) => d.amount > 0 && d.interest >= 0 && d.monthly > 0) &&
+        loanAmount > 0 &&
+        loanInterest >= 0 &&
+        loanTerm > 0 && (
+          <div className="shadow mb-8 border rounded-lg overflow-hidden">
+            <h3 className="p-6 pb-4 font-semibold text-lg">
+              Detailed Comparison
+            </h3>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Metric</TableHead>
+                  <TableHead>Current Debts</TableHead>
+                  <TableHead>Consolidation Loan</TableHead>
+                  <TableHead>Difference</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Total Amount</TableCell>
+                  <TableCell>
+                    $
+                    {debts
+                      .reduce((sum, debt) => sum + debt.amount, 0)
+                      .toLocaleString()}
+                  </TableCell>
+                  <TableCell>${loanAmount.toLocaleString()}</TableCell>
+                  <TableCell>
+                    {loanAmount >
+                    debts.reduce((sum, debt) => sum + debt.amount, 0)
+                      ? `$${(
+                          loanAmount -
+                          debts.reduce((sum, debt) => sum + debt.amount, 0)
+                        ).toLocaleString()} extra cash`
+                      : loanAmount ===
+                        debts.reduce((sum, debt) => sum + debt.amount, 0)
+                      ? "Same amount"
+                      : `$${(
+                          debts.reduce((sum, debt) => sum + debt.amount, 0) -
+                          loanAmount
+                        ).toLocaleString()} shortfall`}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Monthly Payment</TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {debts
+                      .reduce((s, d) => s + (d.monthly > 0 ? d.monthly : 0), 0)
+                      .toLocaleString()}
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).monthly.toLocaleString()}
+                  </TableCell>
+                  <TableCell>
+                    {calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).monthly < debts.reduce((s, d) => s + d.monthly, 0)
+                      ? `$${(
+                          debts.reduce((s, d) => s + d.monthly, 0) -
+                          calculateConsolidationLoan(
+                            loanAmount,
+                            loanInterest,
+                            loanTerm
+                          ).monthly
+                        ).toLocaleString()} lower`
+                      : `$${(
+                          calculateConsolidationLoan(
+                            loanAmount,
+                            loanInterest,
+                            loanTerm
+                          ).monthly - debts.reduce((s, d) => s + d.monthly, 0)
+                        ).toLocaleString()} higher`}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Total Interest</TableCell>
+                  <TableCell className="font-semibold">
+                    ${calculateTotalInterest(debts).toLocaleString()}
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).totalInterest.toLocaleString()}
+                  </TableCell>
+                  <TableCell className="font-bold">
+                    {calculateConsolidationLoan(
+                      loanAmount,
+                      loanInterest,
+                      loanTerm
+                    ).totalInterest < calculateTotalInterest(debts)
+                      ? `$${(
+                          calculateTotalInterest(debts) -
+                          calculateConsolidationLoan(
+                            loanAmount,
+                            loanInterest,
+                            loanTerm
+                          ).totalInterest
+                        ).toLocaleString()} savings`
+                      : `$${(
+                          calculateConsolidationLoan(
+                            loanAmount,
+                            loanInterest,
+                            loanTerm
+                          ).totalInterest - calculateTotalInterest(debts)
+                        ).toLocaleString()} additional cost`}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Number of Payments
+                  </TableCell>
+                  <TableCell>{debts.length} separate payments</TableCell>
+                  <TableCell>1 consolidated payment</TableCell>
+                  <TableCell>Simplified to single payment</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        )}
+
+      {/* Recommendation Banner */}
+      {result && (
+        <div className="mb-8 p-6 border rounded-lg">
+          <h3 className="mb-3 font-semibold text-lg">💡 Recommendation</h3>
+          <div className="">{result.split("\n").slice(-1).join("")}</div>
+        </div>
+      )}
+
+      {/* Important Considerations */}
+      <div className="mb-8 p-6 border rounded-lg">
+        <h3 className="mb-3 font-semibold text-lg">
+          ⚠️ Important Considerations
+        </h3>
+        <ul className="space-y-2">
+          <li>
+            Consolidation loans typically require good to excellent credit for
+            the best rates
+          </li>
+          <li>
+            Consider origination fees (0% - 8% of loan amount) when comparing
+            total costs
+          </li>
+          <li>
+            Closing multiple credit accounts may temporarily affect your credit
+            score
+          </li>
+          <li>Avoid accumulating new debt on the cards you've paid off</li>
+          <li>
+            Shop around with multiple lenders to find the best rates and terms
+          </li>
+          <li>
+            Consider the psychological benefit of having just one payment to
+            manage
+          </li>
+        </ul>
+      </div>
+      <section className="p-6 border rounded-lg">
+        <h2 className="mb-3 font-semibold text-xl">📋 Disclaimer</h2>
+        <p className="leading-relaxed">
           This tool provides estimates for informational purposes only. Actual
           rates, payments, and savings may vary. Consult a financial advisor
           before making decisions. The results are based on the inputs you

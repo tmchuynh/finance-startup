@@ -1,5 +1,15 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { MOCK_PROPERTIES } from "@/lib/constants/data/realEstateData";
 import {
   INITIAL_CASH,
@@ -341,198 +351,273 @@ export default function RealEstateSimulatorPage() {
   };
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Real Estate Investment Simulator</h1>
-      <p className="mb-4">
-        Simulate buying, repairing, renting, and selling properties. Watch price
-        trends, make repairs, and select buyers or renters to maximize your
-        returns!
-      </p>
-      <p className="mb-4">
-        Cash Balance: <strong>${cash.toLocaleString()}</strong>
-      </p>
-      {message && <p className="mb-4 text-secondary">{message}</p>}
+    <div className="mx-auto px-4 py-8 max-w-7xl container">
+      {/* Header Section */}
+      <div className="mb-8">
+        <h1 className="mb-4 font-bold text-4xl">
+          Real Estate Investment Simulator
+        </h1>
+        <p className="mb-4 text-lg text-muted-foreground">
+          Simulate buying, repairing, renting, and selling properties. Watch
+          price trends, make repairs, and select buyers or renters to maximize
+          your returns!
+        </p>
 
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Available Properties</h2>
-      <table className="mb-8 border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300">Name</th>
-            <th className="p-2 border border-gray-300">Location</th>
-            <th className="p-2 border border-gray-300">Current Price</th>
-            <th className="p-2 border border-gray-300">Condition</th>
-            <th className="p-2 border border-gray-300">Trend</th>
-          </tr>
-        </thead>
-        <tbody>
-          {properties
-            .filter((p) => !p.owned)
-            .map((p) => (
-              <tr key={p.id}>
-                <td className="p-2 border border-gray-300">{p.name}</td>
-                <td className="p-2 border border-gray-300">{p.location}</td>
-                <td className="p-2 border border-gray-300">
-                  ${p.price.toLocaleString()}
-                </td>
-                <td className="p-2 border border-gray-300">{p.condition}</td>
-                <td className="p-2 border border-gray-300">
-                  {p.trend.slice(-2).map((v, i) => (
-                    <span key={i} style={{ marginRight: 4 }}>
-                      ${v.toLocaleString()}
-                    </span>
-                  ))}
-                </td>
-                <td className="p-2 border border-gray-300">
-                  <button
-                    className="bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white"
-                    onClick={() => handleBuy(p)}
-                  >
-                    Buy
-                  </button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+        {/* Stats Dashboard */}
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-6">
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Cash Balance
+            </h3>
+            <p className="font-bold text-2xl">${cash.toLocaleString()}</p>
+          </div>
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Properties Owned
+            </h3>
+            <p className="font-bold text-2xl">{owned.length}</p>
+          </div>
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Simulation Date
+            </h3>
+            <p className="font-semibold text-lg">
+              {simDate.toLocaleDateString()}
+            </p>
+          </div>
+        </div>
 
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Your Properties</h2>
-      <table className="mb-8 border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300">Name</th>
-            <th className="p-2 border border-gray-300">Location</th>
-            <th className="p-2 border border-gray-300">Current Price</th>
-            <th className="p-2 border border-gray-300">Condition</th>
-            <th className="p-2 border border-gray-300">Repairs</th>
-            <th className="p-2 border border-gray-300">Trend</th>
-          </tr>
-        </thead>
-        <tbody>
-          {owned.length === 0 && (
-            <tr>
-              <td colSpan={7} className="p-4 text-center text-gray-500">
-                You don't own any properties yet.
-              </td>
-            </tr>
-          )}
-          {owned.map((p) => (
-            <tr key={p.id}>
-              <td className="p-2 border border-gray-300">{p.name}</td>
-              <td className="p-2 border border-gray-300">{p.location}</td>
-              <td className="p-2 border border-gray-300">
-                ${p.price.toLocaleString()}
-              </td>
-              <td className="p-2 border border-gray-300">{p.condition}</td>
-              <td className="p-2 border border-gray-300">
-                ${p.repairs.toLocaleString()}
-              </td>
-              <td className="p-2 border border-gray-300">
-                {p.trend.slice(-2).map((v, i) => (
-                  <span key={i} style={{ marginRight: 4 }}>
-                    ${v.toLocaleString()}
-                  </span>
-                ))}
-              </td>
-              <td className="flex flex-col gap-2 p-2 border border-gray-300">
-                {/* Only show Repair button if property is not Excellent */}
-                {p.condition !== "Excellent" ? (
-                  <button
-                    className="bg-yellow-500 hover:bg-yellow-600 mb-1 px-3 py-1 rounded text-white"
-                    onClick={() => handleRepair(p.id)}
+        {message && (
+          <div className="mb-4 p-4 border rounded-lg">
+            <p className="">{message}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Available Properties Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Available Properties</h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Location</TableHead>
+                <TableHead>Current Price</TableHead>
+                <TableHead>Condition</TableHead>
+                <TableHead>Price Trend</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {properties.filter((p) => !p.owned).length === 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="py-8 text-center text-muted-foreground"
                   >
-                    Repair
-                  </button>
-                ) : (
-                  <button
-                    className="bg-gray-300 mb-1 px-3 py-1 rounded text-gray-500"
-                    disabled
+                    No properties available for purchase.
+                  </TableCell>
+                </TableRow>
+              ) : (
+                properties
+                  .filter((p) => !p.owned)
+                  .map((p) => (
+                    <TableRow key={p.id}>
+                      <TableCell className="font-medium">{p.name}</TableCell>
+                      <TableCell>{p.location}</TableCell>
+                      <TableCell className="font-semibold">
+                        ${p.price.toLocaleString()}
+                      </TableCell>
+                      <TableCell>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            p.condition === "Excellent"
+                              ? "bg-green-100 "
+                              : p.condition === "Good"
+                              ? "bg-blue-100 "
+                              : p.condition === "Fair"
+                              ? "bg-yellow-100 "
+                              : "bg-red-100 text-red-800"
+                          }`}
+                        >
+                          {p.condition}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex gap-1 text-xs">
+                          {p.trend.slice(-2).map((v, i) => (
+                            <span key={i} className="px-1 rounded">
+                              ${(v / 1000).toFixed(0)}k
+                            </span>
+                          ))}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Button
+                          size="sm"
+                          onClick={() => handleBuy(p)}
+                          disabled={cash < p.price}
+                        >
+                          Buy
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
+
+      {/* Your Properties Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Your Properties</h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Location</TableHead>
+                <TableHead>Current Value</TableHead>
+                <TableHead>Condition</TableHead>
+                <TableHead>Repairs Spent</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {owned.length === 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={7}
+                    className="py-8 text-center text-muted-foreground"
                   >
-                    No Repairs Needed
-                  </button>
-                )}
-                {!p.forSale ? (
-                  <button
-                    className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white"
-                    onClick={() => handleListForSale(p.id)}
-                  >
-                    List for Sale
-                  </button>
-                ) : (
-                  <span className="font-semibold text-green-700">Listed</span>
-                )}
-                {!p.forRent && !p.rentedTo ? (
-                  <button
-                    className="bg-purple-600 hover:bg-purple-700 mt-1 px-3 py-1 rounded text-white"
-                    onClick={() => handleOpenRentModal(p.id)}
-                  >
-                    List for Rent
-                  </button>
-                ) : p.rentedTo ? (
-                  <span className="font-semibold text-purple-700">
-                    Rented (${p.rentAmount?.toLocaleString()}/mo)
-                  </span>
-                ) : (
-                  <span className="font-semibold text-purple-700">
-                    For Rent
-                  </span>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                    You don't own any properties yet. Purchase some from the
+                    available properties above!
+                  </TableCell>
+                </TableRow>
+              ) : (
+                owned.map((p) => (
+                  <TableRow key={p.id}>
+                    <TableCell className="font-medium">{p.name}</TableCell>
+                    <TableCell>{p.location}</TableCell>
+                    <TableCell className="font-semibold">
+                      ${p.price.toLocaleString()}
+                    </TableCell>
+                    <TableCell>
+                      <span
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          p.condition === "Excellent"
+                            ? "bg-green-100 "
+                            : p.condition === "Good"
+                            ? "bg-blue-100 "
+                            : p.condition === "Fair"
+                            ? "bg-yellow-100 "
+                            : "bg-red-100 text-red-800"
+                        }`}
+                      >
+                        {p.condition}
+                      </span>
+                    </TableCell>
+                    <TableCell>${p.repairs.toLocaleString()}</TableCell>
+                    <TableCell>
+                      <div className="flex flex-col gap-1">
+                        {p.rentedTo && (
+                          <span className="bg-purple-100 px-2 py-1 rounded text-xs">
+                            Rented: ${p.rentAmount?.toLocaleString()}/mo
+                          </span>
+                        )}
+                        {p.forRent && !p.rentedTo && (
+                          <span className="bg-yellow-100 px-2 py-1 rounded text-xs">
+                            For Rent
+                          </span>
+                        )}
+                        {p.forSale && (
+                          <span className="bg-blue-100 px-2 py-1 rounded text-xs">
+                            For Sale
+                          </span>
+                        )}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex flex-col gap-2">
+                        {p.condition !== "Excellent" && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleRepair(p.id)}
+                          >
+                            Repair
+                          </Button>
+                        )}
+                        {!p.forSale && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleListForSale(p.id)}
+                          >
+                            List for Sale
+                          </Button>
+                        )}
+                        {!p.forRent && !p.rentedTo && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleOpenRentModal(p.id)}
+                          >
+                            List for Rent
+                          </Button>
+                        )}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
 
       {/* Rent Modal */}
       {rentModal.open && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.3)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1000,
-          }}
-        >
-          <div className="bg-white shadow-lg p-6 rounded w-80">
-            <h3 className="mb-2 font-semibold text-lg">Set Rent Range</h3>
-            <div className="mb-2">
-              <label className="block mb-1">Min ($/month)</label>
-              <input
-                type="number"
-                className="p-1 border rounded w-full"
-                min={100}
-                value={rentModal.min}
-                onChange={(e) =>
-                  handleSetRentRange(Number(e.target.value), rentModal.max)
-                }
-              />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-card mx-4 p-6 border rounded-lg max-w-md w-full">
+            <h3 className="mb-4 font-semibold text-lg">Set Rent Range</h3>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="min-rent">Minimum Rent ($/month)</Label>
+                <input
+                  id="min-rent"
+                  type="number"
+                  className="mt-1 px-3 py-2 border border-input focus:ring-2 focus:ring-ring rounded-md w-full focus:outline-none"
+                  min={100}
+                  value={rentModal.min}
+                  onChange={(e) =>
+                    handleSetRentRange(Number(e.target.value), rentModal.max)
+                  }
+                />
+              </div>
+              <div>
+                <Label htmlFor="max-rent">Maximum Rent ($/month)</Label>
+                <input
+                  id="max-rent"
+                  type="number"
+                  className="mt-1 px-3 py-2 border border-input focus:ring-2 focus:ring-ring rounded-md w-full focus:outline-none"
+                  min={rentModal.min}
+                  value={rentModal.max}
+                  onChange={(e) =>
+                    handleSetRentRange(rentModal.min, Number(e.target.value))
+                  }
+                />
+              </div>
             </div>
-            <div className="mb-4">
-              <label className="block mb-1">Max ($/month)</label>
-              <input
-                type="number"
-                className="p-1 border rounded w-full"
-                min={rentModal.min}
-                value={rentModal.max}
-                onChange={(e) =>
-                  handleSetRentRange(rentModal.min, Number(e.target.value))
-                }
-              />
-            </div>
-            <div className="flex gap-2">
-              <button
-                className="bg-purple-600 hover:bg-purple-700 px-3 py-1 rounded text-white"
-                onClick={handleListForRent}
-              >
+            <div className="flex gap-3 mt-6">
+              <Button onClick={handleListForRent} className="flex-1">
                 List for Rent
-              </button>
-              <button
-                className="bg-gray-300 px-3 py-1 rounded"
+              </Button>
+              <Button
+                variant="outline"
                 onClick={() =>
                   setRentModal({
                     open: false,
@@ -541,218 +626,253 @@ export default function RealEstateSimulatorPage() {
                     max: 2000,
                   })
                 }
+                className="flex-1"
               >
                 Cancel
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Show restart button if user owns no properties and all properties are not owned */}
-      {owned.length === 0 && properties.every((p) => p.owned) && (
-        <div className="flex justify-center mb-8">
-          <button
-            className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded font-semibold text-white"
-            onClick={handleRestart}
-          >
-            Start Over
-          </button>
+      {/* Interested Buyers Section */}
+      {owned.some((p) => p.forSale && p.interestedBuyers.length > 0) && (
+        <div className="mb-8">
+          <h2 className="mb-4 font-semibold text-2xl">Interested Buyers</h2>
+          <div className="border rounded-lg overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Property</TableHead>
+                  <TableHead>Buyer</TableHead>
+                  <TableHead>Offer</TableHead>
+                  <TableHead>Notes</TableHead>
+                  <TableHead>Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {owned
+                  .filter((p) => p.forSale && p.interestedBuyers.length > 0)
+                  .flatMap((p) =>
+                    p.interestedBuyers.map((b, idx) => (
+                      <TableRow key={p.id + b.id}>
+                        {idx === 0 && (
+                          <TableCell rowSpan={p.interestedBuyers.length}>
+                            <div>
+                              <div className="font-medium">{p.name}</div>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="mt-2"
+                                disabled={p.buyerRefreshes === 0}
+                                onClick={() => handleRefreshBuyers(p.id)}
+                              >
+                                Refresh Buyers ({p.buyerRefreshes ?? 0} left)
+                              </Button>
+                            </div>
+                          </TableCell>
+                        )}
+                        <TableCell>{b.name}</TableCell>
+                        <TableCell className="font-semibold">
+                          ${b.offer.toLocaleString()}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground text-sm">
+                          {b.notes}
+                        </TableCell>
+                        <TableCell>
+                          <Button
+                            size="sm"
+                            onClick={() => handleSell(p.id, b.id)}
+                          >
+                            Accept Offer
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       )}
 
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Interested Buyers</h2>
-      <table className="mb-8 border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300">Property</th>
-            <th className="p-2 border border-gray-300">Buyer</th>
-            <th className="p-2 border border-gray-300">Offer</th>
-            <th className="p-2 border border-gray-300">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {owned
-            .filter((p) => p.forSale && p.interestedBuyers.length > 0)
-            .flatMap((p) =>
-              p.interestedBuyers.map((b, idx) => (
-                <tr key={p.id + b.id}>
-                  {idx === 0 && (
-                    <td
-                      className="p-2 border border-gray-300"
-                      rowSpan={p.interestedBuyers.length}
-                    >
-                      {p.name}
-                      <div className="mt-2">
-                        <button
-                          className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs"
-                          disabled={p.buyerRefreshes === 0}
-                          onClick={() => handleRefreshBuyers(p.id)}
-                        >
-                          Refresh Buyers ({p.buyerRefreshes ?? 0} left)
-                        </button>
-                      </div>
-                    </td>
+      {/* Interested Renters Section */}
+      {owned.some(
+        (p) =>
+          p.forRent && p.interestedRenters && p.interestedRenters.length > 0
+      ) && (
+        <div className="mb-8">
+          <h2 className="mb-4 font-semibold text-2xl">Interested Renters</h2>
+          <div className="border rounded-lg overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Property</TableHead>
+                  <TableHead>Renter</TableHead>
+                  <TableHead>Offer</TableHead>
+                  <TableHead>Notes</TableHead>
+                  <TableHead>Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {owned
+                  .filter(
+                    (p) =>
+                      p.forRent &&
+                      p.interestedRenters &&
+                      p.interestedRenters.length > 0
+                  )
+                  .flatMap((p) =>
+                    p.interestedRenters!.map((r, idx) => (
+                      <TableRow key={p.id + r.id}>
+                        {idx === 0 && (
+                          <TableCell rowSpan={p.interestedRenters!.length}>
+                            <div>
+                              <div className="font-medium">{p.name}</div>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="mt-2"
+                                disabled={p.renterRefreshes === 0}
+                                onClick={() => handleRefreshRenters(p.id)}
+                              >
+                                Refresh Renters ({p.renterRefreshes ?? 0} left)
+                              </Button>
+                            </div>
+                          </TableCell>
+                        )}
+                        <TableCell>{r.name}</TableCell>
+                        <TableCell className="font-semibold">
+                          ${r.offer.toLocaleString()}/mo
+                        </TableCell>
+                        <TableCell className="text-muted-foreground text-sm">
+                          {r.notes}
+                        </TableCell>
+                        <TableCell>
+                          <Button
+                            size="sm"
+                            onClick={() => handleLease(p.id, r.id)}
+                          >
+                            Accept Offer
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))
                   )}
-                  <td className="p-2 border border-gray-300">{b.name}</td>
-                  <td className="p-2 border border-gray-300">
-                    ${b.offer.toLocaleString()}
-                  </td>
-                  <td className="p-2 border border-gray-300">{b.notes}</td>
-                  <td className="p-2 border border-gray-300">
-                    <button
-                      className="bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white"
-                      onClick={() => handleSell(p.id, b.id)}
-                    >
-                      Accept Offer
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          {owned.filter((p) => p.forSale && p.interestedBuyers.length === 0)
-            .length === 0 &&
-            owned.filter((p) => p.forSale).length === 0 && (
-              <tr>
-                <td colSpan={5} className="p-4 text-center text-gray-500">
-                  No interested buyers yet.
-                </td>
-              </tr>
-            )}
-        </tbody>
-      </table>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      )}
 
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Interested Renters</h2>
-      <table className="mb-8 border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300">Property</th>
-            <th className="p-2 border border-gray-300">Renter</th>
-            <th className="p-2 border border-gray-300">Offer</th>
-            <th className="p-2 border border-gray-300">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {owned
-            .filter(
-              (p) =>
-                p.forRent &&
-                p.interestedRenters &&
-                p.interestedRenters.length > 0
-            )
-            .flatMap((p) =>
-              p.interestedRenters!.map((r, idx) => (
-                <tr key={p.id + r.id}>
-                  {idx === 0 && (
-                    <td
-                      className="p-2 border border-gray-300"
-                      rowSpan={p.interestedRenters!.length}
-                    >
-                      {p.name}
-                      <div className="mt-2">
-                        <button
-                          className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs"
-                          disabled={p.renterRefreshes === 0}
-                          onClick={() => handleRefreshRenters(p.id)}
-                        >
-                          Refresh Renters ({p.renterRefreshes ?? 0} left)
-                        </button>
-                      </div>
-                    </td>
-                  )}
-                  <td className="p-2 border border-gray-300">{r.name}</td>
-                  <td className="p-2 border border-gray-300">
-                    ${r.offer.toLocaleString()}
-                  </td>
-                  <td className="p-2 border border-gray-300">{r.notes}</td>
-                  <td className="p-2 border border-gray-300">
-                    <button
-                      className="bg-purple-600 hover:bg-purple-700 px-3 py-1 rounded text-white"
-                      onClick={() => handleLease(p.id, r.id)}
-                    >
-                      Accept Offer
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          {owned.filter(
-            (p) =>
-              p.forRent &&
-              (!p.interestedRenters || p.interestedRenters.length === 0)
-          ).length === 0 &&
-            owned.filter((p) => p.forRent).length === 0 && (
-              <tr>
-                <td colSpan={5} className="p-4 text-center text-gray-500">
-                  No interested renters yet.
-                </td>
-              </tr>
-            )}
-        </tbody>
-      </table>
+      {/* Transaction History Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Transaction History</h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Date</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Property</TableHead>
+                <TableHead>Amount</TableHead>
+                <TableHead>Notes</TableHead>
+                <TableHead>Gain/Loss</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {transactions.length === 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="py-8 text-center text-muted-foreground"
+                  >
+                    No transactions yet. Start by purchasing a property!
+                  </TableCell>
+                </TableRow>
+              ) : (
+                transactions.map((tx) => {
+                  const isMoneyIn =
+                    tx.type === "SELL" ||
+                    tx.type === "RENT" ||
+                    tx.type === "RENT_PAYMENT";
+                  const isMoneyOut = tx.type === "BUY" || tx.type === "REPAIR";
 
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Transaction History</h2>
-      <table className="border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300">Date</th>
-            <th className="p-2 border border-gray-300">Type</th>
-            <th className="p-2 border border-gray-300">Property</th>
-            <th className="p-2 border border-gray-300">Amount</th>
-            <th className="p-2 border border-gray-300">Notes</th>
-            <th className="p-2 border border-gray-300">Gain/Loss</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.length === 0 && (
-            <tr>
-              <td colSpan={6} className="p-4 text-center text-gray-500">
-                No transactions yet.
-              </td>
-            </tr>
-          )}
-          {transactions.map((tx) => {
-            // Highlight money in (SELL, RENT, RENT_PAYMENT) as green, money out (BUY/REPAIR) as red
-            const isMoneyIn =
-              tx.type === "SELL" ||
-              tx.type === "RENT" ||
-              tx.type === "RENT_PAYMENT";
-            const isMoneyOut = tx.type === "BUY" || tx.type === "REPAIR";
-            return (
-              <tr key={tx.id}>
-                <td className="p-2 border border-gray-300">
-                  {tx.date.toLocaleDateString()}
-                </td>
-                <td className="p-2 border border-gray-300">{tx.type}</td>
-                <td className="p-2 border border-gray-300">
-                  {tx.propertyName}
-                </td>
-                <td
-                  className="p-2 border border-gray-300"
-                  style={{
-                    color: isMoneyIn ? "green" : isMoneyOut ? "red" : undefined,
-                    fontWeight: isMoneyIn || isMoneyOut ? 600 : undefined,
-                  }}
-                >
-                  ${tx.amount.toLocaleString()}
-                </td>
-                <td className="p-2 border border-gray-300">{tx.notes || ""}</td>
-                <td className="p-2 border border-gray-300">
-                  {(tx.type === "SELL" || tx.type === "RENT") &&
-                  typeof tx.gainLoss === "number" ? (
-                    <span style={{ color: tx.gainLoss >= 0 ? "green" : "red" }}>
-                      {tx.gainLoss >= 0 ? "+" : ""}$
-                      {tx.gainLoss.toLocaleString()}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  return (
+                    <TableRow key={tx.id}>
+                      <TableCell>{tx.date.toLocaleDateString()}</TableCell>
+                      <TableCell>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            tx.type === "BUY"
+                              ? "bg-red-100 text-red-800"
+                              : tx.type === "SELL"
+                              ? "bg-green-100 "
+                              : tx.type === "REPAIR"
+                              ? "bg-yellow-100 "
+                              : tx.type === "RENT"
+                              ? "bg-purple-100 "
+                              : "bg-blue-100 "
+                          }`}
+                        >
+                          {tx.type.replace("_", " ")}
+                        </span>
+                      </TableCell>
+                      <TableCell className="font-medium">
+                        {tx.propertyName}
+                      </TableCell>
+                      <TableCell
+                        className={`font-semibold ${
+                          isMoneyIn ? "" : isMoneyOut ? "text-red-600" : ""
+                        }`}
+                      >
+                        {isMoneyIn ? "+" : isMoneyOut ? "-" : ""}$
+                        {tx.amount.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground text-sm">
+                        {tx.notes || "—"}
+                      </TableCell>
+                      <TableCell>
+                        {(tx.type === "SELL" || tx.type === "RENT") &&
+                        typeof tx.gainLoss === "number" ? (
+                          <span
+                            className={`font-semibold ${
+                              tx.gainLoss >= 0 ? "" : "text-red-600"
+                            }`}
+                          >
+                            {tx.gainLoss >= 0 ? "+" : ""}$
+                            {tx.gainLoss.toLocaleString()}
+                          </span>
+                        ) : (
+                          "—"
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
+
+      {/* Reset Game Section */}
+      {owned.length === 0 && properties.every((p) => p.owned) && (
+        <div className="text-center">
+          <div className="mb-4 p-6 border rounded-lg">
+            <h3 className="mb-2 font-semibold text-lg">
+              No Properties Available
+            </h3>
+            <p className="">
+              All properties have been purchased. Start over to continue
+              playing!
+            </p>
+          </div>
+          <Button size="lg" onClick={handleRestart} className="px-8">
+            Start New Game
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

@@ -3,8 +3,17 @@
 import { buyStock } from "@/components/stocks/buyStock";
 import { PortfolioTable } from "@/components/stocks/PortfolioTable";
 import { sellStock } from "@/components/stocks/sellStock";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { MOCK_STOCKS } from "@/lib/constants/data/stockData";
 import { Portfolio, Stock } from "@/lib/interfaces/stock";
 import { formatNumberToCurrency } from "@/lib/utils/format";
@@ -85,180 +94,279 @@ export default function StockMarketLearningSimulatorPage() {
   };
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <div className="mb-12">
-        <h1>Stock Market Learning Simulator</h1>
-        <p>
-          Welcome to the Stock Market Learning Simulator! Here, you can practice
-          buying and selling stocks in a risk-free environment. Use the form
-          below to select a stock and enter the quantity you want to buy or
-          sell. Your portfolio will be updated accordingly.
-        </p>
-        <p className="mt-4">
-          This simulator provides estimates for informational purposes only.
-          Actual prices, transactions, and costs may vary. Consult a financial
-          professional before making decisions.
-        </p>
-        <h2 className="mt-7">Trade Stocks</h2>
-        <p className="mb-2">
-          Select a stock from the list below and enter the quantity you want to
-          buy or sell. Your portfolio will be updated accordingly. Current Stock
-          Prices are updated every 3 seconds. You can buy or sell stocks using
-          the buttons below. Your portfolio will be updated accordingly.
-        </p>
-        <p className="mb-2">
-          Please note that the stock prices are simulated and do not reflect
-          real market conditions. This simulator is for educational purposes
-          only.
-        </p>
-        <p className="mb-2">
-          Your current cash balance is{" "}
-          <strong> {formatNumberToCurrency(portfolio.cash, 2, 2)}</strong>. You
-          can buy stocks as long as you have sufficient cash. If you sell
-          stocks, the proceeds will be added to your cash balance. Your
-          portfolio value is the sum of your cash balance and the value of your
-          stock holdings. The total portfolio value is displayed below.
-        </p>
-        <p className="mb-2">
-          The transaction history is displayed at the bottom of the page. It
-          shows the date, type (buy/sell), symbol, quantity, and price of each
-          transaction. You can use this information to track your trading
-          activity.
-        </p>
-        <p className="mb-2">
-          If you have any questions or need assistance, please contact our
-          support team. We're here to help you learn and succeed in the stock
-          market!
-        </p>
+    <div className="mx-auto px-4 py-8 max-w-7xl container">
+      {/* Header Section */}
+      <div className="mb-8">
+        <h1 className="mb-4 font-bold text-4xl">
+          Stock Market Learning Simulator
+        </h1>
+        <div className="mb-6 p-6 border rounded-lg">
+          <p className="mb-3">
+            Welcome to the Stock Market Learning Simulator! Practice buying and
+            selling stocks in a risk-free environment to build your investment
+            skills.
+          </p>
+          <p className="text-sm">
+            <strong>Disclaimer:</strong> This simulator provides estimates for
+            educational purposes only. Actual prices, transactions, and costs
+            may vary. Consult a financial professional before making real
+            investment decisions.
+          </p>
+        </div>
+
+        {/* Stats Dashboard */}
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-6">
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Available Cash
+            </h3>
+            <p className="font-bold text-2xl">
+              {formatNumberToCurrency(portfolio.cash, 2, 2)}
+            </p>
+          </div>
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Total Portfolio Value
+            </h3>
+            <p className="font-bold text-2xl">
+              {formatNumberToCurrency(portfolioValue, 2, 2)}
+            </p>
+          </div>
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Holdings
+            </h3>
+            <p className="font-bold text-2xl">
+              {portfolio.holdings.length} stocks
+            </p>
+          </div>
+        </div>
+
+        {message && (
+          <div className="mb-4 p-4 border rounded-lg">
+            <p className="">{message}</p>
+          </div>
+        )}
       </div>
 
-      <div className="flex md:flex-row flex-col justify-between gap-6 w-full">
-        <div className="mb-4 w-full">
-          <Label className="block mb-1 font-semibold">Select Stock</Label>
-          <select
-            className="p-2 border rounded w-full"
-            value={selectedStock?.symbol || ""}
-            onChange={(e) => {
-              const stock = MOCK_STOCKS.find(
-                (s) => s.symbol === e.target.value
-              );
-              setSelectedStock(stock || null);
-            }}
-          >
-            <option value="">-- Select --</option>
-            {stocks.map((stock) => (
-              <option key={stock.symbol} value={stock.symbol}>
-                {stock.symbol} - {stock.name} (
-                {formatNumberToCurrency(stock.price, 2, 2)})
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mb-4">
-          <Label className="block mb-1 font-semibold">Quantity</Label>
-          <div className="flex gap-2">
-            <Input
-              type="number"
-              className="p-2 border rounded w-full"
-              min={1}
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-            />
-            <button
-              type="button"
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded font-semibold text-sm"
-              disabled={!selectedStock}
-              onClick={() => {
-                if (selectedStock) {
-                  const max = Math.floor(portfolio.cash / selectedStock.price);
-                  setQuantity(max > 0 ? max : 0);
-                }
-              }}
+      {/* Trading Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Trade Stocks</h2>
+        <div className="bg-card p-6 border rounded-lg">
+          <p className="mb-6 text-muted-foreground">
+            Stock prices update every 3 seconds. Select a stock and quantity to
+            buy or sell. Note: Prices are simulated and for educational purposes
+            only.
+          </p>
+
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-6">
+            <div>
+              <Label
+                htmlFor="stock-select"
+                className="block mb-2 font-medium text-sm"
+              >
+                Select Stock
+              </Label>
+              <select
+                id="stock-select"
+                className="bg-background px-3 py-2 border border-input focus:ring-2 focus:ring-ring rounded-md w-full focus:outline-none"
+                value={selectedStock?.symbol || ""}
+                onChange={(e) => {
+                  const stock = MOCK_STOCKS.find(
+                    (s) => s.symbol === e.target.value
+                  );
+                  setSelectedStock(stock || null);
+                }}
+              >
+                <option value="">-- Select a stock --</option>
+                {stocks.map((stock) => (
+                  <option key={stock.symbol} value={stock.symbol}>
+                    {stock.symbol} - {stock.name} (
+                    {formatNumberToCurrency(stock.price, 2, 2)})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <Label
+                htmlFor="quantity"
+                className="block mb-2 font-medium text-sm"
+              >
+                Quantity
+              </Label>
+              <div className="flex gap-2">
+                <Input
+                  id="quantity"
+                  type="number"
+                  min={1}
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  className="flex-1"
+                />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={!selectedStock}
+                  onClick={() => {
+                    if (selectedStock) {
+                      const max = Math.floor(
+                        portfolio.cash / selectedStock.price
+                      );
+                      setQuantity(max > 0 ? max : 0);
+                    }
+                  }}
+                >
+                  Max
+                </Button>
+              </div>
+              {selectedStock && (
+                <p className="mt-1 text-muted-foreground text-sm">
+                  Max affordable:{" "}
+                  {Math.floor(portfolio.cash / selectedStock.price)} shares
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <Button
+              onClick={handleBuy}
+              disabled={!selectedStock || quantity <= 0}
+              className="bg-green-600 hover:bg-green-700"
             >
-              Max
-            </button>
+              Buy Shares
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleSell}
+              disabled={!selectedStock || quantity <= 0}
+            >
+              Sell Shares
+            </Button>
           </div>
         </div>
       </div>
 
-      <div className="flex gap-4 mb-6">
-        <button
-          className="bg-green-600 hover:bg-green-700 disabled:opacity-50 px-4 py-2 rounded text-white"
-          onClick={handleBuy}
-          disabled={!selectedStock || quantity <= 0}
-        >
-          Buy
-        </button>
-        <button
-          className="bg-red-600 hover:bg-red-700 disabled:opacity-50 px-4 py-2 rounded text-white"
-          onClick={handleSell}
-          disabled={!selectedStock || quantity <= 0}
-        >
-          Sell
-        </button>
+      {/* Current Stock Prices */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Current Stock Prices</h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Symbol</TableHead>
+                <TableHead>Company Name</TableHead>
+                <TableHead>Current Price</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {stocks.map((stock) => (
+                <TableRow key={stock.symbol}>
+                  <TableCell className="font-mono font-semibold">
+                    {stock.symbol}
+                  </TableCell>
+                  <TableCell>{stock.name}</TableCell>
+                  <TableCell className="font-semibold">
+                    {formatNumberToCurrency(stock.price, 2, 2)}
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setSelectedStock(stock)}
+                    >
+                      Select
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
-      {message && <p className="mb-4 text-blue-600">{message}</p>}
+      {/* Portfolio Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Your Portfolio</h2>
+        <PortfolioTable
+          portfolio={portfolio}
+          stocks={stocks}
+          onSelectStock={handleSelectStock}
+          onSellAll={handleSellAll}
+        />
+      </div>
 
-      <h2>Portfolio</h2>
-      <p className="mb-2">
-        Cash Balance: {formatNumberToCurrency(portfolio.cash, 2, 2)}
-      </p>
-      <p className="mb-4 font-semibold">
-        Total Portfolio Value: {formatNumberToCurrency(portfolioValue, 2, 2)}
-      </p>
+      {/* Transaction History Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Transaction History</h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Date</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Symbol</TableHead>
+                <TableHead>Quantity</TableHead>
+                <TableHead>Price per Share</TableHead>
+                <TableHead>Total Value</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {portfolio.transactions.length === 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="py-8 text-center text-muted-foreground"
+                  >
+                    No transactions yet. Start trading to see your transaction
+                    history!
+                  </TableCell>
+                </TableRow>
+              ) : (
+                portfolio.transactions.map((tx) => {
+                  const isMoneyIn = tx.type === "SELL";
+                  const isMoneyOut = tx.type === "BUY";
+                  const totalValue = tx.price * tx.quantity;
 
-      <PortfolioTable
-        portfolio={portfolio}
-        stocks={stocks}
-        onSelectStock={handleSelectStock}
-        onSellAll={handleSellAll}
-      />
-
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Transaction History</h2>
-      <table className="border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300 text-left">Date</th>
-            <th className="p-2 border border-gray-300 text-left">Type</th>
-            <th className="p-2 border border-gray-300 text-left">Symbol</th>
-            <th className="p-2 border border-gray-300 text-left">Quantity</th>
-            <th className="p-2 border border-gray-300 text-left">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {portfolio.transactions.length === 0 && (
-            <tr>
-              <td colSpan={5} className="p-4 text-center text-gray-500">
-                No transactions yet.
-              </td>
-            </tr>
-          )}
-          {portfolio.transactions.map((tx) => {
-            const isMoneyIn = tx.type === "SELL";
-            const isMoneyOut = tx.type === "BUY";
-            return (
-              <tr key={tx.id}>
-                <td className="p-2 border border-gray-300">
-                  {tx.date.toLocaleDateString()}
-                </td>
-                <td className="p-2 border border-gray-300">{tx.type}</td>
-                <td className="p-2 border border-gray-300">{tx.symbol}</td>
-                <td className="p-2 border border-gray-300">{tx.quantity}</td>
-                <td
-                  className="p-2 border border-gray-300"
-                  style={{
-                    color: isMoneyIn ? "green" : isMoneyOut ? "red" : undefined,
-                    fontWeight: isMoneyIn || isMoneyOut ? 600 : undefined,
-                  }}
-                >
-                  ${tx.price.toFixed(2)}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  return (
+                    <TableRow key={tx.id}>
+                      <TableCell>{tx.date.toLocaleDateString()}</TableCell>
+                      <TableCell>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            tx.type === "BUY"
+                              ? "bg-red-100 text-red-800"
+                              : "bg-green-100 "
+                          }`}
+                        >
+                          {tx.type}
+                        </span>
+                      </TableCell>
+                      <TableCell className="font-mono font-semibold">
+                        {tx.symbol}
+                      </TableCell>
+                      <TableCell>{tx.quantity.toLocaleString()}</TableCell>
+                      <TableCell className="font-semibold">
+                        ${tx.price.toFixed(2)}
+                      </TableCell>
+                      <TableCell
+                        className={`font-semibold ${
+                          isMoneyIn ? "" : isMoneyOut ? "text-red-600" : ""
+                        }`}
+                      >
+                        {isMoneyIn ? "+" : isMoneyOut ? "-" : ""}$
+                        {totalValue.toFixed(2)}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,10 +3,19 @@
 import { buyStock } from "@/components/stocks/buyStock";
 import { PortfolioTable } from "@/components/stocks/PortfolioTable";
 import { sellStock } from "@/components/stocks/sellStock";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { MOCK_CRYPTOS } from "@/lib/constants/data/cryptoData";
-import { Stock, Portfolio } from "@/lib/interfaces/stock";
+import { Portfolio, Stock } from "@/lib/interfaces/stock";
 import { formatNumberToCurrency } from "@/lib/utils/format";
 import { useEffect, useState } from "react";
 
@@ -85,144 +94,284 @@ export default function CryptoTradingSimulatorPage() {
   };
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <div className="mb-12">
-        <h1>Crypto Trading Simulator</h1>
-        <p>
-          Welcome to the Crypto Trading Simulator! Practice buying and selling
-          cryptocurrencies in a risk-free environment.
-        </p>
-        <p className="mt-4">
-          Prices are simulated and update every 3 seconds. This is for
-          educational purposes only.
-        </p>
-        <p className="mb-2">
-          Your current cash balance is{" "}
-          <strong>{formatNumberToCurrency(portfolio.cash, 2, 2)}</strong>.
-        </p>
-        <p className="mb-2">
-          The total portfolio value is displayed below. Transaction history is
-          at the bottom.
-        </p>
+    <div className="mx-auto px-4 py-8 max-w-7xl container">
+      {/* Header Section */}
+      <div className="mb-8">
+        <h1 className="mb-4 font-bold text-4xl">Crypto Trading Simulator</h1>
+        <div className="bg-orange-50 mb-6 p-6 border border-orange-200 rounded-lg">
+          <p className="mb-3 text-orange-800">
+            Welcome to the Crypto Trading Simulator! Practice buying and selling
+            cryptocurrencies in a risk-free environment to learn about crypto
+            markets.
+          </p>
+          <p className="text-orange-700 text-sm">
+            <strong>Notice:</strong> Crypto prices are highly volatile and
+            simulated. This is for educational purposes only. Real
+            cryptocurrency trading involves significant risks.
+          </p>
+        </div>
+
+        {/* Stats Dashboard */}
+        <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-6">
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Available Cash
+            </h3>
+            <p className="font-bold text-2xl">
+              {formatNumberToCurrency(portfolio.cash, 2, 2)}
+            </p>
+          </div>
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Total Portfolio Value
+            </h3>
+            <p className="font-bold text-2xl text-orange-600">
+              {formatNumberToCurrency(portfolioValue, 2, 2)}
+            </p>
+          </div>
+          <div className="bg-card p-4 border rounded-lg">
+            <h3 className="font-medium text-muted-foreground text-sm">
+              Crypto Holdings
+            </h3>
+            <p className="font-bold text-2xl">
+              {portfolio.holdings.length} coins
+            </p>
+          </div>
+        </div>
+
+        {message && (
+          <div className="mb-4 p-4 border rounded-lg">
+            <p className="">{message}</p>
+          </div>
+        )}
       </div>
 
-      <div className="flex md:flex-row flex-col justify-between gap-6 w-full">
-        <div className="mb-4 w-full">
-          <Label className="block mb-1 font-semibold">Select Crypto</Label>
-          <select
-            className="p-2 border rounded w-full"
-            value={selectedCrypto?.symbol || ""}
-            onChange={(e) => {
-              const crypto = MOCK_CRYPTOS.find(
-                (c) => c.symbol === e.target.value
-              );
-              setSelectedCrypto(crypto || null);
-            }}
-          >
-            <option value="">-- Select --</option>
-            {cryptos.map((crypto) => (
-              <option key={crypto.symbol} value={crypto.symbol}>
-                {crypto.symbol} - {crypto.name} (
-                {formatNumberToCurrency(crypto.price, 2, 2)})
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mb-4">
-          <Label className="block mb-1 font-semibold">Quantity</Label>
-          <div className="flex gap-2">
-            <Input
-              type="number"
-              className="p-2 border rounded w-full"
-              min={1}
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-            />
-            <button
-              type="button"
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded font-semibold text-sm"
-              disabled={!selectedCrypto}
-              onClick={() => {
-                if (selectedCrypto) {
-                  const max = Math.floor(portfolio.cash / selectedCrypto.price);
-                  setQuantity(max > 0 ? max : 0);
-                }
-              }}
+      {/* Trading Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Trade Cryptocurrencies</h2>
+        <div className="bg-card p-6 border rounded-lg">
+          <p className="mb-6 text-muted-foreground">
+            Crypto prices update every 3 seconds with higher volatility than
+            traditional stocks. Select a cryptocurrency and quantity to buy or
+            sell. Prices are simulated for educational purposes.
+          </p>
+
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-6">
+            <div>
+              <Label
+                htmlFor="crypto-select"
+                className="block mb-2 font-medium text-sm"
+              >
+                Select Cryptocurrency
+              </Label>
+              <select
+                id="crypto-select"
+                className="bg-background px-3 py-2 border border-input focus:ring-2 focus:ring-ring rounded-md w-full focus:outline-none"
+                value={selectedCrypto?.symbol || ""}
+                onChange={(e) => {
+                  const crypto = MOCK_CRYPTOS.find(
+                    (c) => c.symbol === e.target.value
+                  );
+                  setSelectedCrypto(crypto || null);
+                }}
+              >
+                <option value="">-- Select a cryptocurrency --</option>
+                {cryptos.map((crypto) => (
+                  <option key={crypto.symbol} value={crypto.symbol}>
+                    {crypto.symbol} - {crypto.name} (
+                    {formatNumberToCurrency(crypto.price, 2, 2)})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <Label
+                htmlFor="quantity"
+                className="block mb-2 font-medium text-sm"
+              >
+                Quantity
+              </Label>
+              <div className="flex gap-2">
+                <Input
+                  id="quantity"
+                  type="number"
+                  min={0.01}
+                  step={0.01}
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  className="flex-1"
+                />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={!selectedCrypto}
+                  onClick={() => {
+                    if (selectedCrypto) {
+                      const max =
+                        Math.floor(
+                          (portfolio.cash / selectedCrypto.price) * 100
+                        ) / 100;
+                      setQuantity(max > 0 ? max : 0);
+                    }
+                  }}
+                >
+                  Max
+                </Button>
+              </div>
+              {selectedCrypto && (
+                <p className="mt-1 text-muted-foreground text-sm">
+                  Max affordable:{" "}
+                  {(
+                    Math.floor((portfolio.cash / selectedCrypto.price) * 100) /
+                    100
+                  ).toFixed(2)}{" "}
+                  coins
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <Button
+              onClick={handleBuy}
+              disabled={!selectedCrypto || quantity <= 0}
+              className="bg-green-600 hover:bg-green-700"
             >
-              Max
-            </button>
+              Buy Crypto
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleSell}
+              disabled={!selectedCrypto || quantity <= 0}
+            >
+              Sell Crypto
+            </Button>
           </div>
         </div>
       </div>
 
-      <div className="flex gap-4 mb-6">
-        <button
-          className="bg-green-600 hover:bg-green-700 disabled:opacity-50 px-4 py-2 rounded text-white"
-          onClick={handleBuy}
-          disabled={!selectedCrypto || quantity <= 0}
-        >
-          Buy
-        </button>
-        <button
-          className="bg-red-600 hover:bg-red-700 disabled:opacity-50 px-4 py-2 rounded text-white"
-          onClick={handleSell}
-          disabled={!selectedCrypto || quantity <= 0}
-        >
-          Sell
-        </button>
+      {/* Current Crypto Prices */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">
+          Current Cryptocurrency Prices
+        </h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Symbol</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Current Price</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {cryptos.map((crypto) => (
+                <TableRow key={crypto.symbol}>
+                  <TableCell className="font-mono font-semibold">
+                    {crypto.symbol}
+                  </TableCell>
+                  <TableCell>{crypto.name}</TableCell>
+                  <TableCell className="font-semibold">
+                    {formatNumberToCurrency(crypto.price, 2, 2)}
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setSelectedCrypto(crypto)}
+                    >
+                      Select
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
-      {message && <p className="mb-4 text-blue-600">{message}</p>}
+      {/* Portfolio Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Your Crypto Portfolio</h2>
+        <PortfolioTable
+          portfolio={portfolio}
+          stocks={cryptos}
+          onSelectStock={handleSelectCrypto}
+          onSellAll={handleSellAll}
+        />
+      </div>
 
-      <h2>Portfolio</h2>
-      <p className="mb-2">
-        Cash Balance: {formatNumberToCurrency(portfolio.cash, 2, 2)}
-      </p>
-      <p className="mb-4 font-semibold">
-        Total Portfolio Value: {formatNumberToCurrency(portfolioValue, 2, 2)}
-      </p>
+      {/* Transaction History Section */}
+      <div className="mb-8">
+        <h2 className="mb-4 font-semibold text-2xl">Transaction History</h2>
+        <div className="border rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Date</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Symbol</TableHead>
+                <TableHead>Quantity</TableHead>
+                <TableHead>Price per Unit</TableHead>
+                <TableHead>Total Value</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {portfolio.transactions.length === 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="py-8 text-center text-muted-foreground"
+                  >
+                    No transactions yet. Start trading cryptocurrencies to see
+                    your transaction history!
+                  </TableCell>
+                </TableRow>
+              ) : (
+                portfolio.transactions.map((tx) => {
+                  const isMoneyIn = tx.type === "SELL";
+                  const isMoneyOut = tx.type === "BUY";
+                  const totalValue = tx.price * tx.quantity;
 
-      <PortfolioTable
-        portfolio={portfolio}
-        stocks={cryptos}
-        onSelectStock={handleSelectCrypto}
-        onSellAll={handleSellAll}
-      />
-
-      <h2 className="mt-8 mb-2 font-semibold text-2xl">Transaction History</h2>
-      <table className="border border-collapse border-gray-300 w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border border-gray-300 text-left">Date</th>
-            <th className="p-2 border border-gray-300 text-left">Type</th>
-            <th className="p-2 border border-gray-300 text-left">Symbol</th>
-            <th className="p-2 border border-gray-300 text-left">Quantity</th>
-            <th className="p-2 border border-gray-300 text-left">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {portfolio.transactions.length === 0 && (
-            <tr>
-              <td colSpan={5} className="p-4 text-center text-gray-500">
-                No transactions yet.
-              </td>
-            </tr>
-          )}
-          {portfolio.transactions.map((tx) => (
-            <tr key={tx.id}>
-              <td className="p-2 border border-gray-300">
-                {tx.date.toLocaleDateString()}
-              </td>
-              <td className="p-2 border border-gray-300">{tx.type}</td>
-              <td className="p-2 border border-gray-300">{tx.symbol}</td>
-              <td className="p-2 border border-gray-300">{tx.quantity}</td>
-              <td className="p-2 border border-gray-300">
-                ${tx.price.toFixed(2)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  return (
+                    <TableRow key={tx.id}>
+                      <TableCell>{tx.date.toLocaleDateString()}</TableCell>
+                      <TableCell>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            tx.type === "BUY"
+                              ? "bg-red-100 text-red-800"
+                              : "bg-green-100 "
+                          }`}
+                        >
+                          {tx.type}
+                        </span>
+                      </TableCell>
+                      <TableCell className="font-mono font-semibold">
+                        {tx.symbol}
+                      </TableCell>
+                      <TableCell>{tx.quantity.toLocaleString()}</TableCell>
+                      <TableCell className="font-semibold">
+                        ${tx.price.toFixed(2)}
+                      </TableCell>
+                      <TableCell
+                        className={`font-semibold ${
+                          isMoneyIn ? "" : isMoneyOut ? "text-red-600" : ""
+                        }`}
+                      >
+                        {isMoneyIn ? "+" : isMoneyOut ? "-" : ""}$
+                        {totalValue.toFixed(2)}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,14 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import React, { useState } from "react";
 
 const PayoffDebtVsInvesting: React.FC = () => {
@@ -71,291 +79,520 @@ const PayoffDebtVsInvesting: React.FC = () => {
   const payoff = calcPayoffDebt();
   const invest = calcInvestExtra();
 
+  const winner = payoff.totalValue > invest.investValue ? "payoff" : "invest";
+  const winnerValue =
+    winner === "payoff" ? payoff.totalValue : invest.investValue;
+  const loserValue =
+    winner === "payoff" ? invest.investValue : payoff.totalValue;
+  const advantage = winnerValue - loserValue;
+
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Pay Off Debt vs Investing Calculator</h1>
-      <h5>Make informed decisions about your financial future</h5>
-      <p>
-        This calculator helps you compare the benefits of paying off debt versus
-        investing extra money. Enter your debt amount, interest rate, minimum
-        payment, and expected investment return to see the results. This tool
-        provides estimates for informational purposes only. Actual results may
-        vary. Consult a financial advisor before making decisions.
-      </p>
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
+      {/* Header Section */}
+      <div className="mb-12 text-center">
+        <h1 className="bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 mb-4 font-bold text-3xl text-transparent md:text-5xl">
+          Pay Off Debt vs Investing Calculator
+        </h1>
+        <p className="mx-auto max-w-3xl leading-relaxed text-lg md:text-xl">
+          Make informed decisions about your financial future by comparing the
+          benefits of paying off debt versus investing extra money.
+        </p>
+      </div>
 
-      {/* Table: Typical Debt and Investment Returns */}
-      <div className="my-8">
-        <h2>Typical Debt & Investment Returns (2024)</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">Interest/Return</th>
-                <th className="px-3 py-2 border text-left">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Credit Card Debt</td>
-                <td className="px-3 py-2 border">16% - 29%</td>
-                <td className="px-3 py-2 border">
-                  High, variable, not tax-deductible
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Student Loan</td>
-                <td className="px-3 py-2 border">4% - 8%</td>
-                <td className="px-3 py-2 border">May be tax-deductible</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Stock Market (S&P 500)</td>
-                <td className="px-3 py-2 border">7% - 10%</td>
-                <td className="px-3 py-2 border">
-                  Long-term average, not guaranteed
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Savings Account</td>
-                <td className="px-3 py-2 border">0.5% - 5%</td>
-                <td className="px-3 py-2 border">
-                  High-yield savings at upper end
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      {/* Information Tables */}
+      <div className="gap-8 grid mb-12">
+        {/* Typical Debt and Investment Returns */}
+        <div className="shadow-sm p-6 border rounded-lg">
+          <h2 className="mb-4 font-semibold text-2xl">
+            Typical Debt & Investment Returns (2024)
+          </h2>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold">Type</TableHead>
+                  <TableHead className="font-semibold">
+                    Interest/Return
+                  </TableHead>
+                  <TableHead className="font-semibold">Notes</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Credit Card Debt
+                  </TableCell>
+                  <TableCell>16% - 29%</TableCell>
+                  <TableCell>High, variable, not tax-deductible</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Student Loan</TableCell>
+                  <TableCell>4% - 8%</TableCell>
+                  <TableCell>May be tax-deductible</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Stock Market (S&P 500)
+                  </TableCell>
+                  <TableCell>7% - 10%</TableCell>
+                  <TableCell>Long-term average, not guaranteed</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Savings Account</TableCell>
+                  <TableCell>0.5% - 5%</TableCell>
+                  <TableCell>High-yield savings at upper end</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+
+        {/* Pros and Cons */}
+        <div className="shadow-sm p-6 border rounded-lg">
+          <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold">Strategy</TableHead>
+                  <TableHead className="font-semibold">Pros</TableHead>
+                  <TableHead className="font-semibold">Cons</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Pay Off Debt First
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Guaranteed return (interest saved)</li>
+                      <li>Reduces stress</li>
+                      <li>Improves credit score</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Miss out on market growth</li>
+                      <li>Less liquidity until debt is gone</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Invest Extra While Paying Minimum
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Potential for higher returns</li>
+                      <li>Start investing early</li>
+                      <li>More liquidity</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Risk of loss</li>
+                      <li>Debt lingers longer</li>
+                      <li>Interest may outweigh gains</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </div>
 
-      {/* Table: Pros and Cons */}
-      <div className="my-8">
-        <h2>Pros and Cons</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Strategy</th>
-                <th className="px-3 py-2 border text-left">Pros</th>
-                <th className="px-3 py-2 border text-left">Cons</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Pay Off Debt First</td>
-                <td className="px-3 py-2 border">
-                  Guaranteed return (interest saved)
-                  <br />
-                  Reduces stress
-                  <br />
-                  Improves credit score
-                </td>
-                <td className="px-3 py-2 border">
-                  Miss out on market growth
-                  <br />
-                  Less liquidity until debt is gone
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">
-                  Invest Extra While Paying Minimum
-                </td>
-                <td className="px-3 py-2 border">
-                  Potential for higher returns
-                  <br />
-                  Start investing early
-                  <br />
-                  More liquidity
-                </td>
-                <td className="px-3 py-2 border">
-                  Risk of loss
-                  <br />
-                  Debt lingers longer
-                  <br />
-                  Interest may outweigh gains
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      {/* Calculator Form */}
+      <div className="shadow-sm mb-8 p-6 border rounded-lg">
+        <h2 className="mb-6 font-semibold text-2xl">Financial Calculator</h2>
 
-      <form
-        className="gap-4 grid grid-cols-1 sm:grid-cols-2 my-8"
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
-          <div>
-            <Label>Debt Amount ($)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={100000}
-                step={100}
-                value={[debt]}
-                onValueChange={([v]) => setDebt(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={debt}
-                min={0}
-                onChange={(e) => setDebt(Number(e.target.value))}
-                className="w-1/3"
-              />
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="gap-8 grid">
+            {/* Debt Information */}
+            <div className="p-6 border rounded-lg">
+              <h3 className="mb-4 font-semibold text-lg">Debt Information</h3>
+              <div className="gap-6 grid md:grid-cols-2">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Debt Amount: ${debt.toLocaleString()}
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={100000}
+                      step={100}
+                      value={[debt]}
+                      onValueChange={([v]) => setDebt(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      value={debt}
+                      min={0}
+                      onChange={(e) => setDebt(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Debt Interest Rate: {debtRate}% APR
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={40}
+                      step={0.1}
+                      value={[debtRate]}
+                      onValueChange={([v]) => setDebtRate(Number(v.toFixed(1)))}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      value={debtRate}
+                      min={0}
+                      step={0.1}
+                      onChange={(e) => setDebtRate(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Minimum Payment: ${minPayment}/month
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={5000}
+                      step={10}
+                      value={[minPayment]}
+                      onValueChange={([v]) => setMinPayment(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      value={minPayment}
+                      min={0}
+                      onChange={(e) => setMinPayment(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Extra Monthly Amount: ${extra}
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={10000}
+                      step={10}
+                      value={[extra]}
+                      onValueChange={([v]) => setExtra(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      value={extra}
+                      min={0}
+                      onChange={(e) => setExtra(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Investment Information */}
+            <div className="p-6 border rounded-lg">
+              <h3 className="mb-4 font-semibold text-lg">
+                Investment Information
+              </h3>
+              <div className="gap-6 grid md:grid-cols-2">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Expected Investment Return: {investReturn}%/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={15}
+                      step={0.1}
+                      value={[investReturn]}
+                      onValueChange={([v]) =>
+                        setInvestReturn(Number(v.toFixed(1)))
+                      }
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      value={investReturn}
+                      min={0}
+                      step={0.1}
+                      onChange={(e) => setInvestReturn(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Years to Compare: {years}
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={1}
+                      max={40}
+                      step={1}
+                      value={[years]}
+                      onValueChange={([v]) => setYears(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      value={years}
+                      min={1}
+                      max={40}
+                      onChange={(e) => setYears(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <Label>Debt Interest Rate (% APR)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={40}
-                step={0.1}
-                value={[debtRate]}
-                onValueChange={([v]) => setDebtRate(Number(v.toFixed(1)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={debtRate}
-                min={0}
-                step={0.1}
-                onChange={(e) => setDebtRate(Number(e.target.value))}
-                className="w-1/3"
-              />
+        </form>
+      </div>
+      {/* Results Section */}
+      <div className="space-y-6">
+        {/* Winner Banner */}
+        <div
+          className={`rounded-lg p-6 text-center border-2 ${
+            winner === "payoff" ? "  " : " border-green-300 "
+          }`}
+        >
+          <h2 className="mb-2 font-bold text-2xl">
+            {winner === "payoff"
+              ? "🏆 Pay Off Debt First Wins!"
+              : "🏆 Invest Extra Wins!"}
+          </h2>
+          <p className="text-lg">
+            {winner === "payoff"
+              ? "Paying off debt first"
+              : "Investing extra while paying minimum"}
+            provides{" "}
+            <strong>
+              $
+              {advantage.toLocaleString(undefined, {
+                maximumFractionDigits: 0,
+              })}
+            </strong>{" "}
+            more in total value after {years} years.
+          </p>
+        </div>
+
+        {/* Results Comparison */}
+        <div className="gap-6 grid md:grid-cols-2">
+          <div
+            className={`rounded-lg border-2 p-6 ${
+              winner === "payoff" ? " " : " "
+            }`}
+          >
+            <div className="flex gap-3 items-center mb-4">
+              <div className="rounded-full h-3 w-3 0"></div>
+              <h3 className="font-semibold text-xl">Pay Off Debt First</h3>
+              {winner === "payoff" && <span className="font-bold">WINNER</span>}
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="">Total Value:</span>
+                <span className="font-bold text-lg">
+                  $
+                  {payoff.totalValue.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Debt paid off in:</span>
+                <span className="font-bold">{payoff.debtFreeMonth} months</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Total Debt Payments:</span>
+                <span className="font-bold">
+                  $
+                  {payoff.totalPaid.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Investment Value:</span>
+                <span className="font-bold">
+                  $
+                  {payoff.investAfterDebt.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
             </div>
           </div>
-          <div>
-            <Label>Minimum Payment ($/month)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={5000}
-                step={10}
-                value={[minPayment]}
-                onValueChange={([v]) => setMinPayment(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={minPayment}
-                min={0}
-                onChange={(e) => setMinPayment(Number(e.target.value))}
-                className="w-1/3"
-              />
+
+          <div
+            className={`rounded-lg border-2 p-6 ${
+              winner === "invest" ? " border-green-300" : " "
+            }`}
+          >
+            <div className="flex gap-3 items-center mb-4">
+              <div className="rounded-full h-3 w-3 0"></div>
+              <h3 className="font-semibold text-xl">
+                Invest Extra While Paying Minimum
+              </h3>
+              {winner === "invest" && <span className="font-bold">WINNER</span>}
             </div>
-          </div>
-          <div>
-            <Label>Extra Monthly Amount ($)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={10000}
-                step={10}
-                value={[extra]}
-                onValueChange={([v]) => setExtra(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={extra}
-                min={0}
-                onChange={(e) => setExtra(Number(e.target.value))}
-                className="w-1/3"
-              />
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="">Total Investment Value:</span>
+                <span className="font-bold text-lg">
+                  $
+                  {invest.investValue.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="mt-4 text-sm">
+                <p className="mb-2">
+                  <strong>Strategy:</strong> Pay only the minimum on debt while
+                  investing the extra ${extra}/month.
+                </p>
+                <p>
+                  <strong>Note:</strong> Final debt balance and continued
+                  payments are factored into the comparison.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
-          <div>
-            <Label>Expected Investment Return (%/year)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={15}
-                step={0.1}
-                value={[investReturn]}
-                onValueChange={([v]) => setInvestReturn(Number(v.toFixed(1)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={investReturn}
-                min={0}
-                step={0.1}
-                onChange={(e) => setInvestReturn(Number(e.target.value))}
-                className="w-1/3"
-              />
-            </div>
-          </div>
-          <div>
-            <Label>Years to Compare</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={1}
-                max={40}
-                step={1}
-                value={[years]}
-                onValueChange={([v]) => setYears(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={years}
-                min={1}
-                max={40}
-                onChange={(e) => setYears(Number(e.target.value))}
-                className="w-1/3"
-              />
-            </div>
+
+        {/* Detailed Comparison Table */}
+        <div className="shadow-sm p-6 border rounded-lg">
+          <h3 className="mb-4 font-semibold text-xl">Detailed Comparison</h3>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold">Metric</TableHead>
+                  <TableHead className="font-semibold">
+                    Pay Off Debt First
+                  </TableHead>
+                  <TableHead className="font-semibold">Invest Extra</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Total Value After {years} Years
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {payoff.totalValue.toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {invest.investValue.toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Monthly Payment Strategy
+                  </TableCell>
+                  <TableCell className="">
+                    ${(minPayment + extra).toLocaleString()} until debt-free,
+                    then invest
+                  </TableCell>
+                  <TableCell className="">
+                    ${minPayment.toLocaleString()} to debt, $
+                    {extra.toLocaleString()} to investments
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Risk Level</TableCell>
+                  <TableCell className="">Low (guaranteed return)</TableCell>
+                  <TableCell className="">Higher (market dependent)</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Psychological Benefit
+                  </TableCell>
+                  <TableCell className="">
+                    Debt freedom, peace of mind
+                  </TableCell>
+                  <TableCell className="">Building wealth early</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </div>
-      </form>
-      <h2>Results after {years} years</h2>
-      <div className="gap-5 grid grid-cols-1 md:grid-cols-2 mt-3">
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
-            Pay Off Debt First
+
+        {/* Important Considerations */}
+        <div className="p-6 border rounded-lg">
+          <h3 className="flex gap-2 items-center mb-3 font-semibold text-lg">
+            ⚠️ Important Considerations
           </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Total Value:</span>{" "}
-              <strong className="text-blue-900">
-                $
-                {payoff.totalValue.toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </li>
-            <li>
-              <span className="text-gray-700">Debt paid off in:</span>{" "}
-              <strong className="text-blue-900">
-                {payoff.debtFreeMonth} months
-              </strong>
-            </li>
-          </ul>
+          <div className="gap-4 grid md:grid-cols-2 text-sm">
+            <div>
+              <h4 className="mb-2 font-semibold">
+                Factors Favoring Debt Payoff:
+              </h4>
+              <ul className="space-y-1">
+                <li>High-interest debt (credit cards, payday loans)</li>
+                <li>Guaranteed return (interest rate saved)</li>
+                <li>Improved credit score and financial flexibility</li>
+                <li>Reduced financial stress</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-2 font-semibold">
+                Factors Favoring Investment:
+              </h4>
+              <ul className="space-y-1">
+                <li>Low-interest debt (below expected returns)</li>
+                <li>Employer 401(k) matching</li>
+                <li>Tax-advantaged investment accounts</li>
+                <li>Long investment time horizon</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
-            Invest Extra While Paying Minimum
-          </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Total Value:</span>{" "}
-              <strong className="text-green-900">
-                $
-                {invest.investValue.toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </li>
-          </ul>
+
+        {/* Disclaimer */}
+        <div className="p-6 border rounded-lg">
+          <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+          <div className="space-y-2 text-sm">
+            <p>
+              <strong>Important:</strong> This calculator provides estimates for
+              educational purposes only. Results assume fixed rates, no taxes,
+              fees, or investment losses.
+            </p>
+            <p>
+              Actual investment returns vary and can include losses. Consider
+              your risk tolerance, tax situation, emergency fund needs, and
+              overall financial goals.
+            </p>
+            <p>
+              <strong>Professional Advice:</strong> Consult with a qualified
+              financial advisor before making significant financial decisions.
+            </p>
+          </div>
         </div>
       </div>
-      <p className="mt-4">
-        Note: This calculator assumes fixed rates, no taxes, and no investment
-        losses.
-      </p>
     </div>
   );
 };

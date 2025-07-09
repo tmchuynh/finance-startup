@@ -1,8 +1,15 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import React, { useState } from "react";
 
 const InvestingVsSaving: React.FC = () => {
@@ -26,261 +33,544 @@ const InvestingVsSaving: React.FC = () => {
   const savingFV = futureValue(savingRate);
 
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Investing vs Saving Calculator</h1>
-      <h5>Make informed decisions about your financial future</h5>
-      <p>
-        This calculator helps you compare the future value of investing vs.
-        saving based on your initial investment, monthly contributions, and
-        expected returns. Please fill out the form below to see the results.
-      </p>
-
-      {/* Table: Typical Returns and Rates */}
-      <div className="my-8">
-        <h2>Typical Returns and Rates (2024)</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">Annual Rate</th>
-                <th className="px-3 py-2 border text-left">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Stock Market (S&P 500)</td>
-                <td className="px-3 py-2 border">7% - 10%</td>
-                <td className="px-3 py-2 border">
-                  Long-term average, not guaranteed
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Savings Account</td>
-                <td className="px-3 py-2 border">0.5% - 5%</td>
-                <td className="px-3 py-2 border">
-                  High-yield savings at upper end
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">
-                  CD (Certificate of Deposit)
-                </td>
-                <td className="px-3 py-2 border">2% - 5%</td>
-                <td className="px-3 py-2 border">Depends on term and bank</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Bonds</td>
-                <td className="px-3 py-2 border">3% - 6%</td>
-                <td className="px-3 py-2 border">
-                  Varies by type and duration
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
+      {/* Header Section */}
+      <div className="mb-8 text-center">
+        <h1 className="mb-4 font-bold text-4xl">
+          Investing vs Saving Calculator
+        </h1>
+        <p className="mb-6 text-xl">
+          Make informed decisions about your financial future
+        </p>
+        <p className="mx-auto max-w-3xl">
+          This calculator helps you compare the future value of investing vs.
+          saving based on your initial investment, monthly contributions, and
+          expected returns. Please fill out the form below to see the results.
+        </p>
       </div>
 
-      {/* Table: Pros and Cons */}
-      <div className="my-8">
-        <h2>Pros and Cons</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Option</th>
-                <th className="px-3 py-2 border text-left">Pros</th>
-                <th className="px-3 py-2 border text-left">Cons</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Investing</td>
-                <td className="px-3 py-2 border">
-                  Higher potential returns
-                  <br />
-                  Beats inflation long-term
-                  <br />
-                  Compound growth
-                </td>
-                <td className="px-3 py-2 border">
-                  Risk of loss
-                  <br />
-                  Volatility
-                  <br />
-                  Not FDIC insured
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Saving</td>
-                <td className="px-3 py-2 border">
-                  Safe
-                  <br />
-                  FDIC insured
-                  <br />
-                  Easy access
-                </td>
-                <td className="px-3 py-2 border">
-                  Lower returns
-                  <br />
-                  May not keep up with inflation
-                  <br />
-                  Limited growth
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      {/* Typical Returns Table */}
+      <div className="shadow mb-8 border rounded-lg overflow-hidden">
+        <h2 className="p-6 pb-4 font-semibold text-xl">
+          Typical Returns and Rates (2024)
+        </h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Type</TableHead>
+              <TableHead>Annual Rate</TableHead>
+              <TableHead>Notes</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">
+                Stock Market (S&P 500)
+              </TableCell>
+              <TableCell>7% - 10%</TableCell>
+              <TableCell>Long-term average, not guaranteed</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Savings Account</TableCell>
+              <TableCell>0.5% - 5%</TableCell>
+              <TableCell>High-yield savings at upper end</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">
+                CD (Certificate of Deposit)
+              </TableCell>
+              <TableCell>2% - 5%</TableCell>
+              <TableCell>Depends on term and bank</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Bonds</TableCell>
+              <TableCell>3% - 6%</TableCell>
+              <TableCell>Varies by type and duration</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
 
-      <form className="mt-5">
-        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
-          <div>
-            <Label>Initial Amount ($)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={100000}
-                step={500}
-                value={[initial]}
-                onValueChange={([v]) => setInitial(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={initial}
-                min={0}
-                onChange={(e) => setInitial(Number(e.target.value))}
-                className="w-1/3"
-              />
+      {/* Pros and Cons Table */}
+      <div className="shadow mb-8 border rounded-lg overflow-hidden">
+        <h2 className="p-6 pb-4 font-semibold text-xl">Pros and Cons</h2>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Option</TableHead>
+              <TableHead>Pros</TableHead>
+              <TableHead>Cons</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">Investing</TableCell>
+              <TableCell>
+                <ul className="space-y-1">
+                  <li>Higher potential returns</li>
+                  <li>Beats inflation long-term</li>
+                  <li>Compound growth</li>
+                </ul>
+              </TableCell>
+              <TableCell>
+                <ul className="space-y-1">
+                  <li>Risk of loss</li>
+                  <li>Volatility</li>
+                  <li>Not FDIC insured</li>
+                </ul>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">Saving</TableCell>
+              <TableCell>
+                <ul className="space-y-1">
+                  <li>Safe</li>
+                  <li>FDIC insured</li>
+                  <li>Easy access</li>
+                </ul>
+              </TableCell>
+              <TableCell>
+                <ul className="space-y-1">
+                  <li>Lower returns</li>
+                  <li>May not keep up with inflation</li>
+                  <li>Limited growth</li>
+                </ul>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Calculator Form */}
+      <div className="shadow mb-8 p-6 border rounded-lg">
+        <h2 className="mb-6 font-semibold text-2xl">Investment Calculator</h2>
+
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
+            {/* Investment Inputs */}
+            <div className="p-6 border rounded-lg">
+              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+                📈 Investment Parameters
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Initial Amount: ${initial.toLocaleString()}
+                  </Label>
+                  <Slider
+                    value={[initial]}
+                    onValueChange={(value) => setInitial(value[0])}
+                    max={100000}
+                    min={0}
+                    step={500}
+                    className="mt-2"
+                  />
+                  <div className="flex justify-between mt-1 text-xs">
+                    <span>$0</span>
+                    <span>$100,000</span>
+                  </div>
+                </div>
+
+                <div>
+                  <Label className="font-medium text-sm">
+                    Monthly Contribution: ${monthly.toLocaleString()}
+                  </Label>
+                  <Slider
+                    value={[monthly]}
+                    onValueChange={(value) => setMonthly(value[0])}
+                    max={10000}
+                    min={0}
+                    step={50}
+                    className="mt-2"
+                  />
+                  <div className="flex justify-between mt-1 text-xs">
+                    <span>$0</span>
+                    <span>$10,000</span>
+                  </div>
+                </div>
+
+                <div>
+                  <Label className="font-medium text-sm">
+                    Expected Investment Return: {investReturn}% per year
+                  </Label>
+                  <Slider
+                    value={[investReturn]}
+                    onValueChange={(value) =>
+                      setInvestReturn(Number(value[0].toFixed(1)))
+                    }
+                    max={15}
+                    min={0}
+                    step={0.1}
+                    className="mt-2"
+                  />
+                  <div className="flex justify-between mt-1 text-xs">
+                    <span>0%</span>
+                    <span>15%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Savings Inputs */}
+            <div className="p-6 border rounded-lg">
+              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+                🏦 Savings Parameters
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Same Initial Amount: ${initial.toLocaleString()}
+                  </Label>
+                  <div className="mt-2 p-3 rounded text-sm">
+                    Automatically matches investment initial amount
+                  </div>
+                </div>
+
+                <div>
+                  <Label className="font-medium text-sm">
+                    Same Monthly Contribution: ${monthly.toLocaleString()}
+                  </Label>
+                  <div className="mt-2 p-3 rounded text-sm">
+                    Automatically matches investment monthly contribution
+                  </div>
+                </div>
+
+                <div>
+                  <Label className="font-medium text-sm">
+                    Savings Account Rate: {savingRate}% per year
+                  </Label>
+                  <Slider
+                    value={[savingRate]}
+                    onValueChange={(value) =>
+                      setSavingRate(Number(value[0].toFixed(1)))
+                    }
+                    max={10}
+                    min={0}
+                    step={0.1}
+                    className="mt-2"
+                  />
+                  <div className="flex justify-between mt-1 text-xs">
+                    <span>0%</span>
+                    <span>10%</span>
+                  </div>
+                </div>
+
+                <div>
+                  <Label className="font-medium text-sm">
+                    Time Horizon: {years} years
+                  </Label>
+                  <Slider
+                    value={[years]}
+                    onValueChange={(value) => setYears(value[0])}
+                    max={40}
+                    min={1}
+                    step={1}
+                    className="mt-2"
+                  />
+                  <div className="flex justify-between mt-1 text-xs">
+                    <span>1 year</span>
+                    <span>40 years</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <Label>Monthly Contribution ($)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={10000}
-                step={50}
-                value={[monthly]}
-                onValueChange={([v]) => setMonthly(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={monthly}
-                min={0}
-                onChange={(e) => setMonthly(Number(e.target.value))}
-                className="w-1/3"
-              />
+        </form>
+      </div>
+      {/* Results Section */}
+      <div className="shadow mb-8 p-6 border rounded-lg">
+        <h2 className="mb-6 font-semibold text-2xl">
+          Results after {years} years
+        </h2>
+
+        {/* Winner Banner */}
+        {(() => {
+          const difference = investFV - savingFV;
+          const isInvestingBetter = difference > 0;
+
+          return (
+            <div
+              className={`p-4 rounded-lg mb-6 ${
+                isInvestingBetter ? " border " : " border "
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3
+                    className={`font-semibold ${isInvestingBetter ? "" : ""}`}
+                  >
+                    {isInvestingBetter ? "Investing Wins!" : "Saving Wins!"}
+                  </h3>
+                  <p className={`text-sm ${isInvestingBetter ? "" : ""}`}>
+                    {Math.abs(difference) > 0
+                      ? `$${Math.abs(
+                          difference
+                        ).toLocaleString()} advantage after ${years} years`
+                      : "Both options result in the same amount"}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Comparison Cards */}
+        <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
+          <div className="shadow-sm p-6 border-2 rounded-lg">
+            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+              📈 Investing
+            </h3>
+            <div className="space-y-3">
+              {(() => {
+                const totalContributions = initial + monthly * years * 12;
+                const earnings = investFV - totalContributions;
+                const returnRate =
+                  totalContributions > 0
+                    ? (investFV / totalContributions - 1) * 100
+                    : 0;
+
+                return (
+                  <>
+                    <div className="flex items-center justify-between">
+                      <span className="">Total Contributions:</span>
+                      <span className="font-bold">
+                        ${totalContributions.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="">Investment Earnings:</span>
+                      <span className="font-bold">
+                        +${earnings.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="">Total Return:</span>
+                      <span className="font-bold">
+                        {returnRate.toFixed(1)}%
+                      </span>
+                    </div>
+                    <div className="pt-2 border-t">
+                      <div className="flex items-center justify-between">
+                        <span className="">Future Value:</span>
+                        <span className="font-bold text-xl">
+                          ${investFV.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+
+          <div className="shadow-sm p-6 border-2 rounded-lg">
+            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+              🏦 Saving
+            </h3>
+            <div className="space-y-3">
+              {(() => {
+                const totalContributions = initial + monthly * years * 12;
+                const earnings = savingFV - totalContributions;
+                const returnRate =
+                  totalContributions > 0
+                    ? (savingFV / totalContributions - 1) * 100
+                    : 0;
+
+                return (
+                  <>
+                    <div className="flex items-center justify-between">
+                      <span className="">Total Contributions:</span>
+                      <span className="font-bold">
+                        ${totalContributions.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="">Interest Earnings:</span>
+                      <span className="font-bold">
+                        +${earnings.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="">Total Return:</span>
+                      <span className="font-bold">
+                        {returnRate.toFixed(1)}%
+                      </span>
+                    </div>
+                    <div className="pt-2 border-t">
+                      <div className="flex items-center justify-between">
+                        <span className="">Future Value:</span>
+                        <span className="font-bold text-xl">
+                          ${savingFV.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           </div>
         </div>
-        <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
-          <div>
-            <Label>Expected Investment Return (%/year)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={15}
-                step={0.1}
-                value={[investReturn]}
-                onValueChange={([v]) => setInvestReturn(Number(v.toFixed(1)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={investReturn}
-                min={0}
-                step={0.1}
-                onChange={(e) => setInvestReturn(Number(e.target.value))}
-                className="w-1/3"
-              />
-            </div>
-          </div>
-          <div>
-            <Label>Savings Account Rate (%/year)</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={0}
-                max={10}
-                step={0.1}
-                value={[savingRate]}
-                onValueChange={([v]) => setSavingRate(Number(v.toFixed(1)))}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={savingRate}
-                min={0}
-                step={0.1}
-                onChange={(e) => setSavingRate(Number(e.target.value))}
-                className="w-1/3"
-              />
-            </div>
-          </div>
-          <div>
-            <Label>Years to Compare</Label>
-            <div className="flex items-center gap-4">
-              <Slider
-                min={1}
-                max={40}
-                step={1}
-                value={[years]}
-                onValueChange={([v]) => setYears(v)}
-                className="w-2/3"
-              />
-              <Input
-                type="number"
-                value={years}
-                min={1}
-                max={40}
-                onChange={(e) => setYears(Number(e.target.value))}
-                className="w-1/3"
-              />
-            </div>
-          </div>
-        </div>
-      </form>
-      <h2>Results after {years} years</h2>
-      <div className="gap-5 grid grid-cols-1 md:grid-cols-2 mt-3">
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
-            Investing
+
+        {/* Detailed Comparison Table */}
+        <div className="shadow mb-8 border rounded-lg overflow-hidden">
+          <h3 className="p-6 pb-4 font-semibold text-lg">
+            Detailed Financial Projection
           </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Future Value:</span>{" "}
-              <strong className="text-blue-900">
-                $
-                {investFV.toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </li>
-          </ul>
-        </div>
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
-            Saving
-          </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Future Value:</span>{" "}
-              <strong className="text-green-900">
-                $
-                {savingFV.toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })}
-              </strong>
-            </li>
-          </ul>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Metric</TableHead>
+                <TableHead className="">Investing</TableHead>
+                <TableHead className="">Saving</TableHead>
+                <TableHead>Difference</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {(() => {
+                const totalContributions = initial + monthly * years * 12;
+                const investEarnings = investFV - totalContributions;
+                const savingEarnings = savingFV - totalContributions;
+                const difference = investFV - savingFV;
+                const monthlyInvestReturn = investFV / (years * 12);
+                const monthlySavingReturn = savingFV / (years * 12);
+
+                return (
+                  <>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Annual Return Rate
+                      </TableCell>
+                      <TableCell>{investReturn}%</TableCell>
+                      <TableCell>{savingRate}%</TableCell>
+                      <TableCell>
+                        {investReturn > savingRate
+                          ? `${(investReturn - savingRate).toFixed(1)}% higher`
+                          : `${(savingRate - investReturn).toFixed(1)}% lower`}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Total Contributions
+                      </TableCell>
+                      <TableCell>
+                        ${totalContributions.toLocaleString()}
+                      </TableCell>
+                      <TableCell>
+                        ${totalContributions.toLocaleString()}
+                      </TableCell>
+                      <TableCell>Same</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Total Earnings
+                      </TableCell>
+                      <TableCell>${investEarnings.toLocaleString()}</TableCell>
+                      <TableCell>${savingEarnings.toLocaleString()}</TableCell>
+                      <TableCell>
+                        {investEarnings > savingEarnings
+                          ? `$${(
+                              investEarnings - savingEarnings
+                            ).toLocaleString()} more`
+                          : `$${(
+                              savingEarnings - investEarnings
+                            ).toLocaleString()} less`}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Average Monthly Growth
+                      </TableCell>
+                      <TableCell>
+                        ${monthlyInvestReturn.toLocaleString()}
+                      </TableCell>
+                      <TableCell>
+                        ${monthlySavingReturn.toLocaleString()}
+                      </TableCell>
+                      <TableCell>
+                        {monthlyInvestReturn > monthlySavingReturn
+                          ? `$${(
+                              monthlyInvestReturn - monthlySavingReturn
+                            ).toLocaleString()} more`
+                          : `$${(
+                              monthlySavingReturn - monthlyInvestReturn
+                            ).toLocaleString()} less`}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Final Value</TableCell>
+                      <TableCell className="font-bold text-lg">
+                        ${investFV.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="font-bold text-lg">
+                        ${savingFV.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="font-bold">
+                        {difference > 0
+                          ? `$${difference.toLocaleString()} advantage`
+                          : difference < 0
+                          ? `$${Math.abs(
+                              difference
+                            ).toLocaleString()} disadvantage`
+                          : "Equal"}
+                      </TableCell>
+                    </TableRow>
+                  </>
+                );
+              })()}
+            </TableBody>
+          </Table>
         </div>
       </div>
-      <p className="mt-4">
-        Note: This calculator assumes fixed rates and does not account for taxes
-        or investment losses.
-      </p>
+
+      {/* Important Considerations */}
+      <div className="mb-8 p-6 border rounded-lg">
+        <h3 className="mb-3 font-semibold text-lg">
+          ⚠️ Important Considerations
+        </h3>
+        <ul className="space-y-2">
+          <li>
+            <strong>Risk vs Reward:</strong> Investments offer higher potential
+            returns but come with risk of loss
+          </li>
+          <li>
+            <strong>Market Volatility:</strong> Investment returns can vary
+            significantly year to year
+          </li>
+          <li>
+            <strong>Emergency Fund:</strong> Keep 3-6 months of expenses in
+            savings before investing
+          </li>
+          <li>
+            <strong>Time Horizon:</strong> Longer time periods favor investing
+            due to compound growth
+          </li>
+          <li>
+            <strong>Inflation Impact:</strong> Low savings rates may not keep up
+            with inflation
+          </li>
+          <li>
+            <strong>Tax Considerations:</strong> Investment gains may be subject
+            to capital gains tax
+          </li>
+          <li>
+            <strong>Diversification:</strong> Consider a mix of both saving and
+            investing
+          </li>
+        </ul>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="p-6 border rounded-lg">
+        <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+        <p className="text-sm">
+          <strong>Note:</strong> This calculator provides estimates and assumes
+          fixed rates of return. It does not account for taxes, investment
+          losses, market volatility, inflation, or fees. Past performance does
+          not guarantee future results. Actual investment returns can vary
+          significantly and may result in losses. Please consult with a
+          qualified financial advisor for personalized investment advice.
+        </p>
+      </div>
     </div>
   );
 };

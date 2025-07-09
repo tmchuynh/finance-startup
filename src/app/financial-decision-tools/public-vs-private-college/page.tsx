@@ -2,6 +2,14 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useEffect, useState } from "react";
 
 function calcTotalCost({
@@ -70,21 +78,16 @@ export default function PublicVsPrivateCollege() {
     let recommendation = "";
     if (pub.net < priv.net) {
       recommendation =
-        "Attending a public college may be more affordable after scholarships and aid.";
+        "Public college may be more affordable after scholarships and aid.";
     } else if (pub.net > priv.net) {
       recommendation =
-        "Attending a private college may be more affordable after scholarships and aid.";
+        "Private college may be more affordable after scholarships and aid.";
     } else {
       recommendation =
-        "Both options may have similar net costs. Consider other factors such as academic programs, campus life, and outcomes.";
+        "Both options have similar net costs. Consider other factors such as academic programs, campus life, and outcomes.";
     }
 
-    setResult(
-      `Public College (Net Cost): $${pub.net.toLocaleString()}
-Private College (Net Cost): $${priv.net.toLocaleString()}
-
-${recommendation}`
-    );
+    setResult(recommendation);
   }, [
     publicTuition,
     publicRoomBoard,
@@ -97,427 +100,669 @@ ${recommendation}`
     years,
   ]);
 
+  const publicCost = calcTotalCost({
+    tuition: publicTuition,
+    roomBoard: publicRoomBoard,
+    fees: publicFees,
+    years,
+    scholarships: publicScholarships,
+  });
+
+  const privateCost = calcTotalCost({
+    tuition: privateTuition,
+    roomBoard: privateRoomBoard,
+    fees: privateFees,
+    years,
+    scholarships: privateScholarships,
+  });
+
+  const winner =
+    publicCost.net < privateCost.net
+      ? "public"
+      : privateCost.net < publicCost.net
+      ? "private"
+      : "tie";
+  const savings =
+    winner === "public"
+      ? privateCost.net - publicCost.net
+      : winner === "private"
+      ? publicCost.net - privateCost.net
+      : 0;
+
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
-      <h1>Public vs Private College Cost Comparison</h1>
-      <h5>Estimate Your Net Cost of Attendance</h5>
-      <p>
-        Use this tool to compare the estimated total cost of attending a public
-        versus a private college, including tuition, room & board, fees, and
-        scholarships or grants. This tool provides estimates for informational
-        purposes only. Actual costs and aid may vary. Consult each college's
-        financial aid office for personalized information. This calculator is
-        for informational purposes only and does not constitute financial
-        advice. Actual costs and financial aid may vary. Please consult with a
-        financial advisor or the financial aid office of the colleges you are
-        considering for personalized information.
-      </p>
-      <p>
-        Enter the estimated costs for each college type, including tuition, room
-        & board, fees, and any scholarships or grants you expect to receive. The
-        calculator will provide a comparison of the net costs for both options.
-      </p>
-      <p>
-        Note: The calculator assumes a standard 4-year college program. Adjust
-        the years as needed for your specific situation.
-      </p>
-
-      {/* Table: Typical College Costs */}
-      <div className="my-8">
-        <h2>Typical College Costs (US, 2024)</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">
-                  Tuition & Fees (per year)
-                </th>
-                <th className="px-3 py-2 border text-left">
-                  Room & Board (per year)
-                </th>
-                <th className="px-3 py-2 border text-left">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Public (in-state)</td>
-                <td className="px-3 py-2 border">$10,000 - $13,000</td>
-                <td className="px-3 py-2 border">$11,000 - $14,000</td>
-                <td className="px-3 py-2 border">
-                  Lower for in-state residents
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Private</td>
-                <td className="px-3 py-2 border">$35,000 - $60,000</td>
-                <td className="px-3 py-2 border">$12,000 - $16,000</td>
-                <td className="px-3 py-2 border">
-                  Higher sticker price, more aid possible
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Table: Pros and Cons */}
-      <div className="my-8">
-        <h2>Pros and Cons</h2>
-        <div className="overflow-x-auto">
-          <table className="border border-gray-300 min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="px-3 py-2 border text-left">Type</th>
-                <th className="px-3 py-2 border text-left">Pros</th>
-                <th className="px-3 py-2 border text-left">Cons</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 border">Public College</td>
-                <td className="px-3 py-2 border">
-                  Lower cost
-                  <br />
-                  Large alumni network
-                  <br />
-                  More in-state options
-                </td>
-                <td className="px-3 py-2 border">
-                  Larger class sizes
-                  <br />
-                  Less personalized attention
-                  <br />
-                  Limited out-of-state aid
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-2 border">Private College</td>
-                <td className="px-3 py-2 border">
-                  Smaller class sizes
-                  <br />
-                  More aid for some students
-                  <br />
-                  Prestige/networking
-                </td>
-                <td className="px-3 py-2 border">
-                  Higher sticker price
-                  <br />
-                  May require more loans
-                  <br />
-                  Less in-state tuition benefit
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <form
-        className="space-y-5 mt-5"
-        aria-label="College cost comparison form"
-      >
-        <div className="mb-4 pb-4 border-b">
-          <h4 className="mb-3">Public College</h4>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1">
-              <Label className="block mb-1">Tuition ($/year)</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={60000}
-                  step={500}
-                  value={[publicTuition]}
-                  onValueChange={([v]) => setPublicTuition(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Tuition ($/year)"
-                  value={publicTuition === 0 ? "" : publicTuition}
-                  onChange={(e) => setPublicTuition(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Room & Board ($/year)</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={30000}
-                  step={500}
-                  value={[publicRoomBoard]}
-                  onValueChange={([v]) => setPublicRoomBoard(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Room & Board ($/year)"
-                  value={publicRoomBoard === 0 ? "" : publicRoomBoard}
-                  onChange={(e) => setPublicRoomBoard(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Fees ($/year)</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={10000}
-                  step={100}
-                  value={[publicFees]}
-                  onValueChange={([v]) => setPublicFees(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Fees ($/year)"
-                  value={publicFees === 0 ? "" : publicFees}
-                  onChange={(e) => setPublicFees(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1">
-              <Label className="block mb-1">
-                Scholarships/Grants (total $)
-              </Label>
-              <div className="flex gap-3">
-                <Slider
-                  min={0}
-                  max={200000}
-                  step={500}
-                  value={[publicScholarships]}
-                  onValueChange={([v]) => setPublicScholarships(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Scholarships/Grants (total $)"
-                  value={publicScholarships === 0 ? "" : publicScholarships}
-                  onChange={(e) =>
-                    setPublicScholarships(Number(e.target.value))
-                  }
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Years</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={1}
-                  max={8}
-                  step={1}
-                  value={[years]}
-                  onValueChange={([v]) => setYears(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={1}
-                  placeholder="Years"
-                  value={years === 0 ? "" : years}
-                  onChange={(e) => setYears(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4 className="mb-3">Private College</h4>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1">
-              <Label className="block mb-1">Tuition ($/year)</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={100000}
-                  step={500}
-                  value={[privateTuition]}
-                  onValueChange={([v]) => setPrivateTuition(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Tuition ($/year)"
-                  value={privateTuition === 0 ? "" : privateTuition}
-                  onChange={(e) => setPrivateTuition(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Room & Board ($/year)</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={40000}
-                  step={500}
-                  value={[privateRoomBoard]}
-                  onValueChange={([v]) => setPrivateRoomBoard(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Room & Board ($/year)"
-                  value={privateRoomBoard === 0 ? "" : privateRoomBoard}
-                  onChange={(e) => setPrivateRoomBoard(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex-1">
-              <Label className="block mb-1">Fees ($/year)</Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={20000}
-                  step={100}
-                  value={[privateFees]}
-                  onValueChange={([v]) => setPrivateFees(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Fees ($/year)"
-                  value={privateFees === 0 ? "" : privateFees}
-                  onChange={(e) => setPrivateFees(Number(e.target.value))}
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-2 mb-2">
-            <div className="flex-1">
-              <Label className="block mb-1">
-                Scholarships/Grants (total $)
-              </Label>
-              <div className="flex gap-3">
-                {" "}
-                <Slider
-                  min={0}
-                  max={400000}
-                  step={500}
-                  value={[privateScholarships]}
-                  onValueChange={([v]) => setPrivateScholarships(v)}
-                  className="w-2/3"
-                />
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder="Scholarships/Grants (total $)"
-                  value={privateScholarships === 0 ? "" : privateScholarships}
-                  onChange={(e) =>
-                    setPrivateScholarships(Number(e.target.value))
-                  }
-                  className="w-1/3"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* No compare button */}
-      </form>
-
-      {/* Card-like results display */}
-      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mt-8">
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-blue-700 text-lg">
-            Public College
-          </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Net Cost:</span>{" "}
-              <strong className="text-blue-900">
-                $
-                {(() => {
-                  const pub = calcTotalCost({
-                    tuition: publicTuition,
-                    roomBoard: publicRoomBoard,
-                    fees: publicFees,
-                    years,
-                    scholarships: publicScholarships,
-                  });
-                  return pub.net.toLocaleString();
-                })()}
-              </strong>
-            </li>
-          </ul>
-        </div>
-        <div className="bg-white shadow p-5 border border-gray-300 rounded-lg">
-          <h3 className="flex items-center gap-2 mb-2 font-semibold text-green-700 text-lg">
-            Private College
-          </h3>
-          <ul>
-            <li>
-              <span className="text-gray-700">Net Cost:</span>{" "}
-              <strong className="text-green-900">
-                $
-                {(() => {
-                  const priv = calcTotalCost({
-                    tuition: privateTuition,
-                    roomBoard: privateRoomBoard,
-                    fees: privateFees,
-                    years,
-                    scholarships: privateScholarships,
-                  });
-                  return priv.net.toLocaleString();
-                })()}
-              </strong>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* Recommendation */}
-      <div className="mt-6">
-        <div className="bg-blue-50 p-4 border border-blue-200 rounded text-blue-900">
-          <strong>Recommendation:</strong>
-          <div className="mt-1">
-            {result && result.split("\n").slice(-1).join("")}
-          </div>
-        </div>
-      </div>
-      <section className="mt-8">
-        <h2>Disclaimer</h2>
-        <p>
-          This tool provides estimates for informational purposes only. Actual
-          costs and aid may vary. Consult each college's financial aid office
-          for personalized information. This calculator is for informational
-          purposes only and does not constitute financial advice. Actual costs
-          and financial aid may vary. Please consult with a financial advisor or
-          the financial aid office of the colleges you are considering for
-          personalized information.
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
+      {/* Header Section */}
+      <div className="mb-12 text-center">
+        <h1 className="bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4 font-bold text-3xl text-transparent md:text-5xl">
+          Public vs Private College Cost Comparison
+        </h1>
+        <p className="mx-auto max-w-3xl leading-relaxed text-lg md:text-xl">
+          Compare the estimated total cost of attending public versus private
+          colleges, including tuition, room & board, fees, and financial aid.
         </p>
-      </section>
+      </div>
+
+      {/* Information Tables */}
+      <div className="gap-8 grid mb-12">
+        {/* Typical College Costs */}
+        <div className="shadow-sm p-6 border rounded-lg">
+          <h2 className="mb-4 font-semibold text-2xl">
+            Typical College Costs (US, 2024)
+          </h2>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold">Type</TableHead>
+                  <TableHead className="font-semibold">
+                    Tuition & Fees (per year)
+                  </TableHead>
+                  <TableHead className="font-semibold">
+                    Room & Board (per year)
+                  </TableHead>
+                  <TableHead className="font-semibold">Notes</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Public (in-state)
+                  </TableCell>
+                  <TableCell>$10,000 - $13,000</TableCell>
+                  <TableCell>$11,000 - $14,000</TableCell>
+                  <TableCell>Lower for in-state residents</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Private</TableCell>
+                  <TableCell>$35,000 - $60,000</TableCell>
+                  <TableCell>$12,000 - $16,000</TableCell>
+                  <TableCell>Higher sticker price, more aid possible</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+
+        {/* Pros and Cons */}
+        <div className="shadow-sm p-6 border rounded-lg">
+          <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold">Type</TableHead>
+                  <TableHead className="font-semibold">Pros</TableHead>
+                  <TableHead className="font-semibold">Cons</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Public College</TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Lower cost</li>
+                      <li>Large alumni network</li>
+                      <li>More in-state options</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Larger class sizes</li>
+                      <li>Less personalized attention</li>
+                      <li>Limited out-of-state aid</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Private College</TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Smaller class sizes</li>
+                      <li>More aid for some students</li>
+                      <li>Prestige/networking</li>
+                    </ul>
+                  </TableCell>
+                  <TableCell>
+                    <ul className="space-y-1">
+                      <li>Higher sticker price</li>
+                      <li>May require more loans</li>
+                      <li>Less in-state tuition benefit</li>
+                    </ul>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      </div>
+
+      {/* Calculator Form */}
+      <div className="shadow-sm mb-8 p-6 border rounded-lg">
+        <h2 className="mb-6 font-semibold text-2xl">College Cost Calculator</h2>
+
+        <form
+          aria-label="College cost comparison form"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <div className="gap-8 grid">
+            {/* Public College Section */}
+            <div className="p-6 border rounded-lg">
+              <h3 className="mb-4 font-semibold text-lg">
+                Public College Costs
+              </h3>
+              <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Tuition: ${publicTuition.toLocaleString()}/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={60000}
+                      step={500}
+                      value={[publicTuition]}
+                      onValueChange={([v]) => setPublicTuition(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={publicTuition}
+                      onChange={(e) => setPublicTuition(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Room & Board: ${publicRoomBoard.toLocaleString()}/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={30000}
+                      step={500}
+                      value={[publicRoomBoard]}
+                      onValueChange={([v]) => setPublicRoomBoard(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={publicRoomBoard}
+                      onChange={(e) =>
+                        setPublicRoomBoard(Number(e.target.value))
+                      }
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Fees: ${publicFees.toLocaleString()}/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={10000}
+                      step={100}
+                      value={[publicFees]}
+                      onValueChange={([v]) => setPublicFees(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={publicFees}
+                      onChange={(e) => setPublicFees(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Scholarships/Grants: ${publicScholarships.toLocaleString()}{" "}
+                    total
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={200000}
+                      step={500}
+                      value={[publicScholarships]}
+                      onValueChange={([v]) => setPublicScholarships(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={publicScholarships}
+                      onChange={(e) =>
+                        setPublicScholarships(Number(e.target.value))
+                      }
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">Years: {years}</Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={1}
+                      max={8}
+                      step={1}
+                      value={[years]}
+                      onValueChange={([v]) => setYears(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={1}
+                      value={years}
+                      onChange={(e) => setYears(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Private College Section */}
+            <div className="bg-purple-50 p-6 border border-purple-200 rounded-lg">
+              <h3 className="mb-4 font-semibold text-lg">
+                Private College Costs
+              </h3>
+              <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
+                <div>
+                  <Label className="font-medium text-sm">
+                    Tuition: ${privateTuition.toLocaleString()}/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={100000}
+                      step={500}
+                      value={[privateTuition]}
+                      onValueChange={([v]) => setPrivateTuition(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={privateTuition}
+                      onChange={(e) =>
+                        setPrivateTuition(Number(e.target.value))
+                      }
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Room & Board: ${privateRoomBoard.toLocaleString()}/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={40000}
+                      step={500}
+                      value={[privateRoomBoard]}
+                      onValueChange={([v]) => setPrivateRoomBoard(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={privateRoomBoard}
+                      onChange={(e) =>
+                        setPrivateRoomBoard(Number(e.target.value))
+                      }
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Fees: ${privateFees.toLocaleString()}/year
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={20000}
+                      step={100}
+                      value={[privateFees]}
+                      onValueChange={([v]) => setPrivateFees(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={privateFees}
+                      onChange={(e) => setPrivateFees(Number(e.target.value))}
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label className="font-medium text-sm">
+                    Scholarships/Grants: ${privateScholarships.toLocaleString()}{" "}
+                    total
+                  </Label>
+                  <div className="flex gap-4 items-center mt-2">
+                    <Slider
+                      min={0}
+                      max={400000}
+                      step={500}
+                      value={[privateScholarships]}
+                      onValueChange={([v]) => setPrivateScholarships(v)}
+                      className="flex-1"
+                    />
+                    <Input
+                      type="number"
+                      min={0}
+                      value={privateScholarships}
+                      onChange={(e) =>
+                        setPrivateScholarships(Number(e.target.value))
+                      }
+                      className="w-24"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {/* Results Section */}
+      <div className="space-y-6">
+        {/* Winner Banner */}
+        {winner !== "tie" && (
+          <div className={`rounded-lg p-6 text-center border-2 `}>
+            <h2 className="mb-2 font-bold text-2xl">
+              🏆{" "}
+              {winner === "public"
+                ? "Public College Wins!"
+                : "Private College Wins!"}
+            </h2>
+            <p className="text-lg">
+              {winner === "public" ? "Public college" : "Private college"} is
+              more affordable by{" "}
+              <strong>
+                $
+                {savings.toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </strong>
+              over {years} years.
+            </p>
+          </div>
+        )}
+
+        {winner === "tie" && (
+          <div className="p-6 border-2 border-gray-300 rounded-lg text-center">
+            <h2 className="mb-2 font-bold text-2xl">🤝 It's a Tie!</h2>
+            <p className="text-lg">
+              Both options have similar net costs. Consider other factors like
+              academic programs, campus life, and career outcomes.
+            </p>
+          </div>
+        )}
+
+        {/* Results Comparison */}
+        <div className="gap-6 grid md:grid-cols-2">
+          <div
+            className={`rounded-lg border-2 p-6 ${
+              winner === "public" ? " " : " "
+            }`}
+          >
+            <div className="flex gap-3 items-center mb-4">
+              <div className="rounded-full h-3 w-3 0"></div>
+              <h3 className="font-semibold text-xl">Public College</h3>
+              {winner === "public" && <span className="font-bold">WINNER</span>}
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="">Net Cost ({years} years):</span>
+                <span className="font-bold text-lg">
+                  $
+                  {publicCost.net.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Gross Cost:</span>
+                <span className="font-bold">
+                  $
+                  {publicCost.gross.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Scholarships/Grants:</span>
+                <span className="font-bold">
+                  -$
+                  {publicScholarships.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Annual Net Cost:</span>
+                <span className="font-bold">
+                  $
+                  {(publicCost.net / years).toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                  /year
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className={`rounded-lg border-2 p-6 `}>
+            <div className="flex gap-3 items-center mb-4">
+              <div className="rounded-full h-3 w-3"></div>
+              <h3 className="font-semibold text-xl">Private College</h3>
+              {winner === "private" && (
+                <span className="font-bold">WINNER</span>
+              )}
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="">Net Cost ({years} years):</span>
+                <span className="font-bold text-lg">
+                  $
+                  {privateCost.net.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Gross Cost:</span>
+                <span className="font-bold">
+                  $
+                  {privateCost.gross.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Scholarships/Grants:</span>
+                <span className="font-bold">
+                  -$
+                  {privateScholarships.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="">Annual Net Cost:</span>
+                <span className="font-bold">
+                  $
+                  {(privateCost.net / years).toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                  /year
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Comparison Table */}
+        <div className="shadow-sm p-6 border rounded-lg">
+          <h3 className="mb-4 font-semibold text-xl">
+            Detailed Cost Breakdown
+          </h3>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold">
+                    Cost Component
+                  </TableHead>
+                  <TableHead className="font-semibold">
+                    Public College
+                  </TableHead>
+                  <TableHead className="font-semibold">
+                    Private College
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Tuition (per year)
+                  </TableCell>
+                  <TableCell className="">
+                    ${publicTuition.toLocaleString()}
+                  </TableCell>
+                  <TableCell className="">
+                    ${privateTuition.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Room & Board (per year)
+                  </TableCell>
+                  <TableCell className="">
+                    ${publicRoomBoard.toLocaleString()}
+                  </TableCell>
+                  <TableCell className="">
+                    ${privateRoomBoard.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Fees (per year)</TableCell>
+                  <TableCell className="">
+                    ${publicFees.toLocaleString()}
+                  </TableCell>
+                  <TableCell className="">
+                    ${privateFees.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Total Annual Cost
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {(
+                      publicTuition +
+                      publicRoomBoard +
+                      publicFees
+                    ).toLocaleString()}
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    $
+                    {(
+                      privateTuition +
+                      privateRoomBoard +
+                      privateFees
+                    ).toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Scholarships/Grants (total)
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    ${publicScholarships.toLocaleString()}
+                  </TableCell>
+                  <TableCell className="font-semibold">
+                    ${privateScholarships.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow className="">
+                  <TableCell className="font-bold">
+                    Net Cost ({years} years)
+                  </TableCell>
+                  <TableCell className="font-bold text-lg">
+                    ${publicCost.net.toLocaleString()}
+                  </TableCell>
+                  <TableCell className="font-bold text-lg">
+                    ${privateCost.net.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+
+        {/* Important Considerations */}
+        <div className="p-6 border rounded-lg">
+          <h3 className="flex gap-2 items-center mb-3 font-semibold text-lg">
+            ⚠️ Important Considerations Beyond Cost
+          </h3>
+          <div className="gap-4 grid md:grid-cols-2 text-sm">
+            <div>
+              <h4 className="mb-2 font-semibold">Academic Factors:</h4>
+              <ul className="space-y-1">
+                <li>Program rankings and quality</li>
+                <li>Faculty-to-student ratios</li>
+                <li>Research opportunities</li>
+                <li>Graduation and employment rates</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-2 font-semibold">Personal Factors:</h4>
+              <ul className="space-y-1">
+                <li>Campus culture and fit</li>
+                <li>Location and distance from home</li>
+                <li>Alumni network strength</li>
+                <li>Career services and internship opportunities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="p-6 border rounded-lg">
+          <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+          <div className="space-y-2 text-sm">
+            <p>
+              <strong>Important:</strong> This calculator provides estimates for
+              educational purposes only. Actual costs, financial aid, and
+              scholarship amounts may vary significantly.
+            </p>
+            <p>
+              Consider additional costs like textbooks, transportation, personal
+              expenses, and potential cost increases over time. Financial aid
+              packages can change annually.
+            </p>
+            <p>
+              <strong>Professional Advice:</strong> Consult with college
+              financial aid offices and financial advisors for personalized
+              guidance on college financing decisions.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
