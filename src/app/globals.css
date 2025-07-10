@@ -190,7 +190,7 @@
     @apply text-primary font-semibold;
   }
 
-  ul{
-    @apply ml-6 list-disc;
+  ul {
+    @apply ml-6;
   }
 }
