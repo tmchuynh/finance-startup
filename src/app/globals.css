@@ -53,13 +53,13 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.28 0.0845 13.15);
+  --primary: #99582a;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.67 0.0407 64.46);
+  --secondary: #633c20;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.43 0.0299 33.68);
+  --accent: #097825;
   --accent-foreground: oklch(0.985 0 0);
   --disabled: oklch(0.59 0.0086 17.4);
   --disabled-foreground: oklch(0.39 0.0054 17.39);
@@ -89,15 +89,15 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.52 0.2082 22.54);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.76 0.0609 65.02);
+  --primary: #c1855d;
+  --primary-foreground: oklch(0% 0 0);
+  --secondary: #e5c2c0;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --disabled: oklch(0.27 0.006 17.52);
   --disabled-foreground: oklch(0.68 0.0094 17.39);
-  --accent: oklch(0.88 0.0234 34.3);
+  --accent: #29f036e0;
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -168,13 +168,13 @@
     @apply text-xl lg:text-2xl 2xl:text-4xl font-[Lora] font-bold leading-tight tracking-tight;
   }
   h3 {
-    @apply text-lg lg:text-2xl font-[Newsreader] font-bold leading-tight tracking-tight;
+    @apply text-lg lg:text-2xl font-[Newsreader] font-bold leading-tight mt-4 mb-1 tracking-tight;
   }
   h4 {
     @apply text-base md:text-lg xl:text-xl font-[SourceSerif4] font-bold leading-tight tracking-tight;
   }
   h5 {
-    @apply text-sm xl:text-lg font-bold leading-tight text-accent mb-4 font-[Lora] tracking-tight;
+    @apply text-sm xl:text-lg font-bold leading-tight text-secondary mb-4 font-[Lora] tracking-tight;
   }
   h6 {
     @apply text-xs 2xl:text-base font-bold leading-tight font-[Newsreader] tracking-tight;
@@ -183,10 +183,14 @@
     @apply text-base mt-1 leading-normal;
   }
   a {
-    @apply text-secondary underline-offset-4 transition-colors;
+    @apply hover:underline underline-offset-4 transition-colors;
   }
 
   strong {
-    @apply text-primary;
+    @apply text-primary font-semibold;
+  }
+
+  ul{
+    @apply ml-6 list-disc;
   }
 }
