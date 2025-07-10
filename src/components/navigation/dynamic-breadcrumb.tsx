@@ -6,7 +6,7 @@ import { capitalize } from "@/lib/utils/format";
 import { generateRandomString } from "@/lib/utils/sort";
 import { usePathname } from "next/navigation";
 import { JSX, useMemo } from "react";
-import { TbSlashes } from "react-icons/tb";
+import { RxSlash } from "react-icons/rx";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
@@ -83,7 +83,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
           key={`sep-${currentHref}`}
           className="ml-1 dark:text-fancy"
         >
-          <TbSlashes />
+          <RxSlash />
         </BreadcrumbSeparator>
       );
 
@@ -108,7 +108,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
 
         items.push(
           <BreadcrumbSeparator key="sep-2" className="ml-1 dark:text-fancy">
-            <TbSlashes />
+            <RxSlash />
           </BreadcrumbSeparator>
         );
 
@@ -119,7 +119,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
 
         items.push(
           <BreadcrumbSeparator key="sep-last" className="ml-1 dark:text-fancy">
-            <TbSlashes />
+            <RxSlash />
           </BreadcrumbSeparator>
         );
 
@@ -133,7 +133,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
         const lastSegment = capitalizedSegments[capitalizedSegments.length - 1];
         items.push(
           <BreadcrumbSeparator key="sep-1" className="ml-1 dark:text-fancy">
-            <TbSlashes />
+            <RxSlash />
           </BreadcrumbSeparator>
         );
 
@@ -162,7 +162,7 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
             key={`sep-${href}`}
             className="mx-4 dark:text-fancy"
           >
-            <TbSlashes />
+            <RxSlash />
           </BreadcrumbSeparator>
         );
 
@@ -188,9 +188,9 @@ export default function DynamicBreadcrumb(): JSX.Element | null {
     <div className="mx-auto pt-3 md:pt-5 lg:pt-9 w-10/12 md:w-11/12">
       <nav
         aria-label="Breadcrumb"
-        className="flex flex-row items-center gap-2 w-full text-xs lg:text-sm"
+        className="flex flex-row gap-2 items-center w-full text-xs lg:text-sm"
       >
-        <ul className="flex flex-row items-center gap-2 font-[Newsreader]">
+        <ul className="flex flex-row gap-2 items-center font-[Newsreader]">
           {breadcrumbItems}
         </ul>
       </nav>
