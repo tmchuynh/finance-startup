@@ -60,6 +60,19 @@ export default function FreelanceVsFullTimeIncome() {
 
   const [result, setResult] = useState<string>("");
 
+  const freelance = calcFreelanceNet({
+    hourly: freelanceHourly,
+    hours: freelanceHours,
+    weeks: freelanceWeeks,
+    expenses: freelanceExpenses,
+    taxRate: freelanceTax,
+  });
+  const fulltime = calcFullTimeNet({
+    salary: fullTimeSalary,
+    benefits: fullTimeBenefits,
+    taxRate: fullTimeTax,
+  });
+
   useEffect(() => {
     if (
       freelanceHourly < 0 ||
@@ -74,18 +87,6 @@ export default function FreelanceVsFullTimeIncome() {
       setResult("Please enter valid, non-negative values for all fields.");
       return;
     }
-    const freelance = calcFreelanceNet({
-      hourly: freelanceHourly,
-      hours: freelanceHours,
-      weeks: freelanceWeeks,
-      expenses: freelanceExpenses,
-      taxRate: freelanceTax,
-    });
-    const fulltime = calcFullTimeNet({
-      salary: fullTimeSalary,
-      benefits: fullTimeBenefits,
-      taxRate: fullTimeTax,
-    });
 
     let recommendation = "";
     if (freelance.net > fulltime.net) {
@@ -119,11 +120,9 @@ ${recommendation}`
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Freelance vs Full-Time Income Calculator
-        </h1>
-        <h5 className="mb-6 text-xl">Compare Your Potential Net Income</h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <h1>Freelance vs Full-Time Income Calculator</h1>
+        <h5>Compare Your Potential Net Income</h5>
+        <p>
           Use this tool to estimate your net annual income as a freelancer
           versus a full-time employee. Enter your expected freelance rates,
           expenses, and tax rate, as well as your full-time salary, benefits,
@@ -134,9 +133,7 @@ ${recommendation}`
       </div>
       {/* Table: Typical Income and Benefits */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">
-          Typical Income & Benefits (2024)
-        </h2>
+        <h2>Typical Income & Benefits (2024)</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -147,26 +144,22 @@ ${recommendation}`
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">
-                Freelance Hourly Rate
-              </TableCell>
+              <TableCell>Freelance Hourly Rate</TableCell>
               <TableCell>$30 - $150/hr</TableCell>
               <TableCell>Varies by field and experience</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Full-Time Salary</TableCell>
+              <TableCell>Full-Time Salary</TableCell>
               <TableCell>$50,000 - $150,000</TableCell>
               <TableCell>Plus benefits</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Benefits Value</TableCell>
+              <TableCell>Benefits Value</TableCell>
               <TableCell>$5,000 - $20,000</TableCell>
               <TableCell>Health, retirement, PTO, etc.</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">
-                Self-Employment Tax Rate
-              </TableCell>
+              <TableCell>Self-Employment Tax Rate</TableCell>
               <TableCell>15% - 30%</TableCell>
               <TableCell>Includes Social Security/Medicare</TableCell>
             </TableRow>
@@ -175,9 +168,7 @@ ${recommendation}`
       </div>
       {/* Table: Pros and Cons */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">
-          Pros and Cons
-        </h2>
+        <h2>Pros and Cons</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -188,7 +179,7 @@ ${recommendation}`
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Freelance</TableCell>
+              <TableCell>Freelance</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Flexibility</li>
@@ -205,7 +196,7 @@ ${recommendation}`
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Full-Time</TableCell>
+              <TableCell>Full-Time</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Benefits</li>
@@ -225,13 +216,11 @@ ${recommendation}`
         </Table>
       </div>
       <div className="shadow-lg mb-8 p-8 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">
-          Calculator
-        </h2>
+        <h2>Calculator</h2>
 
         {/* Freelance Income Section */}
         <div className="mb-8 p-6 border rounded-lg">
-          <h3 className="mb-4 font-medium text-lg">Freelance Income</h3>
+          <h3>Freelance Income</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-3 mb-4">
             <div>
               <Label className="font-medium text-sm">
@@ -360,8 +349,8 @@ ${recommendation}`
         </div>
 
         {/* Full-Time Employment Section */}
-        <div className=" mb-6 p-6 border rounded-lg">
-          <h3 className="mb-4 font-medium text-lg">Full-Time Employment</h3>
+        <div className="mb-6 p-6 border rounded-lg">
+          <h3>Full-Time Employment</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
             <div>
               <Label className="font-medium text-sm">
@@ -439,62 +428,35 @@ ${recommendation}`
           </div>
         </div>
       </div>
-      <h2 className="mb-6 font-semibold text-2xl">Results</h2>
+      <h2>Results</h2>
       {/* Winner Banner */}
-      {(() => {
-        const freelance = calcFreelanceNet({
-          hourly: freelanceHourly,
-          hours: freelanceHours,
-          weeks: freelanceWeeks,
-          expenses: freelanceExpenses,
-          taxRate: freelanceTax,
-        });
-        const fulltime = calcFullTimeNet({
-          salary: fullTimeSalary,
-          benefits: fullTimeBenefits,
-          taxRate: fullTimeTax,
-        });
-
-        return (
-          <div
-            className={`p-4 rounded-lg mb-6 ${
-              freelance.net > fulltime.net ? " border " : " border "
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3
-                  className={`font-semibold ${
-                    freelance.net > fulltime.net ? "" : ""
-                  }`}
-                >
-                  {freelance.net > fulltime.net
-                    ? "Freelancing Pays More!"
-                    : "Full-Time Pays More!"}
-                </h3>
-                <p
-                  className={`text-sm ${
-                    freelance.net > fulltime.net ? "" : ""
-                  }`}
-                >
-                  {freelance.net > fulltime.net
-                    ? `$${(
-                        freelance.net - fulltime.net
-                      ).toLocaleString()} higher net income annually`
-                    : `$${(
-                        fulltime.net - freelance.net
-                      ).toLocaleString()} higher net income annually (including benefits)`}
-                </p>
-              </div>
-            </div>
+      <div
+        className={`p-4 rounded-lg mb-6 ${
+          freelance.net > fulltime.net ? " border " : " border "
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className={` ${freelance.net > fulltime.net ? "" : ""}`}>
+              {freelance.net > fulltime.net
+                ? "Freelancing Pays More!"
+                : "Full-Time Pays More!"}
+            </h3>
+            <p className={`text-sm ${freelance.net > fulltime.net ? "" : ""}`}>
+              {freelance.net > fulltime.net
+                ? `$${(
+                    freelance.net - fulltime.net
+                  ).toLocaleString()} higher net income annually`
+                : `$${(
+                    fulltime.net - freelance.net
+                  ).toLocaleString()} higher net income annually (including benefits)`}
+            </p>
           </div>
-        );
-      })()}
+        </div>
+      </div>
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            💼 Freelance
-          </h3>
+          <h3 className="flex gap-2 items-center">💼 Freelance</h3>
           <div className="space-y-3">
             {(() => {
               const freelance = calcFreelanceNet({
@@ -549,9 +511,7 @@ ${recommendation}`
         </div>
 
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            🏢 Full-Time
-          </h3>
+          <h3 className="flex gap-2 items-center">🏢 Full-Time</h3>
           <div className="space-y-3">
             {(() => {
               const fulltime = calcFullTimeNet({
@@ -599,9 +559,7 @@ ${recommendation}`
       </div>
       ;{/* Detailed Comparison Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h3 className="p-6 pb-4 font-semibold text-lg">
-          Detailed Comparison
-        </h3>
+        <h3>Detailed Comparison</h3>
         <Table>
           <TableHeader>
             <TableRow>
@@ -634,7 +592,7 @@ ${recommendation}`
               return (
                 <>
                   <TableRow>
-                    <TableCell className="font-medium">Gross Income</TableCell>
+                    <TableCell>Gross Income</TableCell>
                     <TableCell>${freelanceGross.toLocaleString()}</TableCell>
                     <TableCell>
                       ${(fullTimeSalary + fullTimeBenefits).toLocaleString()}
@@ -654,7 +612,7 @@ ${recommendation}`
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">Tax Rate</TableCell>
+                    <TableCell>Tax Rate</TableCell>
                     <TableCell>{freelanceTax}%</TableCell>
                     <TableCell>{fullTimeTax}%</TableCell>
                     <TableCell>
@@ -664,9 +622,7 @@ ${recommendation}`
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">
-                      Work Hours/Year
-                    </TableCell>
+                    <TableCell>Work Hours/Year</TableCell>
                     <TableCell>
                       {freelanceHours * freelanceWeeks} hours
                     </TableCell>
@@ -682,13 +638,11 @@ ${recommendation}`
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">
-                      Effective Hourly Rate
-                    </TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell>Effective Hourly Rate</TableCell>
+                    <TableCell className="">
                       ${freelanceHourlyEquivalent.toFixed(2)}/hr
                     </TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell className="">
                       ${fulltimeHourlyEquivalent.toFixed(2)}/hr
                     </TableCell>
                     <TableCell>
@@ -702,9 +656,7 @@ ${recommendation}`
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">
-                      Net Annual Income
-                    </TableCell>
+                    <TableCell>Net Annual Income</TableCell>
                     <TableCell className="font-bold text-lg">
                       ${freelance.net.toLocaleString()}
                     </TableCell>
@@ -727,18 +679,16 @@ ${recommendation}`
           </TableBody>
         </Table>
       </div>
-      {/* Recommendation Banner */}
+      ;{/* Recommendation Banner */}
       {result && (
         <div className="mb-8 p-6 border rounded-lg">
-          <h3 className="mb-3 font-semibold text-lg">💡 Recommendation</h3>
+          <h3>💡 Recommendation</h3>
           <div className="">{result.split("\n").slice(-1).join("")}</div>
         </div>
       )}
       {/* Important Considerations */}
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>Freelance income can be highly variable and unpredictable</li>
           <li>

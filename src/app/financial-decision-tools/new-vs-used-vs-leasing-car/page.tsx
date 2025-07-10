@@ -101,9 +101,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl">
-          New vs Used vs Leasing Car Calculator
-        </h1>
+        <h1>New vs Used vs Leasing Car Calculator</h1>
         <p className="mb-6 text-xl">
           Make informed decisions about your car purchase or lease
         </p>
@@ -139,9 +137,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
       {/* Car Costs Information Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">
-          Typical Car Costs (US, 2024)
-        </h2>
+        <h2>Typical Car Costs (US, 2024)</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -152,17 +148,17 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">New Car</TableCell>
+              <TableCell>New Car</TableCell>
               <TableCell>$8,000 - $12,000</TableCell>
               <TableCell>Higher depreciation, higher insurance</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Used Car</TableCell>
+              <TableCell>Used Car</TableCell>
               <TableCell>$5,000 - $8,000</TableCell>
               <TableCell>Lower depreciation, lower insurance</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Leasing</TableCell>
+              <TableCell>Leasing</TableCell>
               <TableCell>$5,000 - $10,000</TableCell>
               <TableCell>
                 No equity, mileage limits, new car every few years
@@ -174,7 +170,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
       {/* Pros and Cons Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">Pros and Cons</h2>
+        <h2>Pros and Cons</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -185,7 +181,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">New Car</TableCell>
+              <TableCell>New Car</TableCell>
               <TableCell>
                 <ul className="space-y-1">
                   <li>Latest features</li>
@@ -202,7 +198,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Used Car</TableCell>
+              <TableCell>Used Car</TableCell>
               <TableCell>
                 <ul className="space-y-1">
                   <li>Lower cost</li>
@@ -219,7 +215,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Leasing</TableCell>
+              <TableCell>Leasing</TableCell>
               <TableCell>
                 <ul className="space-y-1">
                   <li>Lower monthly payment</li>
@@ -241,16 +237,12 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
       {/* Calculator Form */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">
-          Car Comparison Calculator
-        </h2>
+        <h2>Car Comparison Calculator</h2>
 
         <form onSubmit={(e) => e.preventDefault()}>
           {/* Time Frame Selection */}
           <div className="mb-8 p-6 border rounded-lg">
-            <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
-              ⏱️ Comparison Period
-            </h3>
+            <h3 className="flex gap-2 items-center">⏱️ Comparison Period</h3>
             <div>
               <Label className="font-medium text-sm">
                 Years to Compare: {years} years
@@ -273,9 +265,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
           <div className="gap-8 grid grid-cols-1 lg:grid-cols-3">
             {/* New Car Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
-                🚗 New Car
-              </h3>
+              <h3 className="flex gap-2 items-center">🚗 New Car</h3>
               <div className="space-y-6">
                 <div>
                   <Label className="font-medium text-sm">
@@ -411,9 +401,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
             {/* Used Car Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
-                🚙 Used Car
-              </h3>
+              <h3 className="flex gap-2 items-center">🚙 Used Car</h3>
               <div className="space-y-6">
                 <div>
                   <Label className="font-medium text-sm">
@@ -549,7 +537,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
             {/* Leasing Section */}
             <div className="bg-orange-50 p-6 border border-orange-200 rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-orange-700 text-xl">
+              <h3 className="flex gap-2 items-center mb-6 text-orange-700 text-xl">
                 🔄 Leasing
               </h3>
               <div className="space-y-6">
@@ -654,9 +642,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
       </div>
       {/* Results Section */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">
-          Results over {years} years
-        </h2>
+        <h2>Results over {years} years</h2>
 
         {/* Winner Banner */}
         {(() => {
@@ -685,7 +671,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h3
-                    className={`font-semibold ${
+                    className={` ${
                       winner.color === "blue"
                         ? ""
                         : winner.color === "green"
@@ -717,9 +703,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
         <div className="gap-6 grid grid-cols-1 md:grid-cols-3 mb-8">
           {/* New Car Card */}
           <div className="shadow-sm p-6 border-2 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-              🚗 New Car
-            </h3>
+            <h3 className="flex gap-2 items-center">🚗 New Car</h3>
             <div className="space-y-3">
               {(() => {
                 const loanMonths = Math.min(years * 12, newLoanTerm);
@@ -785,9 +769,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
           {/* Used Car Card */}
           <div className="shadow-sm p-6 border-2 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-              🚙 Used Car
-            </h3>
+            <h3 className="flex gap-2 items-center">🚙 Used Car</h3>
             <div className="space-y-3">
               {(() => {
                 const loanMonths = Math.min(years * 12, usedLoanTerm);
@@ -854,7 +836,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
           {/* Leasing Card */}
           <div className="shadow-sm p-6 border-2 border-orange-200 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-orange-700 text-xl">
+            <h3 className="flex gap-2 items-center mb-4 text-orange-700 text-xl">
               🔄 Leasing
             </h3>
             <div className="space-y-3">
@@ -922,9 +904,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
         {/* Detailed Comparison Table */}
         <div className="shadow mb-8 border rounded-lg overflow-hidden">
-          <h3 className="p-6 pb-4 font-semibold text-lg">
-            Detailed Cost Comparison
-          </h3>
+          <h3>Detailed Cost Comparison</h3>
           <Table>
             <TableHeader>
               <TableRow>
@@ -946,17 +926,13 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
                 return (
                   <>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Average Monthly Cost
-                      </TableCell>
+                      <TableCell>Average Monthly Cost</TableCell>
                       <TableCell>${newMonthly.toLocaleString()}</TableCell>
                       <TableCell>${usedMonthly.toLocaleString()}</TableCell>
                       <TableCell>${leaseMonthlyAvg.toLocaleString()}</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Down Payment
-                      </TableCell>
+                      <TableCell>Down Payment</TableCell>
                       <TableCell>${newDown.toLocaleString()}</TableCell>
                       <TableCell>${usedDown.toLocaleString()}</TableCell>
                       <TableCell>
@@ -964,31 +940,25 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Vehicle Price
-                      </TableCell>
+                      <TableCell>Vehicle Price</TableCell>
                       <TableCell>${newPrice.toLocaleString()}</TableCell>
                       <TableCell>${usedPrice.toLocaleString()}</TableCell>
                       <TableCell>N/A (lease)</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">Loan Rate</TableCell>
+                      <TableCell>Loan Rate</TableCell>
                       <TableCell>{newLoanRate}%</TableCell>
                       <TableCell>{usedLoanRate}%</TableCell>
                       <TableCell>N/A</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Depreciation Rate
-                      </TableCell>
+                      <TableCell>Depreciation Rate</TableCell>
                       <TableCell>{newDepreciation}% per year</TableCell>
                       <TableCell>{usedDepreciation}% per year</TableCell>
                       <TableCell>N/A (not owned)</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Total Cost ({years} years)
-                      </TableCell>
+                      <TableCell>Total Cost ({years} years)</TableCell>
                       <TableCell className="font-bold text-lg">
                         ${newTotal.toLocaleString()}
                       </TableCell>
@@ -1009,9 +979,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
       {/* Important Considerations */}
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>
             <strong>Resale Value:</strong> This calculator doesn't account for
@@ -1046,7 +1014,7 @@ const NewVsUsedVsLeasingCar: React.FC = () => {
 
       {/* Disclaimer */}
       <div className="p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+        <h3>📋 Disclaimer</h3>
         <p className="text-sm">
           <strong>Estimate Only:</strong> This calculator provides cost
           estimates and does not account for taxes, fees, registration costs,

@@ -53,13 +53,9 @@ const CreditCardVsPersonalLoan: React.FC = () => {
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Credit Card vs Personal Loan Calculator
-        </h1>
-        <h5 className="mb-6 text-xl">
-          Make informed decisions about your debt repayment strategy
-        </h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <h1>Credit Card vs Personal Loan Calculator</h1>
+        <h5>Make informed decisions about your debt repayment strategy</h5>
+        <p>
           This calculator helps you compare the total cost and time to pay off
           your credit card debt using a personal loan vs. continuing to pay the
           credit card minimum. Please fill out the form below to see the
@@ -69,7 +65,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
 
       {/* Table: Typical Terms */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">Typical Terms</h2>
+        <h2>Typical Terms</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -81,13 +77,13 @@ const CreditCardVsPersonalLoan: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Credit Card</TableCell>
+              <TableCell>Credit Card</TableCell>
               <TableCell>16% - 29%</TableCell>
               <TableCell>Open-ended</TableCell>
               <TableCell>Minimum payment required monthly</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Personal Loan</TableCell>
+              <TableCell>Personal Loan</TableCell>
               <TableCell>6% - 20%</TableCell>
               <TableCell>12 - 84 months</TableCell>
               <TableCell>Fixed payments, fixed term</TableCell>
@@ -98,7 +94,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
 
       {/* Table: Pros and Cons */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+        <h2>Pros and Cons</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -109,7 +105,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Credit Card</TableCell>
+              <TableCell>Credit Card</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Flexible payments</li>
@@ -126,7 +122,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Personal Loan</TableCell>
+              <TableCell>Personal Loan</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Lower interest rate possible</li>
@@ -147,11 +143,11 @@ const CreditCardVsPersonalLoan: React.FC = () => {
       </div>
 
       <div className="shadow-lg mb-8 p-8 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Calculator</h2>
+        <h2>Calculator</h2>
 
         {/* Debt Information */}
         <div className="mb-8">
-          <h3 className="mb-4 font-medium text-lg">Debt Information</h3>
+          <h3>Debt Information</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
               <Label className="font-medium text-sm">
@@ -180,7 +176,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
 
         {/* Credit Card Information */}
         <div className="mb-8">
-          <h3 className="mb-4 font-medium text-lg">Credit Card Information</h3>
+          <h3>Credit Card Information</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
               <Label className="font-medium text-sm">
@@ -236,9 +232,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
 
         {/* Personal Loan Information */}
         <div className="mb-6">
-          <h3 className="mb-4 font-medium text-lg">
-            Personal Loan Information
-          </h3>
+          <h3>Personal Loan Information</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
               <Label className="font-medium text-sm">
@@ -289,7 +283,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
           </div>
         </div>
       </div>
-      <h2 className="mb-6 font-semibold text-2xl">Results</h2>
+      <h2>Results</h2>
 
       {/* Winner Banner */}
       {cc.totalPaid !== loan.totalPaid && (
@@ -300,11 +294,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h3
-                className={`font-semibold ${
-                  loan.totalPaid < cc.totalPaid ? "" : ""
-                }`}
-              >
+              <h3 className={` ${loan.totalPaid < cc.totalPaid ? "" : ""}`}>
                 {loan.totalPaid < cc.totalPaid
                   ? "Personal Loan is Better!"
                   : "Credit Card is Better!"}
@@ -331,9 +321,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
       {/* Comparison Cards */}
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            💳 Credit Card
-          </h3>
+          <h3 className="flex gap-2 items-center mb-4">💳 Credit Card</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="">Total Amount Paid:</span>
@@ -364,9 +352,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
         </div>
 
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            🏦 Personal Loan
-          </h3>
+          <h3 className="flex gap-2 items-center mb-4">🏦 Personal Loan</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="">Total Amount Paid:</span>
@@ -399,7 +385,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
 
       {/* Detailed Comparison Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h3 className="p-6 pb-4 font-semibold text-lg">Detailed Comparison</h3>
+        <h3>Detailed Comparison</h3>
         <Table>
           <TableHeader>
             <TableRow>
@@ -411,19 +397,19 @@ const CreditCardVsPersonalLoan: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Initial Debt</TableCell>
+              <TableCell>Initial Debt</TableCell>
               <TableCell>${debt.toLocaleString()}</TableCell>
               <TableCell>${debt.toLocaleString()}</TableCell>
               <TableCell>-</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Interest Rate</TableCell>
+              <TableCell>Interest Rate</TableCell>
               <TableCell>{ccRate}% APR</TableCell>
               <TableCell>{loanRate}% APR</TableCell>
               <TableCell>{(ccRate - loanRate).toFixed(1)}% higher</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Monthly Payment</TableCell>
+              <TableCell>Monthly Payment</TableCell>
               <TableCell>
                 ~${Math.round((debt * minPaymentPct) / 100)} (initial)
               </TableCell>
@@ -433,27 +419,23 @@ const CreditCardVsPersonalLoan: React.FC = () => {
               <TableCell>-</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Payoff Time</TableCell>
-              <TableCell className="font-semibold">
-                {cc.months} months
-              </TableCell>
-              <TableCell className="font-semibold">
-                {loan.months} months
-              </TableCell>
+              <TableCell>Payoff Time</TableCell>
+              <TableCell className="">{cc.months} months</TableCell>
+              <TableCell className="">{loan.months} months</TableCell>
               <TableCell>
                 {Math.abs(cc.months - loan.months)} months{" "}
                 {cc.months > loan.months ? "longer" : "shorter"}
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Total Interest</TableCell>
-              <TableCell className="font-semibold">
+              <TableCell>Total Interest</TableCell>
+              <TableCell className="">
                 $
                 {(cc.totalPaid - debt).toLocaleString(undefined, {
                   maximumFractionDigits: 0,
                 })}
               </TableCell>
-              <TableCell className="font-semibold">
+              <TableCell className="">
                 $
                 {(loan.totalPaid - debt).toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -469,7 +451,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Total Cost</TableCell>
+              <TableCell>Total Cost</TableCell>
               <TableCell className="font-bold text-lg">
                 $
                 {cc.totalPaid.toLocaleString(undefined, {
@@ -499,9 +481,7 @@ const CreditCardVsPersonalLoan: React.FC = () => {
 
       {/* Important Considerations */}
       <div className="p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>
             Personal loans typically require good credit for the best rates

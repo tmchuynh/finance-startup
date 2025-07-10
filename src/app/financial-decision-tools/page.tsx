@@ -103,13 +103,9 @@ export default function FinancialDecisionToolsPage() {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-3xl md:text-5xl">
-          Financial Decision Tools
-        </h1>
-        <h5 className="mb-6 font-semibold text-xl md:text-2xl">
-          Empowering Your Financial Journey
-        </h5>
-        <p className="mx-auto max-w-4xl leading-relaxed text-lg">
+        <h1>Financial Decision Tools</h1>
+        <h5 className="">Empowering Your Financial Journey</h5>
+        <p>
           Welcome to our Financial Decision Tools! Here, you will find a
           comprehensive collection of resources and tools designed to help you
           make informed financial decisions. Whether you're looking to budget,
@@ -133,10 +129,8 @@ export default function FinancialDecisionToolsPage() {
       {/* Call to Action */}
       <div className="mt-16 text-center">
         <div className="p-8 border bounded-lg">
-          <h3 className="mb-4 font-bold text-2xl">
-            Ready to Make Informed Financial Decisions?
-          </h3>
-          <p className="mb-6 mx-auto max-w-2xl">
+          <h3>Ready to Make Informed Financial Decisions?</h3>
+          <p>
             Our tools are designed to provide you with accurate and reliable
             information to help you navigate complex financial decisions with
             confidence.

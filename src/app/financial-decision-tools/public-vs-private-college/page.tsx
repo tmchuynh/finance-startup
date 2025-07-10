@@ -133,9 +133,7 @@ export default function PublicVsPrivateCollege() {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-12 text-center">
-        <h1 className="bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4 font-bold text-3xl text-transparent md:text-5xl">
-          Public vs Private College Cost Comparison
-        </h1>
+        <h1>Public vs Private College Cost Comparison</h1>
         <p className="mx-auto max-w-3xl leading-relaxed text-lg md:text-xl">
           Compare the estimated total cost of attending public versus private
           colleges, including tuition, room & board, fees, and financial aid.
@@ -146,34 +144,26 @@ export default function PublicVsPrivateCollege() {
       <div className="gap-8 grid mb-12">
         {/* Typical College Costs */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h2 className="mb-4 font-semibold text-2xl">
-            Typical College Costs (US, 2024)
-          </h2>
+          <h2>Typical College Costs (US, 2024)</h2>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">Type</TableHead>
-                  <TableHead className="font-semibold">
-                    Tuition & Fees (per year)
-                  </TableHead>
-                  <TableHead className="font-semibold">
-                    Room & Board (per year)
-                  </TableHead>
-                  <TableHead className="font-semibold">Notes</TableHead>
+                  <TableHead className="">Type</TableHead>
+                  <TableHead className="">Tuition & Fees (per year)</TableHead>
+                  <TableHead className="">Room & Board (per year)</TableHead>
+                  <TableHead className="">Notes</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Public (in-state)
-                  </TableCell>
+                  <TableCell>Public (in-state)</TableCell>
                   <TableCell>$10,000 - $13,000</TableCell>
                   <TableCell>$11,000 - $14,000</TableCell>
                   <TableCell>Lower for in-state residents</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Private</TableCell>
+                  <TableCell>Private</TableCell>
                   <TableCell>$35,000 - $60,000</TableCell>
                   <TableCell>$12,000 - $16,000</TableCell>
                   <TableCell>Higher sticker price, more aid possible</TableCell>
@@ -185,19 +175,19 @@ export default function PublicVsPrivateCollege() {
 
         {/* Pros and Cons */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+          <h2>Pros and Cons</h2>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">Type</TableHead>
-                  <TableHead className="font-semibold">Pros</TableHead>
-                  <TableHead className="font-semibold">Cons</TableHead>
+                  <TableHead className="">Type</TableHead>
+                  <TableHead className="">Pros</TableHead>
+                  <TableHead className="">Cons</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">Public College</TableCell>
+                  <TableCell>Public College</TableCell>
                   <TableCell>
                     <ul className="space-y-1">
                       <li>Lower cost</li>
@@ -214,7 +204,7 @@ export default function PublicVsPrivateCollege() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Private College</TableCell>
+                  <TableCell>Private College</TableCell>
                   <TableCell>
                     <ul className="space-y-1">
                       <li>Smaller class sizes</li>
@@ -238,7 +228,7 @@ export default function PublicVsPrivateCollege() {
 
       {/* Calculator Form */}
       <div className="shadow-sm mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">College Cost Calculator</h2>
+        <h2>College Cost Calculator</h2>
 
         <form
           aria-label="College cost comparison form"
@@ -247,9 +237,7 @@ export default function PublicVsPrivateCollege() {
           <div className="gap-8 grid">
             {/* Public College Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">
-                Public College Costs
-              </h3>
+              <h3>Public College Costs</h3>
               <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
                 <div>
                   <Label className="font-medium text-sm">
@@ -369,9 +357,7 @@ export default function PublicVsPrivateCollege() {
 
             {/* Private College Section */}
             <div className="bg-purple-50 p-6 border border-purple-200 rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">
-                Private College Costs
-              </h3>
+              <h3>Private College Costs</h3>
               <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
                 <div>
                   <Label className="font-medium text-sm">
@@ -479,7 +465,7 @@ export default function PublicVsPrivateCollege() {
         {/* Winner Banner */}
         {winner !== "tie" && (
           <div className={`rounded-lg p-6 text-center border-2 `}>
-            <h2 className="mb-2 font-bold text-2xl">
+            <h2>
               🏆{" "}
               {winner === "public"
                 ? "Public College Wins!"
@@ -501,7 +487,7 @@ export default function PublicVsPrivateCollege() {
 
         {winner === "tie" && (
           <div className="p-6 border-2 border-gray-300 rounded-lg text-center">
-            <h2 className="mb-2 font-bold text-2xl">🤝 It's a Tie!</h2>
+            <h2>🤝 It's a Tie!</h2>
             <p className="text-lg">
               Both options have similar net costs. Consider other factors like
               academic programs, campus life, and career outcomes.
@@ -518,7 +504,7 @@ export default function PublicVsPrivateCollege() {
           >
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded-full h-3 w-3 0"></div>
-              <h3 className="font-semibold text-xl">Public College</h3>
+              <h3>Public College</h3>
               {winner === "public" && <span className="font-bold">WINNER</span>}
             </div>
 
@@ -566,7 +552,7 @@ export default function PublicVsPrivateCollege() {
           <div className={`rounded-lg border-2 p-6 `}>
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded-full h-3 w-3"></div>
-              <h3 className="font-semibold text-xl">Private College</h3>
+              <h3>Private College</h3>
               {winner === "private" && (
                 <span className="font-bold">WINNER</span>
               )}
@@ -616,29 +602,19 @@ export default function PublicVsPrivateCollege() {
 
         {/* Detailed Comparison Table */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h3 className="mb-4 font-semibold text-xl">
-            Detailed Cost Breakdown
-          </h3>
+          <h3 className="mb-4 text-xl">Detailed Cost Breakdown</h3>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">
-                    Cost Component
-                  </TableHead>
-                  <TableHead className="font-semibold">
-                    Public College
-                  </TableHead>
-                  <TableHead className="font-semibold">
-                    Private College
-                  </TableHead>
+                  <TableHead className="">Cost Component</TableHead>
+                  <TableHead className="">Public College</TableHead>
+                  <TableHead className="">Private College</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Tuition (per year)
-                  </TableCell>
+                  <TableCell>Tuition (per year)</TableCell>
                   <TableCell className="">
                     ${publicTuition.toLocaleString()}
                   </TableCell>
@@ -647,9 +623,7 @@ export default function PublicVsPrivateCollege() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Room & Board (per year)
-                  </TableCell>
+                  <TableCell>Room & Board (per year)</TableCell>
                   <TableCell className="">
                     ${publicRoomBoard.toLocaleString()}
                   </TableCell>
@@ -658,7 +632,7 @@ export default function PublicVsPrivateCollege() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Fees (per year)</TableCell>
+                  <TableCell>Fees (per year)</TableCell>
                   <TableCell className="">
                     ${publicFees.toLocaleString()}
                   </TableCell>
@@ -667,10 +641,8 @@ export default function PublicVsPrivateCollege() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Total Annual Cost
-                  </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Total Annual Cost</TableCell>
+                  <TableCell className="">
                     $
                     {(
                       publicTuition +
@@ -678,7 +650,7 @@ export default function PublicVsPrivateCollege() {
                       publicFees
                     ).toLocaleString()}
                   </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     $
                     {(
                       privateTuition +
@@ -688,13 +660,11 @@ export default function PublicVsPrivateCollege() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Scholarships/Grants (total)
-                  </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Scholarships/Grants (total)</TableCell>
+                  <TableCell className="">
                     ${publicScholarships.toLocaleString()}
                   </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     ${privateScholarships.toLocaleString()}
                   </TableCell>
                 </TableRow>
@@ -716,12 +686,12 @@ export default function PublicVsPrivateCollege() {
 
         {/* Important Considerations */}
         <div className="p-6 border rounded-lg">
-          <h3 className="flex gap-2 items-center mb-3 font-semibold text-lg">
+          <h3 className="flex gap-2 items-center">
             ⚠️ Important Considerations Beyond Cost
           </h3>
           <div className="gap-4 grid md:grid-cols-2 text-sm">
             <div>
-              <h4 className="mb-2 font-semibold">Academic Factors:</h4>
+              <h4 className="mb-2">Academic Factors:</h4>
               <ul className="space-y-1">
                 <li>Program rankings and quality</li>
                 <li>Faculty-to-student ratios</li>
@@ -730,7 +700,7 @@ export default function PublicVsPrivateCollege() {
               </ul>
             </div>
             <div>
-              <h4 className="mb-2 font-semibold">Personal Factors:</h4>
+              <h4 className="mb-2">Personal Factors:</h4>
               <ul className="space-y-1">
                 <li>Campus culture and fit</li>
                 <li>Location and distance from home</li>
@@ -743,7 +713,7 @@ export default function PublicVsPrivateCollege() {
 
         {/* Disclaimer */}
         <div className="p-6 border rounded-lg">
-          <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+          <h3>📋 Disclaimer</h3>
           <div className="space-y-2 text-sm">
             <p>
               <strong>Important:</strong> This calculator provides estimates for

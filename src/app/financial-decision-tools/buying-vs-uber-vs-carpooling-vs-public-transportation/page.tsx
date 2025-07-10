@@ -88,14 +88,12 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Transportation Cost Comparison
-        </h1>
-        <h5 className="mb-6 text-xl">
+        <h1>Transportation Cost Comparison</h1>
+        <h5>
           Compare the costs of car ownership, Uber/Lyft, carpooling, and public
           transportation.
         </h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <p>
           This calculator helps you compare the costs of owning a car versus
           using Uber/Lyft, carpooling, or public transportation. This tool is
           for informational purposes only and should not be considered financial
@@ -106,9 +104,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
       {/* Typical Transportation Costs */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">
-            Typical Transportation Costs (US, 2024)
-          </h2>
+          <h2>Typical Transportation Costs (US, 2024)</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -119,7 +115,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Car Ownership</TableCell>
+                <TableCell>Car Ownership</TableCell>
                 <TableCell>$8,000 - $12,000</TableCell>
                 <TableCell>
                   Includes loan, insurance, fuel, maintenance, registration,
@@ -127,17 +123,17 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Uber/Lyft</TableCell>
+                <TableCell>Uber/Lyft</TableCell>
                 <TableCell>$3,000 - $15,000</TableCell>
                 <TableCell>Highly variable, depends on usage</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Carpool</TableCell>
+                <TableCell>Carpool</TableCell>
                 <TableCell>$1,000 - $2,500</TableCell>
                 <TableCell>Depends on arrangement</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Public Transit</TableCell>
+                <TableCell>Public Transit</TableCell>
                 <TableCell>$800 - $1,500</TableCell>
                 <TableCell>Monthly pass in most US cities</TableCell>
               </TableRow>
@@ -149,7 +145,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
       {/* Pros and Cons */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">Pros and Cons</h2>
+          <h2>Pros and Cons</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -160,7 +156,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Car Ownership</TableCell>
+                <TableCell>Car Ownership</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>Flexibility</div>
@@ -177,7 +173,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Uber/Lyft</TableCell>
+                <TableCell>Uber/Lyft</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>No maintenance</div>
@@ -194,7 +190,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Carpool</TableCell>
+                <TableCell>Carpool</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>Lower cost</div>
@@ -211,7 +207,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Public Transit</TableCell>
+                <TableCell>Public Transit</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>Lowest cost</div>
@@ -235,13 +231,11 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
       {/* Calculator Form */}
       <div className="shadow-sm border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-6 font-semibold text-xl">
-            Transportation Cost Calculator
-          </h2>
+          <h2>Transportation Cost Calculator</h2>
 
           {/* Years to Compare */}
           <div className="mb-8">
-            <h3 className="mb-4 font-medium text-lg">Years to Compare</h3>
+            <h3>Years to Compare</h3>
             <div className="max-w-md">
               <Label htmlFor="years">Years</Label>
               <div className="flex gap-4 items-center mt-2">
@@ -268,7 +262,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
 
           {/* Car Ownership */}
           <div className="mb-8">
-            <h3 className="mb-4 font-medium text-lg">Car Ownership</h3>
+            <h3>Car Ownership</h3>
             <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
               <div>
                 <Label htmlFor="carPrice">Car Price ($)</Label>
@@ -466,7 +460,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
 
           {/* Uber/Lyft */}
           <div className="mb-8">
-            <h3 className="mb-4 font-medium text-lg">Uber/Lyft</h3>
+            <h3>Uber/Lyft</h3>
             <div className="gap-6 grid md:grid-cols-2">
               <div>
                 <Label htmlFor="uberCostPerTrip">
@@ -520,7 +514,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
           {/* Carpool and Public Transit */}
           <div className="gap-8 grid md:grid-cols-2">
             <div>
-              <h3 className="mb-4 font-medium text-lg">Carpool</h3>
+              <h3>Carpool</h3>
               <div>
                 <Label htmlFor="carpoolCostPerMonth">Cost per Month ($)</Label>
                 <div className="flex gap-4 items-center mt-2">
@@ -546,7 +540,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
               </div>
             </div>
             <div>
-              <h3 className="mb-4 font-medium text-lg">Public Transit</h3>
+              <h3>Public Transit</h3>
               <div>
                 <Label htmlFor="transitCostPerMonth">Cost per Month ($)</Label>
                 <div className="flex gap-4 items-center mt-2">
@@ -577,9 +571,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
       {/* Results Display */}
       <div className="shadow-sm mt-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-6 font-semibold text-xl">
-            Cost Comparison Results
-          </h2>
+          <h2>Cost Comparison Results</h2>
           <p className="mb-6 text-sm">
             Total costs over {years} year{years !== 1 ? "s" : ""}
           </p>
@@ -589,7 +581,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
             <div className="p-4 border rounded-lg">
               <div className="flex gap-2 items-center mb-2">
                 <div className="rounded-full h-3 w-3"></div>
-                <h3 className="font-semibold">Car Ownership</h3>
+                <h3 className="">Car Ownership</h3>
               </div>
               <p className="font-bold text-2xl">
                 $
@@ -605,8 +597,8 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
 
             <div className="p-4 border rounded-lg">
               <div className="flex gap-2 items-center mb-2">
-                <div className="bg-green-600 rounded-full h-3 w-3"></div>
-                <h3 className="font-semibold">Uber/Lyft</h3>
+                <div className="rounded-full h-3 w-3"></div>
+                <h3 className="">Uber/Lyft</h3>
               </div>
               <p className="font-bold text-2xl">
                 $
@@ -622,10 +614,10 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
 
             <div className="p-4 border rounded-lg">
               <div className="flex gap-2 items-center mb-2">
-                <div className="bg-yellow-600 rounded-full h-3 w-3"></div>
-                <h3 className="font-semibold text-yellow-900">Carpool</h3>
+                <div className="rounded-full h-3 w-3"></div>
+                <h3 className="">Carpool</h3>
               </div>
-              <p className="font-bold text-2xl text-yellow-900">
+              <p className="font-bold text-2xl">
                 $
                 {calcCarpoolTotalCost().toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -636,14 +628,12 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-purple-50 p-4 border border-purple-200 rounded-lg">
+            <div className="p-4 border rounded-lg">
               <div className="flex gap-2 items-center mb-2">
-                <div className="bg-purple-600 rounded-full h-3 w-3"></div>
-                <h3 className="font-semibold text-purple-900">
-                  Public Transit
-                </h3>
+                <div className="rounded-full h-3 w-3"></div>
+                <h3 className="">Public Transit</h3>
               </div>
-              <p className="font-bold text-2xl text-purple-900">
+              <p className="font-bold text-2xl">
                 $
                 {calcTransitTotalCost().toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -657,7 +647,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
 
           {/* Cost Breakdown */}
           <div className="mt-8">
-            <h3 className="mb-4 font-medium text-lg">Cost Breakdown</h3>
+            <h3>Cost Breakdown</h3>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -669,8 +659,8 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">Car Ownership</TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Car Ownership</TableCell>
+                  <TableCell className="">
                     $
                     {calcCarAnnualCost().toLocaleString(undefined, {
                       maximumFractionDigits: 0,
@@ -687,8 +677,8 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Uber/Lyft</TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Uber/Lyft</TableCell>
+                  <TableCell className="">
                     $
                     {calcUberTotalCost().toLocaleString(undefined, {
                       maximumFractionDigits: 0,
@@ -705,10 +695,8 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium text-yellow-900">
-                    Carpool
-                  </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Carpool</TableCell>
+                  <TableCell className="">
                     $
                     {calcCarpoolTotalCost().toLocaleString(undefined, {
                       maximumFractionDigits: 0,
@@ -720,10 +708,8 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium text-purple-900">
-                    Public Transit
-                  </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Public Transit</TableCell>
+                  <TableCell className="">
                     $
                     {calcTransitTotalCost().toLocaleString(undefined, {
                       maximumFractionDigits: 0,
@@ -776,7 +762,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                     ? " "
                     : winner.color === "yellow"
                     ? " "
-                    : "bg-purple-50 border-purple-200"
+                    : " "
                 }`}
               >
                 <div className="flex gap-2 items-center mb-2">
@@ -785,21 +771,21 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                       winner.color === "blue"
                         ? ""
                         : winner.color === "green"
-                        ? "bg-green-600"
+                        ? ""
                         : winner.color === "yellow"
-                        ? "bg-yellow-600"
-                        : "bg-purple-600"
+                        ? ""
+                        : ""
                     }`}
                   ></div>
                   <h3
-                    className={`text-lg font-semibold ${
+                    className={`text-lg  ${
                       winner.color === "blue"
                         ? ""
                         : winner.color === "green"
                         ? ""
                         : winner.color === "yellow"
-                        ? "text-yellow-900"
-                        : "text-purple-900"
+                        ? ""
+                        : ""
                     }`}
                   >
                     🏆 Most Cost-Effective: {winner.name}

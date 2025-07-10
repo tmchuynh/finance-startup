@@ -56,9 +56,7 @@ const HDHPvsTraditional: React.FC = () => {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl">
-          HDHP vs Traditional Health Plan Calculator
-        </h1>
+        <h1>HDHP vs Traditional Health Plan Calculator</h1>
         <p className="mb-6 text-xl">
           Make informed decisions about your health insurance options
         </p>
@@ -72,9 +70,7 @@ const HDHPvsTraditional: React.FC = () => {
 
       {/* Information Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">
-          Health Plan Comparison Overview
-        </h2>
+        <h2>Health Plan Comparison Overview</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -85,29 +81,27 @@ const HDHPvsTraditional: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Monthly Premium</TableCell>
+              <TableCell>Monthly Premium</TableCell>
               <TableCell>Generally lower</TableCell>
               <TableCell>Generally higher</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Deductible</TableCell>
+              <TableCell>Deductible</TableCell>
               <TableCell>High ($1,400+ individual, $2,800+ family)</TableCell>
               <TableCell>Lower ($500-$1,500 typical)</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">HSA Eligibility</TableCell>
+              <TableCell>HSA Eligibility</TableCell>
               <TableCell>✅ Yes - tax advantages</TableCell>
               <TableCell>❌ No</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Best For</TableCell>
+              <TableCell>Best For</TableCell>
               <TableCell>Healthy individuals, emergency coverage</TableCell>
               <TableCell>Regular medical care, predictable costs</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">
-                Out-of-Pocket Protection
-              </TableCell>
+              <TableCell>Out-of-Pocket Protection</TableCell>
               <TableCell>Higher maximum before full coverage</TableCell>
               <TableCell>Lower maximum before full coverage</TableCell>
             </TableRow>
@@ -116,15 +110,13 @@ const HDHPvsTraditional: React.FC = () => {
       </div>
       {/* Calculator Form */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">
-          Plan Comparison Calculator
-        </h2>
+        <h2>Plan Comparison Calculator</h2>
 
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
             {/* HDHP Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+              <h3 className="flex gap-2 items-center">
                 🏥 High Deductible Health Plan (HDHP)
               </h3>
               <div className="space-y-6">
@@ -204,7 +196,7 @@ const HDHPvsTraditional: React.FC = () => {
 
             {/* Traditional Plan Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+              <h3 className="flex gap-2 items-center">
                 🏢 Traditional Health Plan
               </h3>
               <div className="space-y-6">
@@ -287,7 +279,7 @@ const HDHPvsTraditional: React.FC = () => {
       </div>
       {/* Results Section */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Results</h2>
+        <h2>Results</h2>
 
         {/* Winner Banner */}
         {(() => {
@@ -303,7 +295,7 @@ const HDHPvsTraditional: React.FC = () => {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className={`font-semibold ${isHDHPBetter ? "" : ""}`}>
+                  <h3 className={` ${isHDHPBetter ? "" : ""}`}>
                     {isHDHPBetter
                       ? "HDHP is More Cost Effective!"
                       : "Traditional Plan is More Cost Effective!"}
@@ -321,9 +313,7 @@ const HDHPvsTraditional: React.FC = () => {
         {/* Comparison Cards */}
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
           <div className="shadow-sm p-6 border-2 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-              🏥 HDHP Net Cost
-            </h3>
+            <h3 className="flex gap-2 items-center">🏥 HDHP Net Cost</h3>
             <div className="space-y-3">
               {(() => {
                 const annualPremium = hdhpPremium * 12;
@@ -373,7 +363,7 @@ const HDHPvsTraditional: React.FC = () => {
           </div>
 
           <div className="shadow-sm p-6 border-2 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+            <h3 className="flex gap-2 items-center">
               🏢 Traditional Plan Cost
             </h3>
             <div className="space-y-3">
@@ -425,9 +415,7 @@ const HDHPvsTraditional: React.FC = () => {
 
         {/* Detailed Comparison Table */}
         <div className="shadow mb-8 border rounded-lg overflow-hidden">
-          <h3 className="p-6 pb-4 font-semibold text-lg">
-            Detailed Cost Breakdown
-          </h3>
+          <h3>Detailed Cost Breakdown</h3>
           <Table>
             <TableHeader>
               <TableRow>
@@ -461,9 +449,7 @@ const HDHPvsTraditional: React.FC = () => {
                 return (
                   <>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Annual Premium
-                      </TableCell>
+                      <TableCell>Annual Premium</TableCell>
                       <TableCell>
                         ${hdhpAnnualPremium.toLocaleString()}
                       </TableCell>
@@ -481,9 +467,7 @@ const HDHPvsTraditional: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Medical Expenses (after deductible)
-                      </TableCell>
+                      <TableCell>Medical Expenses (after deductible)</TableCell>
                       <TableCell>${hdhpMedical.toLocaleString()}</TableCell>
                       <TableCell>${tradMedical.toLocaleString()}</TableCell>
                       <TableCell>
@@ -497,9 +481,7 @@ const HDHPvsTraditional: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        HSA Tax Advantage
-                      </TableCell>
+                      <TableCell>HSA Tax Advantage</TableCell>
                       <TableCell>
                         -${hsaContribution.toLocaleString()}
                       </TableCell>
@@ -509,9 +491,7 @@ const HDHPvsTraditional: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Total Annual Cost
-                      </TableCell>
+                      <TableCell>Total Annual Cost</TableCell>
                       <TableCell className="font-bold text-lg">
                         ${hdhpTotal.toLocaleString()}
                       </TableCell>
@@ -538,9 +518,7 @@ const HDHPvsTraditional: React.FC = () => {
 
       {/* Important Considerations */}
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>
             <strong>HDHP Benefits:</strong> Lower premiums, HSA tax advantages,
@@ -575,7 +553,7 @@ const HDHPvsTraditional: React.FC = () => {
 
       {/* Disclaimer */}
       <div className="p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+        <h3>📋 Disclaimer</h3>
         <p className="text-sm">
           <strong>Note:</strong> This calculator provides estimates and assumes
           all medical expenses are subject to the deductible. It does not

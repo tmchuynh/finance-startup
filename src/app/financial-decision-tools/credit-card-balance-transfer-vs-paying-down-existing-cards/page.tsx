@@ -141,13 +141,9 @@ ${recommendation}`
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Credit Card Balance Transfer vs Paying Down Existing Card
-        </h1>
-        <h5 className="mb-6 text-xl">
-          Compare your options for paying off credit card debt
-        </h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <h1>Credit Card Balance Transfer vs Paying Down Existing Card</h1>
+        <h5>Compare your options for paying off credit card debt</h5>
+        <p>
           Use this tool to estimate whether transferring your credit card
           balance to a new card with a promotional rate could save you money
           compared to paying down your current card. This tool provides
@@ -158,9 +154,7 @@ ${recommendation}`
       {/* Typical Credit Card Terms */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">
-            Typical Credit Card Terms
-          </h2>
+          <h2>Typical Credit Card Terms</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -171,31 +165,27 @@ ${recommendation}`
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">
-                  Interest Rate (APR)
-                </TableCell>
+                <TableCell>Interest Rate (APR)</TableCell>
                 <TableCell>16% - 29%</TableCell>
                 <TableCell>Varies by credit score and card type</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Minimum Payment</TableCell>
+                <TableCell>Minimum Payment</TableCell>
                 <TableCell>1% - 3% of balance</TableCell>
                 <TableCell>Paying only minimum extends payoff time</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  Balance Transfer Fee
-                </TableCell>
+                <TableCell>Balance Transfer Fee</TableCell>
                 <TableCell>3% - 5%</TableCell>
                 <TableCell>Charged on amount transferred</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Promo Rate</TableCell>
+                <TableCell>Promo Rate</TableCell>
                 <TableCell>0% - 5%</TableCell>
                 <TableCell>Introductory, usually for 6-21 months</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Post-Promo Rate</TableCell>
+                <TableCell>Post-Promo Rate</TableCell>
                 <TableCell>16% - 29%</TableCell>
                 <TableCell>Reverts to standard APR after promo</TableCell>
               </TableRow>
@@ -207,7 +197,7 @@ ${recommendation}`
       {/* Pros and Cons */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">Pros and Cons</h2>
+          <h2>Pros and Cons</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -218,9 +208,7 @@ ${recommendation}`
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">
-                  Pay Down Existing Card
-                </TableCell>
+                <TableCell>Pay Down Existing Card</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>No new account needed</div>
@@ -236,7 +224,7 @@ ${recommendation}`
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Balance Transfer</TableCell>
+                <TableCell>Balance Transfer</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>Lower (or 0%) promo interest</div>
@@ -260,9 +248,7 @@ ${recommendation}`
       {/* Typical Balance Transfer Offers */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">
-            Typical Balance Transfer Offers (2024)
-          </h2>
+          <h2>Typical Balance Transfer Offers (2024)</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -273,22 +259,22 @@ ${recommendation}`
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Promo APR</TableCell>
+                <TableCell>Promo APR</TableCell>
                 <TableCell>0% - 5%</TableCell>
                 <TableCell>Most common is 0% for 12-21 months</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Promo Period</TableCell>
+                <TableCell>Promo Period</TableCell>
                 <TableCell>6 - 21 months</TableCell>
                 <TableCell>Longer periods are better for payoff</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Transfer Fee</TableCell>
+                <TableCell>Transfer Fee</TableCell>
                 <TableCell>3% - 5%</TableCell>
                 <TableCell>Added to balance at transfer</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Post-Promo APR</TableCell>
+                <TableCell>Post-Promo APR</TableCell>
                 <TableCell>16% - 29%</TableCell>
                 <TableCell>Applies to remaining balance after promo</TableCell>
               </TableRow>
@@ -300,13 +286,11 @@ ${recommendation}`
       {/* Calculator Form */}
       <div className="shadow-sm border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-6 font-semibold text-xl">Debt Payoff Calculator</h2>
+          <h2>Debt Payoff Calculator</h2>
 
           {/* Current Card Information */}
           <div className="mb-8">
-            <h3 className="mb-4 font-medium text-lg">
-              Current Card Information
-            </h3>
+            <h3>Current Card Information</h3>
             <div className="gap-6 grid md:grid-cols-3">
               <div>
                 <Label htmlFor="balance" className="font-medium">
@@ -389,7 +373,7 @@ ${recommendation}`
 
           {/* Balance Transfer Offer */}
           <div>
-            <h3 className="mb-4 font-medium text-lg">Balance Transfer Offer</h3>
+            <h3>Balance Transfer Offer</h3>
             <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-4">
               <div>
                 <Label htmlFor="promoRate" className="font-medium">
@@ -505,9 +489,7 @@ ${recommendation}`
       {/* Results Display */}
       <div className="shadow-sm mt-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-6 font-semibold text-xl">
-            Payoff Comparison Results
-          </h2>
+          <h2>Payoff Comparison Results</h2>
 
           {(() => {
             if (
@@ -554,9 +536,7 @@ ${recommendation}`
                   <div className="p-6 border rounded-lg">
                     <div className="flex gap-2 items-center mb-4">
                       <div className="rounded-full h-3 w-3"></div>
-                      <h3 className="font-semibold text-lg">
-                        Paying Down Current Card
-                      </h3>
+                      <h3>Paying Down Current Card</h3>
                     </div>
                     <div className="space-y-3">
                       <div>
@@ -567,7 +547,7 @@ ${recommendation}`
                       </div>
                       <div>
                         <p className="text-sm">Total interest paid</p>
-                        <p className="font-semibold text-xl">
+                        <p className="text-xl">
                           ${paydown.totalInterest.toLocaleString()}
                         </p>
                       </div>
@@ -583,9 +563,7 @@ ${recommendation}`
                   <div className="p-6 border rounded-lg">
                     <div className="flex gap-2 items-center mb-4">
                       <div className="bg-green-600 rounded-full h-3 w-3"></div>
-                      <h3 className="font-semibold text-lg">
-                        Balance Transfer
-                      </h3>
+                      <h3>Balance Transfer</h3>
                     </div>
                     <div className="space-y-3">
                       <div>
@@ -596,7 +574,7 @@ ${recommendation}`
                       </div>
                       <div>
                         <p className="text-sm">Total interest paid</p>
-                        <p className="font-semibold text-xl">
+                        <p className="text-xl">
                           ${transfer.totalInterest.toLocaleString()}
                         </p>
                       </div>
@@ -624,9 +602,7 @@ ${recommendation}`
 
                 {/* Detailed Comparison Table */}
                 <div className="mb-8">
-                  <h3 className="mb-4 font-medium text-lg">
-                    Detailed Comparison
-                  </h3>
+                  <h3>Detailed Comparison</h3>
                   <Table>
                     <TableHeader>
                       <TableRow>
@@ -640,15 +616,13 @@ ${recommendation}`
                     </TableHeader>
                     <TableBody>
                       <TableRow>
-                        <TableCell className="font-medium">
-                          Current Card
-                        </TableCell>
+                        <TableCell>Current Card</TableCell>
                         <TableCell>{paydown.months} months</TableCell>
                         <TableCell>
                           ${paydown.totalInterest.toLocaleString()}
                         </TableCell>
                         <TableCell>$0</TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="">
                           ${paydown.totalInterest.toLocaleString()}
                         </TableCell>
                         <TableCell>
@@ -656,9 +630,7 @@ ${recommendation}`
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-medium">
-                          Balance Transfer
-                        </TableCell>
+                        <TableCell>Balance Transfer</TableCell>
                         <TableCell>{transfer.months} months</TableCell>
                         <TableCell>
                           ${transfer.totalInterest.toLocaleString()}
@@ -666,7 +638,7 @@ ${recommendation}`
                         <TableCell>
                           ${transfer.totalFees.toLocaleString()}
                         </TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="">
                           ${transferTotalCost.toLocaleString()}
                         </TableCell>
                         <TableCell>
@@ -689,11 +661,7 @@ ${recommendation}`
                         isTransferBetter ? "bg-green-600" : ""
                       }`}
                     ></div>
-                    <h3
-                      className={`text-lg font-semibold ${
-                        isTransferBetter ? "" : ""
-                      }`}
-                    >
+                    <h3 className={`text-lg  ${isTransferBetter ? "" : ""}`}>
                       🏆 Recommended:{" "}
                       {isTransferBetter
                         ? "Balance Transfer"

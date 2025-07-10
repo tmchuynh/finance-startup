@@ -68,9 +68,7 @@ const RentVsBuy: React.FC = () => {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-12 text-center">
-        <h1 className="bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 mb-4 font-bold text-3xl text-transparent md:text-5xl">
-          Rent vs Buy Calculator
-        </h1>
+        <h1>Rent vs Buy Calculator</h1>
         <p className="mx-auto max-w-3xl leading-relaxed text-lg md:text-xl">
           Make informed decisions about your housing options by comparing the
           total cost of renting versus buying a home over your specified
@@ -80,62 +78,52 @@ const RentVsBuy: React.FC = () => {
 
       {/* Information Table */}
       <div className="shadow-sm mb-8 p-6 border rounded-lg">
-        <h2 className="mb-4 font-semibold text-2xl">
-          Typical Values for First-Time Homebuyers
-        </h2>
+        <h2>Typical Values for First-Time Homebuyers</h2>
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="font-semibold">Parameter</TableHead>
-                <TableHead className="font-semibold">Typical Range</TableHead>
-                <TableHead className="font-semibold">Notes</TableHead>
+                <TableHead className="">Parameter</TableHead>
+                <TableHead className="">Typical Range</TableHead>
+                <TableHead className="">Notes</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Mortgage Rate (%)</TableCell>
+                <TableCell>Mortgage Rate (%)</TableCell>
                 <TableCell>5% - 7%</TableCell>
                 <TableCell>
                   Varies by credit score, loan type, and market
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Down Payment (%)</TableCell>
+                <TableCell>Down Payment (%)</TableCell>
                 <TableCell>3% - 20%</TableCell>
                 <TableCell>
                   3-5% for FHA/VA/first-time buyer programs, 20% avoids PMI
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  Home Insurance (annual $)
-                </TableCell>
+                <TableCell>Home Insurance (annual $)</TableCell>
                 <TableCell>$800 - $2,000</TableCell>
                 <TableCell>
                   Depends on location, home value, and coverage
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  Maintenance (% of home price/year)
-                </TableCell>
+                <TableCell>Maintenance (% of home price/year)</TableCell>
                 <TableCell>1% - 2%</TableCell>
                 <TableCell>General rule of thumb</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  HOA Fees (monthly $)
-                </TableCell>
+                <TableCell>HOA Fees (monthly $)</TableCell>
                 <TableCell>$0 - $400</TableCell>
                 <TableCell>
                   Only for condos/townhomes or some neighborhoods
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  Property Tax Rate (%)
-                </TableCell>
+                <TableCell>Property Tax Rate (%)</TableCell>
                 <TableCell>0.7% - 2.5%</TableCell>
                 <TableCell>Varies widely by state/county</TableCell>
               </TableRow>
@@ -146,15 +134,13 @@ const RentVsBuy: React.FC = () => {
 
       {/* Calculator Form */}
       <div className="shadow-sm mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Housing Cost Calculator</h2>
+        <h2>Housing Cost Calculator</h2>
 
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="gap-8 grid">
             {/* Time Frame Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">
-                Comparison Timeframe
-              </h3>
+              <h3>Comparison Timeframe</h3>
               <div>
                 <Label className="font-medium text-sm">
                   Years to Compare: {years}
@@ -182,7 +168,7 @@ const RentVsBuy: React.FC = () => {
 
             {/* Renting Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">Renting Costs</h3>
+              <h3>Renting Costs</h3>
               <div className="gap-6 grid md:grid-cols-2">
                 <div>
                   <Label className="font-medium text-sm">
@@ -236,7 +222,7 @@ const RentVsBuy: React.FC = () => {
 
             {/* Buying Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">Home Buying Costs</h3>
+              <h3>Home Buying Costs</h3>
               <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
                 <div>
                   <Label className="font-medium text-sm">
@@ -419,9 +405,7 @@ const RentVsBuy: React.FC = () => {
             winner === "rent" ? "  " : " border-green-300 "
           }`}
         >
-          <h2 className="mb-2 font-bold text-2xl">
-            🏆 {winner === "rent" ? "Renting Wins!" : "Buying Wins!"}
-          </h2>
+          <h2>🏆 {winner === "rent" ? "Renting Wins!" : "Buying Wins!"}</h2>
           <p className="text-lg">
             {winner === "rent" ? "Renting" : "Buying"} saves you{" "}
             <strong>
@@ -440,7 +424,7 @@ const RentVsBuy: React.FC = () => {
           >
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded-full h-3 w-3 0"></div>
-              <h3 className="font-semibold text-xl">Renting</h3>
+              <h3>Renting</h3>
               {winner === "rent" && <span className="font-bold">WINNER</span>}
             </div>
 
@@ -481,7 +465,7 @@ const RentVsBuy: React.FC = () => {
           >
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded-full h-3 w-3 0"></div>
-              <h3 className="font-semibold text-xl">Buying</h3>
+              <h3>Buying</h3>
               {winner === "buy" && <span className="font-bold">WINNER</span>}
             </div>
 
@@ -523,23 +507,19 @@ const RentVsBuy: React.FC = () => {
 
         {/* Detailed Cost Breakdown */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h3 className="mb-4 font-semibold text-xl">
-            Detailed Cost Breakdown
-          </h3>
+          <h3 className="mb-4 text-xl">Detailed Cost Breakdown</h3>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">
-                    Cost Component
-                  </TableHead>
-                  <TableHead className="font-semibold">Renting</TableHead>
-                  <TableHead className="font-semibold">Buying</TableHead>
+                  <TableHead className="">Cost Component</TableHead>
+                  <TableHead className="">Renting</TableHead>
+                  <TableHead className="">Buying</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">Initial Payment</TableCell>
+                  <TableCell>Initial Payment</TableCell>
                   <TableCell className="">
                     ${rent.toLocaleString()} (First month)
                   </TableCell>
@@ -549,9 +529,7 @@ const RentVsBuy: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Monthly Housing Cost
-                  </TableCell>
+                  <TableCell>Monthly Housing Cost</TableCell>
                   <TableCell className="">
                     ${rent.toLocaleString()} (increasing {rentIncrease}%/year)
                   </TableCell>
@@ -580,9 +558,7 @@ const RentVsBuy: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Property Taxes ({years} years)
-                  </TableCell>
+                  <TableCell>Property Taxes ({years} years)</TableCell>
                   <TableCell className="">N/A</TableCell>
                   <TableCell className="">
                     $
@@ -593,18 +569,14 @@ const RentVsBuy: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Insurance ({years} years)
-                  </TableCell>
+                  <TableCell>Insurance ({years} years)</TableCell>
                   <TableCell className="">N/A</TableCell>
                   <TableCell className="">
                     ${(homeInsurance * years).toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Maintenance ({years} years)
-                  </TableCell>
+                  <TableCell>Maintenance ({years} years)</TableCell>
                   <TableCell className="">N/A</TableCell>
                   <TableCell className="">
                     $
@@ -615,9 +587,7 @@ const RentVsBuy: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    HOA Fees ({years} years)
-                  </TableCell>
+                  <TableCell>HOA Fees ({years} years)</TableCell>
                   <TableCell className="">N/A</TableCell>
                   <TableCell className="">
                     ${(hoa * 12 * years).toLocaleString()}
@@ -647,14 +617,12 @@ const RentVsBuy: React.FC = () => {
 
         {/* Important Considerations */}
         <div className="p-6 border rounded-lg">
-          <h3 className="flex gap-2 items-center mb-3 font-semibold text-lg">
+          <h3 className="flex gap-2 items-center">
             ⚠️ Important Considerations
           </h3>
           <div className="gap-4 grid md:grid-cols-2 text-sm">
             <div>
-              <h4 className="mb-2 font-semibold">
-                Not Included in This Analysis:
-              </h4>
+              <h4 className="mb-2">Not Included in This Analysis:</h4>
               <ul className="space-y-1">
                 <li>Home appreciation/depreciation</li>
                 <li>Investment returns on down payment</li>
@@ -665,9 +633,7 @@ const RentVsBuy: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h4 className="mb-2 font-semibold">
-                Additional Factors to Consider:
-              </h4>
+              <h4 className="mb-2">Additional Factors to Consider:</h4>
               <ul className="space-y-1">
                 <li>Flexibility to move</li>
                 <li>Building equity vs. no ownership</li>
@@ -682,7 +648,7 @@ const RentVsBuy: React.FC = () => {
 
         {/* Disclaimer */}
         <div className="p-6 border rounded-lg">
-          <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+          <h3>📋 Disclaimer</h3>
           <div className="space-y-2 text-sm">
             <p>
               <strong>Important:</strong> This calculator provides simplified

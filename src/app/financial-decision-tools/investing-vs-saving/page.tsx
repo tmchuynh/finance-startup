@@ -36,9 +36,7 @@ const InvestingVsSaving: React.FC = () => {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl">
-          Investing vs Saving Calculator
-        </h1>
+        <h1>Investing vs Saving Calculator</h1>
         <p className="mb-6 text-xl">
           Make informed decisions about your financial future
         </p>
@@ -51,9 +49,7 @@ const InvestingVsSaving: React.FC = () => {
 
       {/* Typical Returns Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">
-          Typical Returns and Rates (2024)
-        </h2>
+        <h2>Typical Returns and Rates (2024)</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -64,26 +60,22 @@ const InvestingVsSaving: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">
-                Stock Market (S&P 500)
-              </TableCell>
+              <TableCell>Stock Market (S&P 500)</TableCell>
               <TableCell>7% - 10%</TableCell>
               <TableCell>Long-term average, not guaranteed</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Savings Account</TableCell>
+              <TableCell>Savings Account</TableCell>
               <TableCell>0.5% - 5%</TableCell>
               <TableCell>High-yield savings at upper end</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">
-                CD (Certificate of Deposit)
-              </TableCell>
+              <TableCell>CD (Certificate of Deposit)</TableCell>
               <TableCell>2% - 5%</TableCell>
               <TableCell>Depends on term and bank</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Bonds</TableCell>
+              <TableCell>Bonds</TableCell>
               <TableCell>3% - 6%</TableCell>
               <TableCell>Varies by type and duration</TableCell>
             </TableRow>
@@ -93,7 +85,7 @@ const InvestingVsSaving: React.FC = () => {
 
       {/* Pros and Cons Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">Pros and Cons</h2>
+        <h2>Pros and Cons</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -104,7 +96,7 @@ const InvestingVsSaving: React.FC = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Investing</TableCell>
+              <TableCell>Investing</TableCell>
               <TableCell>
                 <ul className="space-y-1">
                   <li>Higher potential returns</li>
@@ -121,7 +113,7 @@ const InvestingVsSaving: React.FC = () => {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Saving</TableCell>
+              <TableCell>Saving</TableCell>
               <TableCell>
                 <ul className="space-y-1">
                   <li>Safe</li>
@@ -143,13 +135,13 @@ const InvestingVsSaving: React.FC = () => {
 
       {/* Calculator Form */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Investment Calculator</h2>
+        <h2>Investment Calculator</h2>
 
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
             {/* Investment Inputs */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+              <h3 className="flex gap-2 items-center">
                 📈 Investment Parameters
               </h3>
               <div className="space-y-6">
@@ -213,9 +205,7 @@ const InvestingVsSaving: React.FC = () => {
 
             {/* Savings Inputs */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
-                🏦 Savings Parameters
-              </h3>
+              <h3 className="flex gap-2 items-center">🏦 Savings Parameters</h3>
               <div className="space-y-6">
                 <div>
                   <Label className="font-medium text-sm">
@@ -279,9 +269,7 @@ const InvestingVsSaving: React.FC = () => {
       </div>
       {/* Results Section */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">
-          Results after {years} years
-        </h2>
+        <h2>Results after {years} years</h2>
 
         {/* Winner Banner */}
         {(() => {
@@ -296,9 +284,7 @@ const InvestingVsSaving: React.FC = () => {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3
-                    className={`font-semibold ${isInvestingBetter ? "" : ""}`}
-                  >
+                  <h3 className={` ${isInvestingBetter ? "" : ""}`}>
                     {isInvestingBetter ? "Investing Wins!" : "Saving Wins!"}
                   </h3>
                   <p className={`text-sm ${isInvestingBetter ? "" : ""}`}>
@@ -317,9 +303,7 @@ const InvestingVsSaving: React.FC = () => {
         {/* Comparison Cards */}
         <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
           <div className="shadow-sm p-6 border-2 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-              📈 Investing
-            </h3>
+            <h3 className="flex gap-2 items-center">📈 Investing</h3>
             <div className="space-y-3">
               {(() => {
                 const totalContributions = initial + monthly * years * 12;
@@ -364,9 +348,7 @@ const InvestingVsSaving: React.FC = () => {
           </div>
 
           <div className="shadow-sm p-6 border-2 rounded-lg">
-            <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-              🏦 Saving
-            </h3>
+            <h3 className="flex gap-2 items-center">🏦 Saving</h3>
             <div className="space-y-3">
               {(() => {
                 const totalContributions = initial + monthly * years * 12;
@@ -413,9 +395,7 @@ const InvestingVsSaving: React.FC = () => {
 
         {/* Detailed Comparison Table */}
         <div className="shadow mb-8 border rounded-lg overflow-hidden">
-          <h3 className="p-6 pb-4 font-semibold text-lg">
-            Detailed Financial Projection
-          </h3>
+          <h3>Detailed Financial Projection</h3>
           <Table>
             <TableHeader>
               <TableRow>
@@ -437,9 +417,7 @@ const InvestingVsSaving: React.FC = () => {
                 return (
                   <>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Annual Return Rate
-                      </TableCell>
+                      <TableCell>Annual Return Rate</TableCell>
                       <TableCell>{investReturn}%</TableCell>
                       <TableCell>{savingRate}%</TableCell>
                       <TableCell>
@@ -449,9 +427,7 @@ const InvestingVsSaving: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Total Contributions
-                      </TableCell>
+                      <TableCell>Total Contributions</TableCell>
                       <TableCell>
                         ${totalContributions.toLocaleString()}
                       </TableCell>
@@ -461,9 +437,7 @@ const InvestingVsSaving: React.FC = () => {
                       <TableCell>Same</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Total Earnings
-                      </TableCell>
+                      <TableCell>Total Earnings</TableCell>
                       <TableCell>${investEarnings.toLocaleString()}</TableCell>
                       <TableCell>${savingEarnings.toLocaleString()}</TableCell>
                       <TableCell>
@@ -477,9 +451,7 @@ const InvestingVsSaving: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">
-                        Average Monthly Growth
-                      </TableCell>
+                      <TableCell>Average Monthly Growth</TableCell>
                       <TableCell>
                         ${monthlyInvestReturn.toLocaleString()}
                       </TableCell>
@@ -497,7 +469,7 @@ const InvestingVsSaving: React.FC = () => {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">Final Value</TableCell>
+                      <TableCell>Final Value</TableCell>
                       <TableCell className="font-bold text-lg">
                         ${investFV.toLocaleString()}
                       </TableCell>
@@ -524,9 +496,7 @@ const InvestingVsSaving: React.FC = () => {
 
       {/* Important Considerations */}
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>
             <strong>Risk vs Reward:</strong> Investments offer higher potential
@@ -561,7 +531,7 @@ const InvestingVsSaving: React.FC = () => {
 
       {/* Disclaimer */}
       <div className="p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+        <h3>📋 Disclaimer</h3>
         <p className="text-sm">
           <strong>Note:</strong> This calculator provides estimates and assumes
           fixed rates of return. It does not account for taxes, investment

@@ -53,13 +53,9 @@ const CreditCardVsHELOC: React.FC = () => {
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Credit Card vs HELOC Payoff Calculator
-        </h1>
-        <h5 className="mb-6 text-xl">
-          Make informed decisions about your debt repayment strategy
-        </h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <h1>Credit Card vs HELOC Payoff Calculator</h1>
+        <h5>Make informed decisions about your debt repayment strategy</h5>
+        <p>
           This calculator helps you compare the total cost and time to pay off
           your credit card debt using a HELOC (Home Equity Line of Credit) vs.
           continuing to pay the credit card minimum.
@@ -69,7 +65,7 @@ const CreditCardVsHELOC: React.FC = () => {
       {/* Typical Terms */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">Typical Terms</h2>
+          <h2>Typical Terms</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -81,13 +77,13 @@ const CreditCardVsHELOC: React.FC = () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Credit Card</TableCell>
+                <TableCell>Credit Card</TableCell>
                 <TableCell>16% - 29%</TableCell>
                 <TableCell>Open-ended</TableCell>
                 <TableCell>Minimum payment required monthly</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">HELOC</TableCell>
+                <TableCell>HELOC</TableCell>
                 <TableCell>7% - 12%</TableCell>
                 <TableCell>5 - 30 years</TableCell>
                 <TableCell>
@@ -102,7 +98,7 @@ const CreditCardVsHELOC: React.FC = () => {
       {/* Pros and Cons */}
       <div className="shadow-sm mb-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-4 font-semibold text-xl">Pros and Cons</h2>
+          <h2>Pros and Cons</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -113,7 +109,7 @@ const CreditCardVsHELOC: React.FC = () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Credit Card</TableCell>
+                <TableCell>Credit Card</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>No collateral required</div>
@@ -130,7 +126,7 @@ const CreditCardVsHELOC: React.FC = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">HELOC</TableCell>
+                <TableCell>HELOC</TableCell>
                 <TableCell>
                   <div className="space-y-1">
                     <div>Lower interest rate</div>
@@ -154,15 +150,11 @@ const CreditCardVsHELOC: React.FC = () => {
       {/* Calculator Form */}
       <div className="shadow-sm border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-6 font-semibold text-xl">
-            Debt Comparison Calculator
-          </h2>
+          <h2>Debt Comparison Calculator</h2>
 
           {/* Current Debt Information */}
           <div className="mb-8">
-            <h3 className="mb-4 font-medium text-lg">
-              Current Debt Information
-            </h3>
+            <h3>Current Debt Information</h3>
             <div className="gap-6 grid md:grid-cols-3">
               <div>
                 <Label htmlFor="debt" className="font-medium">
@@ -243,7 +235,7 @@ const CreditCardVsHELOC: React.FC = () => {
 
           {/* HELOC Information */}
           <div>
-            <h3 className="mb-4 font-medium text-lg">HELOC Information</h3>
+            <h3>HELOC Information</h3>
             <div className="gap-6 grid md:grid-cols-2">
               <div>
                 <Label htmlFor="helocRate" className="font-medium">
@@ -301,9 +293,7 @@ const CreditCardVsHELOC: React.FC = () => {
       {/* Results Display */}
       <div className="shadow-sm mt-8 border rounded-lg">
         <div className="p-6">
-          <h2 className="mb-6 font-semibold text-xl">
-            Payoff Comparison Results
-          </h2>
+          <h2>Payoff Comparison Results</h2>
 
           {(() => {
             const cc = calcCreditCard();
@@ -319,9 +309,7 @@ const CreditCardVsHELOC: React.FC = () => {
                   <div className="p-6 border rounded-lg">
                     <div className="flex gap-2 items-center mb-4">
                       <div className="rounded-full h-3 w-3"></div>
-                      <h3 className="font-semibold text-lg">
-                        Credit Card Payoff
-                      </h3>
+                      <h3>Credit Card Payoff</h3>
                     </div>
                     <div className="space-y-3">
                       <div>
@@ -335,7 +323,7 @@ const CreditCardVsHELOC: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-sm">Time to pay off</p>
-                        <p className="font-semibold text-xl">
+                        <p className="text-xl">
                           {cc.months} months (
                           {Math.round((cc.months / 12) * 10) / 10} years)
                         </p>
@@ -364,7 +352,7 @@ const CreditCardVsHELOC: React.FC = () => {
                   <div className="p-6 border rounded-lg">
                     <div className="flex gap-2 items-center mb-4">
                       <div className="bg-green-600 rounded-full h-3 w-3"></div>
-                      <h3 className="font-semibold text-lg">HELOC Payoff</h3>
+                      <h3>HELOC Payoff</h3>
                     </div>
                     <div className="space-y-3">
                       <div>
@@ -378,7 +366,7 @@ const CreditCardVsHELOC: React.FC = () => {
                       </div>
                       <div>
                         <p className="text-sm">Time to pay off</p>
-                        <p className="font-semibold text-xl">
+                        <p className="text-xl">
                           {heloc.months} months (
                           {Math.round((heloc.months / 12) * 10) / 10} years)
                         </p>
@@ -407,9 +395,7 @@ const CreditCardVsHELOC: React.FC = () => {
 
                 {/* Detailed Comparison Table */}
                 <div className="mb-8">
-                  <h3 className="mb-4 font-medium text-lg">
-                    Detailed Comparison
-                  </h3>
+                  <h3>Detailed Comparison</h3>
                   <Table>
                     <TableHeader>
                       <TableRow>
@@ -422,10 +408,8 @@ const CreditCardVsHELOC: React.FC = () => {
                     </TableHeader>
                     <TableBody>
                       <TableRow>
-                        <TableCell className="font-medium">
-                          Credit Card
-                        </TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell>Credit Card</TableCell>
+                        <TableCell className="">
                           $
                           {cc.totalPaid.toLocaleString(undefined, {
                             maximumFractionDigits: 0,
@@ -446,8 +430,8 @@ const CreditCardVsHELOC: React.FC = () => {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-medium">HELOC</TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell>HELOC</TableCell>
+                        <TableCell className="">
                           $
                           {heloc.totalPaid.toLocaleString(undefined, {
                             maximumFractionDigits: 0,
@@ -484,11 +468,7 @@ const CreditCardVsHELOC: React.FC = () => {
                         isHelocBetter ? "bg-green-600" : ""
                       }`}
                     ></div>
-                    <h3
-                      className={`text-lg font-semibold ${
-                        isHelocBetter ? "" : ""
-                      }`}
-                    >
+                    <h3 className={`text-lg  ${isHelocBetter ? "" : ""}`}>
                       🏆 Recommended: {isHelocBetter ? "HELOC" : "Credit Card"}
                     </h3>
                   </div>

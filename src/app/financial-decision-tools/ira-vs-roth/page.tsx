@@ -86,9 +86,7 @@ export default function IraVsRothDecisionTool() {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl">
-          IRA vs Roth IRA Decision Tool
-        </h1>
+        <h1>IRA vs Roth IRA Decision Tool</h1>
         <p className="mb-6 text-xl">
           Make Informed Decisions About Your Retirement Savings
         </p>
@@ -109,9 +107,7 @@ export default function IraVsRothDecisionTool() {
 
       {/* Tax Bracket Information Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">
-          2024 Federal Income Tax Brackets
-        </h2>
+        <h2>2024 Federal Income Tax Brackets</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -123,43 +119,43 @@ export default function IraVsRothDecisionTool() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">10%</TableCell>
+              <TableCell>10%</TableCell>
               <TableCell>Up to $11,600</TableCell>
               <TableCell>Up to $23,200</TableCell>
               <TableCell>Up to $16,550</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">12%</TableCell>
+              <TableCell>12%</TableCell>
               <TableCell>$11,601 – $47,150</TableCell>
               <TableCell>$23,201 – $94,300</TableCell>
               <TableCell>$16,551 – $63,100</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">22%</TableCell>
+              <TableCell>22%</TableCell>
               <TableCell>$47,151 – $100,525</TableCell>
               <TableCell>$94,301 – $201,050</TableCell>
               <TableCell>$63,101 – $100,500</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">24%</TableCell>
+              <TableCell>24%</TableCell>
               <TableCell>$100,526 – $191,950</TableCell>
               <TableCell>$201,051 – $383,900</TableCell>
               <TableCell>$100,501 – $191,950</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">32%</TableCell>
+              <TableCell>32%</TableCell>
               <TableCell>$191,951 – $243,725</TableCell>
               <TableCell>$383,901 – $487,450</TableCell>
               <TableCell>$191,951 – $243,700</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">35%</TableCell>
+              <TableCell>35%</TableCell>
               <TableCell>$243,726 – $609,350</TableCell>
               <TableCell>$487,451 – $731,200</TableCell>
               <TableCell>$243,701 – $609,350</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">37%</TableCell>
+              <TableCell>37%</TableCell>
               <TableCell>Over $609,350</TableCell>
               <TableCell>Over $731,200</TableCell>
               <TableCell>Over $609,350</TableCell>
@@ -176,9 +172,7 @@ export default function IraVsRothDecisionTool() {
 
       {/* IRA Comparison Overview Table */}
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h2 className="p-6 pb-4 font-semibold text-xl">
-          IRA Comparison Overview
-        </h2>
+        <h2>IRA Comparison Overview</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -189,7 +183,7 @@ export default function IraVsRothDecisionTool() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Tax Treatment</TableCell>
+              <TableCell>Tax Treatment</TableCell>
               <TableCell>
                 Tax-deductible contributions, taxed on withdrawal
               </TableCell>
@@ -198,28 +192,26 @@ export default function IraVsRothDecisionTool() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Income Limits</TableCell>
+              <TableCell>Income Limits</TableCell>
               <TableCell>No income limits for contributions</TableCell>
               <TableCell>
                 Income limits apply ($138k-$153k single, $218k-$228k married)
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">
-                Required Distributions
-              </TableCell>
+              <TableCell>Required Distributions</TableCell>
               <TableCell>RMDs start at age 73</TableCell>
               <TableCell>No RMDs during lifetime</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Early Withdrawal</TableCell>
+              <TableCell>Early Withdrawal</TableCell>
               <TableCell>10% penalty + taxes on earnings</TableCell>
               <TableCell>
                 Contributions anytime; earnings after 5 years & age 59½
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Best For</TableCell>
+              <TableCell>Best For</TableCell>
               <TableCell>Higher current tax bracket than retirement</TableCell>
               <TableCell>Lower current tax bracket than retirement</TableCell>
             </TableRow>
@@ -229,9 +221,7 @@ export default function IraVsRothDecisionTool() {
 
       {/* Calculator Form */}
       <div className="shadow mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">
-          IRA Decision Calculator
-        </h2>
+        <h2>IRA Decision Calculator</h2>
 
         <form
           className="space-y-8"
@@ -241,7 +231,7 @@ export default function IraVsRothDecisionTool() {
           <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
             {/* Personal Information Section */}
             <div className="p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+              <h3 className="flex gap-2 items-center">
                 👤 Personal Information
               </h3>
               <div className="space-y-6">
@@ -290,8 +280,8 @@ export default function IraVsRothDecisionTool() {
             </div>
 
             {/* Tax Bracket Selection Section */}
-            <div className=" p-6 border rounded-lg">
-              <h3 className="flex gap-2 items-center mb-6 font-semibold text-xl">
+            <div className="p-6 border rounded-lg">
+              <h3 className="flex gap-2 items-center">
                 📊 Tax Bracket Analysis
               </h3>
               <div className="space-y-6">
@@ -360,15 +350,11 @@ export default function IraVsRothDecisionTool() {
       {/* Results Section */}
       {result && (
         <div className="shadow mb-8 p-6 border rounded-lg">
-          <h2 className="mb-6 font-semibold text-2xl">
-            Recommendation
-          </h2>
+          <h2>Recommendation</h2>
 
           {/* Analysis Summary */}
           <div className="mb-6 p-6 border rounded-lg">
-            <h3 className="mb-3 font-semibold text-lg">
-              💡 Your Analysis Summary
-            </h3>
+            <h3>💡 Your Analysis Summary</h3>
             <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-4">
               <div className="text-center">
                 <div className="font-bold text-2xl">
@@ -390,9 +376,7 @@ export default function IraVsRothDecisionTool() {
 
             {/* Eligibility Check */}
             <div className="mt-4 p-4 border rounded">
-              <h4 className="mb-2 font-semibold">
-                Roth IRA Eligibility
-              </h4>
+              <h4 className="mb-2">Roth IRA Eligibility</h4>
               {(() => {
                 const rothLimit = getRothIncomeLimit(filingStatus);
                 const isEligible = income <= rothLimit;
@@ -445,9 +429,7 @@ export default function IraVsRothDecisionTool() {
               <div className={`p-4 rounded-lg mb-6 ${bannerColor}`}>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className={`font-semibold ${textColor}`}>
-                      {recommendation}
-                    </h3>
+                    <h3 className={` ${textColor}`}>{recommendation}</h3>
                     <p className={`text-sm ${textColor.replace("800", "600")}`}>
                       {!isRothEligible
                         ? "Income exceeds Roth IRA limits"
@@ -469,17 +451,13 @@ export default function IraVsRothDecisionTool() {
 
           {/* Detailed Recommendation */}
           <div className="mb-6 p-6 border rounded-lg">
-            <h3 className="mb-3 font-semibold text-lg">
-              📋 Detailed Recommendation
-            </h3>
+            <h3>📋 Detailed Recommendation</h3>
             <p className="leading-relaxed">{result}</p>
           </div>
 
           {/* Comparison Table */}
           <div className="shadow mb-6 border rounded-lg overflow-hidden">
-            <h3 className="p-6 pb-4 font-semibold text-lg">
-              Your Scenario Analysis
-            </h3>
+            <h3>Your Scenario Analysis</h3>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -490,9 +468,7 @@ export default function IraVsRothDecisionTool() {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Current Tax Benefit
-                  </TableCell>
+                  <TableCell>Current Tax Benefit</TableCell>
                   <TableCell>
                     ✅ ${((7000 * currentTaxBracket) / 100).toLocaleString()}{" "}
                     deduction (max contribution)
@@ -500,9 +476,7 @@ export default function IraVsRothDecisionTool() {
                   <TableCell>❌ No immediate deduction</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Income Eligibility
-                  </TableCell>
+                  <TableCell>Income Eligibility</TableCell>
                   <TableCell>✅ No income limits</TableCell>
                   <TableCell>
                     {income <= getRothIncomeLimit(filingStatus)
@@ -511,28 +485,24 @@ export default function IraVsRothDecisionTool() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Retirement Withdrawals
-                  </TableCell>
+                  <TableCell>Retirement Withdrawals</TableCell>
                   <TableCell>
                     Taxed at {expectedRetirementBracket}% rate
                   </TableCell>
                   <TableCell>✅ Tax-free withdrawals</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Required Distributions
-                  </TableCell>
+                  <TableCell>Required Distributions</TableCell>
                   <TableCell>❌ RMDs required at age 73</TableCell>
                   <TableCell>✅ No RMDs during lifetime</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Early Access</TableCell>
+                  <TableCell>Early Access</TableCell>
                   <TableCell>❌ 10% penalty + taxes</TableCell>
                   <TableCell>✅ Contributions anytime penalty-free</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Estate Planning</TableCell>
+                  <TableCell>Estate Planning</TableCell>
                   <TableCell>Heirs pay income tax</TableCell>
                   <TableCell>✅ Tax-free inheritance</TableCell>
                 </TableRow>
@@ -544,9 +514,7 @@ export default function IraVsRothDecisionTool() {
 
       {/* Important Considerations */}
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>
             <strong>Income Limits:</strong> Roth IRA contributions have income
@@ -581,7 +549,7 @@ export default function IraVsRothDecisionTool() {
 
       {/* Disclaimer */}
       <div className="p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">📋 Important Disclaimer</h3>
+        <h3>📋 Important Disclaimer</h3>
         <p className="text-sm">
           <strong>Educational Tool Only:</strong> This calculator provides
           general guidance based on current tax brackets and IRS rules. It does

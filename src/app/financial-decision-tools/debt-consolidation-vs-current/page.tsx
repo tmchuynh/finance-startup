@@ -124,13 +124,11 @@ ${recommendation}`
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Debt Consolidation Calculator
-        </h1>
-        <h5 className="mb-6 text-xl">
+        <h1>Debt Consolidation Calculator</h1>
+       <h5>
           Compare Your Current Debts to a Consolidation Loan
         </h5>
-        <p className="mx-auto max-w-3xl text-lg">
+      <p>
           Use this tool to estimate whether consolidating your debts with a new
           loan could save you money or lower your monthly payment. Enter your
           current debts and the terms of a proposed consolidation loan. This
@@ -142,9 +140,7 @@ ${recommendation}`
 
       {/* Table: Typical Debt & Loan Terms */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">
-          Typical Debt & Loan Terms
-        </h2>
+        <h2>Typical Debt & Loan Terms</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -156,21 +152,19 @@ ${recommendation}`
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Credit Card</TableCell>
+              <TableCell>Credit Card</TableCell>
               <TableCell>16% - 29%</TableCell>
               <TableCell>Open-ended</TableCell>
               <TableCell>Minimum payments can extend payoff</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Personal Loan</TableCell>
+              <TableCell>Personal Loan</TableCell>
               <TableCell>6% - 20%</TableCell>
               <TableCell>12 - 84 months</TableCell>
               <TableCell>Fixed payments, fixed term</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">
-                Debt Consolidation Loan
-              </TableCell>
+              <TableCell>Debt Consolidation Loan</TableCell>
               <TableCell>7% - 15%</TableCell>
               <TableCell>24 - 72 months</TableCell>
               <TableCell>May require good credit</TableCell>
@@ -181,7 +175,7 @@ ${recommendation}`
 
       {/* Table: Pros and Cons */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+        <h2>Pros and Cons</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -192,7 +186,7 @@ ${recommendation}`
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Current Debts</TableCell>
+              <TableCell>Current Debts</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>No new loan required</li>
@@ -209,7 +203,7 @@ ${recommendation}`
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Consolidation Loan</TableCell>
+              <TableCell>Consolidation Loan</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Lower interest possible</li>
@@ -231,7 +225,7 @@ ${recommendation}`
 
       {/* Table: Typical Fees */}
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">Typical Fees</h2>
+        <h2>Typical Fees</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -242,17 +236,17 @@ ${recommendation}`
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Origination Fee</TableCell>
+              <TableCell>Origination Fee</TableCell>
               <TableCell>0% - 8%</TableCell>
               <TableCell>May be deducted from loan amount</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Prepayment Penalty</TableCell>
+              <TableCell>Prepayment Penalty</TableCell>
               <TableCell>0% - 5%</TableCell>
               <TableCell>Rare for personal loans</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Late Payment Fee</TableCell>
+              <TableCell>Late Payment Fee</TableCell>
               <TableCell>$15 - $40</TableCell>
               <TableCell>If payment is late</TableCell>
             </TableRow>
@@ -261,11 +255,11 @@ ${recommendation}`
       </div>
 
       <div className="shadow-lg mb-8 p-8 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Calculator</h2>
+        <h2>Calculator</h2>
 
         {/* Current Debts Section */}
         <div className="mb-8">
-          <h3 className="mb-4 font-medium text-lg">Current Debts</h3>
+          <h3>Current Debts</h3>
           {debts.map((debt, idx) => (
             <div key={idx} className="mb-4 p-4 border rounded-lg">
               <div className="flex items-center justify-between mb-3">
@@ -387,7 +381,7 @@ ${recommendation}`
 
         {/* Consolidation Loan Section */}
         <div className="mb-6">
-          <h3 className="mb-4 font-medium text-lg">Consolidation Loan</h3>
+          <h3>Consolidation Loan</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
             <div>
               <Label className="font-medium text-sm">
@@ -466,7 +460,7 @@ ${recommendation}`
         </div>
       </div>
 
-      <h2 className="mb-6 font-semibold text-2xl">Results</h2>
+      <h2>Results</h2>
 
       {/* Winner Banner */}
       {debts.length > 0 &&
@@ -485,7 +479,7 @@ ${recommendation}`
             <div className="flex items-center justify-between">
               <div>
                 <h3
-                  className={`font-semibold ${
+                  className={` ${
                     calculateConsolidationLoan(
                       loanAmount,
                       loanInterest,
@@ -537,9 +531,7 @@ ${recommendation}`
       {/* Comparison Cards */}
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            📊 Current Debts
-          </h3>
+          <h3 className="flex gap-2 items-center">📊 Current Debts</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="">Total Debt Amount:</span>
@@ -580,9 +572,7 @@ ${recommendation}`
         </div>
 
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            🏦 Consolidation Loan
-          </h3>
+          <h3 className="flex gap-2 items-center">🏦 Consolidation Loan</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="">Loan Amount:</span>
@@ -632,9 +622,7 @@ ${recommendation}`
         loanInterest >= 0 &&
         loanTerm > 0 && (
           <div className="shadow mb-8 border rounded-lg overflow-hidden">
-            <h3 className="p-6 pb-4 font-semibold text-lg">
-              Detailed Comparison
-            </h3>
+            <h3>Detailed Comparison</h3>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -646,7 +634,7 @@ ${recommendation}`
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">Total Amount</TableCell>
+                  <TableCell>Total Amount</TableCell>
                   <TableCell>
                     $
                     {debts
@@ -671,14 +659,14 @@ ${recommendation}`
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Monthly Payment</TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Monthly Payment</TableCell>
+                  <TableCell className="">
                     $
                     {debts
                       .reduce((s, d) => s + (d.monthly > 0 ? d.monthly : 0), 0)
                       .toLocaleString()}
                   </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     $
                     {calculateConsolidationLoan(
                       loanAmount,
@@ -710,11 +698,11 @@ ${recommendation}`
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Total Interest</TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Total Interest</TableCell>
+                  <TableCell className="">
                     ${calculateTotalInterest(debts).toLocaleString()}
                   </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     $
                     {calculateConsolidationLoan(
                       loanAmount,
@@ -746,9 +734,7 @@ ${recommendation}`
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Number of Payments
-                  </TableCell>
+                  <TableCell>Number of Payments</TableCell>
                   <TableCell>{debts.length} separate payments</TableCell>
                   <TableCell>1 consolidated payment</TableCell>
                   <TableCell>Simplified to single payment</TableCell>
@@ -761,16 +747,14 @@ ${recommendation}`
       {/* Recommendation Banner */}
       {result && (
         <div className="mb-8 p-6 border rounded-lg">
-          <h3 className="mb-3 font-semibold text-lg">💡 Recommendation</h3>
+          <h3>💡 Recommendation</h3>
           <div className="">{result.split("\n").slice(-1).join("")}</div>
         </div>
       )}
 
       {/* Important Considerations */}
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>
             Consolidation loans typically require good to excellent credit for
@@ -795,7 +779,7 @@ ${recommendation}`
         </ul>
       </div>
       <section className="p-6 border rounded-lg">
-        <h2 className="mb-3 font-semibold text-xl">📋 Disclaimer</h2>
+        <h2>📋 Disclaimer</h2>
         <p className="leading-relaxed">
           This tool provides estimates for informational purposes only. Actual
           rates, payments, and savings may vary. Consult a financial advisor

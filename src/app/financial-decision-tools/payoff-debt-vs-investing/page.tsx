@@ -90,9 +90,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-12 text-center">
-        <h1 className="bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 mb-4 font-bold text-3xl text-transparent md:text-5xl">
-          Pay Off Debt vs Investing Calculator
-        </h1>
+        <h1>Pay Off Debt vs Investing Calculator</h1>
         <p className="mx-auto max-w-3xl leading-relaxed text-lg md:text-xl">
           Make informed decisions about your financial future by comparing the
           benefits of paying off debt versus investing extra money.
@@ -103,42 +101,34 @@ const PayoffDebtVsInvesting: React.FC = () => {
       <div className="gap-8 grid mb-12">
         {/* Typical Debt and Investment Returns */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h2 className="mb-4 font-semibold text-2xl">
-            Typical Debt & Investment Returns (2024)
-          </h2>
+          <h2>Typical Debt & Investment Returns (2024)</h2>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">Type</TableHead>
-                  <TableHead className="font-semibold">
-                    Interest/Return
-                  </TableHead>
-                  <TableHead className="font-semibold">Notes</TableHead>
+                  <TableHead className="">Type</TableHead>
+                  <TableHead className="">Interest/Return</TableHead>
+                  <TableHead className="">Notes</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Credit Card Debt
-                  </TableCell>
+                  <TableCell>Credit Card Debt</TableCell>
                   <TableCell>16% - 29%</TableCell>
                   <TableCell>High, variable, not tax-deductible</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Student Loan</TableCell>
+                  <TableCell>Student Loan</TableCell>
                   <TableCell>4% - 8%</TableCell>
                   <TableCell>May be tax-deductible</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Stock Market (S&P 500)
-                  </TableCell>
+                  <TableCell>Stock Market (S&P 500)</TableCell>
                   <TableCell>7% - 10%</TableCell>
                   <TableCell>Long-term average, not guaranteed</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Savings Account</TableCell>
+                  <TableCell>Savings Account</TableCell>
                   <TableCell>0.5% - 5%</TableCell>
                   <TableCell>High-yield savings at upper end</TableCell>
                 </TableRow>
@@ -149,21 +139,19 @@ const PayoffDebtVsInvesting: React.FC = () => {
 
         {/* Pros and Cons */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+          <h2>Pros and Cons</h2>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">Strategy</TableHead>
-                  <TableHead className="font-semibold">Pros</TableHead>
-                  <TableHead className="font-semibold">Cons</TableHead>
+                  <TableHead className="">Strategy</TableHead>
+                  <TableHead className="">Pros</TableHead>
+                  <TableHead className="">Cons</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Pay Off Debt First
-                  </TableCell>
+                  <TableCell>Pay Off Debt First</TableCell>
                   <TableCell>
                     <ul className="space-y-1">
                       <li>Guaranteed return (interest saved)</li>
@@ -179,9 +167,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Invest Extra While Paying Minimum
-                  </TableCell>
+                  <TableCell>Invest Extra While Paying Minimum</TableCell>
                   <TableCell>
                     <ul className="space-y-1">
                       <li>Potential for higher returns</li>
@@ -205,13 +191,13 @@ const PayoffDebtVsInvesting: React.FC = () => {
 
       {/* Calculator Form */}
       <div className="shadow-sm mb-8 p-6 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Financial Calculator</h2>
+        <h2>Financial Calculator</h2>
 
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="gap-8 grid">
             {/* Debt Information */}
             <div className="p-6 border rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">Debt Information</h3>
+              <h3>Debt Information</h3>
               <div className="gap-6 grid md:grid-cols-2">
                 <div>
                   <Label className="font-medium text-sm">
@@ -307,9 +293,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
 
             {/* Investment Information */}
             <div className="p-6 border rounded-lg">
-              <h3 className="mb-4 font-semibold text-lg">
-                Investment Information
-              </h3>
+              <h3>Investment Information</h3>
               <div className="gap-6 grid md:grid-cols-2">
                 <div>
                   <Label className="font-medium text-sm">
@@ -372,7 +356,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
             winner === "payoff" ? "  " : " border-green-300 "
           }`}
         >
-          <h2 className="mb-2 font-bold text-2xl">
+          <h2 className="">
             {winner === "payoff"
               ? "🏆 Pay Off Debt First Wins!"
               : "🏆 Invest Extra Wins!"}
@@ -401,7 +385,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
           >
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded-full h-3 w-3 0"></div>
-              <h3 className="font-semibold text-xl">Pay Off Debt First</h3>
+              <h3>Pay Off Debt First</h3>
               {winner === "payoff" && <span className="font-bold">WINNER</span>}
             </div>
 
@@ -447,9 +431,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
           >
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded-full h-3 w-3 0"></div>
-              <h3 className="font-semibold text-xl">
-                Invest Extra While Paying Minimum
-              </h3>
+              <h3>Invest Extra While Paying Minimum</h3>
               {winner === "invest" && <span className="font-bold">WINNER</span>}
             </div>
 
@@ -479,30 +461,26 @@ const PayoffDebtVsInvesting: React.FC = () => {
 
         {/* Detailed Comparison Table */}
         <div className="shadow-sm p-6 border rounded-lg">
-          <h3 className="mb-4 font-semibold text-xl">Detailed Comparison</h3>
+          <h3 className="mb-4 text-xl">Detailed Comparison</h3>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="font-semibold">Metric</TableHead>
-                  <TableHead className="font-semibold">
-                    Pay Off Debt First
-                  </TableHead>
-                  <TableHead className="font-semibold">Invest Extra</TableHead>
+                  <TableHead className="">Metric</TableHead>
+                  <TableHead className="">Pay Off Debt First</TableHead>
+                  <TableHead className="">Invest Extra</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Total Value After {years} Years
-                  </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell>Total Value After {years} Years</TableCell>
+                  <TableCell className="">
                     $
                     {payoff.totalValue.toLocaleString(undefined, {
                       maximumFractionDigits: 0,
                     })}
                   </TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     $
                     {invest.investValue.toLocaleString(undefined, {
                       maximumFractionDigits: 0,
@@ -510,9 +488,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Monthly Payment Strategy
-                  </TableCell>
+                  <TableCell>Monthly Payment Strategy</TableCell>
                   <TableCell className="">
                     ${(minPayment + extra).toLocaleString()} until debt-free,
                     then invest
@@ -523,14 +499,12 @@ const PayoffDebtVsInvesting: React.FC = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Risk Level</TableCell>
+                  <TableCell>Risk Level</TableCell>
                   <TableCell className="">Low (guaranteed return)</TableCell>
                   <TableCell className="">Higher (market dependent)</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">
-                    Psychological Benefit
-                  </TableCell>
+                  <TableCell>Psychological Benefit</TableCell>
                   <TableCell className="">
                     Debt freedom, peace of mind
                   </TableCell>
@@ -543,14 +517,12 @@ const PayoffDebtVsInvesting: React.FC = () => {
 
         {/* Important Considerations */}
         <div className="p-6 border rounded-lg">
-          <h3 className="flex gap-2 items-center mb-3 font-semibold text-lg">
+          <h3 className="flex gap-2 items-center">
             ⚠️ Important Considerations
           </h3>
           <div className="gap-4 grid md:grid-cols-2 text-sm">
             <div>
-              <h4 className="mb-2 font-semibold">
-                Factors Favoring Debt Payoff:
-              </h4>
+              <h4 className="mb-2">Factors Favoring Debt Payoff:</h4>
               <ul className="space-y-1">
                 <li>High-interest debt (credit cards, payday loans)</li>
                 <li>Guaranteed return (interest rate saved)</li>
@@ -559,9 +531,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h4 className="mb-2 font-semibold">
-                Factors Favoring Investment:
-              </h4>
+              <h4 className="mb-2">Factors Favoring Investment:</h4>
               <ul className="space-y-1">
                 <li>Low-interest debt (below expected returns)</li>
                 <li>Employer 401(k) matching</li>
@@ -574,7 +544,7 @@ const PayoffDebtVsInvesting: React.FC = () => {
 
         {/* Disclaimer */}
         <div className="p-6 border rounded-lg">
-          <h3 className="mb-3 font-semibold text-lg">📋 Disclaimer</h3>
+          <h3>📋 Disclaimer</h3>
           <div className="space-y-2 text-sm">
             <p>
               <strong>Important:</strong> This calculator provides estimates for

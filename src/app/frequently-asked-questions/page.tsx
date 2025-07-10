@@ -2,7 +2,7 @@ import { faqs } from "@/lib/constants/faq/questions";
 
 export default function FAQs() {
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <h1>Frequently Asked Questions</h1>
       <h5>Answers to your most common questions</h5>
       <p>
@@ -17,9 +17,9 @@ export default function FAQs() {
         {faqs.map((faq) => (
           <div
             key={faq.id}
-            className="lg:gap-8 lg:grid lg:grid-cols-12 py-8 first:pt-0 last:pb-0"
+            className="lg:gap-8 lg:grid lg:grid-cols-12 last:pb-0 first:pt-0 py-8"
           >
-            <dt className="lg:col-span-5 font-semibold">{faq.question}</dt>
+            <dt className="lg:col-span-5">{faq.question}</dt>
             <dd className="lg:col-span-7 mt-4 lg:mt-0">
               <p>{faq.answer.text}</p>
               {faq.answer.list && (

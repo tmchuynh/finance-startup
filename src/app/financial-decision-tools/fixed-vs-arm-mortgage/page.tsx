@@ -91,20 +91,20 @@ export default function FixedVsARMMortgage() {
   const [recommendation, setRecommendation] = useState<string>("");
 
   // Calculate results automatically as inputs change
-  useEffect(() => {
-    const fixed = calcFixedMortgage({
-      amount,
-      rate: fixedRate,
-      years: fixedYears,
-    });
-    const arm = calcARMMortgage({
-      amount,
-      initialRate: armInitialRate,
-      initialYears: armInitialYears,
-      adjRate: armAdjRate,
-      totalYears: armTotalYears,
-    });
 
+  const fixed = calcFixedMortgage({
+    amount,
+    rate: fixedRate,
+    years: fixedYears,
+  });
+  const arm = calcARMMortgage({
+    amount,
+    initialRate: armInitialRate,
+    initialYears: armInitialYears,
+    adjRate: armAdjRate,
+    totalYears: armTotalYears,
+  });
+  useEffect(() => {
     let recommendation = "";
     if (arm.total < fixed.total) {
       recommendation =
@@ -131,11 +131,9 @@ export default function FixedVsARMMortgage() {
   return (
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          Fixed Rate vs ARM Mortgage Calculator
-        </h1>
-        <h5 className="mb-6 text-xl">Compare Your Mortgage Options</h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <h1>Fixed Rate vs ARM Mortgage Calculator</h1>
+       <h5>Compare Your Mortgage Options</h5>
+      <p>
           Use this tool to estimate the monthly payments and total cost of a
           fixed-rate mortgage versus an adjustable-rate mortgage (ARM). This
           tool provides estimates for informational purposes only. Actual rates,
@@ -143,9 +141,9 @@ export default function FixedVsARMMortgage() {
           making decisions.
         </p>
       </div>
-      {/* Chart 1: Key Differences */}
+
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">Key Differences</h2>
+        <h2>Key Differences</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -156,40 +154,40 @@ export default function FixedVsARMMortgage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Interest Rate</TableCell>
+              <TableCell>Interest Rate</TableCell>
               <TableCell>Stays the same for the life of the loan</TableCell>
               <TableCell>Starts lower, adjusts after initial period</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Monthly Payment</TableCell>
+              <TableCell>Monthly Payment</TableCell>
               <TableCell>Predictable, never changes</TableCell>
               <TableCell>
                 Can increase or decrease after initial period
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Best For</TableCell>
+              <TableCell>Best For</TableCell>
               <TableCell>Staying long-term, want stability</TableCell>
               <TableCell>
                 Short-term stay, expect to move or refinance
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Initial Rate</TableCell>
+              <TableCell>Initial Rate</TableCell>
               <TableCell>Usually higher than ARM's initial rate</TableCell>
               <TableCell>Usually lower for first 3-10 years</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">Risk</TableCell>
+              <TableCell>Risk</TableCell>
               <TableCell>No risk of payment increase</TableCell>
               <TableCell>Risk of higher payments after adjustment</TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </div>
-      {/* Chart 2: Pros and Cons */}
+
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">Pros and Cons</h2>
+        <h2>Pros and Cons</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -200,7 +198,7 @@ export default function FixedVsARMMortgage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Fixed-Rate</TableCell>
+              <TableCell>Fixed-Rate</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Predictable payments</li>
@@ -216,7 +214,7 @@ export default function FixedVsARMMortgage() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">ARM</TableCell>
+              <TableCell>ARM</TableCell>
               <TableCell>
                 <ul className="space-y-1 text-sm list-disc list-inside">
                   <li>Lower initial rate</li>
@@ -235,11 +233,9 @@ export default function FixedVsARMMortgage() {
           </TableBody>
         </Table>
       </div>
-      {/* Chart 3: Typical Rates and Terms */}
+
       <div className="my-8">
-        <h2 className="mb-4 font-semibold text-2xl">
-          Typical Rates and Terms (2024)
-        </h2>
+        <h2>Typical Rates and Terms (2024)</h2>
         <Table>
           <TableHeader>
             <TableRow>
@@ -251,13 +247,13 @@ export default function FixedVsARMMortgage() {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">Fixed-Rate</TableCell>
+              <TableCell>Fixed-Rate</TableCell>
               <TableCell>6% - 7.5%</TableCell>
               <TableCell>15, 20, 30 years</TableCell>
               <TableCell>Rate stays the same for entire loan</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell className="font-medium">ARM (e.g. 5/1, 7/1)</TableCell>
+              <TableCell>ARM (e.g. 5/1, 7/1)</TableCell>
               <TableCell>5% - 6.5% (initial)</TableCell>
               <TableCell>
                 30 years (5-10 years fixed, then adjusts annually)
@@ -269,13 +265,13 @@ export default function FixedVsARMMortgage() {
           </TableBody>
         </Table>
       </div>
-      {/* End charts */}
+
       <div className="shadow-lg mb-8 p-8 border rounded-lg">
-        <h2 className="mb-6 font-semibold text-2xl">Calculator</h2>
+        <h2>Calculator</h2>
 
         {/* Loan Amount Section */}
         <div className="mb-8">
-          <h3 className="mb-4 font-medium text-lg">Loan Information</h3>
+          <h3>Loan Information</h3>
           <div>
             <Label className="font-medium text-sm">
               Loan Amount: ${amount.toLocaleString()}
@@ -303,7 +299,7 @@ export default function FixedVsARMMortgage() {
 
         {/* Fixed-Rate Mortgage Section */}
         <div className="mb-8 p-6 border rounded-lg">
-          <h3 className="mb-4 font-medium text-lg">Fixed-Rate Mortgage</h3>
+          <h3>Fixed-Rate Mortgage</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
               <Label className="font-medium text-sm">
@@ -358,9 +354,7 @@ export default function FixedVsARMMortgage() {
 
         {/* ARM Section */}
         <div className="mb-6 p-6 border rounded-lg">
-          <h3 className="mb-4 font-medium text-lg">
-            Adjustable-Rate Mortgage (ARM)
-          </h3>
+          <h3>Adjustable-Rate Mortgage (ARM)</h3>
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
               <Label className="font-medium text-sm">
@@ -463,57 +457,33 @@ export default function FixedVsARMMortgage() {
           </div>
         </div>
       </div>
-      <h2 className="mb-6 font-semibold text-2xl">Results</h2>
-      {/* Winner Banner */}
-      {(() => {
-        const fixed = calcFixedMortgage({
-          amount,
-          rate: fixedRate,
-          years: fixedYears,
-        });
-        const arm = calcARMMortgage({
-          amount,
-          initialRate: armInitialRate,
-          initialYears: armInitialYears,
-          adjRate: armAdjRate,
-          totalYears: armTotalYears,
-        });
-
-        return (
-          <div
-            className={`p-4 rounded-lg mb-6 ${
-              arm.total < fixed.total ? " border " : " border "
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3
-                  className={`font-semibold ${
-                    arm.total < fixed.total ? "" : ""
-                  }`}
-                >
-                  {arm.total < fixed.total
-                    ? "ARM Could Save Money!"
-                    : "Fixed-Rate is More Stable!"}
-                </h3>
-                <p className={`text-sm ${arm.total < fixed.total ? "" : ""}`}>
-                  {arm.total < fixed.total
-                    ? `Potential savings: $${(
-                        fixed.total - arm.total
-                      ).toLocaleString()} over the life of the loan`
-                    : "Predictable payments with no adjustment risk"}
-                </p>
-              </div>
-            </div>
+      <h2>Results</h2>
+      <div
+        className={`p-4 rounded-lg mb-6 ${
+          arm.total < fixed.total ? " border " : " border "
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className={` ${arm.total < fixed.total ? "" : ""}`}>
+              {arm.total < fixed.total
+                ? "ARM Could Save Money!"
+                : "Fixed-Rate is More Stable!"}
+            </h3>
+            <p className={`text-sm ${arm.total < fixed.total ? "" : ""}`}>
+              {arm.total < fixed.total
+                ? `Potential savings: $${(
+                    fixed.total - arm.total
+                  ).toLocaleString()} over the life of the loan`
+                : "Predictable payments with no adjustment risk"}
+            </p>
           </div>
-        );
-      })()}
-      {/* Comparison Cards */}
+        </div>
+      </div>
+
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-8">
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
-            🏠 Fixed-Rate Mortgage
-          </h3>
+          <h3 className="flex gap-2 items-center">🏠 Fixed-Rate Mortgage</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="">Monthly Payment:</span>
@@ -558,7 +528,7 @@ export default function FixedVsARMMortgage() {
         </div>
 
         <div className="shadow-sm p-6 border-2 rounded-lg">
-          <h3 className="flex gap-2 items-center mb-4 font-semibold text-xl">
+          <h3 className="flex gap-2 items-center">
             📈 Adjustable-Rate Mortgage (ARM)
           </h3>
           <div className="space-y-3">
@@ -610,9 +580,9 @@ export default function FixedVsARMMortgage() {
           </div>
         </div>
       </div>
-      ;{/* Detailed Comparison Table */}
+
       <div className="shadow mb-8 border rounded-lg overflow-hidden">
-        <h3 className="p-6 pb-4 font-semibold text-lg">Detailed Comparison</h3>
+        <h3>Detailed Comparison</h3>
         <Table>
           <TableHeader>
             <TableRow>
@@ -640,13 +610,13 @@ export default function FixedVsARMMortgage() {
               return (
                 <>
                   <TableRow>
-                    <TableCell className="font-medium">Loan Amount</TableCell>
+                    <TableCell>Loan Amount</TableCell>
                     <TableCell>${amount.toLocaleString()}</TableCell>
                     <TableCell>${amount.toLocaleString()}</TableCell>
                     <TableCell>Same</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">Interest Rate</TableCell>
+                    <TableCell>Interest Rate</TableCell>
                     <TableCell>{fixedRate}% (fixed)</TableCell>
                     <TableCell>
                       {armInitialRate}% → {armAdjRate}%
@@ -662,13 +632,11 @@ export default function FixedVsARMMortgage() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">
-                      Initial Monthly Payment
-                    </TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell>Initial Monthly Payment</TableCell>
+                    <TableCell className="">
                       ${fixed.monthly.toLocaleString()}
                     </TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell className="">
                       ${arm.initialMonthly.toLocaleString()}
                     </TableCell>
                     <TableCell>
@@ -682,11 +650,9 @@ export default function FixedVsARMMortgage() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">
-                      Adjusted Payment (ARM)
-                    </TableCell>
+                    <TableCell>Adjusted Payment (ARM)</TableCell>
                     <TableCell>N/A</TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell className="">
                       ${arm.adjMonthly.toLocaleString()}
                     </TableCell>
                     <TableCell>
@@ -700,13 +666,11 @@ export default function FixedVsARMMortgage() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">
-                      Total Interest
-                    </TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell>Total Interest</TableCell>
+                    <TableCell className="">
                       ${(fixed.total - amount).toLocaleString()}
                     </TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell className="">
                       ${(arm.total - amount).toLocaleString()}
                     </TableCell>
                     <TableCell className="font-bold">
@@ -720,7 +684,7 @@ export default function FixedVsARMMortgage() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">Total Cost</TableCell>
+                    <TableCell>Total Cost</TableCell>
                     <TableCell className="font-bold text-lg">
                       ${fixed.total.toLocaleString()}
                     </TableCell>
@@ -743,16 +707,14 @@ export default function FixedVsARMMortgage() {
           </TableBody>
         </Table>
       </div>
-      ; ; ; ; ;{/* Recommendation Banner */}
+
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">💡 Recommendation</h3>
+        <h3>💡 Recommendation</h3>
         <div className="">{recommendation}</div>
       </div>
-      {/* Important Considerations */}
+
       <div className="mb-8 p-6 border rounded-lg">
-        <h3 className="mb-3 font-semibold text-lg">
-          ⚠️ Important Considerations
-        </h3>
+        <h3>⚠️ Important Considerations</h3>
         <ul className="space-y-2">
           <li>ARM rates can increase significantly after the initial period</li>
           <li>Fixed-rate mortgages provide payment stability for budgeting</li>
@@ -767,7 +729,7 @@ export default function FixedVsARMMortgage() {
         </ul>
       </div>
       <section className="p-6 border rounded-lg">
-        <h2 className="mb-3 font-semibold text-xl">📋 Disclaimer</h2>
+        <h2>📋 Disclaimer</h2>
         <p className="leading-relaxed">
           This tool provides estimates for informational purposes only. Actual
           rates, payments, and costs may vary. Consult a mortgage professional

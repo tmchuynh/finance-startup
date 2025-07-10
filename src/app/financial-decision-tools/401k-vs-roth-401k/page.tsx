@@ -70,13 +70,9 @@ const RothVsTraditional401k: React.FC = () => {
     <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header Section */}
       <div className="mb-12 text-center">
-        <h1 className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight">
-          401(k) vs Roth 401(k) Calculator
-        </h1>
-        <h5 className="mb-6 text-xl">
-          Make Informed Retirement Savings Decisions
-        </h5>
-        <p className="mx-auto max-w-3xl text-lg">
+        <h1>401(k) vs Roth 401(k) Calculator</h1>
+        <h5>Make Informed Retirement Savings Decisions</h5>
+        <p>
           Compare the future value of Traditional and Roth 401(k) accounts based
           on your salary, contribution rates, employer match, and tax
           considerations. This tool helps you understand which option may be
@@ -86,9 +82,7 @@ const RothVsTraditional401k: React.FC = () => {
 
       {/* Key Differences Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">
-          401(k) vs Roth 401(k): Key Differences
-        </h2>
+        <h2>401(k) vs Roth 401(k): Key Differences</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -100,36 +94,32 @@ const RothVsTraditional401k: React.FC = () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Contributions</TableCell>
+                <TableCell>Contributions</TableCell>
                 <TableCell>Pre-tax (lowers taxable income now)</TableCell>
                 <TableCell>After-tax (no immediate tax benefit)</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Growth</TableCell>
+                <TableCell>Growth</TableCell>
                 <TableCell>Tax-deferred</TableCell>
                 <TableCell>Tax-free</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  Withdrawals in Retirement
-                </TableCell>
+                <TableCell>Withdrawals in Retirement</TableCell>
                 <TableCell>Taxed as ordinary income</TableCell>
                 <TableCell>Tax-free (if qualified)</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Employer Match</TableCell>
+                <TableCell>Employer Match</TableCell>
                 <TableCell>Pre-tax, taxed at withdrawal</TableCell>
                 <TableCell>Pre-tax, taxed at withdrawal</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">
-                  Required Minimum Distributions
-                </TableCell>
+                <TableCell>Required Minimum Distributions</TableCell>
                 <TableCell>Yes, starting at age 73</TableCell>
                 <TableCell>Yes, starting at age 73</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Best For</TableCell>
+                <TableCell>Best For</TableCell>
                 <TableCell>Expecting lower tax rate in retirement</TableCell>
                 <TableCell>Expecting higher tax rate in retirement</TableCell>
               </TableRow>
@@ -141,7 +131,7 @@ const RothVsTraditional401k: React.FC = () => {
       {/* Calculator Form Section */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-semibold text-2xl">Calculator Parameters</h2>
+          <h2>Calculator Parameters</h2>
           <Button
             variant="outline"
             onClick={resetToDefaults}
@@ -301,7 +291,7 @@ const RothVsTraditional401k: React.FC = () => {
 
           {/* Tax Rate Parameters */}
           <div className="pt-6 border-t">
-            <h3 className="mb-4 font-semibold text-lg">Tax Rate Assumptions</h3>
+            <h3>Tax Rate Assumptions</h3>
             <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
               <div className="space-y-3">
                 <Label htmlFor="currentTax" className="font-medium text-sm">
@@ -369,7 +359,7 @@ const RothVsTraditional401k: React.FC = () => {
 
       {/* Results Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Comparison Results</h2>
+        <h2>Comparison Results</h2>
 
         {/* Winner Banner */}
         <div
@@ -379,11 +369,7 @@ const RothVsTraditional401k: React.FC = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h3
-                className={`text-lg font-semibold ${
-                  winner === "Roth" ? "" : ""
-                }`}
-              >
+              <h3 className={`text-lg  ${winner === "Roth" ? "" : ""}`}>
                 {winner} 401(k) performs better in this scenario
               </h3>
               <p className={`text-sm ${winner === "Roth" ? "" : ""}`}>
@@ -407,7 +393,7 @@ const RothVsTraditional401k: React.FC = () => {
           <div className="bg-card p-6 border rounded-lg">
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded h-4 w-4 0"></div>
-              <h3 className="font-semibold text-lg">Traditional 401(k)</h3>
+              <h3>Traditional 401(k)</h3>
             </div>
 
             <div className="space-y-3">
@@ -453,17 +439,13 @@ const RothVsTraditional401k: React.FC = () => {
               </div>
               <div className="pt-3 border-t">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold">
-                    Pre-tax Value at Retirement:
-                  </span>
+                  <span className="">Pre-tax Value at Retirement:</span>
                   <span className="font-bold">
                     ${traditional.fv.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-lg">
-                  <span className="font-semibold">
-                    After-tax Value at Retirement:
-                  </span>
+                  <span className="">After-tax Value at Retirement:</span>
                   <span className="font-bold">
                     ${traditional.afterTax.toLocaleString()}
                   </span>
@@ -475,7 +457,7 @@ const RothVsTraditional401k: React.FC = () => {
           <div className="bg-card p-6 border rounded-lg">
             <div className="flex gap-3 items-center mb-4">
               <div className="rounded h-4 w-4 0"></div>
-              <h3 className="font-semibold text-lg">Roth 401(k)</h3>
+              <h3>Roth 401(k)</h3>
             </div>
 
             <div className="space-y-3">
@@ -520,15 +502,11 @@ const RothVsTraditional401k: React.FC = () => {
               </div>
               <div className="pt-3 border-t">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold">
-                    Total Value at Retirement:
-                  </span>
+                  <span className="">Total Value at Retirement:</span>
                   <span className="font-bold">${roth.fv.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between text-lg">
-                  <span className="font-semibold">
-                    After-tax Value at Retirement:
-                  </span>
+                  <span className="">After-tax Value at Retirement:</span>
                   <span className="font-bold">
                     ${roth.afterTax.toLocaleString()}
                   </span>
@@ -541,11 +519,11 @@ const RothVsTraditional401k: React.FC = () => {
 
       {/* Key Insights */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Key Insights</h2>
+        <h2>Key Insights</h2>
         <div className="bg-card p-6 border rounded-lg">
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
-              <h3 className="mb-3 font-semibold">Tax Considerations</h3>
+              <h3 className="mb-3">Tax Considerations</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span>Current tax rate:</span>
@@ -569,7 +547,7 @@ const RothVsTraditional401k: React.FC = () => {
               </div>
             </div>
             <div>
-              <h3 className="mb-3 font-semibold">Investment Growth</h3>
+              <h3 className="mb-3">Investment Growth</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span>Time to retirement:</span>
@@ -595,7 +573,7 @@ const RothVsTraditional401k: React.FC = () => {
           </div>
 
           <div className="mt-6 pt-6 border-t">
-            <h3 className="mb-3 font-semibold">Recommendation</h3>
+            <h3 className="mb-3">Recommendation</h3>
             <p className="text-muted-foreground text-sm">
               {currentTax > retirementTax
                 ? "Since your current tax rate is higher than your expected retirement tax rate, a Traditional 401(k) may be more beneficial as you'll save more in taxes now and pay less later."
