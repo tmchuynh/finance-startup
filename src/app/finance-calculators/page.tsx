@@ -1,6 +1,7 @@
 "use client";
 
 import { financeCalculatorCategories } from "@/lib/constants/calculators/categories";
+import { sortByProperty } from "@/lib/utils/sort";
 import { useRouter } from "next/navigation";
 
 export default function FinanceCalculatorPage() {
@@ -13,8 +14,11 @@ export default function FinanceCalculatorPage() {
     usage: category.usage,
     list: category.list,
   }));
+
+  const sortedFinanceCalculators = sortByProperty(financeCalculators, "title");
+
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <h1>Finance Calculators</h1>
       <h5>Explore our collection of finance calculators</h5>
       <p>
@@ -27,7 +31,7 @@ export default function FinanceCalculatorPage() {
       </p>
 
       <div className="space-y-6 mt-8">
-        {financeCalculators.map((category) => (
+        {sortedFinanceCalculators.map((category) => (
           <div key={category.id}>
             <h2
               className="font-bold text-xl underline-offset-2 hover:underline cursor-pointer"
@@ -42,22 +46,24 @@ export default function FinanceCalculatorPage() {
             {category.usage && <p>{category.usage}</p>}
             {category.list && (
               <ul className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 pl-5 list-disc">
-                {category.list.map((item) => (
-                  <li
-                    key={item.id}
-                    className="underline-offset-2 hover:underline cursor-pointer"
-                    onClick={() =>
-                      router.push(
-                        `/finance-calculators/${category.id}/${item.title
-                          .toLowerCase()
-                          .replaceAll(",", "")
-                          .replaceAll(/\s+/g, "-")}`
-                      )
-                    }
-                  >
-                    {item.title}
-                  </li>
-                ))}
+                {[...category.list]
+                  .sort((a, b) => a.title.localeCompare(b.title))
+                  .map((item) => (
+                    <li
+                      key={item.id}
+                      className="underline-offset-2 hover:underline cursor-pointer"
+                      onClick={() =>
+                        router.push(
+                          `/finance-calculators/${category.id}/${item.title
+                            .toLowerCase()
+                            .replaceAll(",", "")
+                            .replaceAll(/\s+/g, "-")}`
+                        )
+                      }
+                    >
+                      {item.title}
+                    </li>
+                  ))}
               </ul>
             )}
           </div>
