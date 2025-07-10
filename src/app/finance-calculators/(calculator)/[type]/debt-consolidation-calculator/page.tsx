@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 type Debt = {
@@ -54,7 +55,10 @@ export default function DebtConsolidationCalculator() {
   };
 
   const addDebt = () => {
-    setDebts((prev) => [...prev, { balance: "", interestRate: "", monthlyPayment: "" }]);
+    setDebts((prev) => [
+      ...prev,
+      { balance: "", interestRate: "", monthlyPayment: "" },
+    ]);
   };
 
   const removeDebt = (idx: number) => {
@@ -72,14 +76,7 @@ export default function DebtConsolidationCalculator() {
       const r = parseFloat(debt.interestRate) / 100;
       const PMT = parseFloat(debt.monthlyPayment);
 
-      if (
-        isNaN(P) ||
-        isNaN(r) ||
-        isNaN(PMT) ||
-        P <= 0 ||
-        r < 0 ||
-        PMT <= 0
-      ) {
+      if (isNaN(P) || isNaN(r) || isNaN(PMT) || P <= 0 || r < 0 || PMT <= 0) {
         setResult(null);
         return;
       }
@@ -422,24 +419,24 @@ export default function DebtConsolidationCalculator() {
             </div>
             <div>
               {debts.length > 1 && (
-                <button
+                <Button
                   className="bg-red-600 px-2 py-1 rounded"
                   onClick={() => removeDebt(idx)}
                   type="button"
                 >
                   Remove
-                </button>
+                </Button>
               )}
             </div>
           </div>
         ))}
-        <button
+        <Button
           className="bg-gray-700 mb-4 px-3 py-1 rounded"
           onClick={addDebt}
           type="button"
         >
           + Add Another Debt
-        </button>
+        </Button>
         <div className="gap-4 grid md:grid-cols-3">
           <div className="mb-2">
             <label className="block mb-1 font-medium">
@@ -482,12 +479,9 @@ export default function DebtConsolidationCalculator() {
           </div>
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate Consolidation
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

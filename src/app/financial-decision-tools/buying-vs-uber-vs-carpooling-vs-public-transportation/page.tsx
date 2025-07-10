@@ -588,7 +588,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
           <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-4">
             <div className="p-4 border rounded-lg">
               <div className="flex gap-2 items-center mb-2">
-                <div className="bg-blue-600 rounded-full h-3 w-3"></div>
+                <div className="rounded-full h-3 w-3"></div>
                 <h3 className="font-semibold">Car Ownership</h3>
               </div>
               <p className="font-bold text-2xl">
@@ -783,7 +783,7 @@ const BuyingVsUberVsCarpoolVsTransit: React.FC = () => {
                   <div
                     className={`w-4 h-4 rounded-full ${
                       winner.color === "blue"
-                        ? "bg-blue-600"
+                        ? ""
                         : winner.color === "green"
                         ? "bg-green-600"
                         : winner.color === "yellow"

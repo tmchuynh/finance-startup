@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function ROECalculator() {
@@ -69,12 +70,9 @@ export default function ROECalculator() {
           />
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate ROE
-      </button>
+      </Button>
       {result !== null && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

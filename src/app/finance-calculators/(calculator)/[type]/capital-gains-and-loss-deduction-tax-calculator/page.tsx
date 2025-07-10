@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function CapitalGainsAndLossDeductionTaxCalculator() {
@@ -24,24 +25,24 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
     single: [
       { rate: 0, max: 44725 },
       { rate: 0.15, max: 492300 },
-      { rate: 0.20, max: Infinity },
+      { rate: 0.2, max: Infinity },
     ],
     married: [
       { rate: 0, max: 89450 },
       { rate: 0.15, max: 553850 },
-      { rate: 0.20, max: Infinity },
+      { rate: 0.2, max: Infinity },
     ],
     head: [
       { rate: 0, max: 59750 },
       { rate: 0.15, max: 523050 },
-      { rate: 0.20, max: Infinity },
+      { rate: 0.2, max: Infinity },
     ],
   };
 
   // 2024 ordinary income tax brackets (simplified)
   const ORDINARY_BRACKETS = {
     single: [
-      { rate: 0.10, max: 11600 },
+      { rate: 0.1, max: 11600 },
       { rate: 0.12, max: 47150 },
       { rate: 0.22, max: 100525 },
       { rate: 0.24, max: 191950 },
@@ -50,7 +51,7 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
       { rate: 0.37, max: Infinity },
     ],
     married: [
-      { rate: 0.10, max: 23200 },
+      { rate: 0.1, max: 23200 },
       { rate: 0.12, max: 94300 },
       { rate: 0.22, max: 201050 },
       { rate: 0.24, max: 383900 },
@@ -59,7 +60,7 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
       { rate: 0.37, max: Infinity },
     ],
     head: [
-      { rate: 0.10, max: 16550 },
+      { rate: 0.1, max: 16550 },
       { rate: 0.12, max: 63100 },
       { rate: 0.22, max: 100500 },
       { rate: 0.24, max: 191950 },
@@ -424,12 +425,9 @@ export default function CapitalGainsAndLossDeductionTaxCalculator() {
           </select>
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate Capital Gains Tax
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

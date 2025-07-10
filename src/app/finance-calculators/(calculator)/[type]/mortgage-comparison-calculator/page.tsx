@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 type MortgageInput = {
@@ -240,31 +241,28 @@ export default function MortgageComparisonCalculator() {
               </div>
               <div>
                 {mortgages.length > 2 && (
-                  <button
+                  <Button
                     className="bg-red-500 ml-2 px-2 py-1 rounded"
                     onClick={() => handleRemoveOption(idx)}
                     type="button"
                   >
                     Remove
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
           ))}
-          <button
+          <Button
             className="bg-green-600 mt-2 px-3 py-1 rounded"
             onClick={handleAddOption}
             type="button"
           >
             Add Option
-          </button>
+          </Button>
         </div>
-        <button
-          className="bg-blue-600 mt-2 px-4 py-2 rounded"
-          onClick={handleCalculate}
-        >
+        <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
           Compare Mortgages
-        </button>
+        </Button>
         {result && (
           <div className="flex flex-col gap-4 mt-6">
             <div className="shadow p-4 border rounded-lg">

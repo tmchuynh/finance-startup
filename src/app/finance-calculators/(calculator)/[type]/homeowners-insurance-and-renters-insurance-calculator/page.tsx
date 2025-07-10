@@ -1,8 +1,11 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function HomeownersAndRentersInsuranceCalculator() {
-  const [propertyType, setPropertyType] = useState<"homeowner" | "renter">("homeowner");
+  const [propertyType, setPropertyType] = useState<"homeowner" | "renter">(
+    "homeowner"
+  );
   const [propertyValue, setPropertyValue] = useState<string>("");
   const [personalProperty, setPersonalProperty] = useState<string>("");
   const [locationRisk, setLocationRisk] = useState<string>("average");
@@ -334,12 +337,9 @@ export default function HomeownersAndRentersInsuranceCalculator() {
           </div>
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate Insurance Needs
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

@@ -553,7 +553,7 @@ ${recommendation}`
                 <div className="gap-6 grid md:grid-cols-2 mb-8">
                   <div className="p-6 border rounded-lg">
                     <div className="flex gap-2 items-center mb-4">
-                      <div className="bg-blue-600 rounded-full h-3 w-3"></div>
+                      <div className="rounded-full h-3 w-3"></div>
                       <h3 className="font-semibold text-lg">
                         Paying Down Current Card
                       </h3>
@@ -686,7 +686,7 @@ ${recommendation}`
                   <div className="flex gap-2 items-center mb-3">
                     <div
                       className={`w-4 h-4 rounded-full ${
-                        isTransferBetter ? "bg-green-600" : "bg-blue-600"
+                        isTransferBetter ? "bg-green-600" : ""
                       }`}
                     ></div>
                     <h3

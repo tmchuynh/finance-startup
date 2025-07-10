@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const RENOVATION_TYPES = [
@@ -313,31 +314,28 @@ export default function HomeRenovationCostCalculator() {
               </div>
               <div>
                 {renovations.length > 1 && (
-                  <button
+                  <Button
                     className="bg-red-500 ml-2 px-2 py-1 rounded"
                     onClick={() => handleRemoveRenovation(idx)}
                     type="button"
                   >
                     Remove
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
           ))}
-          <button
+          <Button
             className="bg-green-600 mt-2 px-3 py-1 rounded"
             onClick={handleAddRenovation}
             type="button"
           >
             Add Renovation
-          </button>
+          </Button>
         </div>
-        <button
-          className="bg-blue-600 mt-2 px-4 py-2 rounded"
-          onClick={handleCalculate}
-        >
+        <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
           Calculate Renovation Cost
-        </button>
+        </Button>
         {result && (
           <div className="flex flex-col gap-4 mt-6">
             <div className="shadow p-4 border rounded-lg">

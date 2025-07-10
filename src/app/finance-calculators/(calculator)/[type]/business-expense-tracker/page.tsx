@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { analyzeBusinessExpenses } from "@/lib/utils/calculators/business/expenses";
 import { useState } from "react";
 
@@ -115,30 +116,27 @@ export default function BusinessExpenseTracker() {
               />
               Fixed
             </label>
-            <button
+            <Button
               className="text-red-500 text-xs"
               onClick={() => removeExpense(idx)}
               disabled={expenses.length === 1}
               type="button"
             >
               Remove
-            </button>
+            </Button>
           </div>
         ))}
-        <button
+        <Button
           className="bg-gray-200 mt-2 px-3 py-1 rounded text-sm"
           onClick={addExpense}
           type="button"
         >
           Add Expense
-        </button>
+        </Button>
       </div>
-      <button
-        className="bg-blue-600 mt-4 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-4 px-4 py-2 rounded" onClick={handleCalculate}>
         Analyze Expenses
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

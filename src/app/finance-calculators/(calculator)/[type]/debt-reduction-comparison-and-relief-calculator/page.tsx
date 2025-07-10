@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function DebtReductionComparisonAndReliefCalculator() {
@@ -66,7 +67,10 @@ export default function DebtReductionComparisonAndReliefCalculator() {
       // With extra payment
       const PMTExtra = PMT + extra;
       const nExtra = calcMonthsToPayoff(P, r, PMTExtra);
-      const { totalPaid: totalPaidWithExtra, totalInterest: totalInterestWithExtra } = calcTotalPaid(P, r, PMTExtra, nExtra);
+      const {
+        totalPaid: totalPaidWithExtra,
+        totalInterest: totalInterestWithExtra,
+      } = calcTotalPaid(P, r, PMTExtra, nExtra);
 
       // Debt relief calculation
       const reliefAmount = P * reliefPct;
@@ -460,12 +464,9 @@ export default function DebtReductionComparisonAndReliefCalculator() {
           </div>
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Compare Debt Reduction Options
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

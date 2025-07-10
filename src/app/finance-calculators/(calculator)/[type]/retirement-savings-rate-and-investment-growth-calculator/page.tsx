@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
@@ -23,10 +24,16 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
     return PV * Math.pow(1 + r, n) + PMT * ((Math.pow(1 + r, n) - 1) / r);
   }
 
-  function calcRequiredSavingsRate(PV: number, income: number, r: number, n: number, goal: number) {
+  function calcRequiredSavingsRate(
+    PV: number,
+    income: number,
+    r: number,
+    n: number,
+    goal: number
+  ) {
     // Solve for PMT: goal = PV*(1+r)^n + PMT*(((1+r)^n - 1)/r)
     // PMT = (goal - PV*(1+r)^n) * r / ((1+r)^n - 1)
-    if (r === 0) return ((goal - PV) / n) / income * 100;
+    if (r === 0) return ((goal - PV) / n / income) * 100;
     const numerator = (goal - PV * Math.pow(1 + r, n)) * r;
     const denominator = (Math.pow(1 + r, n) - 1) * income;
     return (numerator / denominator) * 100;
@@ -59,9 +66,20 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
     ) {
       const years = retire - age;
       const annualContribution = income * rate;
-      const FV = calcFutureValue(savings, annualContribution, returnRate, years);
+      const FV = calcFutureValue(
+        savings,
+        annualContribution,
+        returnRate,
+        years
+      );
       const nestEggGoalMet = FV >= goal;
-      const requiredSavingsRate = calcRequiredSavingsRate(savings, income, returnRate, years, goal);
+      const requiredSavingsRate = calcRequiredSavingsRate(
+        savings,
+        income,
+        returnRate,
+        years,
+        goal
+      );
       setResult({
         annualContribution,
         totalAtRetirement: FV,
@@ -347,12 +365,9 @@ export default function RetirementSavingsRateAndInvestmentGrowthCalculator() {
           />
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate Savings Growth
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

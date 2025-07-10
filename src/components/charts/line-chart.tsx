@@ -16,6 +16,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { Button } from "../ui/button";
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
   { date: "2024-04-02", desktop: 97, mobile: 180 },
@@ -138,8 +139,8 @@ export function Component() {
 
   return (
     <Card>
-      <CardHeader className="flex sm:flex-row flex-col items-stretch space-y-0 p-0 border-b">
-        <div className="flex flex-col flex-1 justify-center gap-1 px-6 py-5 sm:py-6">
+      <CardHeader className="flex flex-col sm:flex-row items-stretch space-y-0 p-0 border-b">
+        <div className="flex flex-1 flex-col gap-1 justify-center px-6 py-5 sm:py-6">
           <CardTitle>Line Chart - Interactive</CardTitle>
           <CardDescription>
             Showing total visitors for the last 3 months
@@ -149,27 +150,27 @@ export function Component() {
           {["desktop", "mobile"].map((key) => {
             const chart = key as keyof typeof chartConfig;
             return (
-              <button
+              <Button
                 key={chart}
                 data-active={activeChart === chart}
-                className="flex flex-col flex-1 justify-center gap-1 data-[active=true]:bg-muted/50 px-6 sm:px-8 py-4 sm:py-6 border-t sm:border-t-0 sm:border-l even:border-l text-left"
+                className="flex flex-1 flex-col gap-1 justify-center data-[active=true]:bg-muted/50 px-6 sm:px-8 py-4 sm:py-6 sm:border-l even:border-l border-t sm:border-t-0 text-left"
                 onClick={() => setActiveChart(chart)}
               >
                 <span className="text-muted-foreground text-xs">
                   {chartConfig[chart].label}
                 </span>
-                <span className="font-bold text-lg sm:text-3xl leading-none">
+                <span className="font-bold leading-none text-lg sm:text-3xl">
                   {total[key as keyof typeof total].toLocaleString()}
                 </span>
-              </button>
+              </Button>
             );
           })}
         </div>
       </CardHeader>
-      <CardContent className="px-2 sm:p-6">
+      <CardContent className="sm:p-6 px-2">
         <ChartContainer
           config={chartConfig}
-          className="w-full h-[250px] aspect-auto"
+          className="h-[250px] w-full aspect-auto"
         >
           <LineChart
             accessibilityLayer

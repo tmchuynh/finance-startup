@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 type AssetClass = {
@@ -133,7 +134,7 @@ export default function AssetAllocationCalculator() {
           for each asset class. The calculator will help you see if your
           allocation matches your goals and common guidelines.
         </p>
-        <div className="mb-6">
+        <div className="my-6">
           <h3>Typical Input Values</h3>
           <table className="mb-4 border border-gray-300 min-w-full text-sm">
             <thead>
@@ -341,12 +342,9 @@ export default function AssetAllocationCalculator() {
           ))}
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate Allocation
-      </button>
+      </Button>
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

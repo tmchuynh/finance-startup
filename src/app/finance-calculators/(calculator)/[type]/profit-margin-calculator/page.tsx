@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { calculateProfitMargins } from "@/lib/utils/calculators/business/income";
 import { useState } from "react";
 
@@ -77,12 +78,9 @@ export default function ProfitMarginCalculator() {
           />
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={calculateMargin}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={calculateMargin}>
         Calculate Profit Margin
-      </button>
+      </Button>
       {margin !== null && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">

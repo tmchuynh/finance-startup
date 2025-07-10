@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { JSX, SVGProps } from "react";
+import { Button } from "../ui/button";
 
 const navigation = {
   solutions: [
@@ -191,12 +192,12 @@ export default function Example() {
               className="px-3 py-1.5 rounded-md min-w-0 w-full sm:w-56 text-base sm:text-sm/6 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
             />
             <div className="sm:ml-4 mt-4 sm:mt-0 sm:shrink-0">
-              <button
+              <Button
                 type="submit"
                 className="flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 shadow-xs px-3 py-2 rounded-md w-full font-semibold text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Subscribe
-              </button>
+              </Button>
             </div>
           </form>
         </div>

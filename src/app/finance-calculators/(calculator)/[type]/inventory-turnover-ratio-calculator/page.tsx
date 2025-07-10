@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { calculateInventoryTurnoverRatio } from "@/lib/utils/calculators/business/inventory";
 import { useState } from "react";
 
@@ -102,12 +103,9 @@ export default function InventoryTurnoverRatioCalculator() {
           />
         </div>
       </div>
-      <button
-        className="bg-blue-600 mt-2 px-4 py-2 rounded"
-        onClick={handleCalculate}
-      >
+      <Button className="mt-2 px-4 py-2 rounded" onClick={handleCalculate}>
         Calculate Inventory Turnover
-      </button>
+      </Button>
       {result && (
         <div className="gap-4 grid md:grid-cols-2 mt-6">
           <div className="shadow p-4 border rounded-lg">
