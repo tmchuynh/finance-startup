@@ -76,9 +76,7 @@ export default function WorkingCapitalCalculator() {
 
         {/* Example table for a typical person */}
         <div className="mb-6 overflow-x-auto">
-          <h3 className="mb-2">
-            Example: Typical Personal Assets and Liabilities
-          </h3>
+          <h3>Example: Typical Personal Assets and Liabilities</h3>
           <table className="border border-gray-300 min-w-full text-sm">
             <thead>
               <tr className="">

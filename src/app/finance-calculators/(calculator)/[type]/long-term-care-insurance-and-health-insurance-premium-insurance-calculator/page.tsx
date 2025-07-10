@@ -245,7 +245,7 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
         </div>
       </section>
       <div className="mb-8">
-        <h3 className="mb-2 font-medium">Insurance Inputs</h3>
+        <h3>Insurance Inputs</h3>
         <div className="gap-4 grid md:grid-cols-3">
           <div className="mb-2">
             <label className="block mb-1 font-medium">Age:</label>
@@ -367,7 +367,7 @@ export default function LongTermCareAndHealthInsurancePremiumCalculator() {
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
+            <h3>Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>

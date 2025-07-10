@@ -84,7 +84,7 @@ export default function BusinessExpenseTracker() {
         />
       </div>
       <div>
-        <h2 className="mb-2 font-semibold">Expenses</h2>
+        <h2>Expenses</h2>
         {expenses.map((exp, idx) => (
           <div key={idx} className="flex gap-2 items-center mb-2">
             <input

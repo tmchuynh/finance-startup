@@ -76,7 +76,7 @@ export default function BondYieldCalculator() {
         </p>
         <div className="mb-6">
           <h3>Typical Input Values</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Field</th>
@@ -110,7 +110,7 @@ export default function BondYieldCalculator() {
         </div>
         <div className="mb-6">
           <h3>Bond Yield Details</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
@@ -158,7 +158,7 @@ export default function BondYieldCalculator() {
         </div>
         <div className="mb-6">
           <h3>Real Data Example (2024)</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
@@ -270,8 +270,8 @@ export default function BondYieldCalculator() {
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="border border-gray-300 min-w-full text-sm">
+            <h3>Results</h3>
+            <table className="border min-w-full text-sm">
               <tbody>
                 <tr>
                   <td className="px-3 py-2 border font-medium">

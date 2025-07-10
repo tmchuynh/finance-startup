@@ -422,7 +422,7 @@ export default function RetirementAccountComparisonCalculator() {
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Comparison Results</h3>
+            <h3>Comparison Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <thead>
                 <tr className="">

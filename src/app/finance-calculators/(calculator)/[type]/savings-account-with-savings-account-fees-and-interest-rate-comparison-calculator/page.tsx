@@ -296,7 +296,7 @@ export default function SavingsAccountWithFeesAndInterestRateComparisonCalculato
         </div>
       </section>
       <div className="mb-8">
-        <h3 className="mb-2 font-medium">Savings Account Inputs</h3>
+        <h3>Savings Account Inputs</h3>
         <div className="gap-4 grid md:grid-cols-2">
           <div className="mb-2">
             <label className="block mb-1 font-medium">
@@ -405,7 +405,7 @@ export default function SavingsAccountWithFeesAndInterestRateComparisonCalculato
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
+            <h3>Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <thead>
                 <tr className="">

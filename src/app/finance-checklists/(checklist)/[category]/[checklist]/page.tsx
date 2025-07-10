@@ -181,7 +181,7 @@ export default function Checklist({
         );
       })}
 
-      <footer className="flex justify-between mt-8 pt-4 border-t font-semibold">
+      <footer className="flex justify-between mt-8 pt-4 border-t">
         <span>
           Total items completed: {totalChecked} / {totalItems}
         </span>

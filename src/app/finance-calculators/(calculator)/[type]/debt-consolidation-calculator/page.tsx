@@ -369,7 +369,7 @@ export default function DebtConsolidationCalculator() {
         </div>
       </section>
       <div className="mb-8">
-        <h3 className="mb-2 font-medium">Debt Inputs</h3>
+        <h3>Debt Inputs</h3>
         {debts.map((debt, idx) => (
           <div key={idx} className="gap-4 items-end grid md:grid-cols-4 mb-2">
             <div>
@@ -485,7 +485,7 @@ export default function DebtConsolidationCalculator() {
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
+            <h3>Results</h3>
             <table className="border border-gray-300 min-w-full text-sm">
               <tbody>
                 <tr>

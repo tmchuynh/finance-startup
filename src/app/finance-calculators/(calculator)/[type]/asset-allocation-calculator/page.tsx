@@ -136,7 +136,7 @@ export default function AssetAllocationCalculator() {
         </p>
         <div className="my-6">
           <h3>Typical Input Values</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Asset Class</th>
@@ -159,7 +159,7 @@ export default function AssetAllocationCalculator() {
         </div>
         <div className="mb-6">
           <h3>Model Portfolios (2024)</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Portfolio</th>
@@ -189,7 +189,7 @@ export default function AssetAllocationCalculator() {
         </div>
         <div className="mb-6">
           <h3>Key Terms Explained</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Term</th>
@@ -232,7 +232,7 @@ export default function AssetAllocationCalculator() {
         </div>
         <div className="mb-6">
           <h3>Real Data Example (2024)</h3>
-          <table className="mb-4 border border-gray-300 min-w-full text-sm">
+          <table className="mb-4 border min-w-full text-sm">
             <thead>
               <tr className="">
                 <th className="px-3 py-2 border text-left">Scenario</th>
@@ -323,7 +323,7 @@ export default function AssetAllocationCalculator() {
         </div>
       </div>
       <div className="mb-4">
-        <h3 className="mb-2 font-medium">Enter Your Target Allocation (%)</h3>
+        <h3>Enter Your Target Allocation (%)</h3>
         <div className="gap-4 grid md:grid-cols-3">
           {ASSET_CLASSES.map((a) => (
             <div key={a.key} className="mb-2">
@@ -348,8 +348,8 @@ export default function AssetAllocationCalculator() {
       {result && (
         <div className="flex flex-col gap-4 mt-6">
           <div className="shadow p-4 border rounded-lg">
-            <h3 className="mb-2 font-semibold">Results</h3>
-            <table className="mb-2 border border-gray-300 min-w-full text-sm">
+            <h3>Results</h3>
+            <table className="mb-2 border min-w-full text-sm">
               <thead>
                 <tr className="">
                   <th className="px-3 py-2 border text-left">Asset Class</th>
