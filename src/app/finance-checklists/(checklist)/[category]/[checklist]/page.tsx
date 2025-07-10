@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useChecklistContext } from "@/context/checklistContext";
 import { checklistCategories } from "@/lib/constants/checklists/categories";
@@ -141,15 +141,16 @@ export default function Checklist({
                       }`}
                     >
                       {!hasSubItems && (
-                        <Input
-                          type="checkbox"
+                        <Checkbox
                           id={item.id}
                           checked={parentChecked}
-                          onChange={() => toggleItem(item.id)}
-                          className="h-5 w-5 text-primary form-checkbox"
+                          onCheckedChange={() => toggleItem(item.id)}
+                          className="mr-3"
                         />
                       )}
-                      <span className="ml-3">{item.label}</span>
+                      <span className={hasSubItems ? "" : "ml-3"}>
+                        {item.label}
+                      </span>
                     </Label>
 
                     {hasSubItems && item.items && (
@@ -160,12 +161,11 @@ export default function Checklist({
                               htmlFor={subItem.id}
                               className="inline-flex items-center cursor-pointer select-none"
                             >
-                              <Input
-                                type="checkbox"
+                              <Checkbox
                                 id={subItem.id}
                                 checked={!!checkedItems[subItem.id]}
-                                onChange={() => toggleItem(subItem.id)}
-                                className="h-5 w-5 text-primary form-checkbox"
+                                onCheckedChange={() => toggleItem(subItem.id)}
+                                className="mr-3"
                               />
                               <span className="ml-3">{subItem.label}</span>
                             </Label>
