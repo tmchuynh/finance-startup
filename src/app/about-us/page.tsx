@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
 export default function AboutUsPage() {
   const router = useRouter();
   return (
-    <main className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <main className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       {/* Header section */}
-      <div className="px-6 lg:px-8 pt-14">
+      <div className="pt-14 px-6 lg:px-8">
         <h1>Fiscora</h1>
         <h5>Founded out of necessity and refined through innovation.</h5>
         <p className="mt-8 font-medium text-lg text-pretty sm:text-xl/8">
@@ -26,7 +26,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* Content section */}
-      <div className="mx-auto mt-4 md:mt-6 lg:mt-10 px-6 lg:px-8">
+      <div className="mt-4 md:mt-6 lg:mt-10 mx-auto px-6 lg:px-8">
         <div className="mx-auto lg:mx-0 max-w-2xl lg:max-w-none">
           <div className="gap-8 grid grid-cols-1 lg:grid-cols-2 max-w-xl lg:max-w-none text-base/7">
             <div>
@@ -75,7 +75,7 @@ export default function AboutUsPage() {
         </div>
       </div>
 
-      <div className="mx-auto mt-20 px-6 lg:px-8">
+      <div className="mt-20 mx-auto px-6 lg:px-8">
         <h2>How We Meet Up</h2>
         <h5>Our goals are ambitious, but our commitment is unwavering.</h5>
         <p>
@@ -119,7 +119,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* Image section */}
-      <div className="xl:mx-auto mt-32 sm:mt-40 xl:px-8 xl:max-w-7xl">
+      <div className="mt-32 sm:mt-40 xl:mx-auto xl:px-8 xl:max-w-7xl">
         <Image
           alt=""
           src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2894&q=80"
@@ -130,7 +130,7 @@ export default function AboutUsPage() {
       </div>
 
       {/* Values section */}
-      <div className="mx-auto mt-32 sm:mt-40 px-6 lg:px-8">
+      <div className="mt-32 sm:mt-40 mx-auto px-6 lg:px-8">
         <div className="mx-auto lg:mx-0 max-w-2xl">
           <h2>Our values</h2>
           <h5>Built on Trust. Powered by Insight. Designed for Everyone.</h5>
@@ -141,13 +141,13 @@ export default function AboutUsPage() {
             make informed financial decisions with confidence.
           </p>
         </div>
-        <dl className="gap-8 lg:gap-x-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto lg:mx-0 mt-16 max-w-2xl lg:max-w-none text-base/7">
+        <dl className="gap-8 lg:gap-x-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-16 mx-auto lg:mx-0 max-w-2xl lg:max-w-none text-base/7">
           {values.map((value) => (
             <div key={value.name} className="relative pl-9">
-              <dt className="inline font-semibold">
+              <dt className="inline">
                 <value.icon
                   aria-hidden="true"
-                  className="top-1 left-1 absolute text-primary size-5"
+                  className="absolute left-1 top-1 text-primary size-5"
                 />
                 {value.name}
               </dt>{" "}
@@ -160,11 +160,11 @@ export default function AboutUsPage() {
       {/* CTA section */}
       <div className="relative mt-32 sm:mt-40 isolate">
         <div className="mx-auto sm:px-6 lg:px-8">
-          <div className="flex lg:flex-row flex-col lg:items-center gap-16 xl:gap-x-20 bg-white/5 mx-auto lg:mx-0 px-6 xl:px-20 py-16 lg:py-20 sm:p-8 sm:rounded-3xl ring-1 ring-white/10 max-w-2xl lg:max-w-none">
+          <div className="flex flex-col lg:flex-row gap-16 xl:gap-x-20 lg:items-center bg-white/5 mx-auto lg:mx-0 sm:p-8 px-6 xl:px-20 py-16 lg:py-20 ring-1 ring-white/10 sm:rounded-3xl max-w-2xl lg:max-w-none">
             <Image
               alt=""
               src="https://images.unsplash.com/photo-1519338381761-c7523edc1f46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
-              className="flex-none shadow-xl rounded-2xl w-full lg:max-w-sm h-96 lg:h-auto object-cover lg:aspect-square"
+              className="flex-none shadow-xl rounded-2xl h-96 lg:h-auto lg:max-w-sm w-full object-cover lg:aspect-square"
               width={2000}
               height={800}
             />
@@ -185,7 +185,7 @@ export default function AboutUsPage() {
                   <li key={benefit.title} className="flex gap-x-3">
                     <CheckCircleIcon
                       aria-hidden="true"
-                      className="flex-none w-5 h-7"
+                      className="flex-none h-7 w-5"
                     />
                     {benefit.title}
                   </li>

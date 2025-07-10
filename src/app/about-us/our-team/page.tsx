@@ -77,9 +77,7 @@ export default function OurTeamPage() {
                     height={800}
                   />
                   <div className="flex gap-x-4 items-end justify-between">
-                    <h3 className="mt-6 font-semibold tracking-tight">
-                      {person.name}
-                    </h3>
+                    <h3>{person.name}</h3>
                     <div className="flex gap-x-4 items-center mt-2 text-secondary text-sm/6">
                       <IoIosMail className="size-9" />
                       <FaPhoneAlt className="size-6" />

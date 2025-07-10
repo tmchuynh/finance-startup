@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export default function JoinUsPage() {
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <h1>Careers at Fiscora</h1>
       <h5>Join our team and make a difference!</h5>
       <p>
@@ -34,8 +34,8 @@ export default function JoinUsPage() {
         <div className="gap-8 grid md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => (
             <div key={index} className="mt-8">
-              <div className="flex justify-center items-center bg-primary/10 mb-2 rounded-2xl w-16 h-16 text-primary">
-                <benefit.icon className="w-8 h-8" />
+              <div className="flex items-center justify-center bg-primary/10 mb-2 rounded-2xl h-16 w-16 text-primary">
+                <benefit.icon className="h-8 w-8" />
               </div>
               <h3>{benefit.title}</h3>
               <p className="w-2/3">{benefit.description}</p>
@@ -60,7 +60,7 @@ export default function JoinUsPage() {
           >
             <div>
               <div className="grid lg:grid-cols-9">
-                <h3 className="col-span-4">{job.title}</h3>
+                <h3>{job.title}</h3>
                 <h5 className="col-span-2">{job.salary}</h5>
                 <h5 className="col-span-3 text-end">{job.location}</h5>
               </div>
