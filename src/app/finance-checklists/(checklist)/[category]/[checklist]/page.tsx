@@ -54,6 +54,7 @@ export default function Checklist({
     return <div className="text-center">Loading...</div>;
   }
 
+
   const toggleItem = (id: string) => {
     setCheckedItems((prev) => ({
       ...prev,
@@ -108,7 +109,7 @@ export default function Checklist({
   const { checked: totalChecked, total: totalItems } = getTotalCounts();
 
   return (
-    <div className="mx-auto mt-8 md:mt-12 w-10/12 md:w-11/12 h-full">
+    <div className="mt-8 md:mt-12 mx-auto h-full w-10/12 md:w-11/12">
       <h1>{capitalize(checklist)}</h1>
       <p>{checklistInfo?.description}</p>
 
@@ -118,7 +119,7 @@ export default function Checklist({
         const counts = categoryCheckedCounts.find((c) => c.id === category.id);
         return (
           <section key={category.id} className="mb-8">
-            <header className="flex justify-between items-center mb-3">
+            <header className="flex items-center justify-between mb-3">
               <h4>{category.title}</h4>
               <span className="text-sm">
                 {counts?.checkedCount} / {counts?.total} completed
@@ -145,7 +146,7 @@ export default function Checklist({
                           id={item.id}
                           checked={parentChecked}
                           onChange={() => toggleItem(item.id)}
-                          className="w-5 h-5 text-primary form-checkbox"
+                          className="h-5 w-5 text-primary form-checkbox"
                         />
                       )}
                       <span className="ml-3">{item.label}</span>
@@ -164,7 +165,7 @@ export default function Checklist({
                                 id={subItem.id}
                                 checked={!!checkedItems[subItem.id]}
                                 onChange={() => toggleItem(subItem.id)}
-                                className="w-5 h-5 text-primary form-checkbox"
+                                className="h-5 w-5 text-primary form-checkbox"
                               />
                               <span className="ml-3">{subItem.label}</span>
                             </Label>
