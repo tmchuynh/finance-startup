@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function TestimonialsPage() {
   return (
-    <div className="mx-auto pt-6 sm:pt-12 lg:pt-16 pb-24 lg:pb-32 w-10/12 md:w-11/12">
+    <div className="mx-auto pb-24 lg:pb-32 pt-6 sm:pt-12 lg:pt-16 w-10/12 md:w-11/12">
       <h1>Testimonials</h1>
       <h5>What our users say about us</h5>
       <p>
@@ -17,12 +17,12 @@ export default function TestimonialsPage() {
         improve. If you have any feedback or suggestions, please don't hesitate
         to reach out to us. We would love to hear from you!
       </p>
-      <div className="gap-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 grid-rows-1 xl:grid-flow-col mx-auto xl:mx-0 mt-16 sm:mt-20 max-w-2xl xl:max-w-none text-sm/6">
-        <figure className="sm:block hidden col-span-2 xl:col-start-2 xl:row-end-1 sm:shadow-lg sm:rounded-2xl ring-ring/55 sm:ring-1 dark:ring-primary/45">
-          <blockquote className="p-12 font-semibold text-xl/8 tracking-tight">
+      <div className="gap-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 xl:grid-flow-col grid-rows-1 mt-16 sm:mt-20 mx-auto xl:mx-0 max-w-2xl xl:max-w-none text-sm/6">
+        <figure className="sm:block col-span-2 xl:col-start-2 hidden xl:row-end-1 sm:shadow-lg ring-ring/55 sm:ring-1 dark:ring-primary/45 sm:rounded-2xl">
+          <blockquote className="p-12 text-xl/8 tracking-tight">
             <p>{`“${featuredTestimonial.body}”`}</p>
           </blockquote>
-          <figcaption className="flex items-center gap-x-4 px-6 py-4 border-t border-border/10">
+          <figcaption className="flex gap-x-4 items-center px-6 py-4 border-border/10 border-t">
             <Image
               alt=""
               src={featuredTestimonial.author.imageUrl}
@@ -31,9 +31,7 @@ export default function TestimonialsPage() {
               height={40}
             />
             <div className="flex-auto">
-              <div className="font-semibold">
-                {featuredTestimonial.author.name}
-              </div>
+              <div className="">{featuredTestimonial.author.name}</div>
               <div className="text-secondary text-sm/6">
                 {featuredTestimonial.author.title}
               </div>
@@ -63,12 +61,12 @@ export default function TestimonialsPage() {
                 {column.map((testimonial) => (
                   <figure
                     key={testimonial.author.name}
-                    className="shadow-lg p-6 rounded-2xl ring-1 ring-ring/15 dark:ring-ring"
+                    className="shadow-lg p-6 ring-1 ring-ring/15 dark:ring-ring rounded-2xl"
                   >
                     <blockquote className="">
                       <p>{`“${testimonial.body}”`}</p>
                     </blockquote>
-                    <figcaption className="flex items-center gap-x-4 mt-6">
+                    <figcaption className="flex gap-x-4 items-center mt-6">
                       <Image
                         alt=""
                         src={testimonial.author.imageUrl}
@@ -77,9 +75,7 @@ export default function TestimonialsPage() {
                         height={40}
                       />
                       <div>
-                        <div className="font-semibold">
-                          {testimonial.author.name}
-                        </div>
+                        <div className="">{testimonial.author.name}</div>
                         <div className="text-secondary text-sm/6">
                           {testimonial.author.title}
                         </div>

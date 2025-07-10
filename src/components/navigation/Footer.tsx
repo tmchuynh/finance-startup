@@ -194,7 +194,7 @@ export default function Example() {
             <div className="sm:ml-4 mt-4 sm:mt-0 sm:shrink-0">
               <Button
                 type="submit"
-                className="flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 shadow-xs px-3 py-2 rounded-md w-full font-semibold text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 shadow-xs px-3 py-2 rounded-md w-full text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Subscribe
               </Button>

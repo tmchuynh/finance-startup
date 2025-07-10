@@ -13,10 +13,24 @@ const badgeVariants = cva(
           "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        accent:
+          "border-transparent bg-accent text-accent-foreground [a&]:hover:bg-accent/90",
+        outline:
+          "border-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        ghost:
+          "border-transparent bg-transparent text-foreground [a&]:hover:bg-accent/50 [a&]:hover:text-foreground/80",
         destructive:
           "border-transparent bg-destructive  [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        chart1:
+          "border-transparent bg-chart-1 text-chart-1-foreground [a&]:hover:bg-chart1/90",
+        chart2:
+          "border-transparent bg-chart-2 text-chart-2-foreground [a&]:hover:bg-chart2/90",
+        chart3:
+          "border-transparent bg-chart-3 text-chart-3-foreground [a&]:hover:bg-chart3/90",
+        chart4:
+          "border-transparent bg-chart-4 text-chart-4-foreground [a&]:hover:bg-chart4/90",
+        chart5:
+          "border-transparent bg-chart-5 text-chart-5-foreground [a&]:hover:bg-chart5/90",
       },
     },
     defaultVariants: {

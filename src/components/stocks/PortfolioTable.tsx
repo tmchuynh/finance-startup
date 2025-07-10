@@ -85,40 +85,32 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
                   {onSelectStock ? (
                     <Button
                       variant="link"
-                      className="p-0 h-auto font-mono font-semibold"
+                      className="p-0 h-auto font-mono"
                       onClick={() => onSelectStock(h.symbol)}
                       title="Select this stock for trading"
                     >
                       {h.symbol}
                     </Button>
                   ) : (
-                    <span className="font-mono font-semibold">{h.symbol}</span>
+                    <span className="font-mono">{h.symbol}</span>
                   )}
                 </TableCell>
-                <TableCell className="font-medium">
-                  {h.quantity.toLocaleString()}
-                </TableCell>
-                <TableCell className="font-semibold">
+                <TableCell>{h.quantity.toLocaleString()}</TableCell>
+                <TableCell className="">
                   {formatNumberToCurrency(h.averagePrice, 2, 2)}
                 </TableCell>
-                <TableCell className="font-semibold">
+                <TableCell className="">
                   {formatNumberToCurrency(currentPrice, 2, 2)}
                 </TableCell>
-                <TableCell className="font-semibold">
+                <TableCell className="">
                   {formatNumberToCurrency(totalValue, 2, 2)}
                 </TableCell>
-                <TableCell
-                  className={`font-semibold ${
-                    change >= 0 ? "" : "text-red-600"
-                  }`}
-                >
+                <TableCell className={` ${change >= 0 ? "" : "text-red-600"}`}>
                   {change >= 0 ? "+" : ""}
                   {formatNumberToCurrency(change, 2, 2)}
                 </TableCell>
                 <TableCell
-                  className={`font-semibold ${
-                    changePct >= 0 ? "" : "text-red-600"
-                  }`}
+                  className={` ${changePct >= 0 ? "" : "text-red-600"}`}
                 >
                   {changePct >= 0 ? "+" : ""}
                   {changePct.toFixed(2)}%
