@@ -1,6 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { financeCalculatorCategories } from "@/lib/constants/calculators/categories";
+import { formatTitleToKebabCase } from "@/lib/utils/format";
 import { sortByProperty } from "@/lib/utils/sort";
 import { useRouter } from "next/navigation";
 
@@ -33,12 +35,28 @@ export default function FinanceCalculatorPage() {
       <div className="space-y-6 mt-8">
         {sortedFinanceCalculators.map((category) => (
           <div key={category.id}>
-            <h2
-              className="font-bold text-xl underline-offset-2 hover:underline cursor-pointer"
-              onClick={() => router.push(`/finance-calculators/${category.id}`)}
-            >
-              {category.title}
-            </h2>
+            <div className="flex gap-5 items-center justify-between w-1/4">
+              <h2
+                className="font-bold text-xl underline-offset-2 hover:underline cursor-pointer"
+                onClick={() =>
+                  router.push(`/finance-calculators/${category.id}`)
+                }
+              >
+                {category.title}
+              </h2>
+              <Button
+                onClick={() =>
+                  router.push(
+                    `/finance-calculators/${formatTitleToKebabCase(
+                      category.title
+                    )}`
+                  )
+                }
+                className="px-4"
+              >
+                View All
+              </Button>
+            </div>
             <p>{category.description}</p>
             {category.introduction && (
               <p className="italic">{category.introduction}</p>
@@ -51,7 +69,7 @@ export default function FinanceCalculatorPage() {
                   .map((item) => (
                     <li
                       key={item.id}
-                      className="underline-offset-2 hover:underline cursor-pointer"
+                      className="w-6/7 underline-offset-2 hover:underline cursor-pointer"
                       onClick={() =>
                         router.push(
                           `/finance-calculators/${category.id}/${item.title
