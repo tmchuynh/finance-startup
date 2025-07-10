@@ -70,3 +70,12 @@ export function formatKebabCaseToCamelCase(str: string): string {
     })
     .join("");
 }
+
+export function formatTitleToKebabCase(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-|-$/g, "");
+}

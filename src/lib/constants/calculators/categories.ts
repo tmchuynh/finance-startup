@@ -441,7 +441,7 @@ export const financeCalculatorCategories: Category[] = [
       },
       {
         title:
-          "Savings Account with Savings Account Fees and Interest Rate Comparison Calculator",
+          "Savings Interest Rate and Savings Account Fees and Interest Rate Comparison Calculator",
         description:
           "Compare different savings accounts based on fees and interest rates.",
         id: "savings-account-with-savings-account-fees-and-interest-rate-comparison-calculator",
@@ -471,7 +471,7 @@ export const financeCalculatorCategories: Category[] = [
         id: "credit-card-payoff-and-credit-card-interest-calculator",
       },
       {
-        title: "Loan Payment and Student Loan RepaymentCalculator",
+        title: "Loan Payment and Student Loan Repayment Calculator",
         description:
           "Calculate monthly payments for personal loans or mortgages based on loan amount, interest rate, and term.",
         id: "loan-payment-and-student-loan-repayment-calculator",
