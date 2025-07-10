@@ -1,5 +1,6 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -354,9 +355,7 @@ export default function RealEstateSimulatorPage() {
     <div className="mx-auto px-4 py-8 max-w-7xl container">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="mb-4 font-bold text-4xl">
-          Real Estate Investment Simulator
-        </h1>
+        <h1>Real Estate Investment Simulator</h1>
         <p className="mb-4 text-lg text-muted-foreground">
           Simulate buying, repairing, renting, and selling properties. Watch
           price trends, make repairs, and select buyers or renters to maximize
@@ -366,24 +365,16 @@ export default function RealEstateSimulatorPage() {
         {/* Stats Dashboard */}
         <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-6">
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Cash Balance
-            </h3>
+            <h4>Cash Balance</h4>
             <p className="font-bold text-2xl">${cash.toLocaleString()}</p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Properties Owned
-            </h3>
+            <h4>Properties Owned</h4>
             <p className="font-bold text-2xl">{owned.length}</p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Simulation Date
-            </h3>
-            <p className="font-semibold text-lg">
-              {simDate.toLocaleDateString()}
-            </p>
+            <h4>Simulation Date</h4>
+            <p className="text-lg">{simDate.toLocaleDateString()}</p>
           </div>
         </div>
 
@@ -396,17 +387,29 @@ export default function RealEstateSimulatorPage() {
 
       {/* Available Properties Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Available Properties</h2>
+        <h2>Available Properties</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Location</TableHead>
-                <TableHead>Current Price</TableHead>
-                <TableHead>Condition</TableHead>
-                <TableHead>Price Trend</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead>
+                  <h6>Name</h6>
+                </TableHead>
+                <TableHead>
+                  <h6>Location</h6>
+                </TableHead>
+                <TableHead>
+                  <h6>Current Price</h6>
+                </TableHead>
+                <TableHead>
+                  <h6>Condition</h6>
+                </TableHead>
+                <TableHead>
+                  <h6>Price Trend</h6>
+                </TableHead>
+                <TableHead>
+                  <h6>Actions</h6>
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -424,32 +427,33 @@ export default function RealEstateSimulatorPage() {
                   .filter((p) => !p.owned)
                   .map((p) => (
                     <TableRow key={p.id}>
-                      <TableCell className="font-medium">{p.name}</TableCell>
+                      <TableCell>{p.name}</TableCell>
                       <TableCell>{p.location}</TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="">
                         ${p.price.toLocaleString()}
                       </TableCell>
                       <TableCell>
-                        <span
-                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        <Badge
+                          className={`rounded-full text-xs font-medium w-1/2`}
+                          variant={`${
                             p.condition === "Excellent"
-                              ? "bg-green-100 "
+                              ? "chart1"
                               : p.condition === "Good"
-                              ? "bg-blue-100 "
+                              ? "chart4"
                               : p.condition === "Fair"
-                              ? "bg-yellow-100 "
-                              : "bg-red-100 text-red-800"
+                              ? "chart3"
+                              : "chart2"
                           }`}
                         >
                           {p.condition}
-                        </span>
+                        </Badge>
                       </TableCell>
                       <TableCell>
                         <div className="flex gap-1 text-xs">
                           {p.trend.slice(-2).map((v, i) => (
-                            <span key={i} className="px-1 rounded">
+                            <p key={i} className="px-1 rounded">
                               ${(v / 1000).toFixed(0)}k
-                            </span>
+                            </p>
                           ))}
                         </div>
                       </TableCell>
@@ -472,7 +476,7 @@ export default function RealEstateSimulatorPage() {
 
       {/* Your Properties Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Your Properties</h2>
+        <h2>Your Properties</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -500,41 +504,42 @@ export default function RealEstateSimulatorPage() {
               ) : (
                 owned.map((p) => (
                   <TableRow key={p.id}>
-                    <TableCell className="font-medium">{p.name}</TableCell>
+                    <TableCell>{p.name}</TableCell>
                     <TableCell>{p.location}</TableCell>
-                    <TableCell className="font-semibold">
+                    <TableCell className="">
                       ${p.price.toLocaleString()}
                     </TableCell>
                     <TableCell>
-                      <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      <Badge
+                        variant={`${
                           p.condition === "Excellent"
-                            ? "bg-green-100 "
+                            ? "chart1"
                             : p.condition === "Good"
-                            ? "bg-blue-100 "
+                            ? "chart4"
                             : p.condition === "Fair"
-                            ? "bg-yellow-100 "
-                            : "bg-red-100 text-red-800"
+                            ? "chart3"
+                            : "chart2"
                         }`}
+                        className={`rounded-full text-xs font-medium`}
                       >
                         {p.condition}
-                      </span>
+                      </Badge>
                     </TableCell>
                     <TableCell>${p.repairs.toLocaleString()}</TableCell>
                     <TableCell>
                       <div className="flex flex-col gap-1">
                         {p.rentedTo && (
-                          <span className="bg-purple-100 px-2 py-1 rounded text-xs">
+                          <span className="bg-purple-100 rounded text-xs">
                             Rented: ${p.rentAmount?.toLocaleString()}/mo
                           </span>
                         )}
                         {p.forRent && !p.rentedTo && (
-                          <span className="bg-yellow-100 px-2 py-1 rounded text-xs">
+                          <span className="bg-yellow-100 rounded text-xs">
                             For Rent
                           </span>
                         )}
                         {p.forSale && (
-                          <span className="bg-blue-100 px-2 py-1 rounded text-xs">
+                          <span className="bg-blue-100 rounded text-xs">
                             For Sale
                           </span>
                         )}
@@ -583,7 +588,7 @@ export default function RealEstateSimulatorPage() {
       {rentModal.open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-card mx-4 p-6 border rounded-lg max-w-md w-full">
-            <h3 className="mb-4 font-semibold text-lg">Set Rent Range</h3>
+            <h3>Set Rent Range</h3>
             <div className="space-y-4">
               <div>
                 <Label htmlFor="min-rent">Minimum Rent ($/month)</Label>
@@ -638,7 +643,7 @@ export default function RealEstateSimulatorPage() {
       {/* Interested Buyers Section */}
       {owned.some((p) => p.forSale && p.interestedBuyers.length > 0) && (
         <div className="mb-8">
-          <h2 className="mb-4 font-semibold text-2xl">Interested Buyers</h2>
+          <h2>Interested Buyers</h2>
           <div className="border rounded-lg overflow-hidden">
             <Table>
               <TableHeader>
@@ -673,7 +678,7 @@ export default function RealEstateSimulatorPage() {
                           </TableCell>
                         )}
                         <TableCell>{b.name}</TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="">
                           ${b.offer.toLocaleString()}
                         </TableCell>
                         <TableCell className="text-muted-foreground text-sm">
@@ -702,7 +707,7 @@ export default function RealEstateSimulatorPage() {
           p.forRent && p.interestedRenters && p.interestedRenters.length > 0
       ) && (
         <div className="mb-8">
-          <h2 className="mb-4 font-semibold text-2xl">Interested Renters</h2>
+          <h2>Interested Renters</h2>
           <div className="border rounded-lg overflow-hidden">
             <Table>
               <TableHeader>
@@ -742,7 +747,7 @@ export default function RealEstateSimulatorPage() {
                           </TableCell>
                         )}
                         <TableCell>{r.name}</TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="">
                           ${r.offer.toLocaleString()}/mo
                         </TableCell>
                         <TableCell className="text-muted-foreground text-sm">
@@ -767,7 +772,7 @@ export default function RealEstateSimulatorPage() {
 
       {/* Transaction History Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Transaction History</h2>
+        <h2>Transaction History</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -802,27 +807,26 @@ export default function RealEstateSimulatorPage() {
                     <TableRow key={tx.id}>
                       <TableCell>{tx.date.toLocaleDateString()}</TableCell>
                       <TableCell>
-                        <span
-                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        <Badge
+                          variant={`${
                             tx.type === "BUY"
-                              ? "bg-red-100 text-red-800"
+                              ? "chart4"
                               : tx.type === "SELL"
-                              ? "bg-green-100 "
+                              ? "chart5"
                               : tx.type === "REPAIR"
-                              ? "bg-yellow-100 "
+                              ? "chart2"
                               : tx.type === "RENT"
-                              ? "bg-purple-100 "
-                              : "bg-blue-100 "
+                              ? "chart1"
+                              : "chart3"
                           }`}
+                          className={`rounded-full text-xs font-medium`}
                         >
                           {tx.type.replace("_", " ")}
-                        </span>
+                        </Badge>
                       </TableCell>
-                      <TableCell className="font-medium">
-                        {tx.propertyName}
-                      </TableCell>
+                      <TableCell>{tx.propertyName}</TableCell>
                       <TableCell
-                        className={`font-semibold ${
+                        className={` ${
                           isMoneyIn ? "" : isMoneyOut ? "text-red-600" : ""
                         }`}
                       >
@@ -836,7 +840,7 @@ export default function RealEstateSimulatorPage() {
                         {(tx.type === "SELL" || tx.type === "RENT") &&
                         typeof tx.gainLoss === "number" ? (
                           <span
-                            className={`font-semibold ${
+                            className={` ${
                               tx.gainLoss >= 0 ? "" : "text-red-600"
                             }`}
                           >
@@ -860,9 +864,7 @@ export default function RealEstateSimulatorPage() {
       {owned.length === 0 && properties.every((p) => p.owned) && (
         <div className="text-center">
           <div className="mb-4 p-6 border rounded-lg">
-            <h3 className="mb-2 font-semibold text-lg">
-              No Properties Available
-            </h3>
+            <h3>No Properties Available</h3>
             <p className="">
               All properties have been purchased. Start over to continue
               playing!

@@ -111,13 +111,9 @@ const CompoundInterestVisualizer: React.FC = () => {
     <div className="mx-auto px-4 py-8 max-w-7xl container">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="mb-4 font-bold text-4xl">
-          Compound Interest Visualizer
-        </h1>
-        <div className="bg-purple-50 mb-6 p-6 border border-purple-200 rounded-lg">
-          <h2 className="mb-2 font-semibold text-lg">
-            Visualize Your Investment Growth
-          </h2>
+        <h1>Compound Interest Visualizer</h1>
+        <div className="mb-6 p-6 border rounded-lg">
+          <h2 className="">Visualize Your Investment Growth</h2>
           <p className="">
             Use this powerful tool to see how your investments grow over time
             with compound interest. Adjust the parameters below to explore
@@ -130,7 +126,7 @@ const CompoundInterestVisualizer: React.FC = () => {
       {/* Input Parameters Section */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-semibold text-2xl">Investment Parameters</h2>
+          <h2>Investment Parameters</h2>
           <Button
             variant="outline"
             onClick={resetToDefaults}
@@ -220,12 +216,10 @@ const CompoundInterestVisualizer: React.FC = () => {
 
       {/* Results Summary */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Investment Summary</h2>
+        <h2>Investment Summary</h2>
         <div className="gap-4 grid grid-cols-1 md:grid-cols-3">
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Total Contributions
-            </h3>
+            <h4>Total Contributions</h4>
             <p className="font-bold text-2xl">
               ${totalContributions.toLocaleString()}
             </p>
@@ -234,9 +228,7 @@ const CompoundInterestVisualizer: React.FC = () => {
             </p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Interest Earned
-            </h3>
+            <h4>Interest Earned</h4>
             <p className="font-bold text-2xl">
               ${interestEarned.toLocaleString()}
             </p>
@@ -245,9 +237,7 @@ const CompoundInterestVisualizer: React.FC = () => {
             </p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Final Balance
-            </h3>
+            <h4>Final Balance</h4>
             <p className="font-bold text-2xl">
               ${finalBalance.toLocaleString()}
             </p>
@@ -260,7 +250,7 @@ const CompoundInterestVisualizer: React.FC = () => {
 
       {/* Chart Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Growth Visualization</h2>
+        <h2>Growth Visualization</h2>
         <div className="bg-card p-6 border rounded-lg">
           <div className="h-96">
             <Line data={chartData} options={chartOptions} />
@@ -270,11 +260,11 @@ const CompoundInterestVisualizer: React.FC = () => {
 
       {/* Key Insights Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Key Insights</h2>
+        <h2>Key Insights</h2>
         <div className="bg-card p-6 border rounded-lg">
           <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
             <div>
-              <h3 className="mb-2 font-semibold text-lg">Growth Breakdown</h3>
+              <h3>Growth Breakdown</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span>Interest vs Contributions:</span>
@@ -296,9 +286,7 @@ const CompoundInterestVisualizer: React.FC = () => {
               </div>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-lg">
-                Power of Compound Interest
-              </h3>
+              <h3>Power of Compound Interest</h3>
               <p className="text-muted-foreground text-sm">
                 Notice how the growth accelerates over time. This is the magic
                 of compound interest - you earn interest on both your original

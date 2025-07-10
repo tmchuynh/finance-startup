@@ -97,10 +97,8 @@ export default function StockMarketLearningSimulatorPage() {
     <div className="mx-auto px-4 py-8 max-w-7xl container">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="mb-4 font-bold text-4xl">
-          Stock Market Learning Simulator
-        </h1>
-        <div className="mb-6 p-6 border rounded-lg">
+        <h1>Stock Market Learning Simulator</h1>
+        <div>
           <p className="mb-3">
             Welcome to the Stock Market Learning Simulator! Practice buying and
             selling stocks in a risk-free environment to build your investment
@@ -117,25 +115,19 @@ export default function StockMarketLearningSimulatorPage() {
         {/* Stats Dashboard */}
         <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-6">
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Available Cash
-            </h3>
+            <h4>Available Cash</h4>
             <p className="font-bold text-2xl">
               {formatNumberToCurrency(portfolio.cash, 2, 2)}
             </p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Total Portfolio Value
-            </h3>
+            <h4>Total Portfolio Value</h4>
             <p className="font-bold text-2xl">
               {formatNumberToCurrency(portfolioValue, 2, 2)}
             </p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Holdings
-            </h3>
+            <h4>Holdings</h4>
             <p className="font-bold text-2xl">
               {portfolio.holdings.length} stocks
             </p>
@@ -151,7 +143,7 @@ export default function StockMarketLearningSimulatorPage() {
 
       {/* Trading Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Trade Stocks</h2>
+        <h2>Trade Stocks</h2>
         <div className="bg-card p-6 border rounded-lg">
           <p className="mb-6 text-muted-foreground">
             Stock prices update every 3 seconds. Select a stock and quantity to
@@ -250,7 +242,7 @@ export default function StockMarketLearningSimulatorPage() {
 
       {/* Current Stock Prices */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Current Stock Prices</h2>
+        <h2>Current Stock Prices</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -264,11 +256,9 @@ export default function StockMarketLearningSimulatorPage() {
             <TableBody>
               {stocks.map((stock) => (
                 <TableRow key={stock.symbol}>
-                  <TableCell className="font-mono font-semibold">
-                    {stock.symbol}
-                  </TableCell>
+                  <TableCell className="font-mono">{stock.symbol}</TableCell>
                   <TableCell>{stock.name}</TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     {formatNumberToCurrency(stock.price, 2, 2)}
                   </TableCell>
                   <TableCell>
@@ -289,7 +279,7 @@ export default function StockMarketLearningSimulatorPage() {
 
       {/* Portfolio Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Your Portfolio</h2>
+        <h2>Your Portfolio</h2>
         <PortfolioTable
           portfolio={portfolio}
           stocks={stocks}
@@ -300,7 +290,7 @@ export default function StockMarketLearningSimulatorPage() {
 
       {/* Transaction History Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Transaction History</h2>
+        <h2>Transaction History</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -344,15 +334,11 @@ export default function StockMarketLearningSimulatorPage() {
                           {tx.type}
                         </span>
                       </TableCell>
-                      <TableCell className="font-mono font-semibold">
-                        {tx.symbol}
-                      </TableCell>
+                      <TableCell className="font-mono">{tx.symbol}</TableCell>
                       <TableCell>{tx.quantity.toLocaleString()}</TableCell>
-                      <TableCell className="font-semibold">
-                        ${tx.price.toFixed(2)}
-                      </TableCell>
+                      <TableCell className="">${tx.price.toFixed(2)}</TableCell>
                       <TableCell
-                        className={`font-semibold ${
+                        className={` ${
                           isMoneyIn ? "" : isMoneyOut ? "text-red-600" : ""
                         }`}
                       >

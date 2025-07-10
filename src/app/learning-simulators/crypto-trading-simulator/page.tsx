@@ -97,14 +97,14 @@ export default function CryptoTradingSimulatorPage() {
     <div className="mx-auto px-4 py-8 max-w-7xl container">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="mb-4 font-bold text-4xl">Crypto Trading Simulator</h1>
-        <div className="bg-orange-50 mb-6 p-6 border border-orange-200 rounded-lg">
-          <p className="mb-3 text-orange-800">
+        <h1>Crypto Trading Simulator</h1>
+        <div className="mb-6">
+          <p className="mb-3">
             Welcome to the Crypto Trading Simulator! Practice buying and selling
             cryptocurrencies in a risk-free environment to learn about crypto
             markets.
           </p>
-          <p className="text-orange-700 text-sm">
+          <p className="text-sm">
             <strong>Notice:</strong> Crypto prices are highly volatile and
             simulated. This is for educational purposes only. Real
             cryptocurrency trading involves significant risks.
@@ -114,25 +114,19 @@ export default function CryptoTradingSimulatorPage() {
         {/* Stats Dashboard */}
         <div className="gap-4 grid grid-cols-1 md:grid-cols-3 mb-6">
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Available Cash
-            </h3>
+            <h4>Available Cash</h4>
             <p className="font-bold text-2xl">
               {formatNumberToCurrency(portfolio.cash, 2, 2)}
             </p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Total Portfolio Value
-            </h3>
+            <h4>Total Portfolio Value</h4>
             <p className="font-bold text-2xl text-orange-600">
               {formatNumberToCurrency(portfolioValue, 2, 2)}
             </p>
           </div>
           <div className="bg-card p-4 border rounded-lg">
-            <h3 className="font-medium text-muted-foreground text-sm">
-              Crypto Holdings
-            </h3>
+            <h4>Crypto Holdings</h4>
             <p className="font-bold text-2xl">
               {portfolio.holdings.length} coins
             </p>
@@ -148,7 +142,7 @@ export default function CryptoTradingSimulatorPage() {
 
       {/* Trading Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Trade Cryptocurrencies</h2>
+        <h2>Trade Cryptocurrencies</h2>
         <div className="bg-card p-6 border rounded-lg">
           <p className="mb-6 text-muted-foreground">
             Crypto prices update every 3 seconds with higher volatility than
@@ -156,7 +150,7 @@ export default function CryptoTradingSimulatorPage() {
             sell. Prices are simulated for educational purposes.
           </p>
 
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-6">
+          <div className="gap-6 items-center grid grid-cols-1 md:grid-cols-2 mb-6">
             <div>
               <Label
                 htmlFor="crypto-select"
@@ -204,7 +198,6 @@ export default function CryptoTradingSimulatorPage() {
                 />
                 <Button
                   variant="outline"
-                  size="sm"
                   disabled={!selectedCrypto}
                   onClick={() => {
                     if (selectedCrypto) {
@@ -253,9 +246,7 @@ export default function CryptoTradingSimulatorPage() {
 
       {/* Current Crypto Prices */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">
-          Current Cryptocurrency Prices
-        </h2>
+        <h2>Current Cryptocurrency Prices</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -269,17 +260,16 @@ export default function CryptoTradingSimulatorPage() {
             <TableBody>
               {cryptos.map((crypto) => (
                 <TableRow key={crypto.symbol}>
-                  <TableCell className="font-mono font-semibold">
-                    {crypto.symbol}
-                  </TableCell>
+                  <TableCell className="font-mono">{crypto.symbol}</TableCell>
                   <TableCell>{crypto.name}</TableCell>
-                  <TableCell className="font-semibold">
+                  <TableCell className="">
                     {formatNumberToCurrency(crypto.price, 2, 2)}
                   </TableCell>
                   <TableCell>
                     <Button
                       variant="outline"
                       size="sm"
+                      className="-ml-2"
                       onClick={() => setSelectedCrypto(crypto)}
                     >
                       Select
@@ -294,7 +284,7 @@ export default function CryptoTradingSimulatorPage() {
 
       {/* Portfolio Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Your Crypto Portfolio</h2>
+        <h2>Your Crypto Portfolio</h2>
         <PortfolioTable
           portfolio={portfolio}
           stocks={cryptos}
@@ -305,7 +295,7 @@ export default function CryptoTradingSimulatorPage() {
 
       {/* Transaction History Section */}
       <div className="mb-8">
-        <h2 className="mb-4 font-semibold text-2xl">Transaction History</h2>
+        <h2>Transaction History</h2>
         <div className="border rounded-lg overflow-hidden">
           <Table>
             <TableHeader>
@@ -349,15 +339,11 @@ export default function CryptoTradingSimulatorPage() {
                           {tx.type}
                         </span>
                       </TableCell>
-                      <TableCell className="font-mono font-semibold">
-                        {tx.symbol}
-                      </TableCell>
+                      <TableCell className="font-mono">{tx.symbol}</TableCell>
                       <TableCell>{tx.quantity.toLocaleString()}</TableCell>
-                      <TableCell className="font-semibold">
-                        ${tx.price.toFixed(2)}
-                      </TableCell>
+                      <TableCell className="">${tx.price.toFixed(2)}</TableCell>
                       <TableCell
-                        className={`font-semibold ${
+                        className={` ${
                           isMoneyIn ? "" : isMoneyOut ? "text-red-600" : ""
                         }`}
                       >
